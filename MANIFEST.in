@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include migoo_crm *.css
+recursive-include migoo_crm *.csv
+recursive-include migoo_crm *.html
+recursive-include migoo_crm *.ico
+recursive-include migoo_crm *.js
+recursive-include migoo_crm *.json
+recursive-include migoo_crm *.md
+recursive-include migoo_crm *.png
+recursive-include migoo_crm *.py
+recursive-include migoo_crm *.svg
+recursive-include migoo_crm *.txt
+recursive-exclude migoo_crm *.pyc
