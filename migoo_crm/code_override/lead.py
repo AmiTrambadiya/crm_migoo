@@ -252,7 +252,7 @@ class Lead(SellingController, CRMNote):
                     "lead": self.name,
                     "lead_name": self.lead_name,
                     "email": self.email_id,
-                    "mobile_no": self.mobile_no,
+                    "mobile_no": self.mobile_no,    
                     "lead_owner": self.lead_owner,
                     "status": self.status,
                 },
