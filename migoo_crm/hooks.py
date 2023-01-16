@@ -202,4 +202,12 @@ fixtures = [
 
     {"dt": "Server Script", },
 
+    {"dt": "DocType", "filters": [
+        [
+            "name", "in", [
+                "Brand of SubCategory"
+            ]
+        ]
+    ]},
+
 ]
