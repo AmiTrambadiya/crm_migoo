@@ -143,7 +143,7 @@ override_whitelisted_methods = {
     "frappe.core.doctype.user.user.update_password": "migoo_crm.code_override.user.update_password",
     "erpnext.crm.doctype.lead.lead.make_opportunity": "migoo_crm.code_override.lead.make_opportunity",
     "erpnext.crm.doctype.lead.lead.make_customer": "migoo_crm.code_override.lead.make_customer",
-    "erpnext.crm.doctype.opportunity.opportunity.make_customer":"migoo_crm.code_override.opportunity.make_customer"
+    "erpnext.crm.doctype.opportunity.opportunity.make_customer": "migoo_crm.code_override.opportunity.make_customer"
 }
 #
 # each overriding function accepts a `data` argument;
@@ -188,3 +188,7 @@ override_whitelisted_methods = {
 # auth_hooks = [
 #	"migoo_crm.auth.validate"
 # ]
+
+fixtures = [
+    "Client Script","Server Script"
+]
