@@ -190,5 +190,16 @@ override_whitelisted_methods = {
 # ]
 
 fixtures = [
-    "Client Script","Server Script"
+    {"dt": "Report", "filters": [
+        [
+            "module", "in", [
+                "Migoo CRM"
+            ]
+        ]
+    ]},
+
+    {"dt": "Client Script", },
+
+    {"dt": "Server Script", },
+
 ]
