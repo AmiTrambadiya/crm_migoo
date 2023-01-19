@@ -107,7 +107,7 @@
   "make_attachments_public": 0,
   "max_attachments": 0,
   "menu_index": null,
-  "migration_hash": null,
+  "migration_hash": "e4e024a06b76da586aff68c443377cf7",
   "modified": "2023-01-16 13:34:06.434731",
   "module": "Migoo CRM",
   "name": "Brand of SubCategory",
