@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-01-19 13:25:01.300871",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "request",
+  "first_name",
+  "last_name",
+  "company_name",
+  "email_address",
+  "status",
+  "column_break_6",
+  "mobile_no",
+  "wpnumber",
+  "inquiry_source",
+  "item_details",
+  "curdate",
+  "section_break_12",
+  "supplier_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": ".DD.-.MM.-"
+  },
+  {
+   "fieldname": "request",
+   "fieldtype": "Select",
+   "label": " Request Type",
+   "options": "\nRent\nSell\nBuy\nInsurance"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address",
+   "options": "Email"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nClose"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No"
+  },
+  {
+   "fieldname": "wpnumber",
+   "fieldtype": "Data",
+   "label": "WhatsApp No"
+  },
+  {
+   "fieldname": "inquiry_source",
+   "fieldtype": "Data",
+   "label": "Inquiry Source"
+  },
+  {
+   "fieldname": "item_details",
+   "fieldtype": "Data",
+   "label": "Equipment Details"
+  },
+  {
+   "fieldname": "curdate",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "supplier_notes",
+   "fieldtype": "Small Text",
+   "label": "Supplier Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-01-20 12:36:33.352860",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Inquiry Form",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

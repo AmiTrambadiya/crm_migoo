@@ -1,0 +1,254 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-01-20 12:15:32.925838",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details_section",
+  "full_name",
+  "organization_name",
+  "job_title",
+  "column_break_6",
+  "naming_series",
+  "request_type",
+  "data_owner",
+  "contact_info_section",
+  "email",
+  "email_2",
+  "website",
+  "column_break_12",
+  "phone",
+  "mobile_no",
+  "whatsapp_no",
+  "phone_2",
+  "address_section",
+  "address_title",
+  "address_line_1",
+  "address_line_2",
+  "area",
+  "pincode",
+  "column_break_21",
+  "city",
+  "state",
+  "location",
+  "special_details_section",
+  "class_category_registration",
+  "sp_category_road_bridge_and_building",
+  "column_break_32",
+  "core_sector",
+  "section_break_26",
+  "small_text_27"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "Data-.DD.-.MM.-.YYYY.-.####"
+  },
+  {
+   "fieldname": "request_type",
+   "fieldtype": "Select",
+   "label": "Request Type",
+   "options": "\nProduct Enquiry\nRequest for Information\nSuggestions\nOthers"
+  },
+  {
+   "fieldname": "data_owner",
+   "fieldtype": "Link",
+   "label": "Data Owner",
+   "options": "User"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "contact_info_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Info"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email 1",
+   "options": "Email"
+  },
+  {
+   "fieldname": "email_2",
+   "fieldtype": "Data",
+   "label": "Email 2",
+   "options": "Email"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone 1",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "whatsapp_no",
+   "fieldtype": "Data",
+   "label": "WhatsApp No",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "phone_2",
+   "fieldtype": "Data",
+   "label": "Phone 2",
+   "options": "Phone"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "address_title",
+   "fieldtype": "Data",
+   "label": "Address Title"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "label": "Area"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Territory"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "special_details_section",
+   "fieldtype": "Section Break",
+   "label": "Special Details"
+  },
+  {
+   "fieldname": "class_category_registration",
+   "fieldtype": "Data",
+   "label": "Class Category Registration"
+  },
+  {
+   "fieldname": "sp_category_road_bridge_and_building",
+   "fieldtype": "Data",
+   "label": "SP. Category Road, Bridge And Building "
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "core_sector",
+   "fieldtype": "Select",
+   "label": "Core Sector",
+   "options": "\nAerial Rental Company\nCranes Rental Company\nEarthmoving Rental Company\nMaterial Handling Equipment Company\nRoad Equipment Rental Company\nGovernment Contractors\nBuilders\nTraspoter"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_26",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "small_text_27",
+   "fieldtype": "Small Text",
+   "label": "Add a Note"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-01-20 12:36:33.654965",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Raw Data",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
