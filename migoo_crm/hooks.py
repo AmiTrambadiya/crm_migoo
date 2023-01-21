@@ -115,7 +115,7 @@ override_doctype_class = {
 
 scheduler_events = {
     "send_daily_mail_report": {
-        "59 16 * * *": [
+        "59 18 * * *": [
             "migoo_crm.api.send_daily_mail_report"
         ]
     }

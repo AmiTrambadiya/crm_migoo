@@ -14,10 +14,9 @@ def send_daily_mail_report():
     today = frappe.utils.get_datetime(getdate()).strftime("%d-%b-%Y")
 
     recipients = [
-        # 'arjun.pachani@gmail.com',
-        # 'dhaval.nadpara@migoo.in',
-        # 'kamal@sanskartechnolab.com'
-        'foram@sanskartechnolab.com'
+        'arjun.pachani@gmail.com',
+        'dhaval.nadpara@migoo.in',
+        'kamal@sanskartechnolab.com'
     ]
 
     message = f'''
