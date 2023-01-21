@@ -114,21 +114,28 @@ override_doctype_class = {
 # ---------------
 
 scheduler_events = {
-#	"all": [
-#		"migoo_crm.tasks.all"
-#	],
-	"daily": [
-		"migoo_crm.api.send_daily_mail_report"
-	]
-#	"hourly": [
-#		"migoo_crm.tasks.hourly"
-#	],
-#	"weekly": [
-#		"migoo_crm.tasks.weekly"
-#	],
-#	"monthly": [
-#		"migoo_crm.tasks.monthly"
-#	],
+    "send_daily_mail_report": {
+        "59 16 * * *": [
+            "migoo_crm.api.send_daily_mail_report"
+        ]
+    }
+
+    #	"all": [
+    #		"migoo_crm.tasks.all"
+    #	],
+
+    # "daily": [
+    # 	"migoo_crm.api.send_daily_mail_report"
+    # ]
+    #	"hourly": [
+    #		"migoo_crm.tasks.hourly"
+    #	],
+    #	"weekly": [
+    #		"migoo_crm.tasks.weekly"
+    #	],
+    #	"monthly": [
+    #		"migoo_crm.tasks.monthly"
+    #	],
 }
 
 # Testing
