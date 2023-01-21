@@ -79,17 +79,6 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
-  "dt": "Raw Data",
-  "enabled": 1,
-  "modified": "2023-01-16 13:36:53.525640",
-  "module": "Migoo CRM",
-  "name": "Raw Data 1 to Lead",
-  "script": "frappe.ui.form.on('Raw Data 1', {\n\trefresh(frm) {\n\t\tfrm.add_custom_button(__('Create Lead'),\n\t\t    function()\n\t\t    {\n\t\t        frappe.new_doc(\"Lead\", \n\t\t        {\n    \t\t        \n    \t\t        \"first_name\":frm.doc.full_name,\n    \t\t        \"lead_owner\":frm.doc.data_owner,\n    \t\t        \"company_name\":frm.doc.organization_name,\n    \t\t        \"job_title\":frm.doc.job_title,\n    \t\t        \"email_id\":frm.doc.email,\n    \t\t        \"email_2\":frm.doc.email_2,\n    \t\t        \"website\":frm.doc.website,\n    \t\t        \"phone\":frm.doc.phone,\n    \t\t        \"mobile_no\":frm.doc.mobile_no,\n    \t\t        \"whatsapp_no\":frm.doc.whatsapp_no,\n    \t\t        \"phone_ext\":frm.doc.phone_2,\n    \t\t        \"area\":frm.doc.area,\n    \t\t        \"request_type\":frm.doc.request_type,\n    \t\t        \"territory\":frm.doc.location,\n    \t\t        \"address_title\":frm.doc.address_title,\n    \t\t        \"address_line_1\":frm.doc.address_line_1,\n    \t\t        \"address_line_2\":frm.doc.address_line_2,\n    \t\t        \"city\":frm.doc.city,\n    \t\t        \"state\":frm.doc.state,\n    \t\t        \n\t\t        });\n\t        });\n\t}\n})",
-  "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
   "dt": "Lead",
   "enabled": 1,
   "modified": "2023-01-16 13:36:53.566668",
