@@ -6,16 +6,14 @@ from frappe.utils import now, getdate
 @frappe.whitelist()
 def send_daily_mail_report():
     new_supplier = frappe.db.sql(
-        "select count(name)as Supplier from `tabSupplier` where creation between curdate() - interval 2 day and curdate()", as_list=True)
-    new_equipment = frappe.db.sql(
-        "select count(name)as Equipment from `tabItem` where creation between curdate() - interval 2 day and curdate()", as_list=True)
+        "select count(name)as Supplier from `tabSupplier` where creation >= now() - INTERVAL 9 hour and HOUR(creation) in (10,11,12,13,14,15,16,17,18,19)", as_list=True)
+    new_equipment = frappe.db.sql("select count(name)as Equipment from `tabItem` where creation >= now() - INTERVAL 9 hour and HOUR(creation) in (10,11,12,13,14,15,16,17,18,19)", as_list=True)
     total_supplier = frappe.db.get_list("Supplier")
     total_equipment = frappe.db.get_list("Item")
     today = frappe.utils.get_datetime(getdate()).strftime("%d-%b-%Y")
 
     recipients = [
         'arjun.pachani@gmail.com',
-        'dhaval.nadpara@migoo.in',
         'kamal@sanskartechnolab.com'
     ]
 
