@@ -4,6 +4,17 @@
   "doctype": "Client Script",
   "dt": "Raw Data",
   "enabled": 1,
+  "modified": "2023-01-25 15:26:08.886951",
+  "module": "Migoo CRM",
+  "name": "Raw Data ListView Button",
+  "script": "frappe.listview_settings['Raw Data'] = {\n    onload: function (listview) {\n        listview.page.add_action_item(\"Send Whatsapp Template\", function () {\n            test(listview);\n        });;\n    },\n};\nfunction test(listview) {\n    let names = [];\n    $.each(listview.get_checked_items(), function (key, value) {\n        names.push(value.name);\n    });\n    if (names.length === 0) {\n        frappe.throw(__(\"No rows selected.\"));\n    }\n\n    template = [];\n    frappe.call({\n        method: 'whatsapp_app.whatsapp_app.doctype.api.get_template_list',\n        args: {\n            'doctype': 'Opportunity'\n        },\n        freeze: true,\n        callback: (r) => {\n            for (let i = 0; i < r.message.length; i++) {\n                template.push(r.message[i])\n            }\n            template.append[\"new add\"]\n        },\n        error: (r) => {\n            frappe.msgprint('somthing want wrong!');\n        }\n    });\n    let d1 = new frappe.ui.Dialog({\n        title: 'Send Message',\n        fields: [\n            {\n                label: \"Select Message Type\",\n                fieldname: \"select_message_type\",\n                fieldtype: \"Select\",\n                options: [\"Template\"]\n            },\n            {\n                label: 'Select Template',\n                fieldname: 'select_template',\n                fieldtype: 'Select',\n                options: template,\n                depends_on: \"eval:(doc.select_message_type == 'Template')\"\n            }\n        ],\n        primary_action_label: 'Send',\n        primary_action(values) {\n            frappe.call({\n                method: 'whatsapp_app.whatsapp_app.doctype.api.send_bulk_whatsapp_message',\n                args: {\n                    'template_name': values['select_template'],\n                    'doctype': 'Opportunity',\n                    'name': names\n                },\n                freeze: true,\n                callback: (r) => {\n                    frappe.msgprint('message sent');\n                },\n                error: (r) => {\n                    frappe.msgprint('somthing want wrong!');\n                }\n            });\n            d1.hide();\n        }\n\n    });\n    d1.show();\n\n    console.log(\"asdf\", names);\n}",
+  "view": "List"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Raw Data",
+  "enabled": 1,
   "modified": "2023-01-16 13:36:53.506304",
   "module": "Migoo CRM",
   "name": "Raw Data-Full Name",
