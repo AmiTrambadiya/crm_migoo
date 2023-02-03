@@ -1,0 +1,323 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-02-03 16:53:24.136331",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "resource_planning",
+  "equipment",
+  "column_break_3",
+  "customer",
+  "equipment_category",
+  "column_break_7",
+  "date",
+  "equipment_no",
+  "time_details_section",
+  "z",
+  "start_time",
+  "end_time",
+  "total_hoursmorning",
+  "column_break_14",
+  "afternoon",
+  "starttime",
+  "endtime",
+  "total_hoursafternoon",
+  "column_break_26",
+  "eveningnight",
+  "start_time_",
+  "end_time_",
+  "total_hourseveningnight",
+  "section_break_25",
+  "start_kmhr",
+  "end_kmhr",
+  "total_kmhr",
+  "column_break_29",
+  "total_working_hours",
+  "fuel_liter",
+  "fuel_filling_km",
+  "equipmenrt_acrtivity_section",
+  "activity",
+  "remarks",
+  "column_break_33",
+  "breack_down_hrs",
+  "ideal_hrs",
+  "supplier_and_driver_section",
+  "supplier",
+  "supplier_name",
+  "supplier_number",
+  "column_break_40",
+  "driver",
+  "driver_name",
+  "driver_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series"
+  },
+  {
+   "fieldname": "resource_planning",
+   "fieldtype": "Link",
+   "label": "Resource Planning",
+   "options": "Resource Planning"
+  },
+  {
+   "fetch_from": "resource_planning.equipment",
+   "fieldname": "equipment",
+   "fieldtype": "Data",
+   "label": "Equipment"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "resource_planning.customer",
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "label": "Customer"
+  },
+  {
+   "fetch_from": "resource_planning.equipment_sub_category",
+   "fieldname": "equipment_category",
+   "fieldtype": "Data",
+   "label": "Equipment Category"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "resource_planning.equipment_no",
+   "fieldname": "equipment_no",
+   "fieldtype": "Data",
+   "label": "Equipment No"
+  },
+  {
+   "fieldname": "time_details_section",
+   "fieldtype": "Section Break",
+   "label": "Time Details"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_hoursmorning",
+   "fieldtype": "Time",
+   "label": "Total Hours(Morning)"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "afternoon",
+   "fieldtype": "Heading",
+   "label": "Afternoon"
+  },
+  {
+   "fieldname": "starttime",
+   "fieldtype": "Time",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "endtime",
+   "fieldtype": "Time",
+   "label": "End Time"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_hoursafternoon",
+   "fieldtype": "Time",
+   "label": "Total Hours(Afternoon)"
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "eveningnight",
+   "fieldtype": "Heading",
+   "label": "Evening/Night"
+  },
+  {
+   "fieldname": "start_time_",
+   "fieldtype": "Time",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "end_time_",
+   "fieldtype": "Time",
+   "label": "End Time"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_hourseveningnight",
+   "fieldtype": "Time",
+   "label": "Total Hours(Evening/Night)"
+  },
+  {
+   "fieldname": "section_break_25",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "start_kmhr",
+   "fieldtype": "Float",
+   "label": "Start km/hr"
+  },
+  {
+   "fieldname": "end_kmhr",
+   "fieldtype": "Float",
+   "label": "End km/hr"
+  },
+  {
+   "fieldname": "total_kmhr",
+   "fieldtype": "Data",
+   "label": "Total km/hr"
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_working_hours",
+   "fieldtype": "Data",
+   "label": "Total Working Hours"
+  },
+  {
+   "fieldname": "fuel_liter",
+   "fieldtype": "Data",
+   "label": "Fuel (Litre)"
+  },
+  {
+   "fieldname": "fuel_filling_km",
+   "fieldtype": "Data",
+   "label": "Fuel Filling Km"
+  },
+  {
+   "fieldname": "equipmenrt_acrtivity_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment Activity"
+  },
+  {
+   "fieldname": "activity",
+   "fieldtype": "Data",
+   "label": "Activity"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_33",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "breack_down_hrs",
+   "fieldtype": "Data",
+   "label": "Break Down Hrs"
+  },
+  {
+   "fieldname": "ideal_hrs",
+   "fieldtype": "Data",
+   "label": "Ideal hrs"
+  },
+  {
+   "fieldname": "supplier_and_driver_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier And Driver"
+  },
+  {
+   "fetch_from": "resource_planning.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fetch_from": "supplier.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fetch_from": "supplier.mobile_number",
+   "fieldname": "supplier_number",
+   "fieldtype": "Data",
+   "label": "Supplier Number"
+  },
+  {
+   "fieldname": "column_break_40",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "resource_planning.driver",
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Driver"
+  },
+  {
+   "fetch_from": "driver.full_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fetch_from": "driver.cell_number",
+   "fieldname": "driver_number",
+   "fieldtype": "Data",
+   "label": "Driver Number"
+  },
+  {
+   "fieldname": "z",
+   "fieldtype": "Heading",
+   "label": "Morning"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-02-03 17:50:43.540153",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Log Sheet",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,172 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-02-03 17:12:57.436112",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "sales_order",
+  "equipment",
+  "equipment_sub_category",
+  "column_break_3",
+  "customer",
+  "customer_mobile_no",
+  "equipment_no",
+  "section_break_6",
+  "supplier",
+  "supplier_name",
+  "supplier_mobile_no",
+  "column_break_10",
+  "driver",
+  "driver_name",
+  "driver_mobile_no",
+  "section_break_14",
+  "start_date",
+  "end_date",
+  "column_break_17",
+  "total_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "equipment",
+   "fieldtype": "Link",
+   "label": "Equipment",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "equipment.equipment_main_category",
+   "fieldname": "equipment_sub_category",
+   "fieldtype": "Data",
+   "label": "Equipment Sub Category"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sales_order.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.mobile_no",
+   "fieldname": "customer_mobile_no",
+   "fieldtype": "Data",
+   "label": "Customer Mobile No"
+  },
+  {
+   "fetch_from": "equipment.register_no",
+   "fieldname": "equipment_no",
+   "fieldtype": "Data",
+   "label": "Equipment No"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "equipment.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fetch_from": "equipment.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fetch_from": "equipment.supplier_number",
+   "fieldname": "supplier_mobile_no",
+   "fieldtype": "Data",
+   "label": "Supplier Mobile No"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Driver"
+  },
+  {
+   "fetch_from": "driver.full_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fetch_from": "driver.cell_number",
+   "fieldname": "driver_mobile_no",
+   "fieldtype": "Data",
+   "label": "Driver Mobile No"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_days",
+   "fieldtype": "Int",
+   "label": "Total Days"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-02-03 17:12:57.436112",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Resource Planning",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
