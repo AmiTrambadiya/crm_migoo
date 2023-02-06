@@ -1,5 +1,998 @@
 [
  {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.091250",
+  "module": "Migoo CRM",
+  "name": "daily equipment report",
+  "prepared_report": 0,
+  "query": "select\n    name as 'Name',\n    item_group as 'Equipment Main Category',\n    equipment_main_category as 'Equipment Sub Category',\n    supplier as 'Supplier',\n    rto_register as 'RTO Registration',\n    equipment_verify as 'Equipment Verify'\nfrom\n    `tabItem`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "daily equipment report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "daily equipment report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.169599",
+  "module": "Migoo CRM",
+  "name": "Call History Report",
+  "prepared_report": 0,
+  "query": "    select\n        cl.agent_name as 'Agent',\n        cl.agent_number as 'Agent Number',\n        cl.client_number as 'Client Number',\n        cl.status as 'Status Of call',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording:10\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on cl.agent_name = u.full_name\n        and u.phone = cl.agent_number\n    where\n        cl.creation >= now() - INTERVAL 24 HOUR\n    order by\n        cl.creation desc",
+  "ref_doctype": "Call Logs",
+  "reference_report": null,
+  "report_name": "Call History Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Call History Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [
+   {
+    "fieldname": "i.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Total",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 120
+   },
+   {
+    "fieldname": "count(i.equipment_main_category)",
+    "fieldtype": "Data",
+    "label": "Total",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 120
+   },
+   {
+    "fieldname": "sell.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Sell",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 120
+   },
+   {
+    "fieldname": "rent.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Rent",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 120
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.183633",
+  "module": "Migoo CRM",
+  "name": "Equipment For sell Or Rent Report",
+  "prepared_report": 0,
+  "query": "with sell as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_sell = 1\n    group by\n        equipment_main_category\n),\nrent as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_rent = 1\n    group by\n        equipment_main_category\n)\nselect\n    i.equipment_main_category as 'Equipment Sub Category',\n    count(i.equipment_main_category) as 'Total',\n    count(sell.equipment_main_category) as 'Sell',\n    count(rent.equipment_main_category) as 'Rent'\nfrom\n    `tabItem` i\n    left join sell on sell.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = sell.equipment_for_sell\n    left join rent on rent.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = rent.equipment_for_sell\nwhere\n    i.equipment_for_sell = 1\n    or i.equipment_for_rent = 1\ngroup by\n    i.equipment_main_category",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Equipment For sell Or Rent Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.246637",
+  "module": "Migoo CRM",
+  "name": "Daily Supplier Report",
+  "prepared_report": 0,
+  "query": "select\n    supplier_name as 'Name',\n    verify as 'Verified Or Not',\n    company_name as 'Company Name',\n    mobile_number as 'Mobile No',\n    email as 'Email'\nfrom\n    `tabSupplier`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
+  "ref_doctype": "Supplier",
+  "reference_report": null,
+  "report_name": "Daily Supplier Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Master Manager"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Daily Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.155406",
+  "module": "Migoo CRM",
+  "name": "Lead Analytics",
+  "prepared_report": 0,
+  "query": "with daily as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request_type as 'Request Type',\n    count(i.request_type) as 'Total',\n    count(daily.request_type) as \"Daily\",\n    count(week.request_type) as \"Week\",\n    count(quarterly.request_type) as \"Quarterly\",\n    count(monthly.request_type) as \"Monthly\"\nfrom\n    `tabLead` i\n    left outer join daily on daily.request_type = i.request_type\n    and daily.creation = i.creation\n    left outer join week on week.request_type = i.request_type\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request_type = i.request_type\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request_type = i.request_type\n    and monthly.creation = i.creation\nwhere\n    i.request_type in(\"Buy\", \"Sell\", \"Rent\")\ngroup by\n    i.request_type",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead Analytics",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Lead Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Lead Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.109459",
+  "module": "Migoo CRM",
+  "name": "Supplier Verified or Not report",
+  "prepared_report": 0,
+  "query": "with verified as (\n    select\n        name,\n        verify\n    from\n        `tabSupplier`\n    where\n        verify = 'Verify'\n),\n\nnotverify AS (\n    select\n        name,\n        verify\n    from\n        `tabSupplier`\n    where\n        verify = 'Not Verify'\n   \n)\n\nselect\n    count(s.verify) as 'Total Supplier',\n    count(verified.verify) 'Verified Supplier',\n     count(notverify.verify) 'Not Verified Supplier'\n   \n    \nfrom\n `tabSupplier` s\n    \nleft outer JOIN verified on verified.name=s.name\nleft outer JOIN notverify on notverify.name=s.name",
+  "ref_doctype": "Supplier",
+  "reference_report": null,
+  "report_name": "Supplier Verified or Not report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Master Manager"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Supplier Verified or Not report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.053480",
+  "module": "Migoo CRM",
+  "name": "Supplier and Equipment Report",
+  "prepared_report": 0,
+  "query": "WITH difference_in_seconds AS (\n    select\n        s.creation as 'SupplierCreatedDate',\n        s.supplier_name as 'Supplier',\n        i.name as '1stEquipment',\n        i.creation as 'EquipmentCreatedDate',\n        TIMESTAMPDIFF(SECOND, s.creation, i.creation) AS seconds\n    from\n        `tabSupplier` s\n        inner join `tabItem` i on s.name = i.supplier\n        \n        where s.verify='Verify'\n),\ndifferences AS (\n    SELECT\n        Supplier as 's',\n        SupplierCreatedDate as 'a',\n        1stEquipment as 'b',\n        EquipmentCreatedDate as 'c',\n        seconds,\n        MOD(seconds, 60) AS seconds_part,\n        MOD(seconds, 3600) AS minutes_part,\n        MOD(seconds, 3600 * 24) AS hours_part\n    FROM\n        difference_in_seconds\n)\nselect\n    s as 'Supplier',\n    a as 'Supplier Creation Date',\n    b as '1st Equipment of Supplier',\n    c as '1st Equipment Created By Supplier',\n    CONCAT(\n        FLOOR(seconds / 3600 / 24),\n        ' days ',\n        FLOOR(hours_part / 3600),\n        ' hours ',\n        FLOOR(minutes_part / 60),\n        ' minutes ',\n        seconds_part,\n        ' seconds'\n    ) AS 'Creation Difference of Supplier and 1st Equipment '\nFROM\n    differences\ngroup by\n    s\norder by\n    c asc",
+  "ref_doctype": "Supplier",
+  "reference_report": null,
+  "report_name": "Supplier and Equipment Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Master Manager"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Supplier and Equipment Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.073329",
+  "module": "Migoo CRM",
+  "name": "Verify Supplier",
+  "prepared_report": 0,
+  "query": "WITH difference_in_seconds AS (\nSELECT\ns.name_of_suppier AS \"SupplierName\",\ns.mobile_number AS \"MobileNumber\",\ns.email AS \"Email\",\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabSupplier` AS s\nwhere\ns.verify=\"Verify\"\n),\n\ndifferences AS (\n  SELECT\n  SupplierName,\n  MobileNumber,\n  Email ,\n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  SupplierName as \"Name\",\n  MobileNumber as \"Number\",\n  Email as \"Email\",\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Supplier Verified After Creation\"\nFROM differences;",
+  "ref_doctype": "Supplier",
+  "reference_report": null,
+  "report_name": "Verify Supplier",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Master Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.029747",
+  "module": "Migoo CRM",
+  "name": "Equipment",
+  "prepared_report": 0,
+  "query": "WITH difference_in_seconds AS (\nSELECT\ns.item_name AS \"EquipmentName\",\ns.item_group AS \"maincategory\",\ns.equipment_main_category AS \"subcategory\",\ns.supplier AS \"supplier\",\ns.supplier_name as \"sn\",\ns.whatsapp_no as \"snum\",\ns.equipment_for_sell as \"sell\",\ns.equipment_for_rent as \"rent\",\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabItem` AS s\nWHERE\ns.equipment_verify=\"Verify\"\n),\n\ndifferences AS (\n  SELECT\n  EquipmentName,\n  maincategory,\n  subcategory,\n  supplier,\n  sn,\n  snum,\n  sell,\n  rent,\n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  EquipmentName as \"Name\",\n  maincategory as \"Main Category\",\n  subcategory as \"Sub Category\",\n  supplier as \"Supplier\",\n  sn as \"Supplier Name\",\n  snum as \"Supplier Number\",\n  sell,\n  rent,\n\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Difference\"\nFROM differences;",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Equipment",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.209295",
+  "module": "Migoo CRM",
+  "name": "Inquiry For Sell",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Sell'\n    and creation >= now() - INTERVAL 1 DAY",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry For Sell",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.224217",
+  "module": "Migoo CRM",
+  "name": "Inquiry For Rent",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Rent'\n    and creation >= now() - INTERVAL 1 DAY",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry For Rent",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.235287",
+  "module": "Migoo CRM",
+  "name": "Inquiry For Buy",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Buy'\n    and creation >= now() - INTERVAL 1 DAY",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry For Buy",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.272616",
+  "module": "Migoo CRM",
+  "name": "Lead For Buy",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead`\nWHERE\n    request_type = 'Buy'\n    and creation >= now() - INTERVAL 1 DAY",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Buy",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.261355",
+  "module": "Migoo CRM",
+  "name": "Lead For Sell",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead` \nWHERE\n    request_type = 'Sell'\n    and creation >= now() - INTERVAL 1 DAY",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Sell",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.283167",
+  "module": "Migoo CRM",
+  "name": "Lead For Rent",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead` \nWHERE\n    request_type = 'Rent'\n    and creation >= now() - INTERVAL 1 DAY",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Rent",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.135321",
+  "module": "Migoo CRM",
+  "name": "Inquiry Analytics",
+  "prepared_report": 0,
+  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type',\n    count(i.request) as 'Total',\n    count(daily.request) as \"Daily\",\n    count(week.request) as \"Week\",\n    count(quarterly.request) as \"Quarterly\",\n    count(monthly.request) as \"Monthly\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n    i.request in(\"Buy\", \"Sell\", \"Rent\")\ngroup by\n    i.request",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry Analytics",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -11,7 +1004,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-01-16 15:39:12.624734",
+  "modified": "2023-02-04 17:07:53.294196",
   "module": "Migoo CRM",
   "name": "Equipment Status Wise Report",
   "prepared_report": 0,
@@ -84,6 +1077,97 @@
    },
    {
     "parent": "Equipment Status Wise Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-04 17:07:53.000070",
+  "module": "Migoo CRM",
+  "name": "Insurance Report",
+  "prepared_report": 0,
+  "query": "select i.supplier_name as \"Supplier\",\ni.item_code as 'Equipment:link/Item',\ni.insurance_date as 'Insurance Complete Date',\ns.mobile_number\n\nfrom `tabItem` i\n\ninner join `tabSupplier` s\non s.supplier_name= i.supplier_name\n\nwhere\ni.insurance_date = CURDATE() + INTERVAL 15 DAY",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Insurance Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Insurance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Insurance Report",
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Migoo Approver"

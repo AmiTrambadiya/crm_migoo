@@ -95,7 +95,10 @@ app_license = "MIT"
 # Override standard doctype classes
 
 override_doctype_class = {
+
     "User": "migoo_crm.code_override.user.User",
+    "Auto Email Report": "migoo_crm.code_override.auto_email_report.AutoEmailReport",
+
 }
 
 # Document Events
@@ -113,30 +116,30 @@ override_doctype_class = {
 # Scheduled Tasks
 # ---------------
 
-scheduler_events = {
-    "send_daily_mail_report": {
-        "59 18 * * *": [
-            "migoo_crm.api.send_daily_mail_report"
-        ]
-    }
+# scheduler_events = {
+#     "send_daily_mail_report": {
+#         "59 18 * * *": [
+#             "migoo_crm.api.send_daily_mail_report"
+#         ]
+#     }
 
-    #	"all": [
-    #		"migoo_crm.tasks.all"
-    #	],
+#	"all": [
+#		"migoo_crm.tasks.all"
+#	],
 
-    # "daily": [
-    # 	"migoo_crm.api.send_daily_mail_report"
-    # ]
-    #	"hourly": [
-    #		"migoo_crm.tasks.hourly"
-    #	],
-    #	"weekly": [
-    #		"migoo_crm.tasks.weekly"
-    #	],
-    #	"monthly": [
-    #		"migoo_crm.tasks.monthly"
-    #	],
-}
+# "daily": [
+# 	"migoo_crm.api.send_daily_mail_report"
+# ]
+#	"hourly": [
+#		"migoo_crm.tasks.hourly"
+#	],
+#	"weekly": [
+#		"migoo_crm.tasks.weekly"
+#	],
+#	"monthly": [
+#		"migoo_crm.tasks.monthly"
+#	],
+# }
 
 # Testing
 # -------
