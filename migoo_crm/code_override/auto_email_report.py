@@ -2,8 +2,10 @@
 # License: MIT. See LICENSE
 
 import calendar
+import re
 from datetime import timedelta
-
+from frappe.utils import pretty_date, now, add_to_date
+from datetime import datetime
 import frappe
 from frappe import _
 from frappe.desk.query_report import build_xlsx_data
@@ -18,11 +20,13 @@ from frappe.utils import (
     global_date_format,
     now,
     now_datetime,
+
     today,
     validate_email_address,
 )
 from frappe.utils.csvutils import to_csv
 from frappe.utils.xlsxutils import make_xlsx
+from frappe.email.doctype.auto_email_report.auto_email_report import AutoEmailReport
 
 
 class AutoEmailReport(Document):
@@ -198,31 +202,45 @@ class AutoEmailReport(Document):
         self.filters[self.from_date_field] = from_date
         self.filters[self.to_date_field] = to_date
 
+    def change_date_format(dt):
+        return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', dt)
+
+    dt1 = today()
+    subject_dt = change_date_format(dt1)
+
     def send(self):
-        frappe.msgprint("bhaktiiiiiii")
         new_supplier = frappe.db.sql(
-            "select count(name)as Supplier from `tabSupplier` where creation >= now() - INTERVAL 9 hour and HOUR(creation) in (10,11,12,13,14,15,16,17,18,19)", as_list=True)
+            "select count(name)as Supplier from `tabSupplier` where creation >= now() - INTERVAL 24 hour", as_list=True)
         new_equipment = frappe.db.sql(
-            "select count(name)as Equipment, item_group from `tabItem` where creation >= now() - INTERVAL 9 hour and HOUR(creation) in (10,11,12,13,14,15,16,17,18,19)", as_list=True)
+            "select count(name)as Equipment, item_group from `tabItem` where creation >= now() - INTERVAL 24 hour", as_list=True)
         total_equipment = frappe.db.get_list("Item")
         total_supplier = frappe.db.get_list(
             "Supplier", fields=["email", "name", "verify", "supplier_group", "supplier_type"])
 
-        a = self.name 
+        equipment_report = self.name
+        supplier_report = self.name
 
-        if a == 'stock report':
+        if equipment_report == 'daily equipment report':
 
             message = f'''
             <p>Respected Management,</p>
-            <p> The updates as of {today} are </p>
-            <p>New Supplier Added: {new_supplier[0][0]} </p>
+            <p>The updates as of today are mentioned below and find the attach file for the detailed information.</p>
             <p>New Equipment Added: {new_equipment[0][0]}</p>
-            <p>Total Supplier: {len(total_supplier)}</p>
             <p>Total Equipment: {len(total_equipment)}</p>
             '''
+
+        elif supplier_report == "Daily Supplier Report":
+
+            message = f'''
+            <p>Respected Management,</p>
+            <p> The updates as of today are mentioned below and find the attach file for the detailed information.</p>
+            <p>New Supplier Added: {new_supplier[0][0]} </p>
+            <p>Total Supplier: {len(total_supplier)}</p>
+            '''
+
         else:
             message = f'''<p>Respected Management,</p>
-            <p> The updates as of {today} are </p>'''
+            <p> The updates as of today are mentioned below with the attached file.</p>'''
 
         if self.filter_meta and not self.filters:
             frappe.throw(_("Please set filters value in Report Filter table."))
@@ -232,17 +250,13 @@ class AutoEmailReport(Document):
             return
 
         attachments = None
-        # if self.format == "HTML":
-        #     message = data
-        # else:
-        #     message = self.get_html_table()
 
         if not self.format == "HTML":
             attachments = [{"fname": self.get_file_name(), "fcontent": data}]
 
         frappe.sendmail(
             recipients=self.email_to.split(),
-            subject=self.name + " " + today(),
+            subject=self.name + " " + self.subject_dt,
             message=message,
             attachments=attachments,
             reference_doctype=self.doctype,

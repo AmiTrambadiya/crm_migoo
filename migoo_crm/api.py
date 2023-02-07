@@ -18,14 +18,12 @@ def send_daily_mail_report():
     ]
 
     message = f'''
-
         <p>Respected Management,</p>
         <p>The updates as of {today} are</p>
         <p>New Supplier Added: {new_supplier[0][0]}</p>
         <p>New Equipment Added: {new_equipment[0][0]}</p>
         <p>Total Supplier: {len(total_supplier)}</p>
         <p>Total Equipment: {len(total_equipment)}</p>
-
     '''
 
     frappe.sendmail(
