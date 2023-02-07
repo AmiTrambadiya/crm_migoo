@@ -17,7 +17,7 @@
   "beta": 0,
   "color": null,
   "colour": null,
-  "custom": 0,
+  "custom": 1,
   "default_email_template": null,
   "default_print_format": null,
   "default_view": "List",
