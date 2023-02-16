@@ -30,6 +30,7 @@ from frappe.email.doctype.auto_email_report.auto_email_report import AutoEmailRe
 
 
 class AutoEmailReport(Document):
+    
     def autoname(self):
         self.name = _(self.report)
         if frappe.db.exists("Auto Email Report", self.name):
@@ -220,7 +221,7 @@ class AutoEmailReport(Document):
         equipment_report = self.name
         supplier_report = self.name
 
-        if equipment_report == 'daily equipment report':
+        if equipment_report == 'Daily Equipment Report':
 
             message = f'''
             <p>Respected Management,</p>

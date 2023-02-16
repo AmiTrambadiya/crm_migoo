@@ -12,7 +12,7 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/migoo_crm/css/migoo_crm.css"
-# app_include_js = "/assets/migoo_crm/js/migoo_crm.js"
+# app_include_js = "/assets/migoo_crm/js/auto_email_report.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/migoo_crm/css/migoo_crm.css"
@@ -98,7 +98,6 @@ override_doctype_class = {
 
     "User": "migoo_crm.code_override.user.User",
     "Auto Email Report": "migoo_crm.code_override.auto_email_report.AutoEmailReport",
-
 }
 
 # Document Events
@@ -212,4 +211,23 @@ fixtures = [
 
     {"dt": "Server Script", },
 
+    {"dt": "Role Profile", },
+
+    {"dt": "Module Profile", },
+
+    {"dt": "Number Card", "filters": [
+        [
+            "module", "in", [
+                "Migoo CRM"
+            ]
+        ]
+    ]},
+
+    {"dt": "Property Setter", "filters": [
+        [
+            "module", "in", [
+                "Migoo CRM"
+            ]
+        ]
+    ]},
 ]
