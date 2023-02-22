@@ -1,6 +1,5 @@
 [
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -53,7 +52,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-02-16 16:34:02.441119",
+  "modified": "2023-02-22 12:55:20.186043",
   "module": "Migoo CRM",
   "name": "Rental Report",
   "prepared_report": 0,
@@ -79,7 +78,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -116,7 +114,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.690148",
+  "modified": "2023-02-22 12:55:20.025880",
   "module": "Migoo CRM",
   "name": "Call History Report",
   "prepared_report": 0,
@@ -136,7 +134,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -189,7 +186,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.831995",
+  "modified": "2023-02-22 12:55:19.857509",
   "module": "Migoo CRM",
   "name": "Equipment For sell Or Rent Report",
   "prepared_report": 0,
@@ -269,7 +266,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -281,7 +277,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.816737",
+  "modified": "2023-02-22 12:55:19.878312",
   "module": "Migoo CRM",
   "name": "Daily Supplier Report",
   "prepared_report": 0,
@@ -355,7 +351,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -392,7 +387,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.740953",
+  "modified": "2023-02-22 12:55:19.953584",
   "module": "Migoo CRM",
   "name": "Lead Analytics",
   "prepared_report": 0,
@@ -430,7 +425,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -442,7 +436,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.847767",
+  "modified": "2023-02-22 12:55:19.838892",
   "module": "Migoo CRM",
   "name": "Supplier Verified or Not report",
   "prepared_report": 0,
@@ -516,7 +510,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -528,7 +521,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.797563",
+  "modified": "2023-02-22 12:55:19.896788",
   "module": "Migoo CRM",
   "name": "Supplier and Equipment Report",
   "prepared_report": 0,
@@ -602,7 +595,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -639,7 +631,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.726782",
+  "modified": "2023-02-22 12:55:19.966772",
   "module": "Migoo CRM",
   "name": "Inquiry For Sell",
   "prepared_report": 0,
@@ -665,7 +657,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -702,7 +693,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.712614",
+  "modified": "2023-02-22 12:55:19.978878",
   "module": "Migoo CRM",
   "name": "Inquiry For Rent",
   "prepared_report": 0,
@@ -728,7 +719,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -765,7 +755,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.677991",
+  "modified": "2023-02-22 12:55:20.043879",
   "module": "Migoo CRM",
   "name": "Inquiry For Buy",
   "prepared_report": 0,
@@ -791,7 +781,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -828,7 +817,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.575169",
+  "modified": "2023-02-22 12:55:20.131423",
   "module": "Migoo CRM",
   "name": "Lead For Buy",
   "prepared_report": 0,
@@ -854,7 +843,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -891,7 +879,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.701152",
+  "modified": "2023-02-22 12:55:20.000756",
   "module": "Migoo CRM",
   "name": "Lead For Sell",
   "prepared_report": 0,
@@ -917,7 +905,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -954,7 +941,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.558926",
+  "modified": "2023-02-22 12:55:20.144974",
   "module": "Migoo CRM",
   "name": "Lead For Rent",
   "prepared_report": 0,
@@ -980,7 +967,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1017,7 +1003,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.754122",
+  "modified": "2023-02-22 12:55:19.941516",
   "module": "Migoo CRM",
   "name": "Inquiry Analytics",
   "prepared_report": 0,
@@ -1043,7 +1029,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1055,7 +1040,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.783621",
+  "modified": "2023-02-22 12:55:19.911834",
   "module": "Migoo CRM",
   "name": "Equipment Status Wise Report",
   "prepared_report": 0,
@@ -1135,9 +1120,59 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
-  "columns": [],
+  "columns": [
+   {
+    "fieldname": "i.supplier",
+    "fieldtype": "Link",
+    "label": "Supplier",
+    "options": "Supplier",
+    "parent": "Insurance Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "i.supplier_name",
+    "fieldtype": "Link",
+    "label": "Supplier Name",
+    "options": "Supplier",
+    "parent": "Insurance Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "i.item_code",
+    "fieldtype": "Link",
+    "label": "Item",
+    "options": "Item",
+    "parent": "Insurance Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "i.insurance_date",
+    "fieldtype": "Data",
+    "label": "Insurance Complete Date",
+    "options": null,
+    "parent": "Insurance Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "s.mobile_number",
+    "fieldtype": "Data",
+    "label": "Supplier Contact No",
+    "options": null,
+    "parent": "Insurance Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   }
+  ],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
@@ -1147,11 +1182,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-16 16:34:02.860693",
+  "modified": "2023-02-22 12:55:19.790951",
   "module": "Migoo CRM",
   "name": "Insurance Report",
   "prepared_report": 0,
-  "query": "select i.supplier_name as \"Supplier\",\ni.item_code as 'Equipment:link/Item',\ni.insurance_date as 'Insurance Complete Date',\ns.mobile_number\n\nfrom `tabItem` i\n\ninner join `tabSupplier` s\non s.supplier_name= i.supplier_name\n\nwhere\ni.insurance_date = CURDATE() + INTERVAL 15 DAY",
+  "query": "select\ni.supplier,\ni.supplier_name,\ni.item_code as 'Equipment:link/Item',\ni.insurance_date as 'Insurance Complete Date',\ns.mobile_number as 'Supplier Contact No'\n\nfrom `tabItem` i\n\ninner join `tabSupplier` s\non s.supplier_name= i.supplier_name\n\nwhere \n      insurance_date >= CURDATE()\n  AND  insurance_date < CURDATE() + INTERVAL 15 DAY \n\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Insurance Report",
@@ -1227,7 +1262,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1264,7 +1298,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.767599",
+  "modified": "2023-02-22 12:55:19.926015",
   "module": "Migoo CRM",
   "name": "Daily Created Equipment Report",
   "prepared_report": 0,
@@ -1344,7 +1378,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1381,7 +1414,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.661302",
+  "modified": "2023-02-22 12:55:20.057088",
   "module": "Migoo CRM",
   "name": "Supplier Report",
   "prepared_report": 0,
@@ -1455,7 +1488,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1492,7 +1524,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.645269",
+  "modified": "2023-02-22 12:55:20.071390",
   "module": "Migoo CRM",
   "name": "Equipment Report",
   "prepared_report": 0,
@@ -1572,7 +1604,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1609,7 +1640,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.628161",
+  "modified": "2023-02-22 12:55:20.086382",
   "module": "Migoo CRM",
   "name": "Supplier Verification Report",
   "prepared_report": 0,
@@ -1683,7 +1714,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1720,7 +1750,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.593742",
+  "modified": "2023-02-22 12:55:20.116217",
   "module": "Migoo CRM",
   "name": "Equipment Verification Report",
   "prepared_report": 0,
@@ -1800,7 +1830,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1812,7 +1841,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.612217",
+  "modified": "2023-02-22 12:55:20.101634",
   "module": "Migoo CRM",
   "name": "Daily Equipment Report",
   "prepared_report": 0,
@@ -1892,7 +1921,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -1945,7 +1973,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.527308",
+  "modified": "2023-02-22 12:55:20.158417",
   "module": "Migoo CRM",
   "name": "Currently Equipment On Rent",
   "prepared_report": 0,
@@ -1995,7 +2023,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2048,7 +2075,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-16 16:34:02.492361",
+  "modified": "2023-02-22 12:55:20.173059",
   "module": "Migoo CRM",
   "name": "Equipment Rent on Past",
   "prepared_report": 0,
@@ -2070,6 +2097,260 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Accounts User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [
+   {
+    "fieldname": "i.supplier",
+    "fieldtype": "Link",
+    "label": "Supplier",
+    "options": "Supplier",
+    "parent": "Insurance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "i.supplier_name",
+    "fieldtype": "Link",
+    "label": "Supplier Name",
+    "options": "Supplier",
+    "parent": "Insurance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "i.item_code",
+    "fieldtype": "Link",
+    "label": "Item",
+    "options": "Item",
+    "parent": "Insurance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "i.insurance_date",
+    "fieldtype": "Date",
+    "label": "Insurance Complete Date",
+    "options": null,
+    "parent": "Insurance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   },
+   {
+    "fieldname": "s.mobile_number",
+    "fieldtype": "Data",
+    "label": "Supplier Contact No",
+    "options": null,
+    "parent": "Insurance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Date",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Insurance",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Date",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Insurance",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-02-22 12:55:19.818829",
+  "module": "Migoo CRM",
+  "name": "Insurance",
+  "prepared_report": 0,
+  "query": "select\ni.supplier,\ni.supplier_name,\ni.item_code as 'Equipment:link/Item',\ni.insurance_date as 'Insurance Complete Date',\ns.mobile_number as 'Supplier Contact No'\n\nfrom `tabItem` i\n\ninner join `tabSupplier` s\non s.supplier_name= i.supplier_name\n\nwhere\n  \n    (\n       i.insurance_date between %(from_date) s\n       and %(to_date) s\n   )\n\n",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Insurance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Insurance Expire Email Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Insurance Expire Email Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "Migoo",
+  "modified": "2023-02-22 12:55:19.733508",
+  "module": "Migoo CRM",
+  "name": "Insurance Expire Email Report",
+  "prepared_report": 0,
+  "query": "select \neq.reference_doctype as 'Reference Doctype',\neq.reference_name as 'Equipment Name',\ni.equipment_main_category as 'Equipment Sub Category',\neq.creation as 'Email Send Date',\ni.insurance_date as 'Insurance Date' ,\ni.supplier_name as 'Supplier Name',\ni.whatsapp_no as 'Supplier Whatsapp No',\ni.supplier_email as 'Supplier Email',\neq.status as 'Email Status'\n\nfrom `tabEmail Queue` eq\n\ninner join `tabItem` i \non eq.reference_name=i.name\n\nwhere eq.reference_doctype='Item' and \n  \n    (\n      eq.creation between %(from_date) s\n       and %(to_date) s\n   )\n\n",
+  "ref_doctype": "Email Queue",
+  "reference_report": null,
+  "report_name": "Insurance Expire Email Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Insurance Expire Email Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "Migoo",
+  "modified": "2023-02-22 12:55:19.774246",
+  "module": "Migoo CRM",
+  "name": "Fitness Expire Email Report",
+  "prepared_report": 0,
+  "query": "select \neq.reference_doctype as 'Reference Doctype',\neq.reference_name as 'Equipment Name',\ni.equipment_main_category as 'Equipment Sub Category',\ndate(eq.creation) as 'Email Send Date',\ni.fitness_dt as 'Fitness Date' ,\ni.supplier_name as 'Supplier Name',\ni.whatsapp_no as 'Supplier Whatsapp No',\ni.supplier_email as 'Supplier Email',\neq.status as 'Email Status'\n\nfrom `tabEmail Queue` eq\n\ninner join `tabItem` i \non eq.reference_name=i.name\n\nwhere eq.reference_doctype='Item' ",
+  "ref_doctype": "Email Queue",
+  "reference_report": null,
+  "report_name": "Fitness Expire Email Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Fitness Expire Email Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
    }
   ]
  }

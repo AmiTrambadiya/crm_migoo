@@ -26,7 +26,7 @@ app_license = "MIT"
 # webform_include_css = {"doctype": "public/css/doctype.css"}
 
 # include js in page
-# page_js = {"page" : "public/js/file.js"}
+# page_js = {"dashboard-view" : "public/js/custom_dashboard_view.js"}
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -95,7 +95,6 @@ app_license = "MIT"
 # Override standard doctype classes
 
 override_doctype_class = {
-
     "User": "migoo_crm.code_override.user.User",
     "Auto Email Report": "migoo_crm.code_override.auto_email_report.AutoEmailReport",
 }
@@ -208,6 +207,8 @@ fixtures = [
     ]},
 
     {"dt": "Client Script", },
+
+    {"dt": "Email Account", },
 
     {"dt": "Server Script", },
 
