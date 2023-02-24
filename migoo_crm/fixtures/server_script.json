@@ -283,20 +283,5 @@
   "reference_doctype": null,
   "script": "order=frappe.form_dict[\"name\"]\n\nquery=frappe.db.sql(\"Select item_code from `tabSales Order Item` where parent=%s\",order)\n# a=str(query)\nnm=\"\"\nfor i in query:\n    for j in i:\n        # a=j\n        if nm==\"\":\n            nm=j\n        else:\n            nm=nm + \",\" +j\n        # nm.append(j)\nfrappe.response[\"data\"]=nm",
   "script_type": "API"
- },
- {
-  "allow_guest": 0,
-  "api_method": null,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Server Script",
-  "doctype_event": "Before Insert",
-  "event_frequency": "All",
-  "modified": "2023-02-13 18:58:18.267061",
-  "module": null,
-  "name": "Check 1st Date",
-  "reference_doctype": null,
-  "script": "date=frappe.utils.nowdate()\nfrappe.msgprint(date)\nprint(date)",
-  "script_type": "Scheduler Event"
  }
 ]
