@@ -96,6 +96,7 @@ app_license = "MIT"
 
 override_doctype_class = {
     "User": "migoo_crm.code_override.user.User",
+    "Opportunity": "migoo_crm.code_override.opportunity.Opportunity",
     "Auto Email Report": "migoo_crm.code_override.auto_email_report.AutoEmailReport",
 }
 
@@ -151,7 +152,7 @@ override_whitelisted_methods = {
     "frappe.core.doctype.user.user.update_password": "migoo_crm.code_override.user.update_password",
     "erpnext.crm.doctype.lead.lead.make_opportunity": "migoo_crm.code_override.lead.make_opportunity",
     "erpnext.crm.doctype.lead.lead.make_customer": "migoo_crm.code_override.lead.make_customer",
-    "erpnext.crm.doctype.opportunity.opportunity.make_customer": "migoo_crm.code_override.opportunity.make_customer"
+    "erpnext.crm.doctype.opportunity.opportunity.make_customer": "migoo_crm.code_override.opportunity.make_customer",
 }
 #
 # each overriding function accepts a `data` argument;
@@ -207,8 +208,6 @@ fixtures = [
     ]},
 
     {"dt": "Client Script", },
-
-    {"dt": "Email Account", },
 
     {"dt": "Server Script", },
 

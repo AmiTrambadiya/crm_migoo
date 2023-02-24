@@ -2102,173 +2102,6 @@
  },
  {
   "add_total_row": 0,
-  "columns": [
-   {
-    "fieldname": "i.supplier",
-    "fieldtype": "Link",
-    "label": "Supplier",
-    "options": "Supplier",
-    "parent": "Insurance",
-    "parentfield": "columns",
-    "parenttype": "Report",
-    "width": 0
-   },
-   {
-    "fieldname": "i.supplier_name",
-    "fieldtype": "Link",
-    "label": "Supplier Name",
-    "options": "Supplier",
-    "parent": "Insurance",
-    "parentfield": "columns",
-    "parenttype": "Report",
-    "width": 0
-   },
-   {
-    "fieldname": "i.item_code",
-    "fieldtype": "Link",
-    "label": "Item",
-    "options": "Item",
-    "parent": "Insurance",
-    "parentfield": "columns",
-    "parenttype": "Report",
-    "width": 0
-   },
-   {
-    "fieldname": "i.insurance_date",
-    "fieldtype": "Date",
-    "label": "Insurance Complete Date",
-    "options": null,
-    "parent": "Insurance",
-    "parentfield": "columns",
-    "parenttype": "Report",
-    "width": 0
-   },
-   {
-    "fieldname": "s.mobile_number",
-    "fieldtype": "Data",
-    "label": "Supplier Contact No",
-    "options": null,
-    "parent": "Insurance",
-    "parentfield": "columns",
-    "parenttype": "Report",
-    "width": 0
-   }
-  ],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": "Date",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Insurance",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Date",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Insurance",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:19.818829",
-  "module": "Migoo CRM",
-  "name": "Insurance",
-  "prepared_report": 0,
-  "query": "select\ni.supplier,\ni.supplier_name,\ni.item_code as 'Equipment:link/Item',\ni.insurance_date as 'Insurance Complete Date',\ns.mobile_number as 'Supplier Contact No'\n\nfrom `tabItem` i\n\ninner join `tabSupplier` s\non s.supplier_name= i.supplier_name\n\nwhere\n  \n    (\n       i.insurance_date between %(from_date) s\n       and %(to_date) s\n   )\n\n",
-  "ref_doctype": "Item",
-  "reference_report": null,
-  "report_name": "Insurance",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Sales User"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock Manager"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "All"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Maintenance User"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Item Manager"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Purchase User"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Vendor"
-   },
-   {
-    "parent": "Insurance",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Migoo Approver"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
@@ -2351,6 +2184,97 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-02-24 11:58:24.021100",
+  "module": "Migoo CRM",
+  "name": "Compliance Report",
+  "prepared_report": 0,
+  "query": "with a as(\n    select\n        name as 'nm',\n        insurance_date as 'id',\n        TIMESTAMPDIFF(DAY, now(), insurance_date) as 'insurance'\n    from\n        `tabItem`\n    order by\n        creation desc\n),\n\naa as(\n    select\n        nm,\n        id,\n        concat(`insurance`, ' ', 'Days to go') as 'InsuranceCompleteDaysAfter'\n    from\n        a\n    where\n        id >= now() - interval 30 day\n        and id <= now() + interval 30 day\n),\n\nb as(\n    select\n        name as 'nm1',\n        fitness_dt as 'ft',\n        TIMESTAMPDIFF(DAY, now(), fitness_dt) as 'fitness'\n    from\n        `tabItem`\n),\n\nbb as(\n    select\n        nm1,\n        ft,\n        concat(`fitness`, ' ', 'Days to go') as 'FitnessCompleteDaysAfter'\n    from\n        b\n    where\n        ft >= now() - interval 30 day\n        and ft <= now() + interval 30 day\n),\n\nc as(\n    select\n        name as 'nm2',\n        pollution as 'pl',\n        TIMESTAMPDIFF(DAY, now(), pollution) as 'pollution'\n    from\n        `tabItem`\n),\n\ncc as(\n    select\n        nm2,\n        pl,\n        concat(`pollution`, ' ', 'Days to go') as 'PUCCompleteDaysAfter'\n    from\n        c\n    where\n        pl >= now() - interval 30 day\n        and pl <= now() + interval 30 day\n)\n\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n    i.insurance_date as 'Insurance Last Date',\n    InsuranceCompleteDaysAfter as 'Insurance Completion',\n    i.fitness_dt as 'Fitness Last Date',\n    FitnessCompleteDaysAfter as 'Fitness Completion',\n    i.pollution as 'PUC Last Date',\n    PUCCompleteDaysAfter as 'PUC Completion',\n    concat(\n        '<a href=\"',\n        '/app/item/new-item-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as ''\n    \nfrom\n    `tabItem` i\n\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\n\nwhere\n    i.rto_register = 'Registered'\n\nunion\n\nselect\n    i.name as 'Equipment:Link/Item',\n    i.equipment_brand,\n    i.equipment_model_no,\n    i.insurance_date,\n    InsuranceCompleteDaysAfter,\n    i.fitness_dt,\n    FitnessCompleteDaysAfter,\n    i.pollution,\n    PUCCompleteDaysAfter,\n    concat(\n        '<a href=\"',\n        '/app/item/new-item-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as ''\nfrom\n\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Not Registered'",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Compliance Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Compliance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
    }
   ]
  }
