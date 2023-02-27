@@ -64,7 +64,7 @@ class DashboardNew {
 	}
 
 	show_dashboard(current_dashboard_name) {
-		frappe.msgprint("this is overrided file")
+		// frappe.msgprint("this is overrided file")
 
 
 		if (this.dashboard_name !== current_dashboard_name) {
@@ -148,7 +148,7 @@ class DashboardNew {
 			});
 
 
-			if (this.dashboard_name == "Rental Dashboard") {
+			if (this.dashboard_name == "Business / Transaction") {
 				this.number_card_group = new frappe.widget.WidgetGroup({
 
 					container: this.container,

@@ -26,7 +26,7 @@ app_license = "MIT"
 # webform_include_css = {"doctype": "public/css/doctype.css"}
 
 # include js in page
-# page_js = {"dashboard-view" : "public/js/custom_dashboard_view.js"}
+page_js = {"dashboard-view": "public/js/custom_dashboard_view.js"}
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -69,26 +69,8 @@ app_license = "MIT"
 # Uninstallation
 # ------------
 
-# before_uninstall = "migoo_crm.uninstall.before_uninstall"
-# after_uninstall = "migoo_crm.uninstall.after_uninstall"
+# before_uninstall = "migoo_crm.uninstall.before_uninstall"Dashboard
 
-# Desk Notifications
-# ------------------
-# See frappe.core.notifications.get_notification_config
-
-# notification_config = "migoo_crm.notifications.get_notification_config"
-
-# Permissions
-# -----------
-# Permissions evaluated in scripted ways
-
-# permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
 
 # DocType Class
 # ---------------
@@ -230,4 +212,40 @@ fixtures = [
             ]
         ]
     ]},
+
+    {"dt": "Dashboard", "filters": [
+        [
+            "module", "in", [
+                "Migoo CRM"
+            ]
+        ]
+    ]},
+
+    {"dt": "Dashboard Chart", "filters": [
+        [
+            "module", "in", [
+                "Migoo CRM"
+            ]
+        ]
+    ]},
+
+    {"dt": "Website Script", },
+
+    {"dt": "Dashboard Chart", "filters": [
+        [
+            "module", "in", [
+                "Migoo CRM"
+            ]
+        ]
+    ]},
+    
+    {"dt": "Notification", "filters": [
+        [
+            "module", "in", [
+                "Migoo CRM"
+            ]
+        ]
+    ]},
+
+
 ]

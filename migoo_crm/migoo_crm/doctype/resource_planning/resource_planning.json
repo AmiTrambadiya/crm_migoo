@@ -16,6 +16,7 @@
   "customer",
   "customer_mobile_no",
   "equipment_no",
+  "equipment_location",
   "section_break_6",
   "supplier",
   "supplier_name",
@@ -143,14 +144,21 @@
    "fieldname": "total_days",
    "fieldtype": "Int",
    "label": "Total Days"
+  },
+  {
+   "fetch_from": "equipment.equipment_location",
+   "fieldname": "equipment_location",
+   "fieldtype": "Data",
+   "label": "Equipment Location"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-03 17:12:57.436112",
+ "modified": "2023-02-27 16:08:34.173474",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Resource Planning",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
