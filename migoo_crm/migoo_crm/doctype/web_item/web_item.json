@@ -19,6 +19,7 @@
   "brand",
   "display_section",
   "website_image",
+  "web_item_slide_show",
   "website_image_alt",
   "section_break_17",
   "short_description",
@@ -213,11 +214,17 @@
    "fieldname": "equipment_current_reading",
    "fieldtype": "Data",
    "label": "Equipment Current Reading"
+  },
+  {
+   "fieldname": "web_item_slide_show",
+   "fieldtype": "Table",
+   "label": "web Item Slide Show",
+   "options": "web Item Slide Show"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-27 18:12:03.455956",
+ "modified": "2023-02-27 18:48:30.513178",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Web item",
