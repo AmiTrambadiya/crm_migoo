@@ -1,0 +1,242 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-02-27 18:12:03.455956",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "web_item_name",
+  "route",
+  "item_status",
+  "column_break_3",
+  "item_code",
+  "item_name",
+  "item_group",
+  "column_break_11",
+  "description",
+  "brand",
+  "display_section",
+  "website_image",
+  "website_image_alt",
+  "section_break_17",
+  "short_description",
+  "web_long_description",
+  "column_break_27",
+  "copy_from_item_group",
+  "section_break_21",
+  "maker_model",
+  "insurance_date",
+  "vehicle_class",
+  "registration_date",
+  "model",
+  "test_column",
+  "manufacturing_date",
+  "fitness_dt",
+  "owner_count",
+  "company_name",
+  "location",
+  "price",
+  "equipment_condition",
+  "equipment_current_reading"
+ ],
+ "fields": [
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "web_item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Website Item Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Small Text",
+   "label": "Route"
+  },
+  {
+   "fieldname": "item_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Unpublish\nPublish"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.description",
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Item Description"
+  },
+  {
+   "fetch_from": "item_code.brand",
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Images"
+  },
+  {
+   "fieldname": "website_image",
+   "fieldtype": "Attach Image",
+   "label": "Website Image"
+  },
+  {
+   "fieldname": "website_image_alt",
+   "fieldtype": "Data",
+   "label": "Image Description"
+  },
+  {
+   "fieldname": "section_break_17",
+   "fieldtype": "Section Break",
+   "label": "Display Information"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Website Description"
+  },
+  {
+   "fieldname": "web_long_description",
+   "fieldtype": "Text Editor",
+   "label": "Website Description"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "copy_from_item_group",
+   "fieldtype": "Button",
+   "label": "Copy From Item Group"
+  },
+  {
+   "fieldname": "section_break_21",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "maker_model",
+   "fieldtype": "Data",
+   "label": "Maker Model"
+  },
+  {
+   "fieldname": "insurance_date",
+   "fieldtype": "Data",
+   "label": "Insurance Date"
+  },
+  {
+   "fieldname": "vehicle_class",
+   "fieldtype": "Data",
+   "label": "Vehicle Class"
+  },
+  {
+   "fieldname": "registration_date",
+   "fieldtype": "Date",
+   "label": "Registration Date"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "test_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "manufacturing_date",
+   "fieldtype": "Data",
+   "label": "Manufacturing date"
+  },
+  {
+   "fieldname": "fitness_dt",
+   "fieldtype": "Data",
+   "label": "Fitness dt"
+  },
+  {
+   "fieldname": "owner_count",
+   "fieldtype": "Data",
+   "label": "Owner Count"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Data",
+   "label": "Price"
+  },
+  {
+   "fieldname": "equipment_condition",
+   "fieldtype": "Data",
+   "label": "Equipment Condition"
+  },
+  {
+   "fieldname": "equipment_current_reading",
+   "fieldtype": "Data",
+   "label": "Equipment Current Reading"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-02-27 18:12:03.455956",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Web item",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
