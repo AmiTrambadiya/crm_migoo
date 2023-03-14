@@ -10,10 +10,10 @@ def status_change(name,status,price,equipment_current_reading,test,img1):
     test1=test.split(",")
     if c==0:
         # frappe.msgprint(b)
-        frappe.db.set_value("Web item",name,"item_status","Unpublish")
+        frappe.db.set_value("Web item",name,"publish",0)
     if c==1:
         # frappe.msgprint(b)
-        frappe.db.set_value("Web item",name,"item_status","Publish")
+        frappe.db.set_value("Web item",name,"publish",1)
         
     # # record =  frappe.get_list('web Item Slide Show',filters={'parent':a},ignore_permissions=True)
     frappe.db.delete('web Item Slide Show',filters={'parent':name})

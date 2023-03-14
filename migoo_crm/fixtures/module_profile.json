@@ -956,7 +956,13 @@
     "parenttype": "Module Profile"
    },
    {
-    "module": "Migoo CRM",
+    "module": "HR",
+    "parent": "Vendor",
+    "parentfield": "block_modules",
+    "parenttype": "Module Profile"
+   },
+   {
+    "module": "Payroll",
     "parent": "Vendor",
     "parentfield": "block_modules",
     "parenttype": "Module Profile"
@@ -964,7 +970,7 @@
   ],
   "docstatus": 0,
   "doctype": "Module Profile",
-  "modified": "2023-02-16 13:56:58.750689",
+  "modified": "2023-03-14 18:36:04.257647",
   "module_profile_name": "Vendor",
   "name": "Vendor"
  }
