@@ -8,10 +8,7 @@
  "field_order": [
   "log_sheet",
   "total_working_time",
-  "start_kmhr",
-  "end_kmhr",
   "total_kmhr",
-  "fual_time_km",
   "date",
   "equipment_name",
   "breck_down_hours",
@@ -31,28 +28,10 @@
    "label": "Total Working Time"
   },
   {
-   "fetch_from": "log_sheet.start_kmhr",
-   "fieldname": "start_kmhr",
-   "fieldtype": "Data",
-   "label": "Start km/hr"
-  },
-  {
-   "fetch_from": "log_sheet.end_kmhr",
-   "fieldname": "end_kmhr",
-   "fieldtype": "Data",
-   "label": "End km/hr"
-  },
-  {
    "fetch_from": "log_sheet.total_kmhr",
    "fieldname": "total_kmhr",
    "fieldtype": "Float",
    "label": "Total km/hr"
-  },
-  {
-   "fetch_from": "log_sheet.fuel_filling_km",
-   "fieldname": "fual_time_km",
-   "fieldtype": "Data",
-   "label": "Fuel Time Km"
   },
   {
    "fetch_from": "log_sheet.date",
@@ -82,7 +61,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-02-27 16:08:34.727420",
+ "modified": "2023-03-14 12:30:34.304265",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet Details",

@@ -1,6 +1,46 @@
 [
  {
   "attach_print": 0,
+  "channel": "Email",
+  "condition": "doc.inquiry_source==\"Expo Inquiry\"",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Inquiry Form",
+  "enabled": 1,
+  "event": "New",
+  "is_standard": 0,
+  "message": "<div>\n    <div class=\"sec-2\">\n        <h4 style=\"color:#e6992a\">Dear, {{doc.first_name}} {{ doc.last_name}}</h4>\n        <p>Greetings from Migoo Equipment !!! </p>\n        <p>You have successful completion of hiring the Equipments  </p>\n        <p>Our team will get back to youshortly and take if forward as per your requirement - {{doc.item_details}}  </p>\n        <p>You can browse through the selection of high-quality construction equipment from reputable vendors, including cranes, road machinery, construction machinery, trucks, tankers, and other necessary equipment.</p>\n        <p>Ready to leverage our platform? </p>\n        <button style=\"background-color:#e6992a; border:none; padding: 10px 25px;\">\n        <a style=\"text-decoration: none; color:#fff;\" href=\"https://www.migoo.in/\"><b>Browse the website</b></a></button>\n    </div> \n</div>\n<div style=\"padding-top:20px;\">\n    <div>\n        <p>Thanks & Regards,</p>\n        <img src=\"/files/download%20(1).png\">\n        <p>Arjun Pachani</p>\n        <p>CEO, Migoo Equipments\n    </div>\n    <a href=\"https://www.facebook.com/people/Migoo-Equipments/100087829991875/?mibextid=ZbWKwL\"><img src=\"/files/facebook.png\"></a>\n    <a href=\"https://instagram.com/migoo_equipment?igshid=YmMyMTA2M2Y=\"><img src=\"/files/instagram.png\"></a>\n    <a href=\"https://wa.me/917969212200\"><img src=\"/files/linkedin.png\"></a>\n    <a href=\"https://www.linkedin.com/in/migoo-equipments-270563257\"><img src=\"/files/whatsapp.png\"></a>\n    <a href=\"https://twitter.com/MigooEquipments\"><img src=\"/files/twitter-sign.png\"></a>\n</div>",
+  "method": null,
+  "modified": "2023-03-10 12:24:26.166901",
+  "module": "Migoo CRM",
+  "name": "Expo Inquiry",
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": "doc.inquiry_source==\"Expo Inquiry\"",
+    "parent": "Expo Inquiry",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": "email_address",
+    "receiver_by_role": null
+   }
+  ],
+  "send_system_notification": 0,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "Thank You for Choosing Migoo",
+  "value_changed": null
+ },
+ {
+  "attach_print": 0,
   "channel": "System Notification",
   "condition": null,
   "date_changed": null,
