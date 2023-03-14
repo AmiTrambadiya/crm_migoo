@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2023-03-14 13:18:28.489408",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "equipment_img"
+ ],
+ "fields": [
+  {
+   "fieldname": "equipment_img",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-03-14 13:18:28.489408",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Equipment Image",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
