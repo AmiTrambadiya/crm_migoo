@@ -231,6 +231,8 @@ fixtures = [
 
     {"dt": "Website Script", },
 
+    {"dt": "Custom DocPerm", },
+
     {"dt": "Dashboard Chart", "filters": [
         [
             "module", "in", [
@@ -238,7 +240,7 @@ fixtures = [
             ]
         ]
     ]},
-    
+
     {"dt": "Notification", "filters": [
         [
             "module", "in", [
