@@ -30,6 +30,7 @@ def delete_doc(
 	ignore_missing=True,
 	delete_permanently=False,
 ):
+	frappe.delete_doc('Web item', name)
 	"""
 	Deletes a doc(dt, dn) and validates if it is not submitted and not linked in a live record
 	"""

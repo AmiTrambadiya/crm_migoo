@@ -1,5 +1,460 @@
 [
  {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 1,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-03-14 18:29:15.422603",
+  "module": "Migoo CRM",
+  "name": "Supplier Rent and Sell Price",
+  "prepared_report": 0,
+  "query": "SELECT \n    i.supplier AS \"Supplier:Link/Supplier:150\",\n    i.item_code AS \"Item:Link/Item\",\n    i.equipment_main_category AS \"Main Category\",\n    i.item_group AS \"Sub Category:Link/Item Group\",\n    i.equipment_price_per_day AS \"Price Per Day\",\n    equipment_price_per_week AS \"Price Per Week\",\n    equipment_price_per_month AS \"Price Per Month\",\n    equipment_sell_price AS \"Sell Price\",\n    i.stock_uom AS \"UOM:Link/UOM:100\" \n    \n    FROM `tabItem` i\n    \n    WHERE\n    i.disabled=0\n    \n    GROUP BY i.supplier, i.item_code ",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Supplier Rent and Sell Price",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Supplier Rent and Sell Price",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-03-14 18:29:14.889227",
+  "module": "Migoo CRM",
+  "name": "report",
+  "prepared_report": 0,
+  "query": "\nWITH working as(\n       select\n              supplier,\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Working'\n       group by\n              item_group,\n               equipment_status\n),\nideal as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Ideal'\n       group by\n              item_group\n),\nbreakdown as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Breakdown'\n       group by\n              item_group\n)\n\nselect\n       i.supplier as 'S:Link/Supplier:-10',\n       ig.item_group_name as 'Item Group:Link/Item Group',\n       count(i.item_group) as 'Total',\n       count(working.equipment_status) as 'Working',\n       count(ideal.equipment_status) as 'Ideal',\n       count(breakdown.equipment_status) as 'BreakDown'\n       \nfrom\n       `tabItem Group` ig\n       left outer JOIN `tabItem` i ON i.item_group = ig.item_group_name\n       \n       left outer JOIN working on ig.item_group_name = working.item_group\n       and working.equipment_status = i.equipment_status\n       \n       left outer JOIN ideal on ig.item_group_name = ideal.item_group\n       and ideal.equipment_status = i.equipment_status\n       \n       left outer JOIN breakdown on ig.item_group_name = breakdown.item_group\n       and breakdown.equipment_status = i.equipment_status\n       \nwhere\n       ig.parent_item_group = 'All Equipment Groups'\n       and i.equipment_for_sell = 1\n       \ngroup by\n       ig.item_group_name\n",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-03-14 18:29:14.924838",
+  "module": "Migoo CRM",
+  "name": "Verify Supplier",
+  "prepared_report": 0,
+  "query": "WITH difference_in_seconds AS (\nSELECT\ns.name_of_suppier AS \"SupplierName\",\ns.mobile_number AS \"MobileNumber\",\ns.email AS \"Email\",\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabSupplier` AS s\nwhere\ns.verify=\"Verify\"\n),\n\ndifferences AS (\n  SELECT\n  SupplierName,\n  MobileNumber,\n  Email ,\n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  SupplierName as \"Name\",\n  MobileNumber as \"Number\",\n  Email as \"Email\",\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Supplier Verified After Creation\"\nFROM differences;",
+  "ref_doctype": "Supplier",
+  "reference_report": null,
+  "report_name": "Verify Supplier",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Master Manager"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Verify Supplier",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-03-14 18:29:14.942491",
+  "module": "Migoo CRM",
+  "name": "Equipment",
+  "prepared_report": 0,
+  "query": "WITH difference_in_seconds AS (\nSELECT\ns.item_name AS \"EquipmentName\",\ns.item_group AS \"maincategory\",\ns.equipment_main_category AS \"subcategory\",\ns.supplier AS \"supplier\",\ns.supplier_name as \"sn\",\ns.whatsapp_no as \"snum\",\ns.creation as 'time',\n\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabItem` AS s\nWHERE\ns.equipment_verify=\"Verify\"\n\n),\n\ndifferences AS (\n  SELECT\n  EquipmentName,\n  maincategory,\n  subcategory,\n  supplier,\n  sn,\n  snum,\n  time,\n \n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  EquipmentName as \"Name\",\n  maincategory as \"Main Category\",\n  subcategory as \"Sub Category\",\n  supplier as \"Supplier\",\n  sn as \"Supplier Name\",\n  snum as \"Supplier Number\",\n \n\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Difference\"\nFROM differences\n\norder by time desc\n\n",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Equipment",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Equipment",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "add_total_row": 1,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-14 18:29:14.848667",
+  "module": "Migoo CRM",
+  "name": "Supplier Wise Equipment List",
+  "prepared_report": 0,
+  "query": "with  aerial as(select supplier as 's',\nitem_group,\ncount(name) as aeri\nfrom `tabItem`\nwhere item_group='Aerial Work Platform'\ngroup by supplier),\n\nconcrete as(select supplier as 's',\nitem_group,\ncount(name) as conc\nfrom `tabItem`\nwhere item_group='Concrete Machinery'\ngroup by supplier),\n\ncrane as(select supplier as 's',\nitem_group,\ncount(name) as cran\nfrom `tabItem`\nwhere item_group='Cranes'\ngroup by supplier),\n\nearth as(select supplier as 's',\nitem_group,\ncount(name) as eart\nfrom `tabItem`\nwhere item_group='Earth Moving Machinery'\ngroup by supplier),\n\nlifting as(select supplier as 's',\nitem_group,\ncount(name) as lift\nfrom `tabItem`\nwhere item_group='Lifting and Handling Machinery'\ngroup by supplier),\n\nmiscellaneous as(select supplier as 's',\nitem_group,\ncount(name) as misc\nfrom `tabItem`\nwhere item_group='Miscellaneous'\ngroup by supplier),\n\nplant as(select supplier as 's',\nitem_group,\ncount(name) as plan\nfrom `tabItem`\nwhere item_group='Plant Crushing and Screening'\ngroup by supplier),\n\nroad as(select supplier as 's',\nitem_group,\ncount(name) as roads\nfrom `tabItem`\nwhere item_group='Road Machinery'\ngroup by supplier),\n\ntruck as(select supplier as 's',\nitem_group,\ncount(name) as truc\nfrom `tabItem`\nwhere item_group='Truck / Tanker / Trailor'\ngroup by supplier)\n\nselect i.supplier as 'Supplier:Link/Supplier:-1',\ni.supplier_company as 'Company::150',\ni.supplier_name as 'Supplier Name',\ncount(i.name) as 'Total Equipments',\naeri as 'Aerial',\nconc as 'Concrete',\ncran as 'Cranes',\neart as 'Earthmoving',\nlift as 'Lifting',\nmisc as 'Miscellaneous',\nplan as 'Plant',\nroads as 'Road',\ntruc as 'Truck/Tanker'\n\nfrom `tabItem` i\n\nleft join aerial on i.supplier=aerial.s\nleft join concrete on i.supplier=concrete.s\nleft join crane on i.supplier=crane.s\nleft join earth on i.supplier=earth.s\nleft join lifting on i.supplier=lifting.s\nleft join miscellaneous on i.supplier=miscellaneous.s\nleft join plant on i.supplier=plant.s\nleft join road on i.supplier=road.s\nleft join truck on i.supplier=truck.s\n\ngroup by supplier",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Supplier Wise Equipment List",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Supplier Wise Equipment List",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   }
+  ]
+ },
+ {
   "add_total_row": 1,
   "columns": [
    {
@@ -52,7 +507,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-02-22 12:55:20.186043",
+  "modified": "2023-03-14 18:29:15.409992",
   "module": "Migoo CRM",
   "name": "Rental Report",
   "prepared_report": 0,
@@ -114,7 +569,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:20.025880",
+  "modified": "2023-03-14 18:29:15.214938",
   "module": "Migoo CRM",
   "name": "Call History Report",
   "prepared_report": 0,
@@ -186,7 +641,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.857509",
+  "modified": "2023-03-14 18:29:15.055827",
   "module": "Migoo CRM",
   "name": "Equipment For sell Or Rent Report",
   "prepared_report": 0,
@@ -277,7 +732,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.878312",
+  "modified": "2023-03-14 18:29:15.072968",
   "module": "Migoo CRM",
   "name": "Daily Supplier Report",
   "prepared_report": 0,
@@ -387,7 +842,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.953584",
+  "modified": "2023-03-14 18:29:15.167157",
   "module": "Migoo CRM",
   "name": "Lead Analytics",
   "prepared_report": 0,
@@ -436,7 +891,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.838892",
+  "modified": "2023-03-14 18:29:15.042813",
   "module": "Migoo CRM",
   "name": "Supplier Verified or Not report",
   "prepared_report": 0,
@@ -521,7 +976,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.896788",
+  "modified": "2023-03-14 18:29:15.093002",
   "module": "Migoo CRM",
   "name": "Supplier and Equipment Report",
   "prepared_report": 0,
@@ -631,7 +1086,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.966772",
+  "modified": "2023-03-14 18:29:15.179880",
   "module": "Migoo CRM",
   "name": "Inquiry For Sell",
   "prepared_report": 0,
@@ -693,7 +1148,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.978878",
+  "modified": "2023-03-14 18:29:15.192896",
   "module": "Migoo CRM",
   "name": "Inquiry For Rent",
   "prepared_report": 0,
@@ -755,7 +1210,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:20.043879",
+  "modified": "2023-03-14 18:29:15.226302",
   "module": "Migoo CRM",
   "name": "Inquiry For Buy",
   "prepared_report": 0,
@@ -817,7 +1272,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:20.131423",
+  "modified": "2023-03-14 18:29:15.356071",
   "module": "Migoo CRM",
   "name": "Lead For Buy",
   "prepared_report": 0,
@@ -879,7 +1334,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:20.000756",
+  "modified": "2023-03-14 18:29:15.204216",
   "module": "Migoo CRM",
   "name": "Lead For Sell",
   "prepared_report": 0,
@@ -941,7 +1396,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:20.144974",
+  "modified": "2023-03-14 18:29:15.370136",
   "module": "Migoo CRM",
   "name": "Lead For Rent",
   "prepared_report": 0,
@@ -1003,7 +1458,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.941516",
+  "modified": "2023-03-14 18:29:15.146934",
   "module": "Migoo CRM",
   "name": "Inquiry Analytics",
   "prepared_report": 0,
@@ -1040,7 +1495,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.911834",
+  "modified": "2023-03-14 18:29:15.112727",
   "module": "Migoo CRM",
   "name": "Equipment Status Wise Report",
   "prepared_report": 0,
@@ -1182,7 +1637,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.790951",
+  "modified": "2023-03-14 18:29:15.021974",
   "module": "Migoo CRM",
   "name": "Insurance Report",
   "prepared_report": 0,
@@ -1298,7 +1753,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:19.926015",
+  "modified": "2023-03-14 18:29:15.127107",
   "module": "Migoo CRM",
   "name": "Daily Created Equipment Report",
   "prepared_report": 0,
@@ -1414,7 +1869,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:20.057088",
+  "modified": "2023-03-14 18:29:15.238398",
   "module": "Migoo CRM",
   "name": "Supplier Report",
   "prepared_report": 0,
@@ -1524,7 +1979,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:20.071390",
+  "modified": "2023-03-14 18:29:15.297220",
   "module": "Migoo CRM",
   "name": "Equipment Report",
   "prepared_report": 0,
@@ -1640,7 +2095,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:20.086382",
+  "modified": "2023-03-14 18:29:15.312781",
   "module": "Migoo CRM",
   "name": "Supplier Verification Report",
   "prepared_report": 0,
@@ -1750,7 +2205,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:20.116217",
+  "modified": "2023-03-14 18:29:15.341994",
   "module": "Migoo CRM",
   "name": "Equipment Verification Report",
   "prepared_report": 0,
@@ -1841,7 +2296,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:20.101634",
+  "modified": "2023-03-14 18:29:15.327572",
   "module": "Migoo CRM",
   "name": "Daily Equipment Report",
   "prepared_report": 0,
@@ -1973,7 +2428,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:20.158417",
+  "modified": "2023-03-14 18:29:15.382382",
   "module": "Migoo CRM",
   "name": "Currently Equipment On Rent",
   "prepared_report": 0,
@@ -2075,7 +2530,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:20.173059",
+  "modified": "2023-03-14 18:29:15.397843",
   "module": "Migoo CRM",
   "name": "Equipment Rent on Past",
   "prepared_report": 0,
@@ -2137,7 +2592,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:19.733508",
+  "modified": "2023-03-14 18:29:14.958992",
   "module": "Migoo CRM",
   "name": "Insurance Expire Email Report",
   "prepared_report": 0,
@@ -2168,7 +2623,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": "Migoo",
-  "modified": "2023-02-22 12:55:19.774246",
+  "modified": "2023-03-14 18:29:14.988309",
   "module": "Migoo CRM",
   "name": "Fitness Expire Email Report",
   "prepared_report": 0,
@@ -2199,11 +2654,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-02-24 11:58:24.021100",
+  "modified": "2023-03-14 18:29:14.908723",
   "module": "Migoo CRM",
   "name": "Compliance Report",
   "prepared_report": 0,
-  "query": "with a as(\n    select\n        name as 'nm',\n        insurance_date as 'id',\n        TIMESTAMPDIFF(DAY, now(), insurance_date) as 'insurance'\n    from\n        `tabItem`\n    order by\n        creation desc\n),\n\naa as(\n    select\n        nm,\n        id,\n        concat(`insurance`, ' ', 'Days to go') as 'InsuranceCompleteDaysAfter'\n    from\n        a\n    where\n        id >= now() - interval 30 day\n        and id <= now() + interval 30 day\n),\n\nb as(\n    select\n        name as 'nm1',\n        fitness_dt as 'ft',\n        TIMESTAMPDIFF(DAY, now(), fitness_dt) as 'fitness'\n    from\n        `tabItem`\n),\n\nbb as(\n    select\n        nm1,\n        ft,\n        concat(`fitness`, ' ', 'Days to go') as 'FitnessCompleteDaysAfter'\n    from\n        b\n    where\n        ft >= now() - interval 30 day\n        and ft <= now() + interval 30 day\n),\n\nc as(\n    select\n        name as 'nm2',\n        pollution as 'pl',\n        TIMESTAMPDIFF(DAY, now(), pollution) as 'pollution'\n    from\n        `tabItem`\n),\n\ncc as(\n    select\n        nm2,\n        pl,\n        concat(`pollution`, ' ', 'Days to go') as 'PUCCompleteDaysAfter'\n    from\n        c\n    where\n        pl >= now() - interval 30 day\n        and pl <= now() + interval 30 day\n)\n\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n    i.insurance_date as 'Insurance Last Date',\n    InsuranceCompleteDaysAfter as 'Insurance Completion',\n    i.fitness_dt as 'Fitness Last Date',\n    FitnessCompleteDaysAfter as 'Fitness Completion',\n    i.pollution as 'PUC Last Date',\n    PUCCompleteDaysAfter as 'PUC Completion',\n    concat(\n        '<a href=\"',\n        '/app/item/new-item-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as ''\n    \nfrom\n    `tabItem` i\n\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\n\nwhere\n    i.rto_register = 'Registered'\n\nunion\n\nselect\n    i.name as 'Equipment:Link/Item',\n    i.equipment_brand,\n    i.equipment_model_no,\n    i.insurance_date,\n    InsuranceCompleteDaysAfter,\n    i.fitness_dt,\n    FitnessCompleteDaysAfter,\n    i.pollution,\n    PUCCompleteDaysAfter,\n    concat(\n        '<a href=\"',\n        '/app/item/new-item-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as ''\nfrom\n\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Not Registered'",
+  "query": "with a as(\n    select\n        name as 'nm',\n        insurance_date as 'id',\n        TIMESTAMPDIFF(DAY, now(), insurance_date) as 'insurance'\n    from\n        `tabItem`\n    order by\n        creation desc\n),\naa as(\n    select\n        nm,\n        id,\n        concat(\n            'Insurance',\n            ' - ',\n            `insurance`,\n            ' ',\n            'Days to go'\n        ) as 'InsuranceCompleteDaysAfter'\n    from\n        a\n    where\n        id >= now() - interval 1 day\n        and id <= now() + interval 30 day\n),\nb as(\n    select\n        name as 'nm1',\n        fitness_dt as 'ft',\n        TIMESTAMPDIFF(DAY, now(), fitness_dt) as 'fitness'\n    from\n        `tabItem`\n),\nbb as(\n    select\n        nm1,\n        ft,\n        concat('Fitness', ' - ', `fitness`, ' ', 'Days to go') as 'FitnessCompleteDaysAfter'\n    from\n        b\n    where\n        ft >= now() - interval 1 day\n        and ft <= now() + interval 30 day\n),\nc as(\n    select\n        name as 'nm2',\n        pollution as 'pl',\n        TIMESTAMPDIFF(DAY, now(), pollution) as 'pollution'\n    from\n        `tabItem`\n),\ncc as(\n    select\n        nm2,\n        pl,\n        concat('PUC', ' - ', `pollution`, ' ', 'Days to go') as 'PUCCompleteDaysAfter'\n    from\n        c\n    where\n        pl >= now() - interval 1 day\n        and pl <= now() + interval 30 day\n)\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand::160',\n    i.model as 'Model::160',\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter as 'PUC Completion',\n    InsuranceCompleteDaysAfter as 'Completion Date::200',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n    i.supplier as 'Supplier:Link/Supplier:-1'\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter as 'PUC Completion',\n    FitnessCompleteDaysAfter as 'Completion Date',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n     DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n   -- PUCCompleteDaysAfter as 'PUC Completion',\n    PUCCompleteDaysAfter as 'Completion Date::120',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.equipment_brand,\n    i.equipment_model_no,\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter,\n    InsuranceCompleteDaysAfter as 'Completion Date',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Not Registered'",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Compliance Report",

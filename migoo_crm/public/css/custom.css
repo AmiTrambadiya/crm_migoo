@@ -1,0 +1,17 @@
+.number-widget-box,
+.dashboard-widget-box {
+    display: flex;
+    flex-direction: column;
+    min-height: 1px;
+    padding: 7px;
+    border-radius: var(--border-radius-md);
+    height: 100%;
+    box-shadow: 2px 2px 10px rgb(0 0 0 / 14%);
+    border: 1px solid lightgrey;
+}
+
+.number-widget-box.number-widget-box .widget-body .widget-content .number {
+    font-weight: 600;
+    font-size: 1.25em;
+    line-height: 2.4em;
+}

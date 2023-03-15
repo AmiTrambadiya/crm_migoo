@@ -18,28 +18,13 @@
   "date",
   "equipment_no",
   "time_details_section",
-  "z",
   "start_time",
   "end_time",
   "total_hoursmorning",
-  "column_break_14",
-  "afternoon",
-  "starttime",
-  "endtime",
-  "total_hoursafternoon",
   "column_break_26",
-  "eveningnight",
-  "start_time_",
-  "end_time_",
-  "total_hourseveningnight",
-  "section_break_25",
   "start_kmhr",
   "end_kmhr",
   "total_kmhr",
-  "column_break_29",
-  "total_working_hours",
-  "fuel_liter",
-  "fuel_filling_km",
   "equipmenrt_acrtivity_section",
   "activity",
   "remarks",
@@ -123,61 +108,11 @@
    "default": "0",
    "fieldname": "total_hoursmorning",
    "fieldtype": "Time",
-   "label": "Total Hours(Morning)"
-  },
-  {
-   "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "afternoon",
-   "fieldtype": "Heading",
-   "label": "Afternoon"
-  },
-  {
-   "fieldname": "starttime",
-   "fieldtype": "Time",
-   "label": "Start Time"
-  },
-  {
-   "fieldname": "endtime",
-   "fieldtype": "Time",
-   "label": "End Time"
-  },
-  {
-   "default": "0",
-   "fieldname": "total_hoursafternoon",
-   "fieldtype": "Time",
-   "label": "Total Hours(Afternoon)"
+   "label": "Total Hours"
   },
   {
    "fieldname": "column_break_26",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "eveningnight",
-   "fieldtype": "Heading",
-   "label": "Evening/Night"
-  },
-  {
-   "fieldname": "start_time_",
-   "fieldtype": "Time",
-   "label": "Start Time"
-  },
-  {
-   "fieldname": "end_time_",
-   "fieldtype": "Time",
-   "label": "End Time"
-  },
-  {
-   "default": "0",
-   "fieldname": "total_hourseveningnight",
-   "fieldtype": "Time",
-   "label": "Total Hours(Evening/Night)"
-  },
-  {
-   "fieldname": "section_break_25",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "start_kmhr",
@@ -193,25 +128,6 @@
    "fieldname": "total_kmhr",
    "fieldtype": "Data",
    "label": "Total km/hr"
-  },
-  {
-   "fieldname": "column_break_29",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_working_hours",
-   "fieldtype": "Data",
-   "label": "Total Working Hours"
-  },
-  {
-   "fieldname": "fuel_liter",
-   "fieldtype": "Data",
-   "label": "Fuel (Litre)"
-  },
-  {
-   "fieldname": "fuel_filling_km",
-   "fieldtype": "Data",
-   "label": "Fuel Filling Km"
   },
   {
    "fieldname": "equipmenrt_acrtivity_section",
@@ -288,16 +204,11 @@
    "fieldname": "driver_number",
    "fieldtype": "Data",
    "label": "Driver Number"
-  },
-  {
-   "fieldname": "z",
-   "fieldtype": "Heading",
-   "label": "Morning"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-27 16:08:34.892605",
+ "modified": "2023-03-14 12:51:16.582117",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",

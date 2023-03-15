@@ -1,6 +1,5 @@
 // Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 // MIT License. See license.txt
-
 frappe.provide("frappe.dashboards");
 frappe.provide("frappe.dashboards.chart_sources");
 
@@ -148,7 +147,7 @@ class DashboardNew {
 			});
 
 
-			if (this.dashboard_name == "Business / Transaction") {
+			if (this.dashboard_name == "Business-Transaction") {
 				this.number_card_group = new frappe.widget.WidgetGroup({
 
 					container: this.container,
@@ -194,34 +193,44 @@ class DashboardNew {
 			});
 	}
 
+
+
 	set_dropdown() {
-		this.page.clear_menu();
 
-		this.page.add_menu_item(__("Edit"), () => {
-			frappe.set_route("Form", "Dashboard", frappe.dashboard.dashboard_name);
-		});
+		if (frappe.user.has_role('System Manager') == true) {
 
-		this.page.add_menu_item(__("New"), () => {
-			frappe.new_doc("Dashboard");
-		});
 
-		this.page.add_menu_item(__("Refresh All"), () => {
-			this.chart_group && this.chart_group.widgets_list.forEach((chart) => chart.refresh());
-			this.number_card_group &&
-				this.number_card_group.widgets_list.forEach((card) => card.render_card());
-		});
+			this.page.clear_menu();
 
-		frappe.db.get_list("Dashboard").then((dashboards) => {
-			dashboards.map((dashboard) => {
-				let name = dashboard.name;
-				if (name != this.dashboard_name) {
-					this.page.add_menu_item(
-						name,
-						() => frappe.set_route("dashboard-view", name),
-						1
-					);
-				}
+			this.page.add_menu_item(__("Edit"), () => {
+				frappe.set_route("Form", "Dashboard", frappe.dashboard.dashboard_name);
 			});
-		});
+
+			this.page.add_menu_item(__("New"), () => {
+				frappe.new_doc("Dashboard");
+			});
+
+			this.page.add_menu_item(__("Refresh All"), () => {
+				this.chart_group && this.chart_group.widgets_list.forEach((chart) => chart.refresh());
+				this.number_card_group &&
+					this.number_card_group.widgets_list.forEach((card) => card.render_card());
+			});
+
+			frappe.db.get_list("Dashboard").then((dashboards) => {
+				dashboards.map((dashboard) => {
+					let name = dashboard.name;
+					if (name != this.dashboard_name) {
+						this.page.add_menu_item(
+							name,
+							() => frappe.set_route("dashboard-view", name),
+							1
+						);
+					}
+				});
+			});
+		}
+		else {
+
+		}
 	}
 }
