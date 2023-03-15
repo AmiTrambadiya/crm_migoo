@@ -22,7 +22,7 @@
    "options": "Log Sheet"
   },
   {
-   "fetch_from": "log_sheet.total_working_hours",
+   "fetch_from": "log_sheet.total_hoursmorning",
    "fieldname": "total_working_time",
    "fieldtype": "Data",
    "label": "Total Working Time"
@@ -61,7 +61,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-03-14 12:30:34.304265",
+ "modified": "2023-03-15 11:12:28.146439",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet Details",
