@@ -31,3 +31,14 @@ def status_change(name,status,price,equipment_current_reading,test,img1):
     frappe.db.set_value("Web item",name,"website_image",img1)
     frappe.db.set_value("Web item",name,"equipment_current_reading",equipment_current_reading)
     
+@frappe.whitelist()
+def address_update(name,address_line1,city,state,postal_code):
+    titile= name + "-Billing"
+    frappe.msgprint(state)
+    frappe.db.set_value("Address",titile,"address_line1",address_line1)
+    # frappe.db.set_value("Address",titile,"address_line2",address_line2)
+    frappe.db.set_value("Address",titile,"city",city)
+    frappe.db.set_value("Address",titile,"state",state)
+    # frappe.db.set_value("Address",titile,"area",area)
+    frappe.db.set_value("Address",titile,"pincode",postal_code)
+    frappe.response["msg"]="Address Updated"
