@@ -13,18 +13,20 @@
   {
    "fieldname": "equipment_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Equipment Name"
   },
   {
    "fieldname": "inquiry_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Inquiry Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-02-27 16:08:35.445837",
+ "modified": "2023-03-16 16:39:58.064834",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Item Inquiry",

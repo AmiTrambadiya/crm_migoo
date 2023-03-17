@@ -120,6 +120,7 @@
   "script_type": "API"
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "address",
   "disabled": 0,
@@ -127,11 +128,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.282662",
+  "modified": "2023-03-16 16:51:44.496913",
   "module": "Migoo CRM",
   "name": "Lead Address",
   "reference_doctype": null,
-  "script": "address_title=frappe.form_dict[\"address_title\"]\naddress_line1=frappe.form_dict[\"address_line1\"]\naddress_line2=frappe.form_dict[\"address_line2\"]\narea=frappe.form_dict[\"area\"]\ncity=frappe.form_dict[\"city\"]\nstate=frappe.form_dict[\"state\"]\n\nname=frappe.form_dict[\"name\"]\n\ntitle=address_title+\"-Billing\"\n\na = frappe.get_doc({\"doctype\":\"Address\",\"address_title\":address_title,\"address_line1\":address_line1,\"address_line2\":address_line2,\"city\":city, \"area\":area,\n\"state\":state})\n\na.insert()\n\nparent = frappe.get_doc('Address', title)\nparent.append(\"links\", {\n    'link_doctype': 'Lead',\n    'link_name': name,\n    # 'link_title':'Sahil Patel'\n    \n})\nparent.save()\nfrappe.db.commit()\n",
+  "script": "address_title=frappe.form_dict[\"address_title\"]\naddress_line1=frappe.form_dict[\"address_line1\"]\npostal_code=frappe.form_dict[\"postal_code\"]\n# area=frappe.form_dict[\"area\"]\ncity=frappe.form_dict[\"city\"]\nstate=frappe.form_dict[\"state\"]\n\nname=frappe.form_dict[\"name\"]\n\ntitle=address_title+\"-Billing\"\n\na = frappe.get_doc({\"doctype\":\"Address\",\"address_title\":address_title,\"address_line1\":address_line1,\"city\":city, \"pincode\":postal_code,\"state\":state})\n\na.insert()\n\nparent = frappe.get_doc('Address', title)\nparent.append(\"links\", {\n    'link_doctype': 'Lead',\n    'link_name': name,\n    # 'link_title':'Sahil Patel'\n    \n})\nparent.save()\nfrappe.db.commit()\n",
   "script_type": "API"
  },
  {
@@ -330,6 +331,7 @@
   "script_type": "API"
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "check_address_lead",
   "disabled": 0,
@@ -337,14 +339,15 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.243484",
+  "modified": "2023-03-16 16:52:21.639406",
   "module": "Migoo CRM",
   "name": "check_address_lead",
   "reference_doctype": null,
-  "script": "name=frappe.form_dict[\"name\"]\n\nqr =frappe.db.sql(\"select link_name from `tabDynamic Link` where link_doctype='Lead' AND link_name=%s\",name)\n\nli=\"\"\nfor i in qr:\n    for j in i:\n        li=j\n        \nfrappe.msgprint(li)\nfrappe.response[\"msg\"]=li",
+  "script": "name=frappe.form_dict[\"name\"]\nparent=name+\"-Billing\"\nqr =frappe.db.sql(\"select link_name from `tabDynamic Link` where link_doctype='Lead' AND parent=%s AND link_name=%s\",(parent,name))\n\nli=\"\"\nfor i in qr:\n    for j in i:\n        li=j\n        \n# frappe.msgprint(li)\nfrappe.response[\"msg\"]=li",
   "script_type": "API"
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "check_address",
   "disabled": 0,
@@ -352,14 +355,15 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.349748",
+  "modified": "2023-03-16 16:51:06.110847",
   "module": "Migoo CRM",
   "name": "Check Supplier Address Exist Or Not",
   "reference_doctype": null,
-  "script": "name=frappe.form_dict[\"name\"]\n\nqr =frappe.db.sql(\"select link_name from `tabDynamic Link` where link_doctype='Supplier' AND link_name=%s\",name)\n\nli=\"\"\nfor i in qr:\n    for j in i:\n        li=j\nfrappe.response[\"data\"]=li",
+  "script": "name=frappe.form_dict[\"name\"]\nparent=name+\"-Billing\"\nqr =frappe.db.sql(\"select link_name from `tabDynamic Link` where link_doctype='Supplier'AND parent=%s AND link_name=%s\",(parent,name))\n\nli=\"\"\nfor i in qr:\n    for j in i:\n        li=j\nfrappe.response[\"data\"]=li",
   "script_type": "API"
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "supplier_address",
   "disabled": 0,
@@ -367,11 +371,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.359504",
+  "modified": "2023-03-16 16:50:35.434488",
   "module": "Migoo CRM",
   "name": "supplier_address123",
   "reference_doctype": null,
-  "script": "address_line1=frappe.form_dict[\"address_line1\"]\naddress_line2=frappe.form_dict[\"address_line2\"]\narea=frappe.form_dict[\"area\"]\ncity=frappe.form_dict[\"city\"]\nstate=frappe.form_dict[\"state\"]\npincode=frappe.form_dict[\"pincode\"]\n\nname=frappe.form_dict[\"name\"]\n\ntitle=name+\"-Billing\"\n\na = frappe.get_doc({\"doctype\":\"Address\",\"address_title\":name,\"address_line1\":address_line1,\"address_line2\":address_line2,\"city\":city, \"area\":area,\n\"state\":state ,\"pincode\":pincode})\n\na.insert()\n\nparent = frappe.get_doc('Address', title)\nparent.append(\"links\", {\n    'link_doctype': 'Supplier',\n    'link_name': name,\n    # 'link_title':'Sahil Patel'\n    \n})\nparent.save()\nfrappe.db.commit()\n",
+  "script": "\n\naddress_line1=frappe.form_dict[\"address_line1\"]\n\ncity=frappe.form_dict[\"city\"]\nstate=frappe.form_dict[\"state\"]\npincode=frappe.form_dict[\"pincode\"]\n\nname=frappe.form_dict[\"name\"]\n\ntitle=name+\"-Billing\"\n# frappe.msgprint(title)\n\na = frappe.get_doc({\"doctype\":\"Address\",\"address_title\":name,\"address_line1\":address_line1,\"city\":city, \n\"state\":state ,\"pincode\":pincode})\n\na.insert()\n\nparent = frappe.get_doc('Address', title)\nparent.append(\"links\", {\n    'link_doctype': 'Supplier',\n    'link_name': name,\n    # 'link_title':'Sahil Patel'\n    \n})\nparent.save()\nfrappe.db.commit()\n",
   "script_type": "API"
  },
  {
@@ -432,6 +436,22 @@
   "name": "check_web_item",
   "reference_doctype": null,
   "script": "name=frappe.form_dict[\"name\"]\n\nqr =frappe.db.sql(\"select name from `tabWeb item` where name=%s\",name)\n\nli=\"\"\nfor i in qr:\n    for j in i:\n        li=j\nfrappe.response[\"data\"]=li",
+  "script_type": "API"
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "allow_guest": 0,
+  "api_method": "check_whatsapp_no",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2023-03-16 10:44:15.542619",
+  "module": null,
+  "name": "check_whatsapp_no",
+  "reference_doctype": null,
+  "script": "name=frappe.form_dict[\"whatsapp_no\"]\remail=frappe.form_dict[\"email\"]\rli=\"\"\rif name!=\"\":\r    qr =frappe.db.sql(\"select whatsapp_no from `tabLead` where whatsapp_no=%s\",name)\r    \r    # li=\"\"\r    for i in qr:\r        for j in i:\r            li=j\r            \rif email!=\"\":\r    qr =frappe.db.sql(\"select email_id from `tabLead` where email_id=%s\",email)\r    \r    # li=\"\"\r    for i in qr:\r        for j in i:\r            li=j \r# frappe.msgprint(li)\rfrappe.response[\"msg\"]=li",
   "script_type": "API"
  }
 ]
