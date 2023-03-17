@@ -69,7 +69,7 @@
  "doctype": "Inquiry Form",
  "links": [
   {
-   "creation": "2023-01-21 16:46:38.204085",
+   "creation": "2023-01-21 11:18:24.029221",
    "custom": 1,
    "docstatus": 0,
    "group": null,
@@ -78,9 +78,9 @@
    "is_child_table": 0,
    "link_doctype": "Customer",
    "link_fieldname": "inquiry_connect",
-   "modified": "2023-02-27 17:01:45.270579",
+   "modified": "2023-03-17 11:02:57.778072",
    "modified_by": "foram@sanskartechnolab.com",
-   "name": "4ec14f589c",
+   "name": "a514b4e6e0",
    "owner": "foram@sanskartechnolab.com",
    "parent": "Inquiry Form",
    "parent_doctype": null,
@@ -89,7 +89,7 @@
    "table_fieldname": null
   },
   {
-   "creation": "2023-01-21 16:46:38.200697",
+   "creation": "2023-01-21 11:18:24.025063",
    "custom": 1,
    "docstatus": 0,
    "group": null,
@@ -98,9 +98,9 @@
    "is_child_table": 0,
    "link_doctype": "Opportunity",
    "link_fieldname": "inquiry_connect",
-   "modified": "2023-02-27 17:01:45.266890",
+   "modified": "2023-03-17 11:02:57.771972",
    "modified_by": "foram@sanskartechnolab.com",
-   "name": "727a9f43b1",
+   "name": "4c967ce9a9",
    "owner": "foram@sanskartechnolab.com",
    "parent": "Inquiry Form",
    "parent_doctype": null,
@@ -109,7 +109,7 @@
    "table_fieldname": null
   },
   {
-   "creation": "2023-01-21 16:46:38.182976",
+   "creation": "2023-01-21 11:18:24.007607",
    "custom": 1,
    "docstatus": 0,
    "group": null,
@@ -118,9 +118,9 @@
    "is_child_table": 0,
    "link_doctype": "Lead",
    "link_fieldname": "inquiry_connect",
-   "modified": "2023-02-27 17:01:45.258133",
+   "modified": "2023-03-17 11:02:57.763393",
    "modified_by": "foram@sanskartechnolab.com",
-   "name": "685ba15a53",
+   "name": "2d2ac3a1d4",
    "owner": "foram@sanskartechnolab.com",
    "parent": "Inquiry Form",
    "parent_doctype": null,
@@ -135,7 +135,7 @@
    "_comments": null,
    "_liked_by": null,
    "_user_tags": null,
-   "creation": "2023-02-27 17:01:45.277493",
+   "creation": "2023-03-17 11:02:57.782281",
    "default_value": null,
    "doc_type": "Inquiry Form",
    "docstatus": 0,
@@ -143,7 +143,7 @@
    "field_name": null,
    "idx": 0,
    "is_system_generated": 0,
-   "modified": "2023-02-27 17:01:45.277493",
+   "modified": "2023-03-17 11:02:57.782281",
    "modified_by": "foram@sanskartechnolab.com",
    "module": null,
    "name": "Inquiry Form-main-links_order",
@@ -151,7 +151,7 @@
    "property": "links_order",
    "property_type": "Small Text",
    "row_name": null,
-   "value": "[\"685ba15a53\", \"727a9f43b1\", \"4ec14f589c\"]"
+   "value": "[\"2d2ac3a1d4\", \"4c967ce9a9\", \"a514b4e6e0\"]"
   },
   {
    "_assign": null,
