@@ -560,7 +560,6 @@
   "value_changed": null
  },
  {
-  "_liked_by": "[]",
   "attach_print": 0,
   "channel": "Email",
   "condition": "doc.equipment_verify == \"Verify\"",
@@ -601,7 +600,6 @@
   "value_changed": null
  },
  {
-  "_liked_by": "[]",
   "attach_print": 0,
   "channel": "Email",
   "condition": "doc.equipment_verify == \"Verify\"",
@@ -642,7 +640,6 @@
   "value_changed": null
  },
  {
-  "_liked_by": "[]",
   "attach_print": 0,
   "channel": "Email",
   "condition": "doc.equipment_verify == \"Verify\"",
@@ -683,7 +680,6 @@
   "value_changed": null
  },
  {
-  "_liked_by": "[]",
   "attach_print": 0,
   "channel": "Email",
   "condition": "doc.equipment_verify == \"Verify\"",
@@ -724,7 +720,6 @@
   "value_changed": null
  },
  {
-  "_liked_by": "[]",
   "attach_print": 0,
   "channel": "Email",
   "condition": "doc.equipment_verify == \"Verify\"",
@@ -845,7 +840,6 @@
   "value_changed": null
  },
  {
-  "_liked_by": "[]",
   "attach_print": 0,
   "channel": "Email",
   "condition": "doc.equipment_verify == \"Verify\"",

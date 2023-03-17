@@ -165,7 +165,6 @@
   "view": "List"
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Lead",
@@ -397,7 +396,6 @@
   "view": "Form"
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Supplier",

@@ -1,0 +1,44 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Request Type",
+  "modified": "2023-03-17 10:59:52.814040",
+  "name": "Rent",
+  "request_type": "Rent"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Request Type",
+  "modified": "2023-03-17 11:00:17.640979",
+  "name": "Buy/Sell",
+  "request_type": "Buy/Sell"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Request Type",
+  "modified": "2023-03-17 11:00:33.100677",
+  "name": "Insurance",
+  "request_type": "Insurance"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Request Type",
+  "modified": "2023-03-17 11:00:47.993359",
+  "name": "ERP",
+  "request_type": "ERP"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Request Type",
+  "modified": "2023-03-17 11:01:15.448998",
+  "name": "Spare Parts",
+  "request_type": "Spare Parts"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Request Type",
+  "modified": "2023-03-17 11:01:26.216117",
+  "name": "Others",
+  "request_type": "Others"
+ }
+]

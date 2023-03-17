@@ -120,7 +120,6 @@
   "script_type": "API"
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "address",
   "disabled": 0,
@@ -331,7 +330,6 @@
   "script_type": "API"
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "check_address_lead",
   "disabled": 0,
@@ -347,7 +345,6 @@
   "script_type": "API"
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "check_address",
   "disabled": 0,
@@ -363,7 +360,6 @@
   "script_type": "API"
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "supplier_address",
   "disabled": 0,
@@ -439,7 +435,6 @@
   "script_type": "API"
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "allow_guest": 0,
   "api_method": "check_whatsapp_no",
   "disabled": 0,
