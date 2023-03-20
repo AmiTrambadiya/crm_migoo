@@ -213,6 +213,14 @@ fixtures = [
         ]
     ]},
 
+    {"dt": "Property Setter", "filters": [
+        [
+            "name", "in", [
+                "Raw Data-request_type-fieldtype", "Raw Data-request_type-options"
+            ]
+        ]
+    ]},
+
     {"dt": "Dashboard", "filters": [
         [
             "module", "in", [
@@ -249,5 +257,6 @@ fixtures = [
         ]
     ]},
 
+    {"dt": "Request Type", },
 
 ]
