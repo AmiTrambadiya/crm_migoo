@@ -91,6 +91,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -102,11 +103,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.419088",
+  "modified": "2023-03-20 17:30:53.915595",
   "module": "Migoo CRM",
   "name": "Verify Supplier",
   "prepared_report": 0,
-  "query": "WITH difference_in_seconds AS (\nSELECT\ns.name_of_suppier AS \"SupplierName\",\ns.mobile_number AS \"MobileNumber\",\ns.email AS \"Email\",\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabSupplier` AS s\nwhere\ns.verify=\"Verify\"\n),\n\ndifferences AS (\n  SELECT\n  SupplierName,\n  MobileNumber,\n  Email ,\n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  SupplierName as \"Name\",\n  MobileNumber as \"Number\",\n  Email as \"Email\",\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Supplier Verified After Creation\"\nFROM differences;",
+  "query": "WITH difference_in_seconds AS (\nSELECT\ns.name_of_suppier AS \"SupplierName\",\ns.mobile_number AS \"MobileNumber\",\ns.email AS \"Email\",\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabSupplier` AS s\nwhere\ns.verify=\"Verify\"\n),\n\ndifferences AS (\n  SELECT\n  SupplierName,\n  MobileNumber,\n  Email ,\n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  SupplierName as \"Name::300\",\n  MobileNumber as \"Number::230\",\n  Email as \"Email::300\",\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Supplier Verified After Creation::300\"\nFROM differences;",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Verify Supplier",
@@ -267,6 +268,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -498,6 +500,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -508,7 +511,7 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 120
+    "width": 300
    },
    {
     "fieldname": "count(i.equipment_main_category)",
@@ -518,7 +521,7 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 120
+    "width": 270
    },
    {
     "fieldname": "sell.equipment_main_category",
@@ -528,7 +531,7 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 120
+    "width": 270
    },
    {
     "fieldname": "rent.equipment_main_category",
@@ -538,7 +541,7 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 120
+    "width": 270
    }
   ],
   "disable_prepared_report": 0,
@@ -550,11 +553,11 @@
   "javascript": null,
   "json": "{}",
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.335181",
+  "modified": "2023-03-20 17:36:10.516263",
   "module": "Migoo CRM",
   "name": "Equipment For sell Or Rent Report",
   "prepared_report": 0,
-  "query": "with sell as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_sell = 1\n    group by\n        equipment_main_category\n),\nrent as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_rent = 1\n    group by\n        equipment_main_category\n)\nselect\n    i.equipment_main_category as 'Equipment Sub Category',\n    count(i.equipment_main_category) as 'Total',\n    count(sell.equipment_main_category) as 'Sell',\n    count(rent.equipment_main_category) as 'Rent'\nfrom\n    `tabItem` i\n    left join sell on sell.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = sell.equipment_for_sell\n    left join rent on rent.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = rent.equipment_for_sell\nwhere\n    i.equipment_for_sell = 1\n    or i.equipment_for_rent = 1\ngroup by\n    i.equipment_main_category",
+  "query": "with sell as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_sell = 1\n    group by\n        equipment_main_category\n),\nrent as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_rent = 1\n    group by\n        equipment_main_category\n)\nselect\n    i.equipment_main_category as 'Equipment Sub Category::300',\n    count(i.equipment_main_category) as 'Total::300',\n    count(sell.equipment_main_category) as 'Sell::300',\n    count(rent.equipment_main_category) as 'Rent::300'\nfrom\n    `tabItem` i\n    left join sell on sell.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = sell.equipment_for_sell\n    left join rent on rent.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = rent.equipment_for_sell\nwhere\n    i.equipment_for_sell = 1\n    or i.equipment_for_rent = 1\ngroup by\n    i.equipment_main_category",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Equipment For sell Or Rent Report",
@@ -630,6 +633,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -641,11 +645,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.320199",
+  "modified": "2023-03-20 17:37:19.434773",
   "module": "Migoo CRM",
   "name": "Daily Supplier Report",
   "prepared_report": 0,
-  "query": "select\n    supplier_name as 'Name',\n    verify as 'Verified Or Not',\n    company_name as 'Company Name',\n    mobile_number as 'Mobile No',\n    email as 'Email'\nfrom\n    `tabSupplier`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
+  "query": "select\n    supplier_name as 'Name::250',\n    verify as 'Verified Or Not::200',\n    company_name as 'Company Name::250',\n    mobile_number as 'Mobile No::200',\n    email as 'Email::250'\nfrom\n    `tabSupplier`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Daily Supplier Report",
@@ -751,11 +755,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.250249",
+  "modified": "2023-03-20 17:53:17.014224",
   "module": "Migoo CRM",
   "name": "Lead Analytics",
   "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request_type as 'Request Type',\n    count(i.request_type) as 'Total',\n    count(daily.request_type) as \"Daily\",\n    count(week.request_type) as \"Week\",\n    count(quarterly.request_type) as \"Quarterly\",\n    count(monthly.request_type) as \"Monthly\"\nfrom\n    `tabLead` i\n    left outer join daily on daily.request_type = i.request_type\n    and daily.creation = i.creation\n    left outer join week on week.request_type = i.request_type\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request_type = i.request_type\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request_type = i.request_type\n    and monthly.creation = i.creation\nwhere\n    i.request_type in(\"Buy\", \"Sell\", \"Rent\")\n    \n    and   (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request_type",
+  "query": "with daily as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request_type as 'Request Type::150',\n    count(i.request_type) as 'Total::200',\n    count(daily.request_type) as \"Today::200\",\n    count(week.request_type) as \"In 7 Days::200\",\n    count(quarterly.request_type) as \"In 15 Days::200\",\n    count(monthly.request_type) as \"In 30 Days::200\"\nfrom\n    `tabLead` i\n    left outer join daily on daily.request_type = i.request_type\n    and daily.creation = i.creation\n    left outer join week on week.request_type = i.request_type\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request_type = i.request_type\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request_type = i.request_type\n    and monthly.creation = i.creation\nwhere\n    i.request_type in(\"Buy\", \"Sell\", \"Rent\")\n    \n    and   (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request_type",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead Analytics",
@@ -789,6 +793,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -800,11 +805,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.352205",
+  "modified": "2023-03-20 17:33:29.206938",
   "module": "Migoo CRM",
   "name": "Supplier Verified or Not report",
   "prepared_report": 0,
-  "query": "with verified as (\n    select\n        name,\n        verify\n    from\n        `tabSupplier`\n    where\n        verify = 'Verify'\n),\n\nnotverify AS (\n    select\n        name,\n        verify\n    from\n        `tabSupplier`\n    where\n        verify = 'Not Verify'\n   \n)\n\nselect\n    count(s.verify) as 'Total Supplier',\n    count(verified.verify) 'Verified Supplier',\n     count(notverify.verify) 'Not Verified Supplier'\n   \n    \nfrom\n `tabSupplier` s\n    \nleft outer JOIN verified on verified.name=s.name\nleft outer JOIN notverify on notverify.name=s.name",
+  "query": "with verified as (\n    select\n        name,\n        verify\n    from\n        `tabSupplier`\n    where\n        verify = 'Verify'\n),\n\nnotverify AS (\n    select\n        name,\n        verify\n    from\n        `tabSupplier`\n    where\n        verify = 'Not Verify'\n   \n)\n\nselect\n    count(s.verify) as 'Total Supplier::380',\n    count(verified.verify) 'Verified Supplier::380',\n     count(notverify.verify) 'Not Verified Supplier::380'\n   \n    \nfrom\n `tabSupplier` s\n    \nleft outer JOIN verified on verified.name=s.name\nleft outer JOIN notverify on notverify.name=s.name",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Supplier Verified or Not report",
@@ -874,6 +879,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -885,11 +891,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.300273",
+  "modified": "2023-03-20 17:38:30.163524",
   "module": "Migoo CRM",
   "name": "Supplier and Equipment Report",
   "prepared_report": 0,
-  "query": "WITH difference_in_seconds AS (\n    select\n        s.creation as 'SupplierCreatedDate',\n        s.supplier_name as 'Supplier',\n        i.name as '1stEquipment',\n        i.creation as 'EquipmentCreatedDate',\n        TIMESTAMPDIFF(SECOND, s.creation, i.creation) AS seconds\n    from\n        `tabSupplier` s\n        inner join `tabItem` i on s.name = i.supplier\n        \n        where s.verify='Verify'\n),\ndifferences AS (\n    SELECT\n        Supplier as 's',\n        SupplierCreatedDate as 'a',\n        1stEquipment as 'b',\n        EquipmentCreatedDate as 'c',\n        seconds,\n        MOD(seconds, 60) AS seconds_part,\n        MOD(seconds, 3600) AS minutes_part,\n        MOD(seconds, 3600 * 24) AS hours_part\n    FROM\n        difference_in_seconds\n)\nselect\n    s as 'Supplier',\n    a as 'Supplier Creation Date',\n    b as '1st Equipment of Supplier',\n    c as '1st Equipment Created By Supplier',\n    CONCAT(\n        FLOOR(seconds / 3600 / 24),\n        ' days ',\n        FLOOR(hours_part / 3600),\n        ' hours ',\n        FLOOR(minutes_part / 60),\n        ' minutes ',\n        seconds_part,\n        ' seconds'\n    ) AS 'Creation Difference of Supplier and 1st Equipment '\nFROM\n    differences\ngroup by\n    s\norder by\n    c desc",
+  "query": "WITH difference_in_seconds AS (\n    select\n        s.creation as 'SupplierCreatedDate',\n        s.supplier_name as 'Supplier',\n        i.name as '1stEquipment',\n        i.creation as 'EquipmentCreatedDate',\n        TIMESTAMPDIFF(SECOND, s.creation, i.creation) AS seconds\n    from\n        `tabSupplier` s\n        inner join `tabItem` i on s.name = i.supplier\n        \n        where s.verify='Verify'\n),\ndifferences AS (\n    SELECT\n        Supplier as 's',\n        SupplierCreatedDate as 'a',\n        1stEquipment as 'b',\n        EquipmentCreatedDate as 'c',\n        seconds,\n        MOD(seconds, 60) AS seconds_part,\n        MOD(seconds, 3600) AS minutes_part,\n        MOD(seconds, 3600 * 24) AS hours_part\n    FROM\n        difference_in_seconds\n)\nselect\n    s as 'Supplier::200',\n    a as 'Supplier Creation Date',\n    b as '1st Equipment of Supplier',\n    c as '1st Equipment Created By Supplier',\n    CONCAT(\n        FLOOR(seconds / 3600 / 24),\n        ' days ',\n        FLOOR(hours_part / 3600),\n        ' hours ',\n        FLOOR(minutes_part / 60),\n        ' minutes ',\n        seconds_part,\n        ' seconds'\n    ) AS 'Creation Difference of Supplier and 1st Equipment '\nFROM\n    differences\ngroup by\n    s\norder by\n    c desc",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Supplier and Equipment Report",
@@ -959,6 +965,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -995,11 +1002,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:52.926677",
+  "modified": "2023-03-20 16:11:45.198780",
   "module": "Migoo CRM",
   "name": "Lead For Rent",
   "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Rent'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name::100\",\n    l.status as \"Status\",\n    type as \"Lead Type\",\n    email_id as \"Email::140\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee:-1'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Rent'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead For Rent",
@@ -1021,6 +1028,7 @@
   ]
  },
  {
+  "_liked_by": "[]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1032,11 +1040,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.280105",
+  "modified": "2023-03-20 17:55:59.070673",
   "module": "Migoo CRM",
   "name": "Equipment Status Wise Report",
   "prepared_report": 0,
-  "query": "WITH working as(\n       select\n              supplier,\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Working'\n       group by\n              item_group,\n               equipment_status\n),\nideal as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Ideal'\n       group by\n              item_group\n),\nbreakdown as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Breakdown'\n       group by\n              item_group\n),\noccupied as(\n       select\n              item_group,\n         equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Occupied With Migoo'\n       group by\n              item_group\n),\nfree as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Free'\n)\nselect\n       i.supplier as 'S:Link/Supplier:-10',\n       ig.item_group_name as 'Item Group:Link/Item Group',\n       count(i.item_group) as 'Total',\n       count(working.equipment_status) as 'Working',\n       count(ideal.equipment_status) as 'Ideal',\n       count(breakdown.equipment_status) as 'BreakDown',\n       count(occupied.equipment_status) as 'Occupied With Migoo',\n       count(free.equipment_status) as 'Free'\nfrom\n       `tabItem Group` ig\n       left outer JOIN `tabItem` i ON i.item_group = ig.item_group_name\n       left outer JOIN working on ig.item_group_name = working.item_group\n       and working.equipment_status = i.equipment_status\n       left outer JOIN ideal on ig.item_group_name = ideal.item_group\n       and ideal.equipment_status = i.equipment_status\n       left outer JOIN breakdown on ig.item_group_name = breakdown.item_group\n       and breakdown.equipment_status = i.equipment_status\n       left outer JOIN occupied on ig.item_group_name = occupied.item_group\n       and occupied.equipment_status = i.equipment_status\n       left outer JOIN free on ig.item_group_name = free.item_group\n       and free.equipment_status = i.equipment_status\nwhere\n       ig.parent_item_group = 'All Equipment Groups'\n       and equipment_for_sell = 1\ngroup by\n       ig.item_group_name\n",
+  "query": "WITH working as(\n       select\n              supplier,\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Working'\n       group by\n              item_group,\n               equipment_status\n),\nideal as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Ideal'\n       group by\n              item_group\n),\nbreakdown as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Breakdown'\n       group by\n              item_group\n),\noccupied as(\n       select\n              item_group,\n         equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Occupied With Migoo'\n       group by\n              item_group\n),\nfree as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Free'\n)\nselect\n       i.supplier as 'S:Link/Supplier:-10',\n       ig.item_group_name as 'Item Group:Link/Item Group:250',\n       count(i.item_group) as 'Total::100',\n       count(working.equipment_status) as 'Working::150',\n       count(ideal.equipment_status) as 'Ideal::150',\n       count(breakdown.equipment_status) as 'BreakDown::150',\n       count(occupied.equipment_status) as 'Occupied With Migoo::150',\n       count(free.equipment_status) as 'Free::150'\nfrom\n       `tabItem Group` ig\n       left outer JOIN `tabItem` i ON i.item_group = ig.item_group_name\n       left outer JOIN working on ig.item_group_name = working.item_group\n       and working.equipment_status = i.equipment_status\n       left outer JOIN ideal on ig.item_group_name = ideal.item_group\n       and ideal.equipment_status = i.equipment_status\n       left outer JOIN breakdown on ig.item_group_name = breakdown.item_group\n       and breakdown.equipment_status = i.equipment_status\n       left outer JOIN occupied on ig.item_group_name = occupied.item_group\n       and occupied.equipment_status = i.equipment_status\n       left outer JOIN free on ig.item_group_name = free.item_group\n       and free.equipment_status = i.equipment_status\nwhere\n       ig.parent_item_group = 'All Equipment Groups'\n       and equipment_for_sell = 1\ngroup by\n       ig.item_group_name\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Equipment Status Wise Report",
@@ -1112,6 +1120,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [
    {
@@ -1290,11 +1299,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.263109",
+  "modified": "2023-03-20 17:55:14.296758",
   "module": "Migoo CRM",
   "name": "Daily Created Equipment Report",
   "prepared_report": 0,
-  "query": "select\n    name as 'Name',\n    item_group as 'Equipment Main Category',\n    equipment_main_category as 'Equipment Sub Category',\n    supplier as 'Supplier',\n    rto_register as 'RTO Registration',\n    equipment_verify as 'Equipment Verify'\nfrom\n    `tabItem`\nwhere\n     (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "select\n    name as 'Name:Link/Item:150',\n    item_group as 'Equipment Main Category::200',\n    equipment_main_category as 'Equipment Sub Category::200',\n    supplier as 'Supplier:Link/Supplier:150',\n    rto_register as 'RTO Registration::200',\n    equipment_verify as 'Equipment Verify::200'\nfrom\n    `tabItem`\nwhere\n     (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Daily Created Equipment Report",
@@ -1406,11 +1415,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.236580",
+  "modified": "2023-03-20 17:50:21.448715",
   "module": "Migoo CRM",
   "name": "Supplier Report",
   "prepared_report": 0,
-  "query": "select\n    supplier_name as 'Name',\n    verify as 'Verified Or Not',\n    company_name as 'Company Name',\n    mobile_number as 'Mobile No',\n    email as 'Email'\nfrom\n    `tabSupplier`\nwhere\n  \n    (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "select\n    supplier_name as 'Name::250',\n    verify as 'Verified Or Not::200',\n    company_name as 'Company Name::200',\n    mobile_number as 'Mobile No::200',\n    email as 'Email::250'\nfrom\n    `tabSupplier`\nwhere\n  \n    (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Supplier Report",
@@ -1516,11 +1525,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.222510",
+  "modified": "2023-03-20 17:49:33.389516",
   "module": "Migoo CRM",
   "name": "Equipment Report",
   "prepared_report": 0,
-  "query": "select\n    name as 'Name',\n    item_group as 'Equipment Main Category',\n    equipment_main_category as 'Equipment Sub Category',\n    supplier as 'Supplier',\n    rto_register as 'RTO Registration',\n    equipment_verify as 'Equipment Verify'\nfrom\n    `tabItem`\nwhere\n     (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "select\n    name as 'Name::200',\n    item_group as 'Equipment Main Category::200',\n    equipment_main_category as 'Equipment Sub Category::200',\n    supplier as 'Supplier::200',\n    rto_register as 'RTO Registration::200',\n    equipment_verify as 'Equipment Verify::200'\nfrom\n    `tabItem`\nwhere\n     (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Equipment Report",
@@ -1632,11 +1641,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.206378",
+  "modified": "2023-03-20 17:49:01.450510",
   "module": "Migoo CRM",
   "name": "Supplier Verification Report",
   "prepared_report": 0,
-  "query": "WITH difference_in_seconds AS (\n  SELECT\n    s.name_of_suppier AS \"SupplierName\",\n    s.mobile_number AS \"MobileNumber\",\n    s.email AS \"Email\",\n    s.creation as \"creation\",\n    TIMESTAMPDIFF(SECOND, s.creation, s.verify_time) AS seconds\n  FROM\n    `tabSupplier` AS s\n  where\n    s.verify = \"Verify\"\n),\ndifferences AS (\n  SELECT\n    SupplierName,\n    MobileNumber,\n    Email,\n    seconds,\n    creation,\n    MOD(seconds, 60) AS seconds_part,\n    MOD(seconds, 3600) AS minutes_part,\n    MOD(seconds, 3600 * 24) AS hours_part\n  FROM\n    difference_in_seconds\n)\nSELECT\n  SupplierName as \"Name\",\n  MobileNumber as \"Number\",\n  Email as \"Email\",\n  CONCAT(\n    FLOOR(seconds / 3600 / 24),\n    ' days ',\n    FLOOR(hours_part / 3600),\n    ' hours ',\n    FLOOR(minutes_part / 60),\n    ' minutes ',\n    seconds_part,\n    ' seconds'\n  ) AS \"Supplier Verified After Creation\"\nFROM\n  differences\nwhere\n  (\n    DATE(creation) between %(from_date) s\n    and %(to_date) s\n  )",
+  "query": "WITH difference_in_seconds AS (\n  SELECT\n    s.name_of_suppier AS \"SupplierName\",\n    s.mobile_number AS \"MobileNumber\",\n    s.email AS \"Email\",\n    s.creation as \"creation\",\n    TIMESTAMPDIFF(SECOND, s.creation, s.verify_time) AS seconds\n  FROM\n    `tabSupplier` AS s\n  where\n    s.verify = \"Verify\"\n),\ndifferences AS (\n  SELECT\n    SupplierName,\n    MobileNumber,\n    Email,\n    seconds,\n    creation,\n    MOD(seconds, 60) AS seconds_part,\n    MOD(seconds, 3600) AS minutes_part,\n    MOD(seconds, 3600 * 24) AS hours_part\n  FROM\n    difference_in_seconds\n)\nSELECT\n  SupplierName as \"Name::240\",\n  MobileNumber as \"Number::240\",\n  Email as \"Email::240\",\n  CONCAT(\n    FLOOR(seconds / 3600 / 24),\n    ' days ',\n    FLOOR(hours_part / 3600),\n    ' hours ',\n    FLOOR(minutes_part / 60),\n    ' minutes ',\n    seconds_part,\n    ' seconds'\n  ) AS \"Supplier Verified After Creation::350\"\nFROM\n  differences\nwhere\n  (\n    DATE(creation) between %(from_date) s\n    and %(to_date) s\n  )",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Supplier Verification Report",
@@ -1833,11 +1842,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.191411",
+  "modified": "2023-03-20 17:47:06.697818",
   "module": "Migoo CRM",
   "name": "Daily Equipment Report",
   "prepared_report": 0,
-  "query": "select\n    name as 'Name',\n    item_group as 'Equipment Main Category',\n    equipment_main_category as 'Equipment Sub Category',\n    supplier as 'Supplier',\n    rto_register as 'RTO Registration',\n    equipment_verify as 'Equipment Verify'\nfrom\n    `tabItem`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
+  "query": "select\n    name as 'Name::200',\n    item_group as 'Equipment Main Category::200',\n    equipment_main_category as 'Equipment Sub Category::200',\n    supplier as 'Supplier:Link/Supplier:100',\n    rto_register as 'RTO Registration::200',\n    equipment_verify as 'Equipment Verify::200'\nfrom\n    `tabItem`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Daily Equipment Report",
@@ -1913,6 +1922,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -1943,7 +1953,7 @@
     "parent": "Currently Equipment On Rent",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 305
+    "width": 200
    },
    {
     "fieldname": "soi.amount",
@@ -1965,11 +1975,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.123151",
+  "modified": "2023-03-20 17:45:27.524333",
   "module": "Migoo CRM",
   "name": "Currently Equipment On Rent",
   "prepared_report": 0,
-  "query": "select\nso.customer as 'Customer',\nsoi.item_code as 'Equipment',\ncount(soi.qty) as 'Quantity',\nsoi.amount as 'Amount'\nfrom `tabSales Order` so\n\ninner join `tabSales Order Item` soi\non soi.parent=so.name\n\nwhere so.request_type=\"Rent\"\ngroup by soi.parent,soi.item_code,so.customer",
+  "query": "select\nso.customer as 'Customer',\nsoi.item_code as 'Equipment',\ncount(soi.qty) as 'Quantity::150',\nsoi.amount as 'Amount'\nfrom `tabSales Order` so\n\ninner join `tabSales Order Item` soi\non soi.parent=so.name\n\nwhere so.request_type=\"Rent\"\ngroup by soi.parent,soi.item_code,so.customer",
   "ref_doctype": "Sales Order",
   "reference_report": null,
   "report_name": "Currently Equipment On Rent",
@@ -2093,6 +2103,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2149,6 +2160,7 @@
   ]
  },
  {
+  "_liked_by": "[]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2180,6 +2192,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2271,6 +2284,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2307,11 +2321,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:31:48.320399",
+  "modified": "2023-03-20 15:32:05.660692",
   "module": "Migoo CRM",
   "name": "Enquiry For Spare Parts",
   "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Spare Parts'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name::195\",\n    company_name as 'Company::195',\n    email_address as 'Email::195',\n    mobile_no as 'Mobile No::195',\n    item_details as 'Equipment Details::195',\n    inquiry_source as 'Inquiry Source::195'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Spare Parts'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry For Spare Parts",
@@ -2333,6 +2347,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2369,11 +2384,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:30:53.012355",
+  "modified": "2023-03-20 16:00:13.950507",
   "module": "Migoo CRM",
   "name": "Lead For Buy/Sell",
   "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    l.lead_owner as \"Lead Owner\",\n    request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \n join `tabEmployee` e\non e.user_id=l.lead_owner\n\n\nWHERE\n    request_type = 'Buy/Sell' and (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name::100\",\n    l.status as \"Status\",\n    type as \"Lead Type\",\n    email_id as \"Email::140\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee:-1'\n\nFROM\n    `tabLead` l\n \n join `tabEmployee` e\non e.user_id=l.lead_owner\n\n\nWHERE\n    request_type = 'Buy/Sell' and (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead For Buy/Sell",
@@ -2395,6 +2410,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2431,11 +2447,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:31:56.850430",
+  "modified": "2023-03-20 15:32:27.292805",
   "module": "Migoo CRM",
   "name": "Enquiry For Others",
   "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source''\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Others'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name::195\",\n    company_name as 'Company::195',\n    email_address as 'Email::195',\n    mobile_no as 'Mobile No::195',\n    item_details as 'Equipment Details::195',\n    inquiry_source as 'Inquiry Source::195'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Others'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry For Others",
@@ -2457,6 +2473,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2493,11 +2510,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:30:53.074507",
+  "modified": "2023-03-20 15:33:05.361110",
   "module": "Migoo CRM",
   "name": "Enquiry For ERP",
   "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'ERP'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name::195\",\n    company_name as 'Company::195',\n    email_address as 'Email::195',\n    mobile_no as 'Mobile No::195',\n    item_details as 'Equipment Details::195',\n    inquiry_source as 'Inquiry Source::195'    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'ERP'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry For ERP",
@@ -2519,6 +2536,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2555,11 +2573,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:30:53.086854",
+  "modified": "2023-03-20 15:32:39.429831",
   "module": "Migoo CRM",
   "name": "Enquiry For Insurance",
   "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Insurance'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name::195\",\n    company_name as 'Company::195',\n    email_address as 'Email::195',\n    mobile_no as 'Mobile No::195',\n    item_details as 'Equipment Details::195',\n    inquiry_source as 'Inquiry Source::195'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Insurance'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry For Insurance",
@@ -2581,6 +2599,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2617,11 +2636,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:30:53.027736",
+  "modified": "2023-03-20 15:33:21.845528",
   "module": "Migoo CRM",
   "name": "Enquiry For Buy/Sell",
   "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Buy/Sell'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name::195\",\n    company_name as 'Company::195',\n    email_address as 'Email::195',\n    mobile_no as 'Mobile No::195',\n    item_details as 'Equipment Details::195',\n    inquiry_source as 'Inquiry Source::195'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Buy/Sell'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry For Buy/Sell",
@@ -2643,6 +2662,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2679,11 +2699,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:30:53.058536",
+  "modified": "2023-03-20 15:33:15.620761",
   "module": "Migoo CRM",
   "name": "Enquiry For Rent",
   "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Rent'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name::195\",\n    company_name as 'Company::195',\n    email_address as 'Email::195',\n    mobile_no as 'Mobile No::195',\n    item_details as 'Equipment Details::195',\n    inquiry_source as 'Inquiry Source::195'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Rent'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry For Rent",
@@ -2705,6 +2725,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2741,11 +2762,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.043065",
+  "modified": "2023-03-20 15:37:38.061393",
   "module": "Migoo CRM",
   "name": "Enquiry Analytics",
   "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type',\n    count(i.request) as 'Total',\n    count(daily.request) as \"Today\",\n    count(week.request) as \"In 7 Days\",\n    count(quarterly.request) as \"In 15 Days\",\n    count(monthly.request) as \"In 30 Days\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n    i.request in(\"Buy/Sell\", \"Rent\")\n    and\n      (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request",
+  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type::160',\n    count(i.request) as 'Total::193',\n    count(daily.request) as \"Today::193\",\n    count(week.request) as \"In 7 Days::193\",\n    count(quarterly.request) as \"In 15 Days::193\",\n    count(monthly.request) as \"In 30 Days::193\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n   \n      (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry Analytics",
@@ -2767,6 +2788,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2803,11 +2825,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:52.947529",
+  "modified": "2023-03-20 16:00:32.407517",
   "module": "Migoo CRM",
   "name": "Lead For Others",
   "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Others'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name::100\",\n    l.status as \"Status\",\n    type as \"Lead Type\",\n    email_id as \"Email::140\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee:-1'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Others'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead For Others",
@@ -2891,6 +2913,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2927,11 +2950,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:52.982212",
+  "modified": "2023-03-20 16:12:25.687733",
   "module": "Migoo CRM",
   "name": "Lead For ERP",
   "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'ERP'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name::100\",\n    l.status as \"Status\",\n    type as \"Lead Type\",\n    email_id as \"Email::140\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee:-1'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'ERP'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead For ERP",
@@ -2953,6 +2976,7 @@
   ]
  },
  {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2989,11 +3013,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:52.996604",
+  "modified": "2023-03-20 16:10:16.754701",
   "module": "Migoo CRM",
   "name": "Lead For Insurance",
   "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Insurance'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name::100\",\n    l.status as \"Status\",\n    type as \"Lead Type\",\n    email_id as \"Email::140\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee:-1'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Insurance'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead For Insurance",

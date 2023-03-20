@@ -257,6 +257,4 @@ fixtures = [
         ]
     ]},
 
-    {"dt": "Request Type", },
-
 ]
