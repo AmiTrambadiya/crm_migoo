@@ -482,5 +482,16 @@
   "name": "Verify Status",
   "script": "frappe.ui.form.on('Item', {\n\tbefore_save:function(frm) {\n\t\tif(frappe.user.has_role(\"Vendor\")===true){\n\t\t    if (frm.is_new()) {\n\t\t    frm.set_value(\"equipment_verify\", \"Not Verify\")\n\t\t    }\n\t\t}\n\t\telse{\n\t\t    frm.set_value(\"equipment_verify\", \"Verify\")\n\t\t    frm.set_df_property('supplier', 'reqd', 1)\n\t\t}\n\t\t\n\t}\n})",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Lead",
+  "enabled": 1,
+  "modified": "2023-03-20 13:25:38.110830",
+  "module": "Migoo CRM",
+  "name": "Lead Setting",
+  "script": "frappe.ui.form.on('Lead', {\n\tonload:function(frm) {\n    cur_frm.set_query(\"equipment__category\", function() {\n    return {\n            \"filters\": {\n                \"parent_item_group\" : \"All Equipment Groups\",\n            }\n        };\n    });\n\t},\n\tequipment__category:function(frm){\n\t    var main=\"\"\n\t   $.each(frm.doc.equipment__category || [], function(i,d){\n\t       if(main==\"\"){\n\t           main=d.item_group_name\n\t       }\n\t       else{\n\t       main =main + \",\"+ d.item_group_name\n\t       }\n\t   })\n\t   console.log(main)\n\t    cur_frm.set_query(\"equipment__sub__category\", function () {\n            return {\n                \"filters\": {\n                    \"parent_item_group\":[\"in\", main],\n                }\n            };\n        });\n\t}\n})",
+  "view": "Form"
  }
 ]
