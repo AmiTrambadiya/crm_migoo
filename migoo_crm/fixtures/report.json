@@ -3,97 +3,6 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 1,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-03-14 18:29:15.422603",
-  "module": "Migoo CRM",
-  "name": "Supplier Rent and Sell Price",
-  "prepared_report": 0,
-  "query": "SELECT \n    i.supplier AS \"Supplier:Link/Supplier:150\",\n    i.item_code AS \"Item:Link/Item\",\n    i.equipment_main_category AS \"Main Category\",\n    i.item_group AS \"Sub Category:Link/Item Group\",\n    i.equipment_price_per_day AS \"Price Per Day\",\n    equipment_price_per_week AS \"Price Per Week\",\n    equipment_price_per_month AS \"Price Per Month\",\n    equipment_sell_price AS \"Sell Price\",\n    i.stock_uom AS \"UOM:Link/UOM:100\" \n    \n    FROM `tabItem` i\n    \n    WHERE\n    i.disabled=0\n    \n    GROUP BY i.supplier, i.item_code ",
-  "ref_doctype": "Item",
-  "reference_report": null,
-  "report_name": "Supplier Rent and Sell Price",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Sales User"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock Manager"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "All"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Maintenance User"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Item Manager"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Purchase User"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Vendor"
-   },
-   {
-    "parent": "Supplier Rent and Sell Price",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Migoo Approver"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
@@ -102,7 +11,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:14.889227",
+  "modified": "2023-03-20 12:30:53.448012",
   "module": "Migoo CRM",
   "name": "report",
   "prepared_report": 0,
@@ -193,7 +102,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:14.924838",
+  "modified": "2023-03-20 12:30:53.419088",
   "module": "Migoo CRM",
   "name": "Verify Supplier",
   "prepared_report": 0,
@@ -278,7 +187,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:14.942491",
+  "modified": "2023-03-20 12:30:53.404856",
   "module": "Migoo CRM",
   "name": "Equipment",
   "prepared_report": 0,
@@ -369,7 +278,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-14 18:29:14.848667",
+  "modified": "2023-03-20 12:30:53.461365",
   "module": "Migoo CRM",
   "name": "Supplier Wise Equipment List",
   "prepared_report": 0,
@@ -455,6 +364,7 @@
   ]
  },
  {
+  "_liked_by": "[]",
   "add_total_row": 1,
   "columns": [
    {
@@ -465,7 +375,7 @@
     "parent": "Rental Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    },
    {
     "fieldname": "sii.item_code",
@@ -475,7 +385,7 @@
     "parent": "Rental Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    },
    {
     "fieldname": "count(*)",
@@ -485,7 +395,7 @@
     "parent": "Rental Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    },
    {
     "fieldname": "sii.amount",
@@ -495,7 +405,7 @@
     "parent": "Rental Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    }
   ],
   "disable_prepared_report": 0,
@@ -507,7 +417,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-14 18:29:15.409992",
+  "modified": "2023-03-20 12:30:53.168088",
   "module": "Migoo CRM",
   "name": "Rental Report",
   "prepared_report": 0,
@@ -533,6 +443,7 @@
   ]
  },
  {
+  "_liked_by": "[]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -569,11 +480,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.214938",
+  "modified": "2023-03-20 12:30:53.179730",
   "module": "Migoo CRM",
   "name": "Call History Report",
   "prepared_report": 0,
-  "query": "    select\n        cl.agent_name as 'Agent',\n        cl.agent_number as 'Agent Number',\n        cl.client_number as 'Client Number',\n        cl.status as 'Status Of call',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording:10\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on cl.agent_name = u.full_name\n        and u.phone = cl.agent_number\n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\n    order by\n        cl.creation desc",
+  "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n        inner join `tabEmployee` e\non\nu.phone=e.cell_number\n\n\n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\nand cl.agent_number=e.cell_number  \n\n\n    order by\n        cl.creation desc",
   "ref_doctype": "Call Logs",
   "reference_report": null,
   "report_name": "Call History Report",
@@ -641,7 +552,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.055827",
+  "modified": "2023-03-20 12:30:53.335181",
   "module": "Migoo CRM",
   "name": "Equipment For sell Or Rent Report",
   "prepared_report": 0,
@@ -732,7 +643,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.072968",
+  "modified": "2023-03-20 12:30:53.320199",
   "module": "Migoo CRM",
   "name": "Daily Supplier Report",
   "prepared_report": 0,
@@ -842,7 +753,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.167157",
+  "modified": "2023-03-20 12:30:53.250249",
   "module": "Migoo CRM",
   "name": "Lead Analytics",
   "prepared_report": 0,
@@ -891,7 +802,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.042813",
+  "modified": "2023-03-20 12:30:53.352205",
   "module": "Migoo CRM",
   "name": "Supplier Verified or Not report",
   "prepared_report": 0,
@@ -976,7 +887,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.093002",
+  "modified": "2023-03-20 12:30:53.300273",
   "module": "Migoo CRM",
   "name": "Supplier and Equipment Report",
   "prepared_report": 0,
@@ -1050,316 +961,7 @@
   ]
  },
  {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date ",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry For Sell",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry For Sell",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-03-14 18:29:15.179880",
-  "module": "Migoo CRM",
-  "name": "Inquiry For Sell",
-  "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Sell'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
-  "ref_doctype": "Inquiry Form",
-  "reference_report": null,
-  "report_name": "Inquiry For Sell",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Inquiry For Sell",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Inquiry For Sell",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Guest"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry For Rent",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry For Rent",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-03-14 18:29:15.192896",
-  "module": "Migoo CRM",
-  "name": "Inquiry For Rent",
-  "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Rent'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
-  "ref_doctype": "Inquiry Form",
-  "reference_report": null,
-  "report_name": "Inquiry For Rent",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Inquiry For Rent",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Inquiry For Rent",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Guest"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry For Buy",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry For Buy",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-03-14 18:29:15.226302",
-  "module": "Migoo CRM",
-  "name": "Inquiry For Buy",
-  "prepared_report": 0,
-  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Buy'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
-  "ref_doctype": "Inquiry Form",
-  "reference_report": null,
-  "report_name": "Inquiry For Buy",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Inquiry For Buy",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Inquiry For Buy",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Guest"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Buy",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Buy",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-03-14 18:29:15.356071",
-  "module": "Migoo CRM",
-  "name": "Lead For Buy",
-  "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead`\nWHERE\n    request_type = 'Buy'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
-  "ref_doctype": "Lead",
-  "reference_report": null,
-  "report_name": "Lead For Buy",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Lead For Buy",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Lead For Buy",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Guest"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Sell",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Sell",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-03-14 18:29:15.204216",
-  "module": "Migoo CRM",
-  "name": "Lead For Sell",
-  "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead` \nWHERE\n    request_type = 'Sell'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
-  "ref_doctype": "Lead",
-  "reference_report": null,
-  "report_name": "Lead For Sell",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Lead For Sell",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Lead For Sell",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Guest"
-   }
-  ]
- },
- {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1396,11 +998,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.370136",
+  "modified": "2023-03-20 12:30:52.926677",
   "module": "Migoo CRM",
   "name": "Lead For Rent",
   "prepared_report": 0,
-  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead` \nWHERE\n    request_type = 'Rent'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Rent'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead For Rent",
@@ -1422,68 +1024,6 @@
   ]
  },
  {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2023-03-14 18:29:15.146934",
-  "module": "Migoo CRM",
-  "name": "Inquiry Analytics",
-  "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type',\n    count(i.request) as 'Total',\n    count(daily.request) as \"Today\",\n    count(week.request) as \"In 7 Days\",\n    count(quarterly.request) as \"In 15 Days\",\n    count(monthly.request) as \"In 30 Days\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n    i.request in(\"Buy\", \"Sell\", \"Rent\")\n    and\n      (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request",
-  "ref_doctype": "Inquiry Form",
-  "reference_report": null,
-  "report_name": "Inquiry Analytics",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Inquiry Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   },
-   {
-    "parent": "Inquiry Analytics",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Guest"
-   }
-  ]
- },
- {
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1495,7 +1035,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.112727",
+  "modified": "2023-03-20 12:30:53.280105",
   "module": "Migoo CRM",
   "name": "Equipment Status Wise Report",
   "prepared_report": 0,
@@ -1637,7 +1177,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-14 18:29:15.021974",
+  "modified": "2023-03-20 12:30:53.366348",
   "module": "Migoo CRM",
   "name": "Insurance Report",
   "prepared_report": 0,
@@ -1753,7 +1293,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.127107",
+  "modified": "2023-03-20 12:30:53.263109",
   "module": "Migoo CRM",
   "name": "Daily Created Equipment Report",
   "prepared_report": 0,
@@ -1869,7 +1409,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.238398",
+  "modified": "2023-03-20 12:30:53.236580",
   "module": "Migoo CRM",
   "name": "Supplier Report",
   "prepared_report": 0,
@@ -1979,7 +1519,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.297220",
+  "modified": "2023-03-20 12:30:53.222510",
   "module": "Migoo CRM",
   "name": "Equipment Report",
   "prepared_report": 0,
@@ -2095,7 +1635,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.312781",
+  "modified": "2023-03-20 12:30:53.206378",
   "module": "Migoo CRM",
   "name": "Supplier Verification Report",
   "prepared_report": 0,
@@ -2169,6 +1709,7 @@
   ]
  },
  {
+  "_liked_by": "[]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2205,11 +1746,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.341994",
+  "modified": "2023-03-20 12:30:53.139032",
   "module": "Migoo CRM",
   "name": "Equipment Verification Report",
   "prepared_report": 0,
-  "query": "WITH difference_in_seconds AS (\nSELECT\ns.item_name AS \"EquipmentName\",\ns.item_group AS \"maincategory\",\ns.equipment_main_category AS \"subcategory\",\ns.supplier AS \"supplier\",\ns.supplier_name as \"sn\",\ns.whatsapp_no as \"snum\",\ns.creation as 'time',\n\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabItem` AS s\nWHERE\ns.equipment_verify=\"Verify\"\n\n),\n\ndifferences AS (\n  SELECT\n  EquipmentName,\n  maincategory,\n  subcategory,\n  supplier,\n  sn,\n  snum,\n  time,\n \n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  EquipmentName as \"Name\",\n  maincategory as \"Main Category\",\n  subcategory as \"Sub Category\",\n  supplier as \"Supplier\",\n  sn as \"Supplier Name\",\n  snum as \"Supplier Number\",\n \n\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Difference\"\nFROM differences\n\nwhere\n  (\n    DATE(time) between %(from_date) s\n    and %(to_date) s\n  )\n\norder by time desc\n\n",
+  "query": "WITH difference_in_seconds AS (\nSELECT\ns.item_name AS \"EquipmentName\",\ns.item_group AS \"maincategory\",\ns.equipment_main_category AS \"subcategory\",\ns.supplier AS \"supplier\",\ns.supplier_name as \"sn\",\ns.whatsapp_no as \"snum\",\ns.creation as 'time',\n\nTIMESTAMPDIFF(SECOND,s.creation,s.verify_time) AS seconds\nFROM `tabItem` AS s\nWHERE\ns.equipment_verify=\"Verify\"\n\n),\n\ndifferences AS (\n  SELECT\n  EquipmentName,\n  maincategory,\n  subcategory,\n  supplier,\n  sn,\n  snum,\n  time,\n \n  seconds,\n  MOD(seconds, 60) AS seconds_part,\n  MOD(seconds, 3600) AS minutes_part,\n  MOD(seconds, 3600 * 24) AS hours_part\n  FROM difference_in_seconds\n)\n\nSELECT\n  EquipmentName as \"Name::120\",\n  maincategory as \"Main Category::180\",\n  subcategory as \"Sub Category::180\",\n  supplier as \"Supplier\",\n  sn as \"Supplier Name::180\",\n  snum as \"Supplier Number\",\n \n\n  CONCAT(\n    FLOOR(seconds / 3600 / 24), ' days ',\n    FLOOR(hours_part / 3600), ' hours ',\n    FLOOR(minutes_part / 60), ' minutes ',\n    seconds_part, ' seconds'\n  ) AS \"Difference::350\"\nFROM differences\n\nwhere\n  (\n    DATE(time) between %(from_date) s\n    and %(to_date) s\n  )\n\norder by time desc\n\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Equipment Verification Report",
@@ -2296,7 +1837,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.327572",
+  "modified": "2023-03-20 12:30:53.191411",
   "module": "Migoo CRM",
   "name": "Daily Equipment Report",
   "prepared_report": 0,
@@ -2376,6 +1917,7 @@
   ]
  },
  {
+  "_liked_by": "[]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2386,7 +1928,7 @@
     "parent": "Currently Equipment On Rent",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 305
    },
    {
     "fieldname": "soi.item_code",
@@ -2396,7 +1938,7 @@
     "parent": "Currently Equipment On Rent",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 305
    },
    {
     "fieldname": "count(soi.qty)",
@@ -2406,7 +1948,7 @@
     "parent": "Currently Equipment On Rent",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 305
    },
    {
     "fieldname": "soi.amount",
@@ -2416,7 +1958,7 @@
     "parent": "Currently Equipment On Rent",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 300
    }
   ],
   "disable_prepared_report": 0,
@@ -2428,7 +1970,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.382382",
+  "modified": "2023-03-20 12:30:53.123151",
   "module": "Migoo CRM",
   "name": "Currently Equipment On Rent",
   "prepared_report": 0,
@@ -2478,6 +2020,7 @@
   ]
  },
  {
+  "_liked_by": "[]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2488,7 +2031,7 @@
     "parent": "Equipment Rent on Past",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    },
    {
     "fieldname": "sii.item_code",
@@ -2498,7 +2041,7 @@
     "parent": "Equipment Rent on Past",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    },
    {
     "fieldname": "count(*)",
@@ -2508,7 +2051,7 @@
     "parent": "Equipment Rent on Past",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    },
    {
     "fieldname": "sii.amount",
@@ -2518,7 +2061,7 @@
     "parent": "Equipment Rent on Past",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 0
+    "width": 280
    }
   ],
   "disable_prepared_report": 0,
@@ -2530,7 +2073,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:15.397843",
+  "modified": "2023-03-20 12:30:53.154694",
   "module": "Migoo CRM",
   "name": "Equipment Rent on Past",
   "prepared_report": 0,
@@ -2592,7 +2135,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:14.958992",
+  "modified": "2023-03-20 12:30:53.392381",
   "module": "Migoo CRM",
   "name": "Insurance Expire Email Report",
   "prepared_report": 0,
@@ -2623,7 +2166,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": "Migoo",
-  "modified": "2023-03-14 18:29:14.988309",
+  "modified": "2023-03-20 12:30:53.381268",
   "module": "Migoo CRM",
   "name": "Fitness Expire Email Report",
   "prepared_report": 0,
@@ -2654,7 +2197,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-14 18:29:14.908723",
+  "modified": "2023-03-20 12:30:53.433194",
   "module": "Migoo CRM",
   "name": "Compliance Report",
   "prepared_report": 0,
@@ -2730,6 +2273,762 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Spare Parts",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Spare Parts",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-20 12:31:48.320399",
+  "module": "Migoo CRM",
+  "name": "Enquiry For Spare Parts",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Spare Parts'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry For Spare Parts",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Enquiry For Spare Parts",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry For Spare Parts",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Buy/Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Buy/Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-20 12:30:53.012355",
+  "module": "Migoo CRM",
+  "name": "Lead For Buy/Sell",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    l.lead_owner as \"Lead Owner\",\n    request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \n join `tabEmployee` e\non e.user_id=l.lead_owner\n\n\nWHERE\n    request_type = 'Buy/Sell' and (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Buy/Sell",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Buy/Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Buy/Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Others",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Others",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-20 12:31:56.850430",
+  "module": "Migoo CRM",
+  "name": "Enquiry For Others",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source''\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Others'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry For Others",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Enquiry For Others",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry For Others",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For ERP",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For ERP",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-20 12:30:53.074507",
+  "module": "Migoo CRM",
+  "name": "Enquiry For ERP",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'ERP'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry For ERP",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Enquiry For ERP",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry For ERP",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Insurance",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Insurance",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-20 12:30:53.086854",
+  "module": "Migoo CRM",
+  "name": "Enquiry For Insurance",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Insurance'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry For Insurance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Enquiry For Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry For Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Buy/Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Buy/Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-20 12:30:53.027736",
+  "module": "Migoo CRM",
+  "name": "Enquiry For Buy/Sell",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Buy/Sell'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry For Buy/Sell",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Enquiry For Buy/Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry For Buy/Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Rent",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry For Rent",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2023-03-20 12:30:53.058536",
+  "module": "Migoo CRM",
+  "name": "Enquiry For Rent",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Rent'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry For Rent",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Enquiry For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry Analytics",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Enquiry Analytics",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-03-20 12:30:53.043065",
+  "module": "Migoo CRM",
+  "name": "Enquiry Analytics",
+  "prepared_report": 0,
+  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type',\n    count(i.request) as 'Total',\n    count(daily.request) as \"Today\",\n    count(week.request) as \"In 7 Days\",\n    count(quarterly.request) as \"In 15 Days\",\n    count(monthly.request) as \"In 30 Days\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n    i.request in(\"Buy/Sell\", \"Rent\")\n    and\n      (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry Analytics",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Enquiry Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Others",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Others",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-03-20 12:30:52.947529",
+  "module": "Migoo CRM",
+  "name": "Lead For Others",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Others'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Others",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Others",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Others",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Spare Parts",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Spare Parts",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-03-20 12:30:52.963162",
+  "module": "Migoo CRM",
+  "name": "Lead For Spare Parts",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\nWHERE\n    request_type = 'Spare Parts'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Spare Parts",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Spare Parts",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Spare Parts",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For ERP",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For ERP",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-03-20 12:30:52.982212",
+  "module": "Migoo CRM",
+  "name": "Lead For ERP",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'ERP'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For ERP",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For ERP",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For ERP",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Insurance",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Insurance",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-03-20 12:30:52.996604",
+  "module": "Migoo CRM",
+  "name": "Lead For Insurance",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\n\nWHERE\n    request_type = 'Insurance'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Insurance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Insurance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
    }
   ]
  }
