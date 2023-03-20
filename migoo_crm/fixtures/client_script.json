@@ -488,10 +488,10 @@
   "doctype": "Client Script",
   "dt": "Lead",
   "enabled": 1,
-  "modified": "2023-03-20 13:25:38.110830",
+  "modified": "2023-03-20 17:50:58.112871",
   "module": "Migoo CRM",
   "name": "Lead Setting",
-  "script": "frappe.ui.form.on('Lead', {\n\tonload:function(frm) {\n    cur_frm.set_query(\"equipment__category\", function() {\n    return {\n            \"filters\": {\n                \"parent_item_group\" : \"All Equipment Groups\",\n            }\n        };\n    });\n\t},\n\tequipment__category:function(frm){\n\t    var main=\"\"\n\t   $.each(frm.doc.equipment__category || [], function(i,d){\n\t       if(main==\"\"){\n\t           main=d.item_group_name\n\t       }\n\t       else{\n\t       main =main + \",\"+ d.item_group_name\n\t       }\n\t   })\n\t   console.log(main)\n\t    cur_frm.set_query(\"equipment__sub__category\", function () {\n            return {\n                \"filters\": {\n                    \"parent_item_group\":[\"in\", main],\n                }\n            };\n        });\n\t}\n})",
+  "script": "frappe.ui.form.on('Lead', {\n\tonload:function(frm) {\n    cur_frm.set_query(\"equipment__category\", function() {\n    return {\n            \"filters\": {\n                \"parent_item_group\" : \"All Equipment Groups\",\n            }\n        };\n    });\n    \n    cur_frm.set_query(\"request_type\", function() {\n    return {\n            \"filters\": {\n                \"is_select\" : 1,\n            }\n        };\n    });\n    cur_frm.set_query(\"request_types\", function() {\n    return {\n            \"filters\": {\n                \"is_multi_select\" : 1,\n            }\n        };\n    });\n\t},\n\tequipment__category:function(frm){\n\t    var main=\"\"\n\t   $.each(frm.doc.equipment__category || [], function(i,d){\n\t       if(main==\"\"){\n\t           main=d.item_group_name\n\t       }\n\t       else{\n\t       main =main + \",\"+ d.item_group_name\n\t       }\n\t   })\n\t   console.log(main)\n\t    cur_frm.set_query(\"equipment__sub__category\", function () {\n            return {\n                \"filters\": {\n                    \"parent_item_group\":[\"in\", main],\n                }\n            };\n        });\n\t}\n})",
   "view": "Form"
  }
 ]

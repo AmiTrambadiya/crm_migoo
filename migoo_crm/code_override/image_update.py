@@ -34,7 +34,6 @@ def status_change(name,status,price,equipment_current_reading,test,img1):
 @frappe.whitelist()
 def address_update(name,address_line1,city,state,postal_code):
     titile= name + "-Billing"
-    frappe.msgprint(state)
     frappe.db.set_value("Address",titile,"address_line1",address_line1)
     # frappe.db.set_value("Address",titile,"address_line2",address_line2)
     frappe.db.set_value("Address",titile,"city",city)
