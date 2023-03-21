@@ -5,9 +5,10 @@ from frappe import _
 import frappe.defaults
 
 @frappe.whitelist()
-def status_change(name,status,price,equipment_current_reading,test,img1):
+def status_change(name,status,price,equipment_current_reading,test,img1,img2,img3,img4,img5,img6):
     c = int(status)
     test1=test.split(",")
+    list1=[img1,img2,img3,img4,img5,img6]
     if c==0:
         # frappe.msgprint(b)
         frappe.db.set_value("Web item",name,"publish",0)
@@ -18,6 +19,14 @@ def status_change(name,status,price,equipment_current_reading,test,img1):
     # # record =  frappe.get_list('web Item Slide Show',filters={'parent':a},ignore_permissions=True)
     frappe.db.delete('web Item Slide Show',filters={'parent':name})
     doc = frappe.get_doc('Web item', name)
+    for j in list1:
+        if j!="":
+            doc.append('web_item_slide_show', {
+            'image': j,
+           #  'request_type':request
+            })
+            doc.save()
+            frappe.db.commit()
     for i in test1:
         if i!="":
             doc.append('web_item_slide_show', {

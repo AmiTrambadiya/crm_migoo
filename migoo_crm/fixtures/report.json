@@ -6,6 +6,378 @@
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date ",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry For Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry For Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-22 12:55:19.966772",
+  "module": "Migoo CRM",
+  "name": "Inquiry For Sell",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Sell'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry For Sell",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry For Rent",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry For Rent",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-22 12:55:19.978878",
+  "module": "Migoo CRM",
+  "name": "Inquiry For Rent",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Rent'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry For Rent",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry For Rent",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry For Buy",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry For Buy",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-22 12:55:20.043879",
+  "module": "Migoo CRM",
+  "name": "Inquiry For Buy",
+  "prepared_report": 0,
+  "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name\",\n    company_name as 'Company',\n    email_address as 'Email',\n    mobile_no as 'Mobile No',\n    item_details as 'Equipment Details',\n    inquiry_source as 'Inquiry Source'\nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Buy'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry For Buy",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Buy",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Buy",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-22 12:55:20.131423",
+  "module": "Migoo CRM",
+  "name": "Lead For Buy",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead`\nWHERE\n    request_type = 'Buy'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Buy",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Buy",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Lead For Sell",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-22 12:55:20.000756",
+  "module": "Migoo CRM",
+  "name": "Lead For Sell",
+  "prepared_report": 0,
+  "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\"\nFROM\n    `tabLead` \nWHERE\n    request_type = 'Sell'\n    and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Sell",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Lead For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry Analytics",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Inquiry Analytics",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-02-22 12:55:19.941516",
+  "module": "Migoo CRM",
+  "name": "Inquiry Analytics",
+  "prepared_report": 0,
+  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type',\n    count(i.request) as 'Total',\n    count(daily.request) as \"Today\",\n    count(week.request) as \"In 7 Days\",\n    count(quarterly.request) as \"In 15 Days\",\n    count(monthly.request) as \"In 30 Days\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n    i.request in(\"Buy\", \"Sell\", \"Rent\")\n    and\n      (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Inquiry Analytics",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Inquiry Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Inquiry Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
   "filters": [],
   "is_standard": "No",
   "javascript": null,
@@ -91,7 +463,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -268,7 +639,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -500,7 +870,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -633,7 +1002,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -793,7 +1161,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -879,7 +1246,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -965,7 +1331,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1028,7 +1393,6 @@
   ]
  },
  {
-  "_liked_by": "[]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1120,7 +1484,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [
    {
@@ -1922,7 +2285,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2103,7 +2465,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2160,7 +2521,6 @@
   ]
  },
  {
-  "_liked_by": "[]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2192,7 +2552,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2284,7 +2643,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2347,7 +2705,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2410,7 +2767,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2473,7 +2829,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2536,7 +2891,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2599,7 +2953,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2662,7 +3015,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2725,7 +3077,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2788,7 +3139,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2913,7 +3263,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2976,7 +3325,6 @@
   ]
  },
  {
-  "_liked_by": "[\"foram@sanskartechnolab.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
