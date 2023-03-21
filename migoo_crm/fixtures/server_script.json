@@ -1,5 +1,21 @@
 [
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "allow_guest": 0,
+  "api_method": "check_register_no",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2023-03-21 16:32:02.221740",
+  "module": "Migoo CRM",
+  "name": "Register Must be Uniqe",
+  "reference_doctype": null,
+  "script": "name=frappe.form_dict[\"register_no\"]\n\nqr =frappe.db.sql(\"select register_no from `tabItem` where register_no=%s \",name)\n\nli=\"\"\nfor i in qr:\n    for j in i:\n        li=j\n        \n# frappe.msgprint(li)\nfrappe.response[\"msg\"]=li",
+  "script_type": "API"
+ },
+ {
   "allow_guest": 0,
   "api_method": "Select_option",
   "disabled": 0,
