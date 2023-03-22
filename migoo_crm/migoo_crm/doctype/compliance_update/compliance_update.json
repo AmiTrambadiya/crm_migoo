@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-03-21 17:01:06.680919",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "equipment_code",
+  "compliance_update",
+  "starting_date",
+  "ending_date",
+  "insurer_name",
+  "state",
+  "proof_of_document",
+  "rto_registration_no"
+ ],
+ "fields": [
+  {
+   "fieldname": "equipment_code",
+   "fieldtype": "Link",
+   "label": "Equipment Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "compliance_update",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Compliance Update",
+   "options": "\nInsurance\nFitness\nPUC",
+   "reqd": 1
+  },
+  {
+   "fieldname": "starting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Starting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ending_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Ending date",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.compliance_update==\"Insurance\";",
+   "fieldname": "insurer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Insurer Name",
+   "mandatory_depends_on": "eval: doc.compliance_update==\"Insurance\";"
+  },
+  {
+   "depends_on": "eval: doc.compliance_update==\"Fitness\";",
+   "fieldname": "state",
+   "fieldtype": "Select",
+   "label": "State",
+   "mandatory_depends_on": "eval: doc.compliance_update==\"Fitness\";",
+   "options": "\nAndaman and Nicobar Islands\nAndhra Pradesh\nArunachal Pradesh\nAssam\nBihar\nChandigarh\nChhattisgarh\nDadra and Nagar Haveli and Daman and Diu\nDelhi\nGoa\nGujarat\nHaryana\nHimachal Pradesh\nJammu and Kashmir\nJharkhand\nKarnataka\nKerala\nLadakh\nLakshadweep Islands\nMadhya Pradesh\nMaharashtra\nManipur\nMeghalaya\nMizoram\nNagaland\nOdisha\nOther Territory\nPondicherry\nPunjab\nRajasthan\nSikkim\nTamil Nadu\nTelangana\nTripura\nUttar Pradesh\nUttarakhand\nWest Bengal"
+  },
+  {
+   "fieldname": "proof_of_document",
+   "fieldtype": "Attach",
+   "label": "Proof of Document",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rto_registration_no",
+   "fieldtype": "Data",
+   "label": "RTO Registration No"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-03-22 13:38:40.701479",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Compliance Update",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
