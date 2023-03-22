@@ -10,13 +10,13 @@
  "field_order": [
   "naming_series",
   "resource_planning",
-  "equipment",
-  "column_break_3",
-  "customer",
-  "equipment_category",
-  "column_break_7",
   "date",
+  "column_break_3",
+  "equipment_category",
   "equipment_no",
+  "column_break_7",
+  "equipment",
+  "customer",
   "time_details_section",
   "start_time",
   "end_time",
@@ -44,19 +44,22 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Series"
   },
   {
    "fieldname": "resource_planning",
    "fieldtype": "Link",
    "label": "Resource Planning",
-   "options": "Resource Planning"
+   "options": "Resource Planning",
+   "permlevel": 1
   },
   {
    "fetch_from": "resource_planning.equipment",
    "fieldname": "equipment",
    "fieldtype": "Data",
-   "label": "Equipment"
+   "label": "Equipment",
+   "permlevel": 2
   },
   {
    "fieldname": "column_break_3",
@@ -66,13 +69,15 @@
    "fetch_from": "resource_planning.customer",
    "fieldname": "customer",
    "fieldtype": "Data",
-   "label": "Customer"
+   "label": "Customer",
+   "permlevel": 2
   },
   {
    "fetch_from": "resource_planning.equipment_sub_category",
    "fieldname": "equipment_category",
    "fieldtype": "Data",
-   "label": "Equipment Category"
+   "label": "Equipment Category",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_7",
@@ -87,7 +92,8 @@
    "fetch_from": "resource_planning.equipment_no",
    "fieldname": "equipment_no",
    "fieldtype": "Data",
-   "label": "Equipment No"
+   "label": "Equipment No",
+   "permlevel": 1
   },
   {
    "fieldname": "time_details_section",
@@ -168,18 +174,21 @@
    "fieldname": "supplier",
    "fieldtype": "Link",
    "label": "Supplier",
-   "options": "Supplier"
+   "options": "Supplier",
+   "permlevel": 1
   },
   {
    "fetch_from": "supplier.supplier_name",
    "fieldname": "supplier_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Supplier Name"
   },
   {
    "fetch_from": "supplier.mobile_number",
    "fieldname": "supplier_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Supplier Number"
   },
   {
@@ -197,18 +206,20 @@
    "fetch_from": "driver.full_name",
    "fieldname": "driver_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Driver Name"
   },
   {
    "fetch_from": "driver.cell_number",
    "fieldname": "driver_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Driver Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-14 12:51:16.582117",
+ "modified": "2023-03-22 13:53:21.675359",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",
