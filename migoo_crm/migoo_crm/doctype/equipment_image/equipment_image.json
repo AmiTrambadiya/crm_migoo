@@ -11,14 +11,14 @@
  "fields": [
   {
    "fieldname": "equipment_img",
-   "fieldtype": "Attach Image",
-   "label": "Image"
+   "fieldtype": "Attach",
+   "label": "Equipment Image"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-03-14 13:18:28.489408",
+ "modified": "2023-03-22 16:41:05.459270",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Equipment Image",

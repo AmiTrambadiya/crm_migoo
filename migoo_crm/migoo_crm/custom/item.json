@@ -3177,7 +3177,7 @@
    "reqd": 0,
    "search_index": 0,
    "translatable": 1,
-   "unique": 0,
+   "unique": 1,
    "width": null
   },
   {
