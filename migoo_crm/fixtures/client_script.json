@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Compliance Update",
+  "enabled": 1,
+  "modified": "2023-03-24 10:38:26.750035",
+  "module": null,
+  "name": "compliance update set equipment name",
+  "script": "frappe.ui.form.on('Compliance Update', {\n\tonload:function(frm) {\n\t\t// your code here\n\t\tvar equipment_name = localStorage.getItem(\"equipment\")\n\t\tfrm.set_value('equipment',equipment_name)\n\t\tlocalStorage.removeItem(\"equipment\")\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Item",
   "enabled": 0,
   "modified": "2023-03-17 13:40:21.122804",
