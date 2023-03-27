@@ -289,7 +289,7 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-11-23 11:26:14.420778",
+  "modified": "2023-03-22 11:16:42.478859",
   "name": "All Access",
   "role_profile": "All Access",
   "roles": [
@@ -562,12 +562,6 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Translator"
-   },
-   {
-    "parent": "All Access",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Vendor"
    },
    {
     "parent": "All Access",
