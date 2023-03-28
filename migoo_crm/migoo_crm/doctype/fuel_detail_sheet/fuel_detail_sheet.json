@@ -2,31 +2,30 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2023-02-03 16:53:24.136331",
- "default_view": "List",
+ "creation": "2023-03-28 16:33:12.913033",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
   "resource_planning",
-  "date",
-  "column_break_3",
-  "equipment_category",
-  "equipment_no",
-  "column_break_7",
   "equipment",
   "customer",
-  "equipmenrt_acrtivity_section",
+  "column_break_3r5tg",
+  "date",
+  "equipment_category",
+  "equipment_no",
+  "fuel_details_section",
+  "fuel_details",
+  "section_break_zwjy7",
+  "total_fuel",
+  "average_fuel",
+  "column_break_axyjy",
   "activity",
-  "supplier_and_driver_section",
+  "supplier_and_driver_details_section",
   "supplier",
-  "supplier_name",
-  "supplier_number",
-  "column_break_40",
-  "driver",
-  "driver_name",
-  "driver_number"
+  "column_break_kruj4",
+  "driver"
  ],
  "fields": [
   {
@@ -38,55 +37,59 @@
   {
    "fieldname": "resource_planning",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Resource Planning",
    "options": "Resource Planning",
-   "permlevel": 1
+   "reqd": 1
   },
   {
-   "fetch_from": "resource_planning.equipment",
+   "fetch_from": "resource_planning.equipment_no",
    "fieldname": "equipment",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Equipment",
-   "permlevel": 2
-  },
-  {
-   "fieldname": "column_break_3",
-   "fieldtype": "Column Break"
+   "options": "Item"
   },
   {
    "fetch_from": "resource_planning.customer",
    "fieldname": "customer",
    "fieldtype": "Data",
-   "label": "Customer",
-   "permlevel": 2
+   "label": "Customer"
   },
   {
    "fetch_from": "resource_planning.equipment_sub_category",
    "fieldname": "equipment_category",
    "fieldtype": "Data",
-   "label": "Equipment Category",
-   "permlevel": 1
+   "label": "Equipment Category"
   },
   {
-   "fieldname": "column_break_7",
-   "fieldtype": "Column Break"
-  },
-  {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
   },
   {
-   "fetch_from": "resource_planning.equipment_no",
    "fieldname": "equipment_no",
    "fieldtype": "Data",
-   "label": "Equipment No",
-   "permlevel": 1
+   "label": "Equipment No"
   },
   {
-   "fieldname": "equipmenrt_acrtivity_section",
+   "fieldname": "fuel_details_section",
    "fieldtype": "Section Break",
-   "label": "Equipment Activity"
+   "label": "Fuel Details"
+  },
+  {
+   "fieldname": "total_fuel",
+   "fieldtype": "Data",
+   "label": "Total Fuel"
+  },
+  {
+   "fieldname": "average_fuel",
+   "fieldtype": "Data",
+   "label": "Average Fuel"
+  },
+  {
+   "fieldname": "column_break_axyjy",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "activity",
@@ -94,34 +97,19 @@
    "label": "Activity"
   },
   {
-   "fieldname": "supplier_and_driver_section",
+   "fieldname": "supplier_and_driver_details_section",
    "fieldtype": "Section Break",
-   "label": "Supplier And Driver"
+   "label": "Supplier And Driver Details"
   },
   {
    "fetch_from": "resource_planning.supplier",
    "fieldname": "supplier",
    "fieldtype": "Link",
    "label": "Supplier",
-   "options": "Supplier",
-   "permlevel": 1
+   "options": "Supplier"
   },
   {
-   "fetch_from": "supplier.supplier_name",
-   "fieldname": "supplier_name",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Supplier Name"
-  },
-  {
-   "fetch_from": "supplier.mobile_number",
-   "fieldname": "supplier_number",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Supplier Number"
-  },
-  {
-   "fieldname": "column_break_40",
+   "fieldname": "column_break_kruj4",
    "fieldtype": "Column Break"
   },
   {
@@ -132,26 +120,26 @@
    "options": "Driver"
   },
   {
-   "fetch_from": "driver.full_name",
-   "fieldname": "driver_name",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Driver Name"
+   "fieldname": "column_break_3r5tg",
+   "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "driver.cell_number",
-   "fieldname": "driver_number",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Driver Number"
+   "fieldname": "fuel_details",
+   "fieldtype": "Table",
+   "label": "Fuel Details",
+   "options": "Fuel Details"
+  },
+  {
+   "fieldname": "section_break_zwjy7",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-28 11:47:27.491682",
+ "modified": "2023-03-28 16:44:59.453948",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
- "name": "Log Sheet",
+ "name": "Fuel Detail Sheet",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

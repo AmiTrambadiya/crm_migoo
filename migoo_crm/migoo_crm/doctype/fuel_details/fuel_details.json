@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-03-28 16:44:00.600928",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fuel_type",
+  "fuel_filling_kms",
+  "fuel_unit",
+  "issue_by",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Fuel Type",
+   "options": "\nDiesel\nPetrol\nCNG\nPNG"
+  },
+  {
+   "fieldname": "fuel_filling_kms",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Fuel Filling Kms"
+  },
+  {
+   "fieldname": "fuel_unit",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Fuel Unit",
+   "options": "Litre"
+  },
+  {
+   "fieldname": "issue_by",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Issue By",
+   "options": "\nSupplier\nMigoo\nCustomer"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-03-28 16:44:00.600928",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Fuel Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

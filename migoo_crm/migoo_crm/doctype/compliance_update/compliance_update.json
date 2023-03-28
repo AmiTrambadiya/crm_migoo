@@ -7,28 +7,28 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "equipment_code",
+  "equipment",
+  "rto_registration_no",
+  "column_break_brhes",
+  "model",
+  "maker_model",
+  "section_break_skta4",
   "compliance_update",
   "starting_date",
   "ending_date",
-  "insurer_name",
-  "state",
   "proof_of_document",
-  "rto_registration_no"
+  "column_break_zxsc4",
+  "insurerance_company_name",
+  "state",
+  "compliance_name"
  ],
  "fields": [
-  {
-   "fieldname": "equipment_code",
-   "fieldtype": "Link",
-   "label": "Equipment Code",
-   "options": "Item"
-  },
   {
    "fieldname": "compliance_update",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Compliance Update",
-   "options": "\nInsurance\nFitness\nPUC",
+   "options": "\nInsurance\nFitness\nPUC\nOthers",
    "reqd": 1
   },
   {
@@ -46,14 +46,6 @@
    "reqd": 1
   },
   {
-   "depends_on": "eval: doc.compliance_update==\"Insurance\";",
-   "fieldname": "insurer_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Insurer Name",
-   "mandatory_depends_on": "eval: doc.compliance_update==\"Insurance\";"
-  },
-  {
    "depends_on": "eval: doc.compliance_update==\"Fitness\";",
    "fieldname": "state",
    "fieldtype": "Select",
@@ -68,14 +60,60 @@
    "reqd": 1
   },
   {
+   "fetch_from": "equipment.register_no",
    "fieldname": "rto_registration_no",
    "fieldtype": "Data",
    "label": "RTO Registration No"
+  },
+  {
+   "fieldname": "equipment",
+   "fieldtype": "Link",
+   "label": "Equipment Code",
+   "options": "Item"
+  },
+  {
+   "depends_on": "eval: doc.compliance_update==\"Others\";",
+   "fieldname": "compliance_name",
+   "fieldtype": "Data",
+   "label": "Compliance Name",
+   "mandatory_depends_on": "eval: doc.compliance_update==\"Others\";"
+  },
+  {
+   "depends_on": "eval: doc.compliance_update==\"Insurance\";",
+   "fieldname": "insurerance_company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Insurance Company Name",
+   "mandatory_depends_on": "eval: doc.compliance_update==\"Insurance\";"
+  },
+  {
+   "fieldname": "column_break_brhes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "equipment.model",
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "section_break_skta4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_zxsc4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "equipment.maker_model",
+   "fieldname": "maker_model",
+   "fieldtype": "Data",
+   "label": "Maker Model"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-22 13:38:40.701479",
+ "modified": "2023-03-28 12:14:08.805107",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Compliance Update",
