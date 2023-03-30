@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Log Sheet",
+  "enabled": 1,
+  "modified": "2023-03-23 10:45:05.291397",
+  "module": "Data",
+  "name": "Log Sheet Setting",
+  "script": "\n\nfrappe.ui.form.on('Working Details', {\n\tbefore_save:function(frm) {\n\t   // alert(\"rjjt\")\n\t\t$.each(frm.doc.time_details || [], function (i, d) {\n// \t\talert(d.start_time)\n        var hours=0; \n        var minutes=0; \n        var seconds=0; \n        \n        if (d.start_time && d.end_time) \n        { \n            // alert(\"if\")\n            var hour1 = d.start_time.split(':')[0]; \n            var hour2 = d.end_time.split(':')[0]; \n            var min1 = d.start_time.split(':')[1]; \n            var min2 = d.end_time.split(':')[1]; \n            var sec1 = d.start_time.split(':')[2]; \n            var sec2 = d.end_time.split(':')[2]; \n            var diff_hour = hour2 - hour1; \n            var diff_min = min2 - min1; \n            var diff_sec = sec2 - sec1; \n            if (diff_hour<0) \n            { \n                diff_hour+= 24; \n            } \n            if (diff_min<0) \n            { \n                diff_min+=60; \n                diff_hour--; \n            }\n            if(diff_min>=60)\n            { \n                diff_min-=60; \n                diff_hour++; \n            } \n            if (diff_sec<0) \n            { \n                diff_sec+=60; \n                diff_min--; \n            } \n            else if(diff_sec>=60)\n            { \n                diff_sec-=60; \n                diff_min++; \n            } \n            d.total_time = diff_hour+\":\"+diff_min+\":\"+diff_sec\n            // alert(d.total_time)\n        \n            // frappe.model.set_value(cdt,cdn,\"total_time\",diff_hour+\":\"+diff_min+\":\"+diff_sec); \n            frm.refresh_field(\"time_details\"); \n        } \n\t\t})\n\t},\n\tend_time:function(frm) {\n\t   // alert(\"rjjt\")\n\t\t$.each(frm.doc.time_details || [], function (i, d) {\n// \t\talert(d.start_time)\n        var hours=0; \n        var minutes=0; \n        var seconds=0; \n        \n        if (d.start_time && d.end_time) \n        { \n            // alert(\"if\")\n            var hour1 = d.start_time.split(':')[0]; \n            var hour2 = d.end_time.split(':')[0]; \n            var min1 = d.start_time.split(':')[1]; \n            var min2 = d.end_time.split(':')[1]; \n            var sec1 = d.start_time.split(':')[2]; \n            var sec2 = d.end_time.split(':')[2]; \n            var diff_hour = hour2 - hour1; \n            var diff_min = min2 - min1; \n            var diff_sec = sec2 - sec1; \n            if (diff_hour<0) \n            { \n                diff_hour+= 24; \n            } \n            if (diff_min<0) \n            { \n                diff_min+=60; \n                diff_hour--; \n            }\n            if(diff_min>=60)\n            { \n                diff_min-=60; \n                diff_hour++; \n            } \n            if (diff_sec<0) \n            { \n                diff_sec+=60; \n                diff_min--; \n            } \n            else if(diff_sec>=60)\n            { \n                diff_sec-=60; \n                diff_min++; \n            } \n            d.total_time = diff_hour+\":\"+diff_min+\":\"+diff_sec\n            // alert(d.total_time)\n        \n            // frappe.model.set_value(cdt,cdn,\"total_time\",diff_hour+\":\"+diff_min+\":\"+diff_sec); \n            frm.refresh_field(\"time_details\"); \n        } \n\t\t})\n\t},\n\tstart_km:function(frm) {\n\t    $.each(frm.doc.time_details || [], function (i, d) {\n\t\tvar a = d.start_km\n\t\tvar b = d.end_km\n\t\tvar c = b - a;\n\t\tif(d.end_km!=\"\"){\n\t\tif(a>b){\n\t\t    alert(\"Please enter proper values\")\n\t\t    validated=false\n\t\t}\n\t\telse{\n\t\td.total_km=c;\n\t\t frm.refresh_field(\"time_details\"); \n\t\t}\n\t\t}\n\t    })\n\t},\n\t\tend_km:function(frm) {\n\t\t    $.each(frm.doc.time_details || [], function (i, d) {\n\t\tvar a = d.start_km\n\t\tvar b = d.end_km\n\t\tvar c = b - a;\n\t\t\n\t\tif(a>b){\n\t\t    alert(\"Please enter proper values\")\n\t\t    validated=false\n\t\t}\n\t\telse{\n\t\td.total_km=c;\n\t\t frm.refresh_field(\"time_details\"); \n\t\t\n\t\t}\n\t\t    })\n\t}\n\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Compliance Update",
   "enabled": 1,
   "modified": "2023-03-24 10:38:26.750035",
@@ -514,6 +525,17 @@
   "module": "Migoo CRM",
   "name": "Lead Setting",
   "script": "frappe.ui.form.on('Lead', {\n\tonload:function(frm) {\n    cur_frm.set_query(\"equipment__category\", function() {\n    return {\n            \"filters\": {\n                \"parent_item_group\" : \"All Equipment Groups\",\n            }\n        };\n    });\n    \n    cur_frm.set_query(\"request_type\", function() {\n    return {\n            \"filters\": {\n                \"is_select\" : 1,\n            }\n        };\n    });\n    cur_frm.set_query(\"request_types\", function() {\n    return {\n            \"filters\": {\n                \"is_multi_select\" : 1,\n            }\n        };\n    });\n\t},\n\tequipment__category:function(frm){\n\t    var main=\"\"\n\t   $.each(frm.doc.equipment__category || [], function(i,d){\n\t       if(main==\"\"){\n\t           main=d.item_group_name\n\t       }\n\t       else{\n\t       main =main + \",\"+ d.item_group_name\n\t       }\n\t   })\n\t   console.log(main)\n\t    cur_frm.set_query(\"equipment__sub__category\", function () {\n            return {\n                \"filters\": {\n                    \"parent_item_group\":[\"in\", main],\n                }\n            };\n        });\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Driver",
+  "enabled": 1,
+  "modified": "2023-02-27 15:47:34.793017",
+  "module": "android_app",
+  "name": "Driver User",
+  "script": "frappe.ui.form.on('Driver', {\n\tandroid_user_(frm) {\n\t   // alert(\"Hello This is Android User\");\n\t    var cell_number = cur_frm.doc.cell_number;\n\t    var email = cell_number+\"@gmail.com\";\n\t\tvar first_name = cur_frm.doc.full_name;\n// \t\tconsole.log(email);\n// \t\tconsole.log(first_name);\n\t\tvar new_password = \"Sanskar\";\n        // var b =\"Hey\";\n\t\tfrappe.call({\n    \t\t        method:\"android_app.apisend.android_user_creation\", \n    \t\t        args: {\"email\":email, \"new_password\":new_password, \"cell_number\":cell_number},\n    \t\t    }).then(records => {\n\t                 var a=records[\"msg\"];\n    \t\t      //   alert(a);\n    \t\t         cur_frm.set_value(\"user\", a);\n    \t\t         cur_frm.save();\n\n\t        });\n\n\t}\n});",
   "view": "Form"
  }
 ]

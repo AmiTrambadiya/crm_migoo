@@ -10,13 +10,14 @@
  "field_order": [
   "naming_series",
   "sales_order",
+  "customer",
+  "column_break_mudrk",
   "equipment",
   "equipment_sub_category",
   "column_break_3",
-  "customer",
-  "customer_mobile_no",
   "equipment_no",
   "equipment_location",
+  "customer_mobile_no",
   "section_break_6",
   "supplier",
   "supplier_name",
@@ -35,19 +36,24 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "label": "Naming Series"
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": ".DD.-.{sales_order}.-"
   },
   {
    "fieldname": "sales_order",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Sales Order",
-   "options": "Sales Order"
+   "options": "Sales Order",
+   "permlevel": 2
   },
   {
    "fieldname": "equipment",
    "fieldtype": "Link",
    "label": "Equipment",
-   "options": "Item"
+   "options": "Item",
+   "permlevel": 2
   },
   {
    "fetch_from": "equipment.equipment_main_category",
@@ -64,13 +70,16 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
-   "options": "Customer"
+   "options": "Customer",
+   "permlevel": 2
   },
   {
-   "fetch_from": "customer.mobile_no",
+   "fetch_from": "customer.mobile",
    "fieldname": "customer_mobile_no",
    "fieldtype": "Data",
-   "label": "Customer Mobile No"
+   "hidden": 1,
+   "label": "Customer Mobile No",
+   "permlevel": 2
   },
   {
    "fetch_from": "equipment.register_no",
@@ -87,7 +96,8 @@
    "fieldname": "supplier",
    "fieldtype": "Link",
    "label": "Supplier",
-   "options": "Supplier"
+   "options": "Supplier",
+   "permlevel": 1
   },
   {
    "fetch_from": "equipment.supplier_name",
@@ -129,7 +139,8 @@
   },
   {
    "fieldname": "start_date",
-   "fieldtype": "Date"
+   "fieldtype": "Date",
+   "label": "Start Date"
   },
   {
    "fieldname": "end_date",
@@ -146,15 +157,20 @@
    "label": "Total Days"
   },
   {
-   "fetch_from": "equipment.equipment_location",
+   "fetch_from": "sales_order.base_rounding_adjustment",
    "fieldname": "equipment_location",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Equipment Location"
+  },
+  {
+   "fieldname": "column_break_mudrk",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-27 16:08:34.173474",
+ "modified": "2023-03-30 09:42:52.400655",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Resource Planning",

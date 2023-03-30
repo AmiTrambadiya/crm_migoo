@@ -167,21 +167,6 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2023-02-27 13:36:47.580492",
-  "name": "Driver",
-  "role_profile": "Driver",
-  "roles": [
-   {
-    "parent": "Driver",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Driver"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
   "modified": "2023-01-09 17:33:08.390693",
   "name": "CRM",
   "role_profile": "CRM",
@@ -574,6 +559,21 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Workspace Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2023-02-27 13:36:47.580492",
+  "name": "Driver",
+  "role_profile": "Driver",
+  "roles": [
+   {
+    "parent": "Driver",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Driver"
    }
   ]
  }

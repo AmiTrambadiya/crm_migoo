@@ -1,5 +1,7 @@
 {
  "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2023-03-28 16:33:12.913033",
@@ -19,6 +21,7 @@
   "fuel_details",
   "section_break_zwjy7",
   "total_fuel",
+  "column_break_octrs",
   "average_fuel",
   "column_break_axyjy",
   "activity",
@@ -47,13 +50,15 @@
    "fieldname": "equipment",
    "fieldtype": "Link",
    "label": "Equipment",
-   "options": "Item"
+   "options": "Item",
+   "permlevel": 2
   },
   {
    "fetch_from": "resource_planning.customer",
    "fieldname": "customer",
    "fieldtype": "Data",
-   "label": "Customer"
+   "label": "Customer",
+   "permlevel": 2
   },
   {
    "fetch_from": "resource_planning.equipment_sub_category",
@@ -68,6 +73,7 @@
    "label": "Date"
   },
   {
+   "fetch_from": "resource_planning.equipment",
    "fieldname": "equipment_no",
    "fieldtype": "Data",
    "label": "Equipment No"
@@ -80,12 +86,14 @@
   {
    "fieldname": "total_fuel",
    "fieldtype": "Data",
-   "label": "Total Fuel"
+   "label": "Total Fuel",
+   "permlevel": 1
   },
   {
    "fieldname": "average_fuel",
    "fieldtype": "Data",
-   "label": "Average Fuel"
+   "label": "Average Fuel",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_axyjy",
@@ -106,7 +114,8 @@
    "fieldname": "supplier",
    "fieldtype": "Link",
    "label": "Supplier",
-   "options": "Supplier"
+   "options": "Supplier",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_kruj4",
@@ -132,11 +141,16 @@
   {
    "fieldname": "section_break_zwjy7",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_octrs",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-28 16:44:59.453948",
+ "make_attachments_public": 1,
+ "modified": "2023-03-30 09:51:18.050088",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Fuel Detail Sheet",

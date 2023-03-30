@@ -17,14 +17,27 @@
   "column_break_7",
   "equipment",
   "customer",
+  "working_details_section",
+  "working_details",
+  "section_break_h5ehd",
+  "total_working_time",
+  "column_break_kqvrc",
+  "total_ideal_time",
+  "column_break_iuqj9",
+  "total_breckdown_time",
+  "column_break_mktdr",
+  "total_time",
+  "column_break_olb78",
+  "total_km",
   "equipmenrt_acrtivity_section",
   "activity",
-  "supplier_and_driver_section",
+  "column_break_40",
   "supplier",
+  "column_break_vmjdw",
+  "driver",
+  "supplier_and_driver_section",
   "supplier_name",
   "supplier_number",
-  "column_break_40",
-  "driver",
   "driver_name",
   "driver_number"
  ],
@@ -96,6 +109,7 @@
   {
    "fieldname": "supplier_and_driver_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Supplier And Driver"
   },
   {
@@ -144,11 +158,71 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Driver Number"
+  },
+  {
+   "fieldname": "working_details_section",
+   "fieldtype": "Section Break",
+   "label": "Working Details"
+  },
+  {
+   "fieldname": "column_break_vmjdw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "working_details",
+   "fieldtype": "Table",
+   "label": "Working Details",
+   "options": "Working Details"
+  },
+  {
+   "fieldname": "section_break_h5ehd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_working_time",
+   "fieldtype": "Float",
+   "label": "Total Working Time"
+  },
+  {
+   "fieldname": "total_ideal_time",
+   "fieldtype": "Float",
+   "label": "Total Ideal Time"
+  },
+  {
+   "fieldname": "total_breckdown_time",
+   "fieldtype": "Float",
+   "label": "Total Breakdown Time"
+  },
+  {
+   "fieldname": "total_time",
+   "fieldtype": "Float",
+   "label": "Total Time"
+  },
+  {
+   "fieldname": "total_km",
+   "fieldtype": "Int",
+   "label": "Total km"
+  },
+  {
+   "fieldname": "column_break_kqvrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_iuqj9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mktdr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_olb78",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-28 11:47:27.491682",
+ "modified": "2023-03-30 09:18:29.564187",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",

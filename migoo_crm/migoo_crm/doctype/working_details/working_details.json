@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "creation": "2023-03-23 09:06:18.774579",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "start_time",
+  "end_time",
+  "total_time",
+  "start_km",
+  "end_km",
+  "total_km",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Start Time"
+  },
+  {
+   "default": "0",
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "End Time"
+  },
+  {
+   "fieldname": "total_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Total Time"
+  },
+  {
+   "default": "0",
+   "fieldname": "start_km",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Start km"
+  },
+  {
+   "default": "0",
+   "fieldname": "end_km",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "End km"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_km",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total km"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nWorking\nIdeal\nBreckDown"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-03-30 09:23:11.389512",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Working Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
