@@ -10,10 +10,12 @@
   "web_item_name",
   "route",
   "item_status",
+  "publish",
   "column_break_3",
   "item_code",
   "item_name",
   "item_group",
+  "sold_out",
   "column_break_11",
   "description",
   "brand",
@@ -220,11 +222,23 @@
    "fieldtype": "Table",
    "label": "web Item Slide Show",
    "options": "web Item Slide Show"
+  },
+  {
+   "default": "1",
+   "fieldname": "publish",
+   "fieldtype": "Check",
+   "label": "Publish"
+  },
+  {
+   "default": "0",
+   "fieldname": "sold_out",
+   "fieldtype": "Check",
+   "label": "Sold Out"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-27 18:48:30.513178",
+ "modified": "2023-04-17 15:55:31.225514",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Web item",
