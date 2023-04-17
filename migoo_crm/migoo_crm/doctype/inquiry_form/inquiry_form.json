@@ -22,7 +22,9 @@
   "item_details",
   "curdate",
   "section_break_12",
-  "supplier_notes"
+  "supplier_notes",
+  "employee",
+  "department"
  ],
  "fields": [
   {
@@ -75,13 +77,15 @@
   },
   {
    "fieldname": "inquiry_source",
-   "fieldtype": "Data",
-   "label": "Inquiry Source"
+   "fieldtype": "Link",
+   "label": "Inquiry Source",
+   "options": "Lead Source"
   },
   {
    "fieldname": "item_details",
-   "fieldtype": "Data",
-   "label": "Equipment Details"
+   "fieldtype": "Link",
+   "label": "Equipment Details",
+   "options": "Item Group"
   },
   {
    "fieldname": "curdate",
@@ -102,11 +106,25 @@
    "fieldtype": "Link",
    "label": "Request Type",
    "options": "Request Type"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Department",
+   "options": "Department"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-29 16:27:21.424628",
+ "modified": "2023-04-17 10:53:38.674205",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Inquiry Form",

@@ -1,68 +1,175 @@
 {
  "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
  "allow_rename": 1,
- "creation": "2023-03-28 16:44:00.600928",
+ "autoname": "naming_series:",
+ "creation": "2023-03-28 16:33:12.913033",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "fuel_type",
-  "fuel_filling_kms",
-  "fuel_unit",
-  "issue_by",
-  "remarks",
-  "photo_of_odometer"
+  "naming_series",
+  "resource_planning",
+  "equipment",
+  "customer",
+  "column_break_3r5tg",
+  "date",
+  "equipment_category",
+  "equipment_no",
+  "fuel_details_section",
+  "fuel_details",
+  "section_break_zwjy7",
+  "total_fuel",
+  "column_break_octrs",
+  "average_fuel",
+  "column_break_axyjy",
+  "activity",
+  "supplier_and_driver_details_section",
+  "supplier",
+  "column_break_kruj4",
+  "driver"
  ],
  "fields": [
   {
-   "fieldname": "fuel_type",
+   "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Fuel Type",
-   "options": "\nDiesel\nPetrol\nCNG\nPNG"
+   "hidden": 1,
+   "label": "Series"
   },
   {
-   "fieldname": "fuel_filling_kms",
-   "fieldtype": "Float",
+   "fieldname": "resource_planning",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Fuel Filling Kms"
+   "label": "Resource Planning",
+   "options": "Resource Planning",
+   "reqd": 1
   },
   {
-   "fieldname": "fuel_unit",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Fuel Unit",
-   "options": "Litre"
+   "fetch_from": "resource_planning.equipment_no",
+   "fieldname": "equipment",
+   "fieldtype": "Link",
+   "label": "Equipment",
+   "options": "Item",
+   "permlevel": 2
   },
   {
-   "fieldname": "issue_by",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Issue By",
-   "options": "\nSupplier\nMigoo\nCustomer"
-  },
-  {
-   "fieldname": "remarks",
+   "fetch_from": "resource_planning.customer",
+   "fieldname": "customer",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Remarks"
+   "label": "Customer",
+   "permlevel": 2
   },
   {
-   "fieldname": "photo_of_odometer",
-   "fieldtype": "Attach",
-   "in_list_view": 1,
-   "label": "Photo Of Odometer"
+   "fetch_from": "resource_planning.equipment_sub_category",
+   "fieldname": "equipment_category",
+   "fieldtype": "Data",
+   "label": "Equipment Category"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "resource_planning.equipment",
+   "fieldname": "equipment_no",
+   "fieldtype": "Data",
+   "label": "Equipment No"
+  },
+  {
+   "fieldname": "fuel_details_section",
+   "fieldtype": "Section Break",
+   "label": "Fuel Details"
+  },
+  {
+   "fieldname": "total_fuel",
+   "fieldtype": "Data",
+   "label": "Total Fuel",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "average_fuel",
+   "fieldtype": "Data",
+   "label": "Average Fuel",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_axyjy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "activity",
+   "fieldtype": "Data",
+   "label": "Activity"
+  },
+  {
+   "fieldname": "supplier_and_driver_details_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier And Driver Details"
+  },
+  {
+   "fetch_from": "resource_planning.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_kruj4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "resource_planning.driver",
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Driver"
+  },
+  {
+   "fieldname": "column_break_3r5tg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fuel_details",
+   "fieldtype": "Table",
+   "label": "Fuel Details",
+   "options": "Fuel Details Sheet"
+  },
+  {
+   "fieldname": "section_break_zwjy7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_octrs",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
- "istable": 1,
  "links": [],
- "modified": "2023-03-30 09:51:55.134154",
+ "make_attachments_public": 1,
+ "modified": "2023-04-17 10:36:59.055389",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Fuel Details",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
