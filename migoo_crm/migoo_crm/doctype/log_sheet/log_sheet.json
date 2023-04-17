@@ -10,13 +10,16 @@
  "field_order": [
   "naming_series",
   "resource_planning",
-  "date",
+  "supplier",
+  "driver",
   "column_break_3",
   "equipment_category",
+  "equipment",
   "equipment_no",
   "column_break_7",
-  "equipment",
+  "date",
   "customer",
+  "activity",
   "working_details_section",
   "working_details",
   "section_break_h5ehd",
@@ -28,18 +31,7 @@
   "column_break_mktdr",
   "total_time",
   "column_break_olb78",
-  "total_km",
-  "equipmenrt_acrtivity_section",
-  "activity",
-  "column_break_40",
-  "supplier",
-  "column_break_vmjdw",
-  "driver",
-  "supplier_and_driver_section",
-  "supplier_name",
-  "supplier_number",
-  "driver_name",
-  "driver_number"
+  "total_km"
  ],
  "fields": [
   {
@@ -87,7 +79,8 @@
   {
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date"
+   "label": "Date",
+   "options": "Today"
   },
   {
    "fetch_from": "resource_planning.equipment_no",
@@ -97,20 +90,9 @@
    "permlevel": 1
   },
   {
-   "fieldname": "equipmenrt_acrtivity_section",
-   "fieldtype": "Section Break",
-   "label": "Equipment Activity"
-  },
-  {
    "fieldname": "activity",
    "fieldtype": "Data",
    "label": "Activity"
-  },
-  {
-   "fieldname": "supplier_and_driver_section",
-   "fieldtype": "Section Break",
-   "hidden": 1,
-   "label": "Supplier And Driver"
   },
   {
    "fetch_from": "resource_planning.supplier",
@@ -121,24 +103,6 @@
    "permlevel": 1
   },
   {
-   "fetch_from": "supplier.supplier_name",
-   "fieldname": "supplier_name",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Supplier Name"
-  },
-  {
-   "fetch_from": "supplier.mobile_number",
-   "fieldname": "supplier_number",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Supplier Number"
-  },
-  {
-   "fieldname": "column_break_40",
-   "fieldtype": "Column Break"
-  },
-  {
    "fetch_from": "resource_planning.driver",
    "fieldname": "driver",
    "fieldtype": "Link",
@@ -146,27 +110,9 @@
    "options": "Driver"
   },
   {
-   "fetch_from": "driver.full_name",
-   "fieldname": "driver_name",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Driver Name"
-  },
-  {
-   "fetch_from": "driver.cell_number",
-   "fieldname": "driver_number",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Driver Number"
-  },
-  {
    "fieldname": "working_details_section",
    "fieldtype": "Section Break",
    "label": "Working Details"
-  },
-  {
-   "fieldname": "column_break_vmjdw",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "working_details",
@@ -201,7 +147,7 @@
   {
    "fieldname": "total_km",
    "fieldtype": "Int",
-   "label": "Total km"
+   "label": "Total Odometer Hours"
   },
   {
    "fieldname": "column_break_kqvrc",
@@ -222,7 +168,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-30 09:18:29.564187",
+ "modified": "2023-04-17 12:59:29.208356",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",

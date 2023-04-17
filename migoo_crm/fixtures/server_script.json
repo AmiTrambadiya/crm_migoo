@@ -52,11 +52,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.117420",
+  "modified": "2023-04-17 15:41:29.943388",
   "module": "Migoo CRM",
   "name": "fetch data website item (testing)",
   "reference_doctype": null,
-  "script": "name = frappe.form_dict['id']\n\ndata = frappe.db.sql(\"select web_item_name,item_group,company_name,manufacturing_date,model,location,price,maker_model,equipment_current_reading,fuel_type,engine,weight,owner_count,registration_date,insurance_date,fitness_dt,supplier_number,supplier_name from `tabWeb item` where name=%s\",name)\ndata1= frappe.db.sql(\"select image from `tabweb Item Slide Show` where parent=%s\",name)\n\nfrappe.response['message']=data\nfrappe.response['images']=data1",
+  "script": "name = frappe.form_dict['id']\n\ndata = frappe.db.sql(\"select web_item_name,item_group,company_name,manufacturing_date,model,location,price,maker_model,equipment_current_reading,fuel_type,engine,weight,owner_count,registration_date,insurance_date,fitness_dt,supplier_number,supplier_name,sold_out from `tabWeb item` where name=%s\",name)\ndata1= frappe.db.sql(\"select image from `tabweb Item Slide Show` where parent=%s\",name)\n\nfrappe.response['message']=data\nfrappe.response['images']=data1",
   "script_type": "API"
  },
  {
@@ -97,11 +97,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.132249",
+  "modified": "2023-04-17 15:41:33.810523",
   "module": "Migoo CRM",
   "name": "fetch data website item",
   "reference_doctype": null,
-  "script": "name = frappe.form_dict['id']\n\ndata = frappe.db.sql(\"select web_item_name,item_group,company_name,manufacturing_date,model,location,price,maker_model,equipment_current_reading,fuel_type,engine,weight,owner_count,registration_date,insurance_date,fitness_dt,supplier_number,supplier_name from `tabWeb item` where name=%s\",name)\ndata1= frappe.db.sql(\"select image from `tabweb Item Slide Show` where parent=%s\",name)\n\nfrappe.response['message']=data\nfrappe.response['images']=data1",
+  "script": "name = frappe.form_dict['id']\n\n\ndata = frappe.db.sql(\"select web_item_name,item_group,company_name,manufacturing_date,model,location,price,maker_model,equipment_current_reading,fuel_type,engine,weight,owner_count,registration_date,insurance_date,fitness_dt,supplier_number,supplier_name,sold_out from `tabWeb item` where name=%s\",name)\ndata1= frappe.db.sql(\"select image from `tabweb Item Slide Show` where parent=%s\",name)\n\nfrappe.response['message']=data\nfrappe.response['images']=data1",
   "script_type": "API"
  },
  {
