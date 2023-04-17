@@ -62,7 +62,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "\nWorking\nIdeal\nBreckDown"
+   "options": "\nWorking\nIdeal\nBreakdown"
   },
   {
    "fieldname": "remarks",
@@ -79,7 +79,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-04-17 12:59:04.889848",
+ "modified": "2023-04-17 17:46:01.133751",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Working Details",
