@@ -25,10 +25,7 @@
   "section_break_zwjy7",
   "total_fuel",
   "column_break_octrs",
-  "average_fuel",
-  "column_break_axyjy",
-  "activity",
-  "supplier_and_driver_details_section"
+  "average_fuel"
  ],
  "fields": [
   {
@@ -96,20 +93,6 @@
    "permlevel": 1
   },
   {
-   "fieldname": "column_break_axyjy",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "activity",
-   "fieldtype": "Data",
-   "label": "Activity"
-  },
-  {
-   "fieldname": "supplier_and_driver_details_section",
-   "fieldtype": "Section Break",
-   "label": "Supplier And Driver Details"
-  },
-  {
    "fetch_from": "resource_planning.supplier",
    "fieldname": "supplier",
    "fieldtype": "Link",
@@ -150,7 +133,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2023-04-18 11:26:50.583377",
+ "modified": "2023-04-19 10:43:49.002436",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Fuel Details",
