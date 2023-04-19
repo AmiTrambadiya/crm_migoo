@@ -41,21 +41,21 @@
    "fieldname": "start_km",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Start odometer hours"
+   "label": "Start KM"
   },
   {
    "default": "0",
    "fieldname": "end_km",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "End odometer hours"
+   "label": "End KM"
   },
   {
    "default": "0",
    "fieldname": "total_km",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Total odometer hours"
+   "label": "Total KM"
   },
   {
    "fieldname": "status",
@@ -79,7 +79,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-04-17 17:46:01.133751",
+ "modified": "2023-04-19 10:45:00.115184",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Working Details",

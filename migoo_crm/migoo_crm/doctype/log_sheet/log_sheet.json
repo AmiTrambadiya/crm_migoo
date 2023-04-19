@@ -147,7 +147,7 @@
   {
    "fieldname": "total_km",
    "fieldtype": "Int",
-   "label": "Total Odometer Hours"
+   "label": "Total KM"
   },
   {
    "fieldname": "column_break_kqvrc",
@@ -168,7 +168,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-17 12:59:29.208356",
+ "modified": "2023-04-19 10:44:33.205295",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",
