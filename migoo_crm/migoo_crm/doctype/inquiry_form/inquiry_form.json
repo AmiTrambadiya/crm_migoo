@@ -19,6 +19,7 @@
   "mobile_no",
   "wpnumber",
   "inquiry_source",
+  "equipment_name",
   "item_details",
   "curdate",
   "section_break_12",
@@ -82,6 +83,7 @@
    "options": "Lead Source"
   },
   {
+   "depends_on": "eval:doc.request == \"Rent\"",
    "fieldname": "item_details",
    "fieldtype": "Link",
    "label": "Equipment Details",
@@ -120,11 +122,18 @@
    "hidden": 1,
    "label": "Department",
    "options": "Department"
+  },
+  {
+   "depends_on": "eval:doc.request == \"Buy Used Equipment\"",
+   "fieldname": "equipment_name",
+   "fieldtype": "Link",
+   "label": "Equipment Name",
+   "options": "Item"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-17 10:53:38.674205",
+ "modified": "2023-04-20 18:40:40.602038",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Inquiry Form",
