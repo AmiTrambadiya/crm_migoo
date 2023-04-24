@@ -14,10 +14,11 @@
   "column_break_mudrk",
   "equipment",
   "equipment_sub_category",
-  "column_break_3",
   "equipment_no",
+  "column_break_3",
   "equipment_location",
   "customer_mobile_no",
+  "status",
   "section_break_6",
   "supplier",
   "supplier_name",
@@ -166,11 +167,17 @@
   {
    "fieldname": "column_break_mudrk",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nClose"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-30 09:42:52.400655",
+ "modified": "2023-04-20 17:34:51.887765",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Resource Planning",

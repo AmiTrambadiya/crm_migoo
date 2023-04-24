@@ -13,7 +13,11 @@
   "column_break_4",
   "brand",
   "model_no",
-  "section_break_7"
+  "section_break_7",
+  "fuel_type",
+  "engine_power",
+  "fuel_tank",
+  "capacity"
  ],
  "fields": [
   {
@@ -59,11 +63,32 @@
   {
    "fieldname": "section_break_7",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "label": "FUEL TYPE",
+   "options": "Petrol\nDiesel\nCNG\nPNG\nLPG\nELETRIC"
+  },
+  {
+   "fieldname": "engine_power",
+   "fieldtype": "Data",
+   "label": "ENGINE POWER"
+  },
+  {
+   "fieldname": "fuel_tank",
+   "fieldtype": "Data",
+   "label": "FUEL TANK"
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Data",
+   "label": "CAPACITY"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-27 17:44:07.955343",
+ "modified": "2023-04-21 11:52:57.805375",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Model",

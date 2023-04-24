@@ -126,7 +126,7 @@
   },
   {
    "fieldname": "total_working_time",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "label": "Total Working Time"
   },
   {
@@ -168,7 +168,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-19 10:44:33.205295",
+ "modified": "2023-04-20 16:10:40.008641",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",

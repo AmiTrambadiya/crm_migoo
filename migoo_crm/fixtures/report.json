@@ -36,11 +36,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-24 12:07:23.955797",
+  "modified": "2023-04-20 13:35:37.716061",
   "module": "Migoo CRM",
   "name": "Call History Per Employee",
   "prepared_report": 0,
-  "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n        inner join `tabEmployee` e\non\nu.phone=e.cell_number\n\n\n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\nand cl.agent_number=e.cell_number  \n\n\n    order by\n        cl.creation desc",
+  "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\",\n        CONCAT('<a href=\"', cl.recording_url, '\" class=\"btn pt-0 pb-0\" style=\"background-color:#e6992a;color:#ffffff;\">Open Recording</a>') as \"Recoding::150\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n        inner join `tabEmployee` e\non\nu.phone=e.cell_number\n\n\n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\nand cl.agent_number=e.cell_number  \n\n\n    order by\n        cl.creation desc",
   "ref_doctype": "Call Logs",
   "reference_report": null,
   "report_name": "Call History Per Employee",
@@ -1021,11 +1021,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.179730",
+  "modified": "2023-04-20 13:34:09.788810",
   "module": "Migoo CRM",
   "name": "Call History Report",
   "prepared_report": 0,
-  "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n        inner join `tabEmployee` e\non\nu.phone=e.cell_number\n\n\n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\nand cl.agent_number=e.cell_number  \n\n\n    order by\n        cl.creation desc",
+  "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\",\n        CONCAT('<a href=\"', cl.recording_url, '\" class=\"btn pt-0 pb-0\" style=\"background-color:#e6992a;color:#ffffff;\">Open Recording</a>') as \"Recoding::150\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n        inner join `tabEmployee` e\non\nu.phone=e.cell_number\n\n\n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\nand cl.agent_number=e.cell_number  \n\n\n    order by\n        cl.creation desc",
   "ref_doctype": "Call Logs",
   "reference_report": null,
   "report_name": "Call History Report",
@@ -3554,6 +3554,103 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-04-24 12:08:43.163815",
+  "module": "Migoo CRM",
+  "name": "Work Done By Employees",
+  "prepared_report": 0,
+  "query": "SELECT\n  u.name AS \"Name:Link/User:200\",\n  (SELECT COUNT(*)\n FROM `tabItem` WHERE owner = u.name) AS \"Equipment::165\",\n  (SELECT COUNT(*)\n FROM `tabSupplier` WHERE owner_name = u.name) AS \"Supplier::165\",\n (SELECT COUNT(*)\n FROM `tabCustomer` WHERE owner = u.name) AS \"Customer::165\",\n  (SELECT COUNT(*)\n FROM `tabLead` WHERE lead_owner = u.name) AS \"Lead::165\",\n  (SELECT COUNT(*)\n FROM `tabOpportunity` WHERE opportunity_owner = u.name) AS \"Opportunity::165\",\n  (SELECT COUNT(*)\n FROM `tabQuotation` WHERE owner = u.name) AS \"Quotation::165\"\n  \nFROM\n  `tabUser` u\nWHERE\n  u.module_profile = \"Sales Team\"\nGROUP BY u.name",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Work Done By Employees",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Work Done By Employees",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
    }
   ]
  }
