@@ -31,7 +31,9 @@
   "column_break_mktdr",
   "total_time",
   "column_break_olb78",
-  "total_km"
+  "total_km",
+  "section_break_xghbx",
+  "rejection_reason"
  ],
  "fields": [
   {
@@ -44,15 +46,13 @@
    "fieldname": "resource_planning",
    "fieldtype": "Link",
    "label": "Resource Planning",
-   "options": "Resource Planning",
-   "permlevel": 1
+   "options": "Resource Planning"
   },
   {
    "fetch_from": "resource_planning.equipment",
    "fieldname": "equipment",
    "fieldtype": "Data",
-   "label": "Equipment",
-   "permlevel": 2
+   "label": "Equipment"
   },
   {
    "fieldname": "column_break_3",
@@ -61,16 +61,16 @@
   {
    "fetch_from": "resource_planning.customer",
    "fieldname": "customer",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Customer",
+   "options": "Customer",
    "permlevel": 2
   },
   {
    "fetch_from": "resource_planning.equipment_sub_category",
    "fieldname": "equipment_category",
    "fieldtype": "Data",
-   "label": "Equipment Category",
-   "permlevel": 1
+   "label": "Equipment Category"
   },
   {
    "fieldname": "column_break_7",
@@ -86,8 +86,7 @@
    "fetch_from": "resource_planning.equipment_no",
    "fieldname": "equipment_no",
    "fieldtype": "Data",
-   "label": "Equipment No",
-   "permlevel": 1
+   "label": "Equipment No"
   },
   {
    "fieldname": "activity",
@@ -107,7 +106,8 @@
    "fieldname": "driver",
    "fieldtype": "Link",
    "label": "Driver",
-   "options": "Driver"
+   "options": "Driver",
+   "permlevel": 1
   },
   {
    "fieldname": "working_details_section",
@@ -164,11 +164,20 @@
   {
    "fieldname": "column_break_olb78",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xghbx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-20 16:10:40.008641",
+ "modified": "2023-05-03 15:22:15.965558",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",

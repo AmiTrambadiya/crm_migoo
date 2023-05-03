@@ -197,6 +197,8 @@ fixtures = [
 
     {"dt": "Role Profile", },
 
+    {"dt": "Workflow", },
+
     {"dt": "Module Profile", },
 
     {"dt": "Number Card", "filters": [
@@ -219,6 +221,14 @@ fixtures = [
         [
             "name", "in", [
                 "Raw Data-request_type-fieldtype", "Raw Data-request_type-options"
+            ]
+        ]
+    ]},
+
+     {"dt": "Workflow State", "filters": [
+        [
+            "name", "in", [
+                "Approved By supplier", "Rejected By supplier"
             ]
         ]
     ]},

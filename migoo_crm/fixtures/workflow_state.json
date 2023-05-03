@@ -1,0 +1,20 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-05-03 15:22:46.385481",
+  "name": "Approved By supplier",
+  "style": "",
+  "workflow_state_name": "Approved By supplier"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-05-03 15:22:59.147965",
+  "name": "Rejected By supplier",
+  "style": "",
+  "workflow_state_name": "Rejected By supplier"
+ }
+]
