@@ -9,6 +9,8 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "opportunity",
+  "lead",
   "request",
   "first_name",
   "last_name",
@@ -24,8 +26,7 @@
   "curdate",
   "section_break_12",
   "supplier_notes",
-  "employee",
-  "department"
+  "sales_person"
  ],
  "fields": [
   {
@@ -110,30 +111,37 @@
    "options": "Request Type"
   },
   {
-   "fieldname": "employee",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Employee",
-   "options": "Employee"
-  },
-  {
-   "fieldname": "department",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Department",
-   "options": "Department"
-  },
-  {
    "depends_on": "eval:doc.request == \"Buy Used Equipment\"",
    "fieldname": "equipment_name",
    "fieldtype": "Link",
    "label": "Equipment Name",
    "options": "Item"
+  },
+  {
+   "fieldname": "sales_person",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Sales Person",
+   "options": "Sales Person"
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Lead",
+   "read_only": 1
+  },
+  {
+   "fieldname": "opportunity",
+   "fieldtype": "Link",
+   "label": " Opportunity",
+   "options": "Opportunity",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-20 18:40:40.602038",
+ "modified": "2023-05-02 18:31:10.526453",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Inquiry Form",

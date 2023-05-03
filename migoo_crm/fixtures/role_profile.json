@@ -576,5 +576,20 @@
     "role": "Driver"
    }
   ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2023-05-03 11:17:41.001800",
+  "name": "Customer",
+  "role_profile": "Customer",
+  "roles": [
+   {
+    "parent": "Customer",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Customer"
+   }
+  ]
  }
 ]
