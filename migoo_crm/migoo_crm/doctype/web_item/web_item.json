@@ -42,7 +42,14 @@
   "location",
   "price",
   "equipment_condition",
-  "equipment_current_reading"
+  "equipment_current_reading",
+  "fuel_type",
+  "supplier",
+  "supplier_name",
+  "supplier_number",
+  "engine",
+  "under_finance",
+  "weight"
  ],
  "fields": [
   {
@@ -234,11 +241,47 @@
    "fieldname": "sold_out",
    "fieldtype": "Check",
    "label": "Sold Out"
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Data",
+   "label": "fuel_type"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "supplier_number",
+   "fieldtype": "Data",
+   "label": "Supplier Number"
+  },
+  {
+   "fieldname": "engine",
+   "fieldtype": "Data",
+   "label": "Engine"
+  },
+  {
+   "fieldname": "under_finance",
+   "fieldtype": "Data",
+   "label": "Under Finance"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Data",
+   "label": "Weight"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-17 15:55:31.225514",
+ "modified": "2023-05-17 11:14:32.731745",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Web item",
