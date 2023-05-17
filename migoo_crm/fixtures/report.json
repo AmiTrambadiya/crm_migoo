@@ -997,11 +997,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-04-20 13:34:09.788810",
+  "modified": "2023-05-17 15:44:29.771358",
   "module": "Migoo CRM",
   "name": "Call History Report",
   "prepared_report": 0,
-  "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\",\n        CONCAT('<a href=\"', cl.recording_url, '\" class=\"btn pt-0 pb-0\" style=\"background-color:#e6992a;color:#ffffff;\">Open Recording</a>') as \"Recoding::150\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n        inner join `tabEmployee` e\non\nu.phone=e.cell_number\n\n\n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\nand cl.agent_number=e.cell_number  \n\n\n    order by\n        cl.creation desc",
+  "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\",\n        CONCAT('<a href=\"', cl.recording_url, '\" class=\"btn pt-0 pb-0\" style=\"background-color:#e6992a;color:#ffffff;\">Open Recording</a>') as \"Recoding::150\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\n\n\n    order by\n        cl.creation desc",
   "ref_doctype": "Call Logs",
   "reference_report": null,
   "report_name": "Call History Report",
@@ -1017,7 +1017,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -1160,7 +1160,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1553,7 +1553,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2355,7 +2355,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2652,7 +2652,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3672,6 +3672,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3721,6 +3722,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3824,6 +3826,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3848,6 +3851,7 @@
   "roles": []
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3859,7 +3863,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-05-17 08:52:53.724695",
+  "modified": "2023-05-17 13:17:59.162202",
   "module": "Migoo CRM",
   "name": "Work Summary",
   "prepared_report": 0,
