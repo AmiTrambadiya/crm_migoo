@@ -99,12 +99,12 @@ override_doctype_class = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-#     "send_daily_mail_report": {
-#         "59 18 * * *": [
-#             "migoo_crm.api.send_daily_mail_report"
-#         ]
-#     }
+scheduler_events = {
+    "send_insurance_email": {
+        "* * * * 1": [
+            "migoo_crm.code_override.send_mail.send_insurance_email"
+        ]
+    }
 
 #	"all": [
 #		"migoo_crm.tasks.all"
@@ -123,7 +123,7 @@ override_doctype_class = {
 #		"migoo_crm.tasks.monthly"
 #	],
 # }
-
+}
 # Testing
 # -------
 

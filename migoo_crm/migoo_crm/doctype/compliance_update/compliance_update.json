@@ -28,7 +28,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Compliance Update",
-   "options": "\nInsurance\nFitness\nPUC\nOthers",
+   "options": "\nInsurance\nFitness\nPUC\nTax\nState Permit\nNational Permit\nOthers",
    "reqd": 1
   },
   {
@@ -46,11 +46,11 @@
    "reqd": 1
   },
   {
-   "depends_on": "eval: doc.compliance_update==\"Fitness\";",
+   "depends_on": "eval: doc.compliance_update==\"State Permit\";",
    "fieldname": "state",
    "fieldtype": "Select",
    "label": "State",
-   "mandatory_depends_on": "eval: doc.compliance_update==\"Fitness\";",
+   "mandatory_depends_on": "eval: doc.compliance_update==\"State Permit\";",
    "options": "\nAndaman and Nicobar Islands\nAndhra Pradesh\nArunachal Pradesh\nAssam\nBihar\nChandigarh\nChhattisgarh\nDadra and Nagar Haveli and Daman and Diu\nDelhi\nGoa\nGujarat\nHaryana\nHimachal Pradesh\nJammu and Kashmir\nJharkhand\nKarnataka\nKerala\nLadakh\nLakshadweep Islands\nMadhya Pradesh\nMaharashtra\nManipur\nMeghalaya\nMizoram\nNagaland\nOdisha\nOther Territory\nPondicherry\nPunjab\nRajasthan\nSikkim\nTamil Nadu\nTelangana\nTripura\nUttar Pradesh\nUttarakhand\nWest Bengal"
   },
   {
@@ -68,6 +68,7 @@
   {
    "fieldname": "equipment",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Equipment Code",
    "options": "Item"
   },
@@ -113,7 +114,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-28 12:14:08.805107",
+ "modified": "2023-05-15 18:41:05.957309",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Compliance Update",

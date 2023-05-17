@@ -15,9 +15,13 @@
   "model_no",
   "section_break_7",
   "fuel_type",
-  "engine_power",
+  "capacity",
   "fuel_tank",
-  "capacity"
+  "a",
+  "engine_type",
+  "engine_power",
+  "b",
+  "item_details"
  ],
  "fields": [
   {
@@ -84,11 +88,30 @@
    "fieldname": "capacity",
    "fieldtype": "Data",
    "label": "CAPACITY"
+  },
+  {
+   "fieldname": "a",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "engine_type",
+   "fieldtype": "Data",
+   "label": "ENGINE TYPE"
+  },
+  {
+   "fieldname": "b",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "item_details",
+   "fieldtype": "Table",
+   "label": "Item Details",
+   "options": "Category Detail"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-21 11:52:57.805375",
+ "modified": "2023-05-17 08:56:29.238378",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Model",

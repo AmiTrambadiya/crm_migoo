@@ -1,5 +1,6 @@
 [
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "allow_guest": 1,
   "api_method": "otpverify",
   "disabled": 0,
@@ -15,6 +16,7 @@
   "script_type": "API"
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "allow_guest": 1,
   "api_method": "getotpdata",
   "disabled": 0,
@@ -30,6 +32,7 @@
   "script_type": "API"
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "allow_guest": 1,
   "api_method": "supplier-info",
   "disabled": 0,
@@ -277,11 +280,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.307187",
+  "modified": "2023-05-15 17:39:32.249646",
   "module": "Migoo CRM",
   "name": "Role profile",
   "reference_doctype": null,
-  "script": "data1 = frappe.form_dict[\"email\"]\nd=frappe.db.sql(\"\"\"select role_profile_name from `tabUser` where email =%s \"\"\",data1)\nlist1 = \"\"            \nfor i in d:\n    for j in i:\n        if list1==\"\":\n            list1=j\n\nfrappe.response[\"role\"]=list1",
+  "script": "data1 = frappe.form_dict[\"mobile\"]\nd=frappe.db.sql(\"\"\"select role_profile_name from `tabUser` where mobile_no =%s \"\"\",data1)\nlist1 = \"\"            \nfor i in d:\n    for j in i:\n        if list1==\"\":\n            list1=j\n\nfrappe.response[\"role\"]=list1",
   "script_type": "API"
  },
  {
