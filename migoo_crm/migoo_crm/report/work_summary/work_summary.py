@@ -21,7 +21,7 @@ def execute(filters=None):
         },
         {
             "label": _("Equipment"),
-            "fieldname": "items_created	",
+            "fieldname": "items_created",
             "fieldtype": "Int",
             "width": 125
         },
