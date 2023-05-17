@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-10 11:08:42.972429",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parameters",
+  "value",
+  "unit_of_measurement"
+ ],
+ "fields": [
+  {
+   "fieldname": "parameters",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Parameter"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value"
+  },
+  {
+   "fieldname": "unit_of_measurement",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UNIT OF MEASUREMENT",
+   "options": "UOM"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-17 08:56:40.990818",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Category Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

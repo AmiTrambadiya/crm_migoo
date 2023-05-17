@@ -481,47 +481,23 @@
   ]
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 1,
+  "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Inquiry Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
+  "filters": [],
   "is_standard": "No",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:19.941516",
+  "modified": "2023-05-16 17:20:45.150362",
   "module": "Migoo CRM",
   "name": "Inquiry Analytics",
   "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type',\n    count(i.request) as 'Total',\n    count(daily.request) as \"Today\",\n    count(week.request) as \"In 7 Days\",\n    count(quarterly.request) as \"In 15 Days\",\n    count(monthly.request) as \"In 30 Days\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n    i.request in(\"Buy\", \"Sell\", \"Rent\")\n    and\n      (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request",
+  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type::200',\n    count(i.request) as 'Total::180',\n    count(daily.request) as \"Today::180\",\n    count(week.request) as \"In 7 Days::180\",\n    count(quarterly.request) as \"In 15 Days::180\",\n    count(monthly.request) as \"In 30 Days::180\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\n\ngroup by\n    i.request",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Inquiry Analytics",
@@ -1041,6 +1017,7 @@
   ]
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -1051,7 +1028,7 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 300
+    "width": 200
    },
    {
     "fieldname": "count(i.equipment_main_category)",
@@ -1061,7 +1038,7 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 270
+    "width": 230
    },
    {
     "fieldname": "sell.equipment_main_category",
@@ -1071,7 +1048,7 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 270
+    "width": 230
    },
    {
     "fieldname": "rent.equipment_main_category",
@@ -1081,7 +1058,17 @@
     "parent": "Equipment For sell Or Rent Report",
     "parentfield": "columns",
     "parenttype": "Report",
-    "width": 270
+    "width": 230
+   },
+   {
+    "fieldname": "compliance.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Compliance",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Report",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 230
    }
   ],
   "disable_prepared_report": 0,
@@ -1093,11 +1080,11 @@
   "javascript": null,
   "json": "{}",
   "letter_head": null,
-  "modified": "2023-03-20 17:36:10.516263",
+  "modified": "2023-05-16 18:09:02.775463",
   "module": "Migoo CRM",
   "name": "Equipment For sell Or Rent Report",
   "prepared_report": 0,
-  "query": "with sell as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_sell = 1\n    group by\n        equipment_main_category\n),\nrent as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_rent = 1\n    group by\n        equipment_main_category\n)\nselect\n    i.equipment_main_category as 'Equipment Sub Category::300',\n    count(i.equipment_main_category) as 'Total::300',\n    count(sell.equipment_main_category) as 'Sell::300',\n    count(rent.equipment_main_category) as 'Rent::300'\nfrom\n    `tabItem` i\n    left join sell on sell.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = sell.equipment_for_sell\n    left join rent on rent.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = rent.equipment_for_sell\nwhere\n    i.equipment_for_sell = 1\n    or i.equipment_for_rent = 1\ngroup by\n    i.equipment_main_category",
+  "query": "with sell as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_sell = 1\n    group by\n        equipment_main_category\n),\n\nrent as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_rent = 1\n    group by\n        equipment_main_category\n),\n\ncompliance as(\n    select\n        item_group,\n        insurance,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        insurance = 1\n        \n    group by\n        equipment_main_category\n)\n\nselect\n    i.equipment_main_category as 'Equipment Sub Category::300',\n    count(i.equipment_main_category) as 'Total::300',\n    count(sell.equipment_main_category) as 'Sell::300',\n    count(rent.equipment_main_category) as 'Rent::300',\n    count(compliance.equipment_main_category) as 'Compliance::300'\nfrom\n    `tabItem` i\n    \n    left join sell on sell.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = sell.equipment_for_sell\n    \n    left join rent on rent.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = rent.equipment_for_sell\n    \n    left join compliance on compliance.equipment_main_category = i.equipment_main_category\n    and i.insurance = compliance.insurance\n    \n  \nwhere\n    i.equipment_for_sell = 1\n    or i.equipment_for_rent = 1\n    or i.insurance =1 \n    \ngroup by\n    i.equipment_main_category",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Equipment For sell Or Rent Report",
@@ -1173,22 +1160,48 @@
   ]
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [],
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Daily Supplier Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Daily Supplier Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
   "is_standard": "No",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 17:37:19.434773",
+  "modified": "2023-05-16 17:24:32.011151",
   "module": "Migoo CRM",
   "name": "Daily Supplier Report",
   "prepared_report": 0,
-  "query": "select\n    supplier_name as 'Name::250',\n    verify as 'Verified Or Not::200',\n    company_name as 'Company Name::250',\n    mobile_number as 'Mobile No::200',\n    email as 'Email::250'\nfrom\n    `tabSupplier`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
+  "query": "select\n    supplier_name as 'Name::200',\n    verify as 'Verified Or Not::200',\n    company_name as 'Company Name::250',\n    mobile_number as 'Mobile No::200',\n    email as 'Email::250'\nfrom\n    `tabSupplier`\nwhere\n    (\n        DATE(creation) between %(from_date) s\n        and %(to_date) s\n    )",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Daily Supplier Report",
@@ -1258,47 +1271,23 @@
   ]
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
+  "filters": [],
   "is_standard": "No",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-21 18:02:41.490689",
+  "modified": "2023-05-16 16:57:12.685199",
   "module": "Migoo CRM",
   "name": "Lead Analytics",
   "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request_type as 'Request Type::150',\n    count(i.request_type) as 'Total::200',\n    count(daily.request_type) as \"Today::200\",\n    count(week.request_type) as \"In 7 Days::200\",\n    count(quarterly.request_type) as \"In 15 Days::200\",\n    count(monthly.request_type) as \"In 30 Days::200\"\nfrom\n    `tabLead` i\n    left outer join daily on daily.request_type = i.request_type\n    and daily.creation = i.creation\n    left outer join week on week.request_type = i.request_type\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request_type = i.request_type\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request_type = i.request_type\n    and monthly.creation = i.creation\nwhere\n\n    (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request_type",
+  "query": "with daily as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request_type as 'Request Type::145',\n    count(i.request_type) as 'Total::200',\n    count(daily.request_type) as \"Today::200\",\n    count(week.request_type) as \"In 7 Days::200\",\n    count(quarterly.request_type) as \"In 15 Days::200\",\n    count(monthly.request_type) as \"In 30 Days::200\"\nfrom\n    `tabLead` i\n    left outer join daily on daily.request_type = i.request_type\n    and daily.creation = i.creation\n    left outer join week on week.request_type = i.request_type\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request_type = i.request_type\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request_type = i.request_type\n    and monthly.creation = i.creation\n\n\ngroup by\n    i.request_type",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead Analytics",
@@ -1564,6 +1553,7 @@
   ]
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1575,11 +1565,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 17:55:59.070673",
+  "modified": "2023-05-16 18:13:24.208627",
   "module": "Migoo CRM",
   "name": "Equipment Status Wise Report",
   "prepared_report": 0,
-  "query": "WITH working as(\n       select\n              supplier,\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Working'\n       group by\n              item_group,\n               equipment_status\n),\nideal as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Ideal'\n       group by\n              item_group\n),\nbreakdown as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Breakdown'\n       group by\n              item_group\n),\noccupied as(\n       select\n              item_group,\n         equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Occupied With Migoo'\n       group by\n              item_group\n),\nfree as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Free'\n)\nselect\n       i.supplier as 'S:Link/Supplier:-10',\n       ig.item_group_name as 'Item Group:Link/Item Group:250',\n       count(i.item_group) as 'Total::100',\n       count(working.equipment_status) as 'Working::150',\n       count(ideal.equipment_status) as 'Ideal::150',\n       count(breakdown.equipment_status) as 'BreakDown::150',\n       count(occupied.equipment_status) as 'Occupied With Migoo::150',\n       count(free.equipment_status) as 'Free::150'\nfrom\n       `tabItem Group` ig\n       left outer JOIN `tabItem` i ON i.item_group = ig.item_group_name\n       left outer JOIN working on ig.item_group_name = working.item_group\n       and working.equipment_status = i.equipment_status\n       left outer JOIN ideal on ig.item_group_name = ideal.item_group\n       and ideal.equipment_status = i.equipment_status\n       left outer JOIN breakdown on ig.item_group_name = breakdown.item_group\n       and breakdown.equipment_status = i.equipment_status\n       left outer JOIN occupied on ig.item_group_name = occupied.item_group\n       and occupied.equipment_status = i.equipment_status\n       left outer JOIN free on ig.item_group_name = free.item_group\n       and free.equipment_status = i.equipment_status\nwhere\n       ig.parent_item_group = 'All Equipment Groups'\n       and equipment_for_sell = 1\ngroup by\n       ig.item_group_name\n",
+  "query": "WITH working as(\n       select\n              supplier,\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Working'\n       group by\n              item_group,\n               equipment_status\n),\nideal as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Ideal'\n       group by\n              item_group\n),\nbreakdown as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Breakdown'\n       group by\n              item_group\n),\noccupied as(\n       select\n              item_group,\n         equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Occupied With Migoo'\n       group by\n              item_group\n),\nfree as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Free'\n       group by\n              item_group\n)\nselect\n       ig.item_group_name as 'Item Group:Link/Item Group:239.5',\n       count(i.item_group) as 'Total::180',\n       count(working.equipment_status) as 'Working::180',\n       count(ideal.equipment_status) as 'Ideal::180',\n       count(breakdown.equipment_status) as 'BreakDown::180',\n       count(free.equipment_status) as 'Free::180',\n        i.supplier as 'S:Link/Supplier:-10'\nfrom\n       `tabItem Group` ig\n       left outer JOIN `tabItem` i ON i.item_group = ig.item_group_name\n       left outer JOIN working on ig.item_group_name = working.item_group\n       and working.equipment_status = i.equipment_status\n       left outer JOIN ideal on ig.item_group_name = ideal.item_group\n       and ideal.equipment_status = i.equipment_status\n       left outer JOIN breakdown on ig.item_group_name = breakdown.item_group\n       and breakdown.equipment_status = i.equipment_status\n      \n       left outer JOIN free on ig.item_group_name = free.item_group\n       and free.equipment_status = i.equipment_status\nwhere\n       ig.parent_item_group = 'All Equipment Groups'\n       \ngroup by\n       ig.item_group_name\n",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Equipment Status Wise Report",
@@ -2365,22 +2355,48 @@
   ]
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [],
+  "filters": [
+   {
+    "default": "Today",
+    "fieldname": "from_date",
+    "fieldtype": "Date",
+    "label": "From Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Daily Equipment Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   },
+   {
+    "default": "Today",
+    "fieldname": "to_date",
+    "fieldtype": "Date",
+    "label": "To Date",
+    "mandatory": 1,
+    "options": null,
+    "parent": "Daily Equipment Report",
+    "parentfield": "filters",
+    "parenttype": "Report",
+    "wildcard_filter": 0
+   }
+  ],
   "is_standard": "No",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 17:47:06.697818",
+  "modified": "2023-05-16 17:44:15.729022",
   "module": "Migoo CRM",
   "name": "Daily Equipment Report",
   "prepared_report": 0,
-  "query": "select\n    name as 'Name::200',\n    item_group as 'Equipment Main Category::200',\n    equipment_main_category as 'Equipment Sub Category::200',\n    supplier as 'Supplier:Link/Supplier:100',\n    rto_register as 'RTO Registration::200',\n    equipment_verify as 'Equipment Verify::200'\nfrom\n    `tabItem`\nwhere\n    creation >= now() - INTERVAL 9 hour\n    and HOUR(creation)\n    and HOUR(creation) in (10, 11, 12, 13, 14, 15, 16, 17, 18, 19);",
+  "query": "select\n    name as 'Name::200',\n    item_group as 'Equipment Main Category::200',\n    equipment_main_category as 'Equipment Sub Category::200',\n    supplier as 'Supplier:Link/Supplier:100',\n    rto_register as 'RTO Registration::200',\n    equipment_verify as 'Equipment Verify::200'\nfrom\n    `tabItem`\nwhere\n   (\n        DATE(creation) between %(from_date) s\n        and %(to_date) s\n    )\n    ",
   "ref_doctype": "Item",
   "reference_report": null,
   "report_name": "Daily Equipment Report",
@@ -2636,6 +2652,7 @@
   ]
  },
  {
+  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2672,11 +2689,11 @@
   "javascript": null,
   "json": "{}",
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:53.392381",
+  "modified": "2023-05-16 18:14:02.672862",
   "module": "Migoo CRM",
   "name": "Insurance Expire Email Report",
   "prepared_report": 0,
-  "query": "select \neq.reference_doctype as 'Reference Doctype',\neq.reference_name as 'Equipment Name',\ni.equipment_main_category as 'Equipment Sub Category',\neq.creation as 'Email Send Date',\ni.insurance_date as 'Insurance Date' ,\ni.supplier_name as 'Supplier Name',\ni.whatsapp_no as 'Supplier Whatsapp No',\ni.supplier_email as 'Supplier Email',\neq.status as 'Email Status'\n\nfrom `tabEmail Queue` eq\n\ninner join `tabItem` i \non eq.reference_name=i.name\n\nwhere eq.reference_doctype='Item' and \n  \n    (\n      eq.creation between %(from_date) s\n       and %(to_date) s\n   )\n\n",
+  "query": "select \n\neq.reference_name as 'Equipment Name',\ni.equipment_main_category as 'Equipment Sub Category',\neq.creation as 'Email Send Date',\ni.insurance_date as 'Insurance Date' ,\ni.supplier_name as 'Supplier Name',\ni.whatsapp_no as 'Supplier Whatsapp No',\ni.supplier_email as 'Supplier Email',\neq.status as 'Email Status'\n\nfrom `tabEmail Queue` eq\n\ninner join `tabItem` i \non eq.reference_name=i.name\n\nwhere eq.reference_doctype='Item' and \n  \n    (\n      eq.creation between %(from_date) s\n       and %(to_date) s\n   )\n\n",
   "ref_doctype": "Email Queue",
   "reference_report": null,
   "report_name": "Insurance Expire Email Report",
@@ -3697,6 +3714,182 @@
    },
    {
     "parent": "Work Done",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "Migoo",
+  "modified": "2023-05-16 18:45:04.054997",
+  "module": "Migoo CRM",
+  "name": "Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-05-17 08:45:20.626626",
+  "module": "Migoo CRM",
+  "name": "Employee Wise Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee",
+  "reference_report": null,
+  "report_name": "Employee Wise Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": []
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-05-17 08:52:53.724695",
+  "module": "Migoo CRM",
+  "name": "Work Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "User",
+  "reference_report": null,
+  "report_name": "Work Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Work Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Work Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Work Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Work Summary",
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Employee Self Service"
