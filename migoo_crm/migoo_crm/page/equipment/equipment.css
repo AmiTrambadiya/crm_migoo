@@ -55,3 +55,45 @@ a:active {
     font-weight: 600;
     font-size: 0.77em;
 }
+
+#po-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58vh;
+}
+
+#po-message1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58vh;
+}
+
+#po-message2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58vh;
+}
+
+.img-nothing {
+    margin-left: 15px;
+    width: 70px;
+    height: 70px;
+}
+
+.image-text {
+    position: absolute;
+    text-align: center;
+}
+
+.table th,
+.table td {
+    font-size: 13px;
+}
+
+.table td {
+    height: 30px;
+    width: 120px;
+}

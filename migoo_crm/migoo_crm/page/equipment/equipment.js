@@ -8,14 +8,9 @@ frappe.pages['equipment'].on_page_load = function (wrapper) {
 	var div = $('<div id="numbercard" class="">\
 		<div class="row">\
 		</div>\
-	</div>');
+		</div><div id="po-message"></div>');
 
-	// var div = $('<div id="numbercard" class="">\
-	// 	<div class="row">\
-	// 	</div>\
-	// </div>');
-
-	var canvas = $('<br><h3>Equipment Status</h3><br><div id="chart"></div>');
+	var canvas = $('<br><h3>Equipment Status</h3><br><div id="chart"></div><div id="po-message1"></div>');
 	var br = $('<br><br><h3>Compliance Report</h3><br>')
 
 	page.main.append(div);
@@ -23,6 +18,8 @@ frappe.pages['equipment'].on_page_load = function (wrapper) {
 	page.main.append(br);
 
 	var table_wrapper = $('<div>').attr('id', 'my_report_table').addClass('').appendTo(page.main);
+	var table_message = $('<div>').attr('id', 'po-message2').addClass('').appendTo(page.main);
+
 
 	getNumberCards()
 	getDashboardChart()
@@ -43,71 +40,84 @@ function getNumberCards() {
 		callback: function (data) {
 			var rows = '';
 
-			$.each(data.message, function (i, d) {
+			if (data.message.length === 0) {
+				$('#po-message').html('<div class="">\
+				<img class="img-nothing" src="/files/list-empty-state.svg">\
+				<div class= "image-text">\
+				Nothing To Show\
+				</div>\
+				</div>');
+			}
 
-				var TotalNoOfequipment = d.TotalEquipment
+			else {
+				$('#po-message').hide();
 
-				if (TotalNoOfequipment === 0) {
-					TotalNoOfequipment = '<a class="add-equipment" >+ Add Equipment</a>';
-				}
-				else {
-					TotalNoOfequipment = TotalNoOfequipment
-				}
+				$.each(data.message, function (i, d) {
 
-				rows +=
-					''
-					+ '<div class="col-md-6 col-lg-4 col-sm-12">'
-					+ '<div class="card-1 row">'
+					var TotalNoOfequipment = d.TotalEquipment
 
-					+ '<div class="col-lg-8 col-md-9 col-sm-9">'
-					+ '<div class="title">'
-					+ (d.ItemGroup ? d.ItemGroup : '')
-					+ '</div>'
+					if (TotalNoOfequipment === 0) {
+						TotalNoOfequipment = '<a class="add-equipment" >+ Add Equipment</a>';
+					}
+					else {
+						TotalNoOfequipment = TotalNoOfequipment
+					}
 
-					+ '<div class="numbers">'
-					+ (TotalNoOfequipment ? TotalNoOfequipment : 0)
-					+ '</div>'
-					+ '</div>'
+					rows +=
+						''
+						+ '<div class="col-md-6 col-lg-4 col-sm-12">'
+						+ '<div class="card-1 row">'
 
-					+ '<div class="col-lg-4 col-md-3 col-sm-3">'
-					+ '<div class="title">'
-					+ '<img  src="'
-					+ (d.Image ? d.Image : '')
-					+ '">'
-					+ '</div>'
-					+ '</div>'
+						+ '<div class="col-lg-8 col-md-9 col-sm-9">'
+						+ '<div class="title">'
+						+ (d.ItemGroup ? d.ItemGroup : '')
+						+ '</div>'
 
-					+ '</div>'
-					+ '</div>'
-					;
-			});
+						+ '<div class="numbers">'
+						+ (TotalNoOfequipment ? TotalNoOfequipment : 0)
+						+ '</div>'
+						+ '</div>'
 
-			$('#numbercard div').html(rows)
+						+ '<div class="col-lg-4 col-md-3 col-sm-3">'
+						+ '<div class="title">'
+						+ '<img  src="'
+						+ (d.Image ? d.Image : '')
+						+ '">'
+						+ '</div>'
+						+ '</div>'
 
-			$('.card-1').on('click', function () {
-				var totalEquipment = parseInt($(this).find('.numbers').text().trim());
+						+ '</div>'
+						+ '</div>'
+						;
+				});
 
-				if (totalEquipment > 0) {
-					var filter = {
-						'item_group': $(this).find('.title').text().trim()
-					};
+				$('#numbercard div').html(rows)
 
-					var filter_string = $.param(filter); // converts filter object to query string
-					window.location.href = 'all-equipment-cards?' + filter_string;
-				}
+				$('.card-1').on('click', function () {
+					var totalEquipment = parseInt($(this).find('.numbers').text().trim());
 
-				else {
-					$('.add-equipment').on('click', function () {
+					if (totalEquipment > 0) {
 						var filter = {
-							'item_group': $(this).closest('.card-1').find('.title').text().trim()
+							'item_group': $(this).find('.title').text().trim()
 						};
 
 						var filter_string = $.param(filter); // converts filter object to query string
-						window.location.href = '/app/item/new-item-1?' + filter_string;
-					});
-				}
+						window.location.href = 'all-equipment-cards?' + filter_string;
+					}
 
-			});
+					else {
+						$('.add-equipment').on('click', function () {
+							var filter = {
+								'item_group': $(this).closest('.card-1').find('.title').text().trim()
+							};
+
+							var filter_string = $.param(filter); // converts filter object to query string
+							window.location.href = '/app/item/new-item-1?' + filter_string;
+						});
+					}
+
+				});
+			}
 		}
 	})
 }
@@ -129,29 +139,40 @@ function getDashboardChart() {
 			var values = [];
 			var colorsArray = [];
 
-			chart_data.forEach(function (item) {
-				var color = '#' + Math.floor(Math.random() * 16777215).toString(16);
-				colorsArray.push(color);
-				labels.push(item.label);
-				values.push(item.value);
-			});
+			if (data.message.length === 0) {
+				$('#po-message1').html('<div class="">\
+				<img class="img-nothing" src="/files/list-empty-state.svg">\
+				<div class= "image-text">\
+				Nothing To Show\
+				</div>\
+				</div>');
+			}
+			
+			else {
+				$('#po-message1').hide();
+				chart_data.forEach(function (item) {
+					var color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+					colorsArray.push(color);
+					labels.push(item.label);
+					values.push(item.value);
+				});
 
-			var chart = new frappe.Chart("#chart", {
-				data: {
-					labels: labels,
-					datasets: [
-						{
-							type: "bar",
-							values: values,
-							colors: colorsArray,
-						}
-					]
-				},
-
-				type: 'bar',
-				height: 360,
-				colors: colorsArray
-			});
+				var chart = new frappe.Chart("#chart", {
+					data: {
+						labels: labels,
+						datasets: [
+							{
+								type: "bar",
+								values: values,
+								colors: colorsArray,
+							}
+						]
+					},
+					type: 'bar',
+					height: 360,
+					colors: colorsArray
+				});
+			}
 		}
 	});
 }
@@ -161,41 +182,51 @@ function getGridReport() {
 	var col = [
 		{
 			name: 'Equipment',
-			width: 120,
+			width: 115,
 			editable: false,
 		},
 		{
 			name: 'RTO Regsitration No',
-			width: 130,
-			editable: false,
-		},
-		{
-			name: 'Model',
-			width: 240,
+			width: 115,
 			editable: false,
 		},
 		{
 			name: 'Insurance Last Date',
-			width: 140,
+			width: 115,
 			editable: false,
 		},
 		{
 			name: 'Fitness Last Date',
-			width: 140,
+			width: 115,
 			editable: false,
 		},
 		{
 			name: 'PUC Last Date',
-			width: 140,
+			width: 115,
+			editable: false,
+		},
+		{
+			name: 'MV Tax Last Date',
+			width: 115,
+			editable: false,
+		},
+		{
+			name: 'State Permit Last Date',
+			width: 115,
+			editable: false,
+		},
+		{
+			name: 'National Last Date',
+			width: 115,
 			editable: false,
 		},
 		{
 			name: 'Completion Date',
-			width: 180,
+			width: 115,
 			editable: false,
 		},
 		{
-			width: 100,
+			width: 115,
 			editable: false,
 		}
 	];
@@ -209,12 +240,25 @@ function getGridReport() {
 		},
 
 		callback: function (response) {
-			var data = response.message;
-			console.log(data)
-			new DataTable('#my_report_table', {
-				columns: col,
-				data: data,
-			});
+
+			if (response.message.length === 0) {
+				$('#po-message2').html('<div class="">\
+				<img class="img-nothing" src="/files/list-empty-state.svg">\
+				<div class= "image-text">\
+				Nothing To Show\
+				</div>\
+				</div>');
+			}
+
+			else {
+				$('#po-message2').hide();
+				var data = response.message;
+				console.log(data)
+				new DataTable('#my_report_table', {
+					columns: col,
+					data: data,
+				});
+			}
 		}
 	});
 }
