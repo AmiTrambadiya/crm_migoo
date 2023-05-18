@@ -194,12 +194,6 @@
     "parenttype": "Module Profile"
    },
    {
-    "module": "HR",
-    "parent": "Sales team",
-    "parentfield": "block_modules",
-    "parenttype": "Module Profile"
-   },
-   {
     "module": "Payroll",
     "parent": "Sales team",
     "parentfield": "block_modules",
@@ -220,7 +214,7 @@
   ],
   "docstatus": 0,
   "doctype": "Module Profile",
-  "modified": "2023-03-22 16:11:16.299954",
+  "modified": "2023-05-18 13:29:37.651411",
   "module_profile_name": "Sales team",
   "name": "Sales team"
  },
