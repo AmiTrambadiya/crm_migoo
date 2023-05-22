@@ -140,7 +140,7 @@ def send_insurance_email():
                 <div class="sec-2">
                     <h4 style="color:#e6992a">Hello, {}</h4>
                     <p>We hope this email finds you well. We are writing to remind you that your Equipment's documents are set to expire. The details are mentioned below.</p>
-                    <table border=1 px;>
+                    <table border=1px cellspacing="0" cellpadding="0";>
                         <tr>
                             <th>Equipment</th>
                             <th>Equipment No</th>

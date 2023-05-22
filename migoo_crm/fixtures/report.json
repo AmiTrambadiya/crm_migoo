@@ -1,42 +1,18 @@
 [
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Call History Per Employee",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Call History Per Employee",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
+  "filters": [],
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-04-20 13:35:37.716061",
+  "modified": "2023-05-19 15:38:37.995686",
   "module": "Migoo CRM",
   "name": "Call History Per Employee",
   "prepared_report": 0,
@@ -45,108 +21,24 @@
   "reference_report": null,
   "report_name": "Call History Per Employee",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Call History Per Employee",
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "System Manager"
+   },
+   {
+    "parent": "Call History Per Employee",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee"
    }
   ]
  },
  {
-  "add_total_row": 0,
-  "columns": [],
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": "",
-  "modified": "2023-03-22 18:04:36.479880",
-  "module": "Migoo CRM",
-  "name": "Compliance Report [Darshit]",
-  "prepared_report": 0,
-  "query": "with a as(\n    select\n        name as 'nm',\n        insurance_date as 'id',\n        TIMESTAMPDIFF(DAY, now(), insurance_date) as 'insurance'\n    from\n        `tabItem`\n    order by\n        creation desc\n),\naa as(\n    select\n        nm,\n        id,\n        concat(\n            'Insurance',\n            ' - ',\n            `insurance`,\n            ' ',\n            'Days to go'\n        ) as 'InsuranceCompleteDaysAfter'\n    from\n        a\n    where\n        id >= now() - interval 1 day\n        and id <= now() + interval 30 day\n),\nb as(\n    select\n        name as 'nm1',\n        fitness_dt as 'ft',\n        TIMESTAMPDIFF(DAY, now(), fitness_dt) as 'fitness'\n    from\n        `tabItem`\n),\nbb as(\n    select\n        nm1,\n        ft,\n        concat('Fitness', ' - ', `fitness`, ' ', 'Days to go') as 'FitnessCompleteDaysAfter'\n    from\n        b\n    where\n        ft >= now() - interval 1 day\n        and ft <= now() + interval 30 day\n),\nc as(\n    select\n        name as 'nm2',\n        pollution as 'pl',\n        TIMESTAMPDIFF(DAY, now(), pollution) as 'pollution'\n    from\n        `tabItem`\n),\ncc as(\n    select\n        nm2,\n        pl,\n        concat('PUC', ' - ', `pollution`, ' ', 'Days to go') as 'PUCCompleteDaysAfter'\n    from\n        c\n    where\n        pl >= now() - interval 1 day\n        and pl <= now() + interval 30 day\n)\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand::160',\n    i.model as 'Model::160',\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter as 'PUC Completion',\n    InsuranceCompleteDaysAfter as 'Completion Date::200',\n    concat(\n        '<button class=\"btn btn-primary pt-0 pb-0 compliance-custom-event\" data-name=\"',i.name,'\">Update</button>'\n    ) as '',\n    i.supplier as 'Supplier:Link/Supplier:-1'\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter as 'PUC Completion',\n    FitnessCompleteDaysAfter as 'Completion Date',\n    concat(\n       '<button class=\"btn btn-primary pt-0 pb-0 compliance-custom-event\" data-name=\"',i.name,'\">Update</button>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n     DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n   -- PUCCompleteDaysAfter as 'PUC Completion',\n    PUCCompleteDaysAfter as 'Completion Date::120',\n    concat(\n         '<button class=\"btn btn-primary pt-0 pb-0 compliance-custom-event\" data-name=\"',i.name,'\">Update</button>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.equipment_brand,\n    i.equipment_model_no,\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter,\n    InsuranceCompleteDaysAfter as 'Completion Date',\n    concat(\n        '<button class=\"btn btn-primary pt-0 pb-0 compliance-custom-event\" data-name=\"',i.name,'\">Update</button>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Not Registered'",
-  "ref_doctype": "Item",
-  "reference_report": null,
-  "report_name": "Compliance Report [Darshit]",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Sales User"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock Manager"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "All"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Maintenance User"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Item Manager"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Purchase User"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Vendor"
-   },
-   {
-    "parent": "Compliance Report [Darshit]",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Migoo Approver"
-   }
-  ]
- },
- {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -360,7 +252,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [
@@ -393,7 +285,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:20.131423",
+  "modified": "2023-05-19 16:48:02.571977",
   "module": "Migoo CRM",
   "name": "Lead For Buy",
   "prepared_report": 0,
@@ -422,7 +314,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [
@@ -455,7 +347,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-02-22 12:55:20.000756",
+  "modified": "2023-05-19 16:47:55.220442",
   "module": "Migoo CRM",
   "name": "Lead For Sell",
   "prepared_report": 0,
@@ -481,11 +373,11 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
@@ -493,7 +385,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-05-16 17:20:45.150362",
+  "modified": "2023-05-19 16:49:13.128897",
   "module": "Migoo CRM",
   "name": "Inquiry Analytics",
   "prepared_report": 0,
@@ -522,7 +414,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
@@ -530,7 +422,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.448012",
+  "modified": "2023-05-19 16:35:24.007988",
   "module": "Migoo CRM",
   "name": "report",
   "prepared_report": 0,
@@ -786,6 +678,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -883,6 +776,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -961,43 +855,19 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Call History Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Call History Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
+  "filters": [],
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-05-17 15:44:29.771358",
+  "modified": "2023-05-19 11:29:30.880553",
   "module": "Migoo CRM",
   "name": "Call History Report",
   "prepared_report": 0,
@@ -1006,7 +876,7 @@
   "reference_report": null,
   "report_name": "Call History Report",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Call History Report",
@@ -1017,7 +887,6 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -1072,7 +941,7 @@
    }
   ],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
@@ -1080,7 +949,7 @@
   "javascript": null,
   "json": "{}",
   "letter_head": null,
-  "modified": "2023-05-16 18:09:02.775463",
+  "modified": "2023-05-19 13:26:05.025444",
   "module": "Migoo CRM",
   "name": "Equipment For sell Or Rent Report",
   "prepared_report": 0,
@@ -1160,7 +1029,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1193,11 +1062,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-05-16 17:24:32.011151",
+  "modified": "2023-05-19 13:39:03.639402",
   "module": "Migoo CRM",
   "name": "Daily Supplier Report",
   "prepared_report": 0,
@@ -1206,7 +1075,7 @@
   "reference_report": null,
   "report_name": "Daily Supplier Report",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Daily Supplier Report",
@@ -1271,7 +1140,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1283,11 +1152,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-05-16 16:57:12.685199",
+  "modified": "2023-05-22 10:30:55.205656",
   "module": "Migoo CRM",
   "name": "Lead Analytics",
   "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request_type,\n        creation,\n        name\n    from\n        `tabLead`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request_type as 'Request Type::145',\n    count(i.request_type) as 'Total::200',\n    count(daily.request_type) as \"Today::200\",\n    count(week.request_type) as \"In 7 Days::200\",\n    count(quarterly.request_type) as \"In 15 Days::200\",\n    count(monthly.request_type) as \"In 30 Days::200\"\nfrom\n    `tabLead` i\n    left outer join daily on daily.request_type = i.request_type\n    and daily.creation = i.creation\n    left outer join week on week.request_type = i.request_type\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request_type = i.request_type\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request_type = i.request_type\n    and monthly.creation = i.creation\n\n\ngroup by\n    i.request_type",
+  "query": "with daily as(\n   select\n        rt.request_type,\n        l.creation,\n        l.name\n    from\n        `tabLead` l\n    \n    INNER JOIN `tabRequest Types` rt ON l.name = rt.parent\n    where\n        l.creation >= now() - INTERVAL 1 DAY\n    group by\n        rt.request_type,\n        l.creation\n),\nweek as(\n    select\n        rt.request_type,\n        l.creation,\n        l.name\n    from\n        `tabLead` l\n    \n    INNER JOIN `tabRequest Types` rt ON l.name = rt.parent\n    where\n        l.creation >= now() - INTERVAL 7 DAY\n    group by\n        rt.request_type,\n        l.creation\n),\nquarterly as(\n   select\n        rt.request_type,\n        l.creation,\n        l.name\n    from\n        `tabLead` l\n    \n    INNER JOIN `tabRequest Types` rt ON l.name = rt.parent\n    where\n        l.creation >= now() - INTERVAL 15 DAY\n    group by\n        rt.request_type,\n        l.creation\n),\nmonthly as(\n   select\n        rt.request_type,\n        l.creation,\n        l.name\n    from\n        `tabLead` l\n    \n    INNER JOIN `tabRequest Types` rt ON l.name = rt.parent\n    where\n        l.creation >= now() - INTERVAL 30 DAY\n    group by\n        rt.request_type,\n        l.creation\n)\nselect\n    rt.request_type as 'Request Type::145',\n    count(rt.request_type) as 'Total::200',\n    count(daily.request_type) as \"Today::200\",\n    count(week.request_type) as \"In 7 Days::200\",\n    count(quarterly.request_type) as \"In 15 Days::200\",\n    count(monthly.request_type) as \"In 30 Days::200\"\nfrom\n    `tabLead` i\n    INNER JOIN `tabRequest Types` rt ON i.name = rt.parent\n    left outer join daily on daily.request_type = rt.request_type\n    and daily.creation = i.creation\n    left outer join week on week.request_type = rt.request_type\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request_type = rt.request_type\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request_type = rt.request_type\n    and monthly.creation = i.creation\n\n\ngroup by\n   rt.request_type",
   "ref_doctype": "Lead",
   "reference_report": null,
   "report_name": "Lead Analytics",
@@ -1321,6 +1190,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1406,6 +1276,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1417,11 +1288,11 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 17:38:30.163524",
+  "modified": "2023-05-19 16:31:31.418270",
   "module": "Migoo CRM",
   "name": "Supplier and Equipment Report",
   "prepared_report": 0,
-  "query": "WITH difference_in_seconds AS (\n    select\n        s.creation as 'SupplierCreatedDate',\n        s.supplier_name as 'Supplier',\n        i.name as '1stEquipment',\n        i.creation as 'EquipmentCreatedDate',\n        TIMESTAMPDIFF(SECOND, s.creation, i.creation) AS seconds\n    from\n        `tabSupplier` s\n        inner join `tabItem` i on s.name = i.supplier\n        \n        where s.verify='Verify'\n),\ndifferences AS (\n    SELECT\n        Supplier as 's',\n        SupplierCreatedDate as 'a',\n        1stEquipment as 'b',\n        EquipmentCreatedDate as 'c',\n        seconds,\n        MOD(seconds, 60) AS seconds_part,\n        MOD(seconds, 3600) AS minutes_part,\n        MOD(seconds, 3600 * 24) AS hours_part\n    FROM\n        difference_in_seconds\n)\nselect\n    s as 'Supplier::200',\n    a as 'Supplier Creation Date',\n    b as '1st Equipment of Supplier',\n    c as '1st Equipment Created By Supplier',\n    CONCAT(\n        FLOOR(seconds / 3600 / 24),\n        ' days ',\n        FLOOR(hours_part / 3600),\n        ' hours ',\n        FLOOR(minutes_part / 60),\n        ' minutes ',\n        seconds_part,\n        ' seconds'\n    ) AS 'Creation Difference of Supplier and 1st Equipment '\nFROM\n    differences\ngroup by\n    s\norder by\n    c desc",
+  "query": "WITH difference_in_seconds AS (\n    select\n        date(s.creation) as 'SupplierCreatedDate',\n        s.supplier_name as 'Supplier',\n        i.name as '1stEquipment',\n        date(i.creation) as 'EquipmentCreatedDate',\n        TIMESTAMPDIFF(SECOND, s.creation, i.creation) AS seconds\n    from\n        `tabSupplier` s\n        inner join `tabItem` i on s.name = i.supplier\n        \n        where s.verify='Verify'\n),\ndifferences AS (\n    SELECT\n        Supplier as 's',\n        SupplierCreatedDate as 'a',\n        1stEquipment as 'b',\n        EquipmentCreatedDate as 'c',\n        seconds,\n        MOD(seconds, 60) AS seconds_part,\n        MOD(seconds, 3600) AS minutes_part,\n        MOD(seconds, 3600 * 24) AS hours_part\n    FROM\n        difference_in_seconds\n)\nselect\n    s as 'Supplier::200',\n    a as 'Supplier Creation Date',\n    b as '1st Equipment of Supplier',\n    c as '1st Equipment Created By Supplier',\n    CONCAT(\n        FLOOR(seconds / 3600 / 24),\n        ' days ',\n        FLOOR(hours_part / 3600),\n        ' hours ',\n        FLOOR(minutes_part / 60),\n        ' minutes ',\n        seconds_part,\n        ' seconds'\n    ) AS 'Creation Difference of Supplier and 1st Equipment '\nFROM\n    differences\ngroup by\n    s\norder by\n    c desc",
   "ref_doctype": "Supplier",
   "reference_report": null,
   "report_name": "Supplier and Equipment Report",
@@ -1491,43 +1362,19 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Rent",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Rent",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
+  "filters": [],
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 16:11:45.198780",
+  "modified": "2023-05-20 10:23:05.382240",
   "module": "Migoo CRM",
   "name": "Lead For Rent",
   "prepared_report": 0,
@@ -1536,7 +1383,7 @@
   "reference_report": null,
   "report_name": "Lead For Rent",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Lead For Rent",
@@ -1553,7 +1400,7 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1699,7 +1546,7 @@
    }
   ],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
@@ -1707,7 +1554,7 @@
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-03-20 12:30:53.366348",
+  "modified": "2023-05-19 16:33:51.374439",
   "module": "Migoo CRM",
   "name": "Insurance Report",
   "prepared_report": 0,
@@ -1790,7 +1637,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [
@@ -1823,7 +1670,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 17:55:14.296758",
+  "modified": "2023-05-19 13:59:24.347323",
   "module": "Migoo CRM",
   "name": "Daily Created Equipment Report",
   "prepared_report": 0,
@@ -1906,7 +1753,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [
@@ -1939,7 +1786,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 17:50:21.448715",
+  "modified": "2023-05-19 13:59:08.624653",
   "module": "Migoo CRM",
   "name": "Supplier Report",
   "prepared_report": 0,
@@ -2016,7 +1863,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [
@@ -2049,7 +1896,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 17:49:33.389516",
+  "modified": "2023-05-19 13:59:33.155758",
   "module": "Migoo CRM",
   "name": "Equipment Report",
   "prepared_report": 0,
@@ -2355,44 +2202,19 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Daily Equipment Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Daily Equipment Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
+  "filters": [],
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-05-16 17:44:15.729022",
+  "modified": "2023-05-19 13:29:33.189507",
   "module": "Migoo CRM",
   "name": "Daily Equipment Report",
   "prepared_report": 0,
@@ -2401,7 +2223,7 @@
   "reference_report": null,
   "report_name": "Daily Equipment Report",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Daily Equipment Report",
@@ -2472,6 +2294,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2574,6 +2397,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2652,44 +2476,19 @@
   ]
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\", \"Administrator\"]",
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Insurance Expire Email Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Insurance Expire Email Report",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
+  "filters": [],
+  "is_standard": "Yes",
   "javascript": null,
   "json": "{}",
   "letter_head": "Migoo",
-  "modified": "2023-05-16 18:14:02.672862",
+  "modified": "2023-05-19 13:07:16.806975",
   "module": "Migoo CRM",
   "name": "Insurance Expire Email Report",
   "prepared_report": 0,
@@ -2698,7 +2497,7 @@
   "reference_report": null,
   "report_name": "Insurance Expire Email Report",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Insurance Expire Email Report",
@@ -2743,7 +2542,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
@@ -2751,7 +2550,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 12:30:53.433194",
+  "modified": "2023-05-19 16:35:59.760664",
   "module": "Migoo CRM",
   "name": "Compliance Report",
   "prepared_report": 0,
@@ -2831,6 +2630,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2863,11 +2663,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 15:32:05.660692",
+  "modified": "2023-05-20 11:14:59.454525",
   "module": "Migoo CRM",
   "name": "Enquiry For Spare Parts",
   "prepared_report": 0,
@@ -2876,7 +2676,7 @@
   "reference_report": null,
   "report_name": "Enquiry For Spare Parts",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Enquiry For Spare Parts",
@@ -2896,7 +2696,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [
@@ -2929,7 +2729,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 16:00:13.950507",
+  "modified": "2023-05-20 11:11:06.393150",
   "module": "Migoo CRM",
   "name": "Lead For Buy/Sell",
   "prepared_report": 0,
@@ -2955,6 +2755,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2987,11 +2788,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 15:32:27.292805",
+  "modified": "2023-05-20 12:39:16.705675",
   "module": "Migoo CRM",
   "name": "Enquiry For Others",
   "prepared_report": 0,
@@ -3000,7 +2801,7 @@
   "reference_report": null,
   "report_name": "Enquiry For Others",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Enquiry For Others",
@@ -3017,6 +2818,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3049,11 +2851,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 15:33:05.361110",
+  "modified": "2023-05-20 12:36:23.597577",
   "module": "Migoo CRM",
   "name": "Enquiry For ERP",
   "prepared_report": 0,
@@ -3062,7 +2864,7 @@
   "reference_report": null,
   "report_name": "Enquiry For ERP",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Enquiry For ERP",
@@ -3079,6 +2881,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3111,11 +2914,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 15:32:39.429831",
+  "modified": "2023-05-20 12:38:13.524392",
   "module": "Migoo CRM",
   "name": "Enquiry For Insurance",
   "prepared_report": 0,
@@ -3124,7 +2927,7 @@
   "reference_report": null,
   "report_name": "Enquiry For Insurance",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Enquiry For Insurance",
@@ -3144,7 +2947,7 @@
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
-  "disabled": 0,
+  "disabled": 1,
   "docstatus": 0,
   "doctype": "Report",
   "filters": [
@@ -3177,7 +2980,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 15:33:21.845528",
+  "modified": "2023-05-20 12:40:54.151109",
   "module": "Migoo CRM",
   "name": "Enquiry For Buy/Sell",
   "prepared_report": 0,
@@ -3203,6 +3006,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3235,11 +3039,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-03-20 15:33:15.620761",
+  "modified": "2023-05-20 12:32:06.365805",
   "module": "Migoo CRM",
   "name": "Enquiry For Rent",
   "prepared_report": 0,
@@ -3248,7 +3052,7 @@
   "reference_report": null,
   "report_name": "Enquiry For Rent",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Enquiry For Rent",
@@ -3265,47 +3069,23 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Enquiry Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Enquiry Analytics",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
+  "filters": [],
   "is_standard": "No",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 15:37:38.061393",
+  "modified": "2023-05-20 12:43:43.105956",
   "module": "Migoo CRM",
   "name": "Enquiry Analytics",
   "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type::160',\n    count(i.request) as 'Total::193',\n    count(daily.request) as \"Today::193\",\n    count(week.request) as \"In 7 Days::193\",\n    count(quarterly.request) as \"In 15 Days::193\",\n    count(monthly.request) as \"In 30 Days::193\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere\n   \n      (\n       DATE(i.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\ngroup by\n    i.request",
+  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type::160',\n    count(i.request) as 'Total::193',\n    count(daily.request) as \"Today::193\",\n    count(week.request) as \"In 7 Days::193\",\n    count(quarterly.request) as \"In 15 Days::193\",\n    count(monthly.request) as \"In 30 Days::193\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\ngroup by\n    i.request",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry Analytics",
@@ -3327,43 +3107,19 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Report",
-  "filters": [
-   {
-    "default": "Today",
-    "fieldname": "from_date",
-    "fieldtype": "Date",
-    "label": "From Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Others",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   },
-   {
-    "default": "Today",
-    "fieldname": "to_date",
-    "fieldtype": "Date",
-    "label": "To Date",
-    "mandatory": 1,
-    "options": null,
-    "parent": "Lead For Others",
-    "parentfield": "filters",
-    "parenttype": "Report",
-    "wildcard_filter": 0
-   }
-  ],
-  "is_standard": "No",
+  "filters": [],
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 16:00:32.407517",
+  "modified": "2023-05-20 10:57:42.005097",
   "module": "Migoo CRM",
   "name": "Lead For Others",
   "prepared_report": 0,
@@ -3372,7 +3128,7 @@
   "reference_report": null,
   "report_name": "Lead For Others",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Lead For Others",
@@ -3389,6 +3145,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3421,11 +3178,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 12:30:52.963162",
+  "modified": "2023-05-20 11:01:39.928655",
   "module": "Migoo CRM",
   "name": "Lead For Spare Parts",
   "prepared_report": 0,
@@ -3434,7 +3191,7 @@
   "reference_report": null,
   "report_name": "Lead For Spare Parts",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Lead For Spare Parts",
@@ -3451,6 +3208,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3483,11 +3241,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 16:12:25.687733",
+  "modified": "2023-05-19 16:56:19.605618",
   "module": "Migoo CRM",
   "name": "Lead For ERP",
   "prepared_report": 0,
@@ -3496,7 +3254,7 @@
   "reference_report": null,
   "report_name": "Lead For ERP",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Lead For ERP",
@@ -3513,6 +3271,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3545,11 +3304,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-03-20 16:10:16.754701",
+  "modified": "2023-05-20 10:36:09.917886",
   "module": "Migoo CRM",
   "name": "Lead For Insurance",
   "prepared_report": 0,
@@ -3558,7 +3317,7 @@
   "reference_report": null,
   "report_name": "Lead For Insurance",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Lead For Insurance",
@@ -3575,6 +3334,7 @@
   ]
  },
  {
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3897,6 +3657,348 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Employee Self Service"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "add_total_row": 1,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-05-19 12:32:01.545513",
+  "module": "Migoo CRM",
+  "name": "Work Done By Employee",
+  "prepared_report": 0,
+  "query": "SELECT\r  u.name AS \"Name::170\",\r  u.phone AS \"Phone No::150\",\r  (\r    SELECT\r      COUNT(*)\r    FROM\r      `tabItem`\r    WHERE\r      owner = u.name\r  ) AS \"Equipment::140\",\r  (\r    SELECT\r      COUNT(*)\r    FROM\r      `tabSupplier`\r    WHERE\r      owner_name = u.name\r  ) AS \"Supplier::140\",\r  (\r    SELECT\r      COUNT(*)\r    FROM\r      `tabCall Logs`\r    WHERE\r      agent_number = u.phone\r  ) AS \"Call Logs::140\",\r  (\r    SELECT\r      COUNT(*)\r    FROM\r      `tabLead`\r    WHERE\r      lead_owner = u.name\r  ) AS \"Lead::120\",\r  (\r    SELECT\r      COUNT(*)\r    FROM\r      `tabOpportunity`\r    WHERE\r      opportunity_owner = u.name\r  ) AS \"Opportunity::140\",\r  (\r    SELECT\r      COUNT(*)\r    FROM\r      `tabQuotation`\r    WHERE\r      owner = u.name\r  ) AS \"Quotation::140\"\rFROM\r  `tabUser` u\rWHERE\r  u.module_profile = \"Sales Team\"\rGROUP BY\r  u.name",
+  "ref_doctype": "User",
+  "reference_report": null,
+  "report_name": "Work Done By Employee",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Work Done By Employee",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Work Done By Employee",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Work Done By Employee",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Work Done By Employee",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Employee Self Service"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "add_total_row": 1,
+  "columns": [
+   {
+    "fieldname": "i.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Total",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 200
+   },
+   {
+    "fieldname": "count(i.equipment_main_category)",
+    "fieldtype": "Data",
+    "label": "Total",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 230
+   },
+   {
+    "fieldname": "sell.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Sell",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 230
+   },
+   {
+    "fieldname": "rent.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Rent",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 230
+   },
+   {
+    "fieldname": "compliance.equipment_main_category",
+    "fieldtype": "Data",
+    "label": "Compliance",
+    "options": null,
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 230
+   }
+  ],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": "Migoo",
+  "modified": "2023-05-19 13:25:48.749093",
+  "module": "Migoo CRM",
+  "name": "Equipment For sell Or Rent Or Compliance",
+  "prepared_report": 0,
+  "query": "with sell as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_sell = 1\n    group by\n        equipment_main_category\n),\n\nrent as(\n    select\n        item_group,\n        equipment_for_sell,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        equipment_for_rent = 1\n    group by\n        equipment_main_category\n),\n\ncompliance as(\n    select\n        item_group,\n        insurance,\n        equipment_main_category\n    from\n        `tabItem`\n    where\n        insurance = 1\n        \n    group by\n        equipment_main_category\n)\n\nselect\n    i.equipment_main_category as 'Equipment Sub Category::300',\n    count(i.equipment_main_category) as 'Total::300',\n    count(sell.equipment_main_category) as 'Sell::300',\n    count(rent.equipment_main_category) as 'Rent::300',\n    count(compliance.equipment_main_category) as 'Compliance::300'\nfrom\n    `tabItem` i\n    \n    left join sell on sell.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = sell.equipment_for_sell\n    \n    left join rent on rent.equipment_main_category = i.equipment_main_category\n    and i.equipment_for_sell = rent.equipment_for_sell\n    \n    left join compliance on compliance.equipment_main_category = i.equipment_main_category\n    and i.insurance = compliance.insurance\n    \n  \nwhere\n    i.equipment_for_sell = 1\n    or i.equipment_for_rent = 1\n    or i.insurance =1 \n    \ngroup by\n    i.equipment_main_category",
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Equipment For sell Or Rent Or Compliance",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
+   },
+   {
+    "parent": "Equipment For sell Or Rent Or Compliance",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-05-20 11:06:26.058597",
+  "module": "Migoo CRM",
+  "name": "Lead For Buy-Sell",
+  "prepared_report": 0,
+  "query": "",
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead For Buy-Sell",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Lead For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Lead For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Lead For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
+   }
+  ]
+ },
+ {
+  "_liked_by": "[\"Administrator\"]",
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-05-20 12:41:14.258305",
+  "module": "Migoo CRM",
+  "name": "Enquiry For Buy-Sell",
+  "prepared_report": 0,
+  "query": "",
+  "ref_doctype": "Inquiry Form",
+  "reference_report": null,
+  "report_name": "Enquiry For Buy-Sell",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Enquiry For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Enquiry For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   },
+   {
+    "parent": "Enquiry For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Enquiry For Buy-Sell",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "Migoo",
+  "modified": "2023-05-22 13:02:46.774449",
+  "module": "Migoo CRM",
+  "name": "Lead Summary",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Lead",
+  "reference_report": null,
+  "report_name": "Lead Summary",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Lead Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Lead Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Lead Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Lead Summary",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Migoo Approver"
    }
   ]
  }
