@@ -1,6 +1,5 @@
 [
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "allow_guest": 1,
   "api_method": "otpverify",
   "disabled": 0,
@@ -16,7 +15,6 @@
   "script_type": "API"
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "allow_guest": 1,
   "api_method": "getotpdata",
   "disabled": 0,
@@ -32,7 +30,6 @@
   "script_type": "API"
  },
  {
-  "_liked_by": "[\"shahforamp98@gmail.com\"]",
   "allow_guest": 1,
   "api_method": "supplier-info",
   "disabled": 0,

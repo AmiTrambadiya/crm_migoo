@@ -13,7 +13,7 @@ app_license = "MIT"
 # include js, css files in header of desk.html
 app_include_css = "/assets/migoo_crm/css/custom.css"
 app_include_js = "/assets/migoo_crm/js/custom_number_card_widget.js"
-app_include_js = "/assets/migoo_crm/js/custom_query_reprot.js"
+# app_include_js = "/assets/migoo_crm/js/custom_query_reprot.js"
 
 
 # include js, css files in header of web template

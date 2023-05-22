@@ -1,0 +1,47 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-05-19 10:37:29.310386",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "default": "Today",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "default": "Today",
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "",
+ "modified": "2023-05-20 11:14:59.454525",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Enquiry For Spare Parts",
+ "prepared_report": 0,
+ "query": "SELECT\n    concat(`first_name`, ' ', `last_name`) as \"Name::195\",\n    company_name as 'Company::195',\n    email_address as 'Email::195',\n    mobile_no as 'Mobile No::195',\n    item_details as 'Equipment Details::195',\n    inquiry_source as 'Inquiry Source::195'\n    \nFROM\n    `tabInquiry Form`\nWHERE\n    request = 'Spare Parts'\n      and   (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+ "ref_doctype": "Inquiry Form",
+ "report_name": "Enquiry For Spare Parts",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Guest"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-05-19 10:37:27.949774",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2023-05-19 11:29:30.880553",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Call History Report",
+ "prepared_report": 0,
+ "query": "    select\n        cl.agent_name as 'Agent::150',\n        cl.agent_number as 'Agent Number::150',\n        cl.client_number as 'Client Number::150',\n        cl.status as 'Status Of call::150',\n        cl.call_duration as \"Call Duration (In Seconds)\",\n        cl.recording_url as \"Recording::350\",\n        CONCAT('<a href=\"', cl.recording_url, '\" class=\"btn pt-0 pb-0\" style=\"background-color:#e6992a;color:#ffffff;\">Open Recording</a>') as \"Recoding::150\"\n    from\n        `tabCall Logs` cl\n        inner join `tabUser` u on \n         u.phone = cl.agent_number\n        \n    where\n          (\n       DATE(cl.creation) between %(from_date) s\n       and %(to_date) s\n   )\n\n\n\n    order by\n        cl.creation desc",
+ "ref_doctype": "Call Logs",
+ "report_name": "Call History Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

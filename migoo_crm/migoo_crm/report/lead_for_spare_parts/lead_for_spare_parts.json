@@ -1,0 +1,47 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-05-19 10:37:29.504815",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "default": "Today",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "default": "Today",
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Migoo",
+ "modified": "2023-05-20 11:01:39.928655",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Lead For Spare Parts",
+ "prepared_report": 0,
+ "query": "SELECT\n    lead_name as \"Name\",\n    company_name as \"Company Name\",\n    l.status as \"Status\",\n    type as \"Type\",\n    email_id as \"Email\",\n    l.mobile_no as \"Mobile no\",\n    city as \"City\",\n    state as \"State\",\n    lead_owner as \"Lead Owner\",\n      request_type as 'Request Type:Link/Request Type',\n    e.name as 'Employee:Link/Employee'\n\nFROM\n    `tabLead` l\n \nright join `tabEmployee` e\non e.user_id=l.lead_owner\nWHERE\n    request_type = 'Spare Parts'\n    and   (\n       DATE(l.creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+ "ref_doctype": "Lead",
+ "report_name": "Lead For Spare Parts",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Guest"
+  }
+ ]
+}
