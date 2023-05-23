@@ -79,6 +79,14 @@ def get_columns():
             "fieldtype": "Data",
 
         },
+        {
+            "label": _(""),
+            "fieldname": "supplier",
+            "fieldtype": "Link",
+            "options": "Supplier",
+            "width":"-10"
+
+        },
     ]
 
     return columns
@@ -233,7 +241,8 @@ def get_data(filters):
                 '<button class="btn btn-primary pt-0 pb-0 compliance-custom-event" data-name="',
                 `tabItem`.name,
                 '">Update</button>'
-            ) as 'aaa'
+            ) as 'aaa',
+            supplier
         from
             `tabItem`
             left join aa on `tabItem`.name = nm
@@ -264,7 +273,8 @@ def get_data(filters):
                 '<button class="btn btn-primary pt-0 pb-0 compliance-custom-event" data-name="',
                 `tabItem`.name,
                 '">Update</button>'
-            ) as 'aaa'
+            ) as 'aaa',
+            supplier
         from
             `tabItem`
             left join aa on `tabItem`.name = nm
@@ -295,7 +305,8 @@ def get_data(filters):
                 '<button class="btn btn-primary pt-0 pb-0 compliance-custom-event" data-name="',
                 `tabItem`.name,
                 '">Update</button>'
-            ) as 'aaa'
+            ) as 'aaa',
+            supplier
         from
             `tabItem`
             left join aa on `tabItem`.name = nm
@@ -326,7 +337,8 @@ def get_data(filters):
                 '<button class="btn btn-primary pt-0 pb-0 compliance-custom-event" data-name="',
                 `tabItem`.name,
                 '">Update</button>'
-            ) as 'aaa'
+            ) as 'aaa',
+            supplier
         from
             `tabItem`
             left join aa on `tabItem`.name = nm
@@ -357,7 +369,8 @@ def get_data(filters):
                 '<button class="btn btn-primary pt-0 pb-0 compliance-custom-event" data-name="',
                 `tabItem`.name,
                 '">Update</button>'
-            ) as 'aaa'
+            ) as 'aaa',
+            supplier
         from
             `tabItem`
             left join aa on `tabItem`.name = nm
@@ -388,7 +401,8 @@ def get_data(filters):
                 '<button class="btn btn-primary pt-0 pb-0 compliance-custom-event" data-name="',
                 `tabItem`.name,
                 '">Update</button>'
-            ) as 'aaa'
+            ) as 'aaa',
+            supplier
         from
             `tabItem`
             left join aa on `tabItem`.name = nm

@@ -27,11 +27,13 @@
   {
    "fieldname": "equipment_category",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Equipment Category",
-   "options": "Item Group"
+   "options": "Item Group",
+   "reqd": 1
   },
   {
-   "depends_on": "eval:doc.equipment_category",
+   "depends_on": "eval:doc.equipment_category\n",
    "fieldname": "equipment_main_category",
    "fieldtype": "Link",
    "label": "Equipment Main Category",
@@ -39,7 +41,7 @@
    "options": "Item Group"
   },
   {
-   "depends_on": "equipment_main_category",
+   "depends_on": "eval:doc.equipment_category\n",
    "fieldname": "equipment_sub_category",
    "fieldtype": "Link",
    "label": "Equipment Sub Category",
@@ -50,7 +52,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.equipment_main_category",
+   "depends_on": "eval:doc.equipment_category\n",
    "fieldname": "brand",
    "fieldtype": "Link",
    "label": "Brand",
@@ -58,7 +60,7 @@
    "options": "Brand"
   },
   {
-   "depends_on": "eval:doc.equipment_main_category",
+   "depends_on": "eval:doc.equipment_category\n",
    "fieldname": "model_no",
    "fieldtype": "Data",
    "label": "Model No",
@@ -111,7 +113,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-22 16:51:15.763077",
+ "modified": "2023-05-23 16:01:21.966717",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Model",

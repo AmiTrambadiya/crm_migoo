@@ -1,6 +1,5 @@
 [
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -38,7 +37,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -373,7 +371,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -678,7 +675,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -776,7 +772,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -855,7 +850,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1029,7 +1023,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1140,7 +1133,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1190,7 +1182,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1276,7 +1267,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1362,7 +1352,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -1400,7 +1389,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2202,7 +2190,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2294,7 +2281,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2397,7 +2383,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -2476,7 +2461,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2550,7 +2534,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2023-05-19 16:35:59.760664",
+  "modified": "2023-05-22 17:14:32.771754",
   "module": "Migoo CRM",
   "name": "Compliance Report",
   "prepared_report": 0,
@@ -2630,7 +2614,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2755,7 +2738,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2818,7 +2800,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -2881,7 +2862,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3006,7 +2986,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3069,7 +3048,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3081,11 +3059,11 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-05-20 12:43:43.105956",
+  "modified": "2023-05-22 18:25:43.759693",
   "module": "Migoo CRM",
   "name": "Enquiry Analytics",
   "prepared_report": 0,
-  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type::160',\n    count(i.request) as 'Total::193',\n    count(daily.request) as \"Today::193\",\n    count(week.request) as \"In 7 Days::193\",\n    count(quarterly.request) as \"In 15 Days::193\",\n    count(monthly.request) as \"In 30 Days::193\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\ngroup by\n    i.request",
+  "query": "with daily as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 1 DAY\n    group by\n        request,\n        creation\n),\nweek as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 7 DAY\n    group by\n        request,\n        creation\n),\nquarterly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 14 DAY\n    group by\n        request,\n        creation\n),\nmonthly as(\n    select\n        request,\n        creation,\n        name\n    from\n        `tabInquiry Form`\n    where\n        creation >= now() - INTERVAL 30 DAY\n    group by\n        request,\n        creation\n)\nselect\n    i.request as 'Request Type::160',\n    count(i.request) as 'Total::193',\n    count(daily.request) as \"Today::193\",\n    count(week.request) as \"In 7 Days::193\",\n    count(quarterly.request) as \"In 15 Days::193\",\n    count(monthly.request) as \"In 30 Days::193\"\nfrom\n    `tabInquiry Form` i\n    left outer join daily on daily.request = i.request\n    and daily.creation = i.creation\n    left outer join week on week.request = i.request\n    and week.creation = i.creation\n    left outer join quarterly on quarterly.request = i.request\n    and quarterly.creation = i.creation\n    left outer join monthly on monthly.request = i.request\n    and monthly.creation = i.creation\nwhere i.request!=''\ngroup by\n    i.request",
   "ref_doctype": "Inquiry Form",
   "reference_report": null,
   "report_name": "Enquiry Analytics",
@@ -3107,7 +3085,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3145,7 +3122,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3208,7 +3184,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3271,7 +3246,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3334,7 +3308,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3346,7 +3319,7 @@
   "javascript": null,
   "json": null,
   "letter_head": "Migoo",
-  "modified": "2023-04-24 12:08:43.163815",
+  "modified": "2023-05-23 18:33:31.569974",
   "module": "Migoo CRM",
   "name": "Work Done By Employees",
   "prepared_report": 0,
@@ -3432,7 +3405,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3482,7 +3454,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3586,7 +3557,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3661,7 +3631,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3711,7 +3680,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 1,
   "columns": [
    {
@@ -3854,7 +3822,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
@@ -3904,7 +3871,6 @@
   ]
  },
  {
-  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,

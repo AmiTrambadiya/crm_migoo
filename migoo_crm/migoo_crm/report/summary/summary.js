@@ -8,7 +8,7 @@ frappe.query_reports["Summary"] = {
 		"label": __("Period"),
 		"fieldtype": "Select",
 		"options": "\nDaily\nWeekly\nMonthly",
-		"default": "Monthly",
-		"reqd": 1
+		// "default": "Monthly",
+		// "reqd": 1
 	}]
 };

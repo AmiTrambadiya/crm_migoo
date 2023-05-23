@@ -25,7 +25,7 @@ def execute(filters=None):
     '''
 
 
-    if period == "query":
+    if period == "Daily":
         query += " WHERE DATE(creation) = CURDATE()"
     elif period == "Till Date":
         if from_date and to_date:
