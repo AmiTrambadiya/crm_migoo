@@ -2,15 +2,8 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Summary"] = {
+frappe.query_reports["Supplier Report"] = {
 	"filters": [
-		{
-			"fieldname": "period",
-			"label": __("Period"),
-			"fieldtype": "Select",
-			"options": "Daily\nWeekly\nMonthly",
-			"default":"Daily",
-		},
 		{
 			"fieldname": "from_date",
 			"label": __("From Date"),
