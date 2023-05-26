@@ -7,6 +7,7 @@ import frappe
 from frappe import _
 
 
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns = [
         {

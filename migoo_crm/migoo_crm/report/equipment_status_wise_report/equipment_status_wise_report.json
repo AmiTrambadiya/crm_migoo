@@ -1,0 +1,60 @@
+{
+ "_liked_by": "[\"Administrator\"]",
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2023-05-24 13:06:48.671072",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2023-05-26 17:46:35.311453",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Equipment Status Wise Report",
+ "prepared_report": 0,
+ "query": "WITH working as(\n       select\n              supplier,\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Working'\n       group by\n              item_group,\n               equipment_status\n),\nideal as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Ideal'\n       group by\n              item_group\n),\nbreakdown as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Breakdown'\n       group by\n              item_group\n),\noccupied as(\n       select\n              item_group,\n         equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Occupied With Migoo'\n       group by\n              item_group\n),\nfree as(\n       select\n              item_group,\n              equipment_status\n       from\n              `tabItem`\n       where\n              equipment_status = 'Free'\n       group by\n              item_group\n)\nselect\n       ig.item_group_name as 'Item Group:Link/Item Group:239.5',\n       count(i.item_group) as 'Total::180',\n       count(working.equipment_status) as 'Working::180',\n       count(ideal.equipment_status) as 'Ideal::180',\n       count(breakdown.equipment_status) as 'BreakDown::180',\n       count(free.equipment_status) as 'Free::180',\n        i.supplier as 'S:Link/Supplier:-10'\nfrom\n       `tabItem Group` ig\n       left outer JOIN `tabItem` i ON i.item_group = ig.item_group_name\n       left outer JOIN working on ig.item_group_name = working.item_group\n       and working.equipment_status = i.equipment_status\n       left outer JOIN ideal on ig.item_group_name = ideal.item_group\n       and ideal.equipment_status = i.equipment_status\n       left outer JOIN breakdown on ig.item_group_name = breakdown.item_group\n       and breakdown.equipment_status = i.equipment_status\n      \n       left outer JOIN free on ig.item_group_name = free.item_group\n       and free.equipment_status = i.equipment_status\nwhere\n       ig.parent_item_group = 'All Equipment Groups'\n       \ngroup by\n       ig.item_group_name\n",
+ "ref_doctype": "Item",
+ "report_name": "Equipment Status Wise Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "All"
+  },
+  {
+   "role": "Maintenance User"
+  },
+  {
+   "role": "Manufacturing User"
+  },
+  {
+   "role": "Item Manager"
+  },
+  {
+   "role": "Purchase User"
+  },
+  {
+   "role": "Vendor"
+  },
+  {
+   "role": "Migoo Approver"
+  },
+  {
+   "role": "Vendor"
+  }
+ ]
+}

@@ -2,11 +2,13 @@ import frappe
 from frappe import _
 
 
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns, data = get_columns(), get_data(filters)
     return columns, data
 
 
+@frappe.whitelist(allow_guest=1)
 def get_columns():
     columns = [
         {
@@ -84,7 +86,7 @@ def get_columns():
             "fieldname": "supplier",
             "fieldtype": "Link",
             "options": "Supplier",
-            "width":"-10"
+            "width": "-10"
 
         },
     ]
@@ -92,6 +94,7 @@ def get_columns():
     return columns
 
 
+@frappe.whitelist(allow_guest=1)
 def get_data(filters):
     return frappe.db.sql(
         """
@@ -423,6 +426,7 @@ def get_data(filters):
     )
 
 
+@frappe.whitelist(allow_guest=1)
 def get_conditions(filters):
     conditions = []
 

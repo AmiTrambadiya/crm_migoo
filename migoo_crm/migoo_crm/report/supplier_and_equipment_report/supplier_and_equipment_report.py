@@ -5,6 +5,7 @@ import frappe
 from frappe import _
 
 
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns = [
         {
@@ -95,6 +96,8 @@ def execute(filters=None):
 		FROM
     		differences
     """
+
+    
 
     if filters and filters.get("suppliernames"):
         query += " WHERE suppliernames = %(suppliernames)s"

@@ -1,7 +1,7 @@
 import frappe
 from datetime import datetime, timedelta
 
-
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns = [
         {

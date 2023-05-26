@@ -6,6 +6,7 @@ from frappe import _
 import datetime
 
 
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns = [
         {

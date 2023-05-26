@@ -5,6 +5,7 @@ import frappe
 from frappe import _
 
 
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns = [
         {
@@ -12,7 +13,7 @@ def execute(filters=None):
             "fieldname": "supplier_name",
             "width": 200,
         },
-         {
+        {
             "label": _("Company Name"),
             "fieldname": "company_name",
             "width": 250,
@@ -32,8 +33,8 @@ def execute(filters=None):
             "fieldname": "verify",
             "width": 200,
         },
-       
-       
+
+
 
     ]
 
@@ -53,5 +54,5 @@ def execute(filters=None):
         query += "where DATE(creation) BETWEEN %(from_date)s AND %(to_date)s"
 
     data = frappe.db.sql(query, filters, as_dict=1)
- 
+
     return columns, data

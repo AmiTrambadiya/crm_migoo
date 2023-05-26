@@ -6,6 +6,7 @@ from frappe import _
 import datetime
 
 
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns = [{
         "label": _("Name"),
@@ -23,8 +24,6 @@ def execute(filters=None):
     select lead_name
     from `tabLead`
     '''
-
-
     if period == "Daily":
         query += " WHERE DATE(creation) = CURDATE()"
     elif period == "Till Date":

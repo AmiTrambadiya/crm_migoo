@@ -1502,11 +1502,11 @@
   "docstatus": 0,
   "doctype": "Report",
   "filters": [],
-  "is_standard": "No",
+  "is_standard": "Yes",
   "javascript": null,
   "json": null,
   "letter_head": null,
-  "modified": "2023-05-16 18:13:24.208627",
+  "modified": "2023-05-26 17:46:35.311453",
   "module": "Migoo CRM",
   "name": "Equipment Status Wise Report",
   "prepared_report": 0,
@@ -1515,7 +1515,7 @@
   "reference_report": null,
   "report_name": "Equipment Status Wise Report",
   "report_script": null,
-  "report_type": "Query Report",
+  "report_type": "Script Report",
   "roles": [
    {
     "parent": "Equipment Status Wise Report",
@@ -1582,6 +1582,12 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "Migoo Approver"
+   },
+   {
+    "parent": "Equipment Status Wise Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Vendor"
    }
   ]
  },
@@ -3582,7 +3588,7 @@
   ]
  },
  {
-  "_liked_by": "[]",
+  "_liked_by": "[\"Administrator\"]",
   "add_total_row": 0,
   "columns": [],
   "disable_prepared_report": 0,
