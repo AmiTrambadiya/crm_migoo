@@ -12,12 +12,7 @@ def execute(filters=None):
             "fieldname": "supplier_name",
             "width": 200,
         },
-        {
-            "label": _("'Verified Or Not"),
-            "fieldname": "verify",
-            "width": 200,
-        },
-        {
+         {
             "label": _("Company Name"),
             "fieldname": "company_name",
             "width": 250,
@@ -32,6 +27,12 @@ def execute(filters=None):
             "fieldname": "email",
             "width": 250,
         },
+        {
+            "label": _("'Verified Or Not"),
+            "fieldname": "verify",
+            "width": 200,
+        },
+       
        
 
     ]

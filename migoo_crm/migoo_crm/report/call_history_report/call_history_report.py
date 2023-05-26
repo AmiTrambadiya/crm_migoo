@@ -10,37 +10,37 @@ def execute(filters=None):
         {
             "label": _("Agent"),
             "fieldname": "agent_name",
-            "width": 140,
+            "width": 165,
         },
         {
             "label": _("Agent Number"),
             "fieldname": "agent_number",
-            "width": 130,
+            "width": 165,
         },
         {
             "label": _("Client Number"),
             "fieldname": "client_number",
-            "width": 130,
+            "width": 165,
         },
         {
             "label": _("Status Of call"),
             "fieldname": "status",
-            "width": 130,
+            "width": 150,
         },
         {
             "label": _("Call Duration (In Seconds)"),
             "fieldname": "call_duration",
-            "width": 130,
+            "width": 165,
         },
         {
-            "label": _("Recording"),
-            "fieldname": "recording_url",
-            "width": 300,
+            "label": _("DID Number"),
+            "fieldname": "did_number",
+            "width": 165,
         },
         {
             "label": _("Recoding"),
             "fieldname": "Recordings",
-            "width": 150,
+            "width": 165,
         },
     ]
 
@@ -52,7 +52,7 @@ def execute(filters=None):
             client_number,
             status,
             call_duration,
-            recording_url,
+            did_number,
             CONCAT('<a href="', cl.recording_url, '" class="btn pt-0 pb-0" style="background-color:#e6992a;color:#ffffff;">Open Recording</a>') AS 'Recordings'
         FROM
             `tabCall Logs` cl

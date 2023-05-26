@@ -135,75 +135,72 @@ def execute(filters=None):
             data.sort(key=lambda x: datetime.strptime(
                 x["period"], "%d-%m-%Y"), reverse=True)
 
-    if filters.get('period') == 'Weekly':
-        if filters.get('from_date') and filters.get('to_date'):
+    elif filters.get('period') == 'Weekly':
+        if filters.get('from_date'):
             start_date = datetime.strptime(
                 filters.get('from_date'), '%Y-%m-%d').date()
+        if filters.get('to_date'):
             end_date = datetime.strptime(
                 filters.get('to_date'), '%Y-%m-%d').date()
+        while start_date <= end_date:
+            week_start = start_date - timedelta(days=start_date.weekday())
+            week_end = week_start + timedelta(days=6)
 
-            while start_date <= end_date:
-                week_start = start_date - timedelta(days=start_date.weekday())
-                week_end = week_start + timedelta(days=6)
+            if week_start > end_date:
+                break
 
-                if week_start > end_date:
-                    break
+            item = frappe.db.sql("""
+                SELECT COUNT(*) FROM `tabItem`
+                WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+            """.format(week_start, week_end))[0][0] or 0
 
-                item = frappe.db.sql("""
-                    SELECT COUNT(*) FROM `tabItem`
-                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                """.format(week_start, week_end))[0][0] or 0
-    
-                supplier = frappe.db.sql("""
-                    SELECT COUNT(*) FROM `tabSupplier`
-                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                """.format(week_start, week_end))[0][0] or 0
-    
-                lead = frappe.db.sql("""
-                    SELECT COUNT(*) FROM `tabLead`
-                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                """.format(week_start, week_end))[0][0] or 0
-    
-                call_logs_created = frappe.db.sql("""
-                    SELECT COUNT(*) FROM `tabCall Log`
-                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                """.format(start_date, week_end))[0][0] or 0
-    
-                opportunity = frappe.db.sql("""
-                    SELECT COUNT(*) FROM `tabOpportunity`
-                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                """.format(week_start, week_end))[0][0] or 0
-    
-                quotation = frappe.db.sql("""
-                    SELECT COUNT(*) FROM `tabQuotation`
-                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                """.format(week_start, week_end))[0][0] or 0
-    
-                customer = frappe.db.sql("""
-                    SELECT COUNT(*) FROM `tabCustomer`
-                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                """.format(week_start, week_end))[0][0] or 0
-    
-                user = frappe.db.sql("""
-                        SELECT COUNT(*) FROM `tabUser`
-                        WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
-                    """.format(week_start, week_end))[0][0] or 0
-    
-                data.append({
-                    "period": "{0} - {1}".format(week_start.strftime('%d-%m-%Y'), week_end.strftime('%d-%m-%Y')),
-                    "lead": lead,
-                    "supplier": supplier,
-                    "call_logs_created": call_logs_created,
-                    "opportunity": opportunity,
-                    "quotation": quotation,
-                    "customer": customer,
-                    "item": item,
-                    "user": user
-                })
-                start_date = week_end + timedelta(days=1)
+            supplier = frappe.db.sql("""
+                SELECT COUNT(*) FROM `tabSupplier`
+                WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+            """.format(week_start, week_end))[0][0] or 0
 
-    # else:
-    #     print("Please provide both from_date and to_date")
+            lead = frappe.db.sql("""
+                SELECT COUNT(*) FROM `tabLead`
+                WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+            """.format(week_start, week_end))[0][0] or 0
+
+            call_logs_created = frappe.db.sql("""
+                SELECT COUNT(*) FROM `tabCall Log`
+                WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+            """.format(start_date, week_end))[0][0] or 0
+
+            opportunity = frappe.db.sql("""
+                SELECT COUNT(*) FROM `tabOpportunity`
+                WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+            """.format(week_start, week_end))[0][0] or 0
+
+            quotation = frappe.db.sql("""
+                SELECT COUNT(*) FROM `tabQuotation`
+                WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+            """.format(week_start, week_end))[0][0] or 0
+
+            customer = frappe.db.sql("""
+                SELECT COUNT(*) FROM `tabCustomer`
+                WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+            """.format(week_start, week_end))[0][0] or 0
+
+            user = frappe.db.sql("""
+                    SELECT COUNT(*) FROM `tabUser`
+                    WHERE DATE(`creation`) BETWEEN '{0}' AND '{1}'
+                """.format(week_start, week_end))[0][0] or 0
+
+            data.insert(0, {
+                "period": "{0} - {1}".format(week_start.strftime('%d-%m-%Y'), week_end.strftime('%d-%m-%Y')),
+                "lead": lead,
+                "supplier": supplier,
+                "call_logs_created": call_logs_created,
+                "opportunity": opportunity,
+                "quotation": quotation,
+                "customer": customer,
+                "item": item,
+                "user": user
+            })
+            start_date = week_end + timedelta(days=1)
 
     elif filters.get('period') == 'Monthly':
 
