@@ -2,7 +2,7 @@ import frappe
 from frappe import _
 
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=1)
 def AllEquipments(main_category):
 
     user = frappe.session.user

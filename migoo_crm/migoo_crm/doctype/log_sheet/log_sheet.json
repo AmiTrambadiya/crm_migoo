@@ -106,8 +106,7 @@
    "fieldname": "driver",
    "fieldtype": "Link",
    "label": "Driver",
-   "options": "Driver",
-   "permlevel": 1
+   "options": "Driver"
   },
   {
    "fieldname": "working_details_section",
@@ -177,7 +176,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-03 15:22:15.965558",
+ "modified": "2023-05-23 13:48:34.487663",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",

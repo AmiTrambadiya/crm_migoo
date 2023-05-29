@@ -6,6 +6,7 @@ from frappe import _
 import datetime
 
 
+@frappe.whitelist(allow_guest=1)
 def execute(filters=None):
     columns = [
         {
@@ -59,7 +60,6 @@ def execute(filters=None):
     ]
 
     data = []
-
 
     from_date_str = filters.get("from_date")
     to_date_str = filters.get("to_date")
@@ -120,5 +120,6 @@ def execute(filters=None):
             "Customer_created": Customer_created
         })
         from_date += datetime.timedelta(days=1)
+    data.sort(key=lambda x: x["date"], reverse=True)
 
     return columns, data

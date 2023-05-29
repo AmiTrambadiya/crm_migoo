@@ -2,240 +2,6 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2023-02-09 11:53:36.635297",
-  "name": "Sales Team",
-  "role_profile": "Sales Team",
-  "roles": [
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Analytics"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Auditor"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Customer"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Dashboard Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Employee"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Fleet Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Fulfillment User"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Inbox User"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Item Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Migoo Approver"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Newsletter Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Projects Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Projects User"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Purchase Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Purchase Master Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Purchase User"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Raw_data"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Report Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Sales Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Sales Master Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Sales User"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Stock Manager"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Stock User"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Prepared Report User"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Supplier"
-   },
-   {
-    "parent": "Sales Team",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Website Manager"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
-  "modified": "2023-01-09 17:33:08.390693",
-  "name": "CRM",
-  "role_profile": "CRM",
-  "roles": [
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Sales User"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Sales Manager"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Sales Master Manager"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Raw_data"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Analytics"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Migoo Approver"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Accounts User"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Accounts Manager"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Purchase User"
-   },
-   {
-    "parent": "CRM",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Purchase Manager"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
   "modified": "2022-10-13 13:06:18.663400",
   "name": "Migoo Approver",
   "role_profile": "Migoo Approver",
@@ -245,21 +11,6 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Migoo Approver"
-   }
-  ]
- },
- {
-  "docstatus": 0,
-  "doctype": "Role Profile",
-  "modified": "2022-10-13 13:06:44.001574",
-  "name": "Vendor",
-  "role_profile": "Vendor",
-  "roles": [
-   {
-    "parent": "Vendor",
-    "parentfield": "roles",
-    "parenttype": "Role Profile",
-    "role": "Vendor"
    }
   ]
  },
@@ -589,6 +340,255 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Customer"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2023-01-09 17:33:08.390693",
+  "name": "CRM",
+  "role_profile": "CRM",
+  "roles": [
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales User"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales Master Manager"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Raw_data"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Analytics"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "CRM",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Purchase Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2023-02-09 11:53:36.635297",
+  "name": "Sales Team",
+  "role_profile": "Sales Team",
+  "roles": [
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Analytics"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Auditor"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Customer"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Dashboard Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Employee"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Fleet Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Fulfillment User"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Inbox User"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Migoo Approver"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Newsletter Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Projects Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Projects User"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Purchase Master Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Raw_data"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Report Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales Master Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Prepared Report User"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Supplier"
+   },
+   {
+    "parent": "Sales Team",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Website Manager"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2022-10-13 13:06:44.001574",
+  "name": "Vendor",
+  "role_profile": "Vendor",
+  "roles": [
+   {
+    "parent": "Vendor",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Vendor"
    }
   ]
  }

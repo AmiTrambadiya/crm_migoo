@@ -3,12 +3,23 @@
 /* eslint-disable */
 
 frappe.query_reports["Summary"] = {
-	"filters": [{
-		"fieldname": "period",
-		"label": __("Period"),
-		"fieldtype": "Select",
-		"options": "\nDaily\nWeekly\nMonthly",
-		"default": "Monthly",
-		"reqd": 1
-	}]
+	"filters": [
+		{
+			"fieldname": "period",
+			"label": __("Period"),
+			"fieldtype": "Select",
+			"options": "Daily\nWeekly\nMonthly",
+			"default":"Daily",
+		},
+		{
+			"fieldname": "from_date",
+			"label": __("From Date"),
+			"fieldtype": "Date",
+		},
+		{
+			"fieldname": "to_date",
+			"label": __("To Date"),
+			"fieldtype": "Date",
+		},
+	]
 };

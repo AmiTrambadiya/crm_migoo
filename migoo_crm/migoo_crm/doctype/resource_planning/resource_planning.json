@@ -53,8 +53,7 @@
    "fieldname": "equipment",
    "fieldtype": "Link",
    "label": "Equipment",
-   "options": "Item",
-   "permlevel": 2
+   "options": "Item"
   },
   {
    "fetch_from": "equipment.equipment_main_category",
@@ -104,13 +103,15 @@
    "fetch_from": "equipment.supplier_name",
    "fieldname": "supplier_name",
    "fieldtype": "Data",
-   "label": "Supplier Name"
+   "label": "Supplier Name",
+   "permlevel": 1
   },
   {
    "fetch_from": "equipment.supplier_number",
    "fieldname": "supplier_mobile_no",
    "fieldtype": "Data",
-   "label": "Supplier Mobile No"
+   "label": "Supplier Mobile No",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_10",
@@ -177,7 +178,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-20 17:34:51.887765",
+ "modified": "2023-05-23 13:44:45.559774",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Resource Planning",
@@ -193,6 +194,25 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vendor",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Customer",
    "share": 1,
    "write": 1
   }

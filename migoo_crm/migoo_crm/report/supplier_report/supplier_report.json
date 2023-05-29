@@ -1,0 +1,72 @@
+{
+ "_liked_by": "[]",
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-05-24 13:06:48.751775",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "default": "Today",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "default": "Today",
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Migoo",
+ "modified": "2023-05-25 10:56:58.215931",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Supplier Report",
+ "prepared_report": 0,
+ "query": "select\n    supplier_name as 'Name::250',\n    verify as 'Verified Or Not::200',\n    company_name as 'Company Name::200',\n    mobile_number as 'Mobile No::200',\n    email as 'Email::250'\nfrom\n    `tabSupplier`\nwhere\n  \n    (\n       DATE(creation) between %(from_date) s\n       and %(to_date) s\n   )\n",
+ "ref_doctype": "Supplier",
+ "report_name": "Supplier Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Purchase Manager"
+  },
+  {
+   "role": "Purchase User"
+  },
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "Purchase Master Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Vendor"
+  },
+  {
+   "role": "Migoo Approver"
+  },
+  {
+   "role": "Guest"
+  }
+ ]
+}
