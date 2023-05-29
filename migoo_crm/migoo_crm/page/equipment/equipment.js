@@ -253,7 +253,6 @@ function getGridReport() {
 			else {
 				$('#po-message2').hide();
 				var data = response.message;
-				console.log(data)
 				new DataTable('#my_report_table', {
 					columns: col,
 					data: data,

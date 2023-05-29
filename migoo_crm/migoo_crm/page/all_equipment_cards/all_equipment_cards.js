@@ -32,7 +32,6 @@ function getEquipments() {
 			var sub_category = data.message[0]
 
 			var length = sub_category.length
-			console.log(length)
 			for (var i = 0; i < length; i++) {
 
 				var subCategories = sub_category[i].subCategory
