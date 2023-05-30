@@ -1,7 +1,6 @@
 import frappe
 from frappe import _
 
-
 @frappe.whitelist(allow_guest=1)
 def AllEquipments(main_category):
 
@@ -29,24 +28,25 @@ def AllEquipments(main_category):
     """, (main_category),  as_dict=True)
 
     else:
+        current_user = frappe.session.user
+        user_doc = frappe.get_doc("User", current_user)
+        mobile_number = user_doc.mobile_no
         query = frappe.db.sql("""
-            select 
-                item_group,
-                item_group_name as 'subCategory',
-                count(equipment_main_category) as 'Totalss' 
+            SELECT 
+                `tabItem`.item_group AS 'Category',
+                `tabItem Group`.item_group_name AS 'subCategory',
+                COALESCE(COUNT(`tabItem`.equipment_main_category), 0) AS 'Totalss' 
+            FROM 
+                `tabItem Group`
+            LEFT JOIN `tabItem` 
+                ON `tabItem Group`.item_group_name = `tabItem`.equipment_main_category
+            AND (`tabItem`.supplier_email = %s or `tabItem`.supplier_number=%s)
+            WHERE 
+                `tabItem Group`.parent_item_group != 'All Equipment Groups'
+            AND `tabItem Group`.parent_item_group = %s
+            GROUP BY 
+                `tabItem Group`.item_group_name
 
-            from `tabItem`
-
-            right join `tabItem Group` on 
-                `tabItem Group`.item_group_name =  `tabItem`.equipment_main_category
-
-            where parent_item_group !='All Equipment Groups'
-                and parent_item_group = %s
-                and supplier_email = %s
-
-            group by 
-                item_group_name
-        
-    """, (main_category, user),  as_dict=True)
+    """, (current_user, mobile_number, main_category),  as_dict=True)
 
     return query, main_category
