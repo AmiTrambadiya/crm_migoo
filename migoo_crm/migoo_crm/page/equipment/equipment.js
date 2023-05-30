@@ -133,6 +133,7 @@ function getDashboardChart() {
 		},
 
 		callback: function (data) {
+			// console.log(data);
 			var chart_data = data.message;
 
 			var labels = [];
@@ -147,7 +148,7 @@ function getDashboardChart() {
 				</div>\
 				</div>');
 			}
-			
+
 			else {
 				$('#po-message1').hide();
 				chart_data.forEach(function (item) {

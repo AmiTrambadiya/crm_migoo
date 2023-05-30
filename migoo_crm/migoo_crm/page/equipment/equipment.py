@@ -39,28 +39,22 @@ def equipment():
         mobile_number = user_doc.mobile_no
         # print(mobile_number)
         query = frappe.db.sql("""
-        select
-
-        `tabItem`.name,
-            item_group_name as 'ItemGroup',
-            count(item_group) as 'TotalEquipment',
-            supplier_email ,
-            `tabItem Group`.add_image as 'Image'
-
-        from
-            `tabItem`
-
-        right join `tabItem Group` on
-        `tabItem Group`.item_group_name = `tabItem`.item_group
-
-        where parent_item_group='All Equipment Groups'
-        and
-        (supplier_email = %s or supplier_number=%s)
-
-        group by
-            item_group_name
-
-    """, (current_user, mobile_number), as_dict=True)
+        SELECT
+            `tabItem`.name,
+            `tabItem Group`.item_group_name AS 'ItemGroup',
+            COUNT(`tabItem`.item_group) AS 'TotalEquipment',
+            supplier_email,
+            `tabItem Group`.add_image AS 'Image'
+        FROM
+            `tabItem Group`
+        LEFT JOIN `tabItem` ON
+            `tabItem Group`.item_group_name = `tabItem`.item_group
+            AND (`tabItem`.supplier_email = %s or `tabItem`.supplier_number=%s)
+        WHERE
+            `tabItem Group`.parent_item_group = 'All Equipment Groups'
+        GROUP BY
+            `tabItem Group`.item_group_name, `tabItem`.supplier_email
+    """, (current_user,mobile_number), as_dict=True)
 
     return query
 
@@ -77,7 +71,10 @@ def get_equipment_by_category():
         data = frappe.db.sql("""
             SELECT equipment_status as label, count(*) as value
             FROM `tabItem`
+              where
+            equipment_status!=''
             GROUP BY equipment_status
+          
         """, as_dict=True)
 
     else:
@@ -89,7 +86,10 @@ def get_equipment_by_category():
             FROM `tabItem`
 
             where
+            equipment_status!=''
+            and
             (supplier_email = %s or supplier_number=%s)
+            
 
             GROUP BY equipment_status
         """, (user, mobile_number), as_dict=True)
@@ -401,7 +401,7 @@ def get_compliance_report():
             """
 
         )
-        print(query)
+        # print(query)
 
         return query
 
@@ -712,5 +712,5 @@ def get_compliance_report():
 
             """, (user, mobile_number, user, mobile_number, user, mobile_number, user, mobile_number, user, mobile_number, user, mobile_number)
         )
-        print(query)
+        # print(query)
         return query
