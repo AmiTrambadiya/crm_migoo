@@ -562,11 +562,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-05-30 13:28:19.109160",
+  "modified": "2023-05-30 14:56:00.236561",
   "module": "Migoo CRM",
   "name": "Role Check",
   "reference_doctype": null,
-  "script": "data1 = frappe.form_dict[\"email\"]\nfrappe.msgprint(\"serverscript\")\nd=frappe.db.sql(\"\"\"select role_profile_name from `tabUser` where email =%s \"\"\",data1)\nlist1 = \"\"            \nfor i in d:\n    for j in i:\n        if list1==\"\":\n            list1=j\n\n# frappe.msgprint(\"serverscript\")\nfrappe.response[\"role\"]=list1",
+  "script": "data1 = frappe.form_dict[\"email\"]\n# frappe.msgprint(\"serverscript\")\nd=frappe.db.sql(\"\"\"select role_profile_name from `tabUser` where email =%s \"\"\",data1)\nlist1 = \"\"            \nfor i in d:\n    for j in i:\n        if list1==\"\":\n            list1=j\n\n# frappe.msgprint(\"serverscript\")\nfrappe.response[\"role\"]=list1",
   "script_type": "API"
  }
 ]
