@@ -257,10 +257,10 @@
   "doctype": "Client Script",
   "dt": "Item",
   "enabled": 1,
-  "modified": "2023-03-14 18:25:31.105892",
+  "modified": "2023-05-30 11:07:59.094943",
   "module": "Migoo CRM",
   "name": "Category Setting Item",
-  "script": "frappe.ui.form.on('Item', {\n\trefresh:function(frm) {\n\t    cur_frm.set_query(\"item_group\", function() {\n    return {\n            \"filters\": {\n                \"parent_item_group\": \"All Equipment Groups\",\n            }\n        };\n    });\n\t    frm.set_query('equipment_main_category', function(doc, cdt, cdn) {\n            let d = locals[cdt][cdn];\n            return{\n\t\t\t\tfilters: {\n\t\t\t\t    'parent_item_group': d.item_group,\n\t\t\t\t    // \"is_group\": \"1\",\n\t\t\t\t    \n\t\t\t\t    \n\t\t\t\t}\n            };\n\t    });\n   \n\t}\n})",
+  "script": "frappe.ui.form.on('Item', {\n\trefresh:function(frm) {\n\t    cur_frm.set_query(\"item_group\", function() {\n    return {\n            \"filters\": {\n                \"parent_item_group\": \"All Equipment Groups\",\n            }\n        };\n    });\n\t    frm.set_query('equipment_main_category', function(doc, cdt, cdn) {\n            let d = locals[cdt][cdn];\n            return{\n\t\t\t\tfilters: {\n\t\t\t\t    'parent_item_group': d.item_group,\n\t\t\t\t    // \"is_group\": \"1\",\n\t\t\t\t    \n\t\t\t\t    \n\t\t\t\t}\n            };\n\t    });\n   frm.set_query('equipment_category', function(doc, cdt, cdn) {\n            let d = locals[cdt][cdn];\n            return{\n\t\t\t\tfilters: {\n\t\t\t\t    'parent_item_group': d.equipment_main_category,\n\t\t\t\t    // \"is_group\": \"1\",\n\t\t\t\t    \n\t\t\t\t    \n\t\t\t\t}\n            };\n\t    });\n\t},\n\tequipment_main_category:function(frm){\n\t    var category=cur_frm.doc.equipment_main_category;\n\t     frappe.call({\n        \t  method:\"model_no\", \n        \t\t  args:{'category':category},\n        \t\t  }).then(records => {\n                // alert(records[\"message\"]);\n                var category1 = records[\"message\"];\n               \n                if(category1 > 0)\n                {\n                    \n                     cur_frm.set_df_property(\"equipment_category\", \"hidden\",0);\n                      frm.set_query('equipment_category', function(doc, cdt, cdn) {\n                        //   fetch_data(frm,category)\n                    let d = locals[cdt][cdn];\n                    return{\n        \t\t\t\tfilters: {\n        \t\t\t\t    \n        \t\t\t\t    'parent_item_group': d.equipment_main_category,\n        \t\t\t\t    // \"is_group\": \"1\",\n        \t\t\t\t    \n        \t\t\t\t    \n        \t\t\t\t}\n        \t\t\t\n            };\n\t    });\n                    \n                }\n                else{\n                    // fetch_data(frm,category)\n                    cur_frm.set_df_property(\"equipment_category\", \"hidden\",1);\n                }\n    \t\t })\n\t},\n})",
   "view": "Form"
  },
  {
@@ -553,8 +553,8 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Item",
-  "enabled": 1,
-  "modified": "2023-03-14 18:25:31.257081",
+  "enabled": 0,
+  "modified": "2023-05-30 11:10:25.225764",
   "module": "Migoo CRM",
   "name": "Verify Status",
   "script": "frappe.ui.form.on('Item', {\n\tbefore_save:function(frm) {\n\t\tif(frappe.user.has_role(\"Vendor\")===true){\n\t\t    if (frm.is_new()) {\n\t\t    frm.set_value(\"equipment_verify\", \"Not Verify\")\n\t\t    }\n\t\t}\n\t\telse{\n\t\t    frm.set_value(\"equipment_verify\", \"Verify\")\n\t\t    frm.set_df_property('supplier', 'reqd', 1)\n\t\t}\n\t\t\n\t}\n})",
