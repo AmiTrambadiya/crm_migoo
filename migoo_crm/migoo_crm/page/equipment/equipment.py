@@ -18,6 +18,10 @@ def equipment():
             item_group_name as 'ItemGroup',
             count(item_group) as 'TotalEquipment',
             supplier_email ,
+            SUM(CASE WHEN equipment_status = 'Free' THEN 1 ELSE 0 END) AS 'Free',
+            SUM(CASE WHEN equipment_status = 'Working' THEN 1 ELSE 0 END) AS 'Working',
+            SUM(CASE WHEN equipment_status = 'Ideal' THEN 1 ELSE 0 END) AS 'Ideal',
+            SUM(CASE WHEN equipment_status = 'Breakdown' THEN 1 ELSE 0 END) AS 'Breakdown',
             `tabItem Group`.add_image as 'Image'
 
         from
@@ -44,6 +48,10 @@ def equipment():
             `tabItem Group`.item_group_name AS 'ItemGroup',
             COUNT(`tabItem`.item_group) AS 'TotalEquipment',
             supplier_email,
+            SUM(CASE WHEN equipment_status = 'Free' THEN 1 ELSE 0 END) AS 'Free',
+            SUM(CASE WHEN equipment_status = 'Working' THEN 1 ELSE 0 END) AS 'Working',
+            SUM(CASE WHEN equipment_status = 'Ideal' THEN 1 ELSE 0 END) AS 'Ideal',
+            SUM(CASE WHEN equipment_status = 'Breakdown' THEN 1 ELSE 0 END) AS 'Breakdown',
             `tabItem Group`.add_image AS 'Image'
         FROM
             `tabItem Group`

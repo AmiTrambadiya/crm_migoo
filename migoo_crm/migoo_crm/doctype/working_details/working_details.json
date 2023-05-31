@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "status",
+  "shift",
   "start_time",
   "end_time",
   "total_time",
@@ -73,12 +74,19 @@
    "fieldname": "attach_proof",
    "fieldtype": "Attach Image",
    "label": "Attach Proof"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "\nDay\nNight"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-04-20 11:20:03.944306",
+ "modified": "2023-05-31 11:39:15.278735",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Working Details",

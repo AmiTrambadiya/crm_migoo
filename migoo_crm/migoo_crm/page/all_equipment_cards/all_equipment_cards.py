@@ -1,6 +1,7 @@
 import frappe
 from frappe import _
 
+
 @frappe.whitelist(allow_guest=1)
 def AllEquipments(main_category):
 
@@ -12,6 +13,10 @@ def AllEquipments(main_category):
             select 
                 item_group,
                 item_group_name as 'subCategory',
+                SUM(CASE WHEN equipment_status = 'Free' THEN 1 ELSE 0 END) AS 'Free',
+                SUM(CASE WHEN equipment_status = 'Working' THEN 1 ELSE 0 END) AS 'Working',
+                SUM(CASE WHEN equipment_status = 'Ideal' THEN 1 ELSE 0 END) AS 'Ideal',
+                SUM(CASE WHEN equipment_status = 'Breakdown' THEN 1 ELSE 0 END) AS 'Breakdown',
                 count(equipment_main_category) as 'Totalss' 
 
             from `tabItem`
@@ -35,6 +40,10 @@ def AllEquipments(main_category):
             SELECT 
                 `tabItem`.item_group AS 'Category',
                 `tabItem Group`.item_group_name AS 'subCategory',
+                SUM(CASE WHEN equipment_status = 'Free' THEN 1 ELSE 0 END) AS 'Free',
+                SUM(CASE WHEN equipment_status = 'Working' THEN 1 ELSE 0 END) AS 'Working',
+                SUM(CASE WHEN equipment_status = 'Ideal' THEN 1 ELSE 0 END) AS 'Ideal',
+                SUM(CASE WHEN equipment_status = 'Breakdown' THEN 1 ELSE 0 END) AS 'Breakdown',
                 COALESCE(COUNT(`tabItem`.equipment_main_category), 0) AS 'Totalss' 
             FROM 
                 `tabItem Group`
