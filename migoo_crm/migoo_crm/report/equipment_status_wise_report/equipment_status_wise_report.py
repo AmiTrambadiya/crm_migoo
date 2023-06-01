@@ -130,12 +130,6 @@ where
 group by
        ig.item_group_name
         """
-
-        # if filters and filters.get("from_date") and filters.get("to_date"):
-        #     query += " AND DATE(cl.creation) BETWEEN %s AND %s"
-        #     query_params.extend(
-        #         [filters.get("from_date"), filters.get("to_date")])
-
         data = frappe.db.sql(query, as_dict=1)
 
     else:
