@@ -66,7 +66,7 @@ def send_insurance_email():
         equipment_main_category,
         register_no,
         model,
-        insurance_dt,
+        DATE_FORMAT(insurance_dt, '%d-%m-%Y'), 
         insurances,
         insuranceDaysToGo
 
@@ -82,7 +82,7 @@ def send_insurance_email():
         equipment_main_category,
         register_no,
         model,
-        fitness_dt,
+        DATE_FORMAT(fitness_dt, '%d-%m-%Y'), 
         fitnesses,
         FitnessDaysToGo
         from fitness
@@ -97,13 +97,11 @@ def send_insurance_email():
         equipment_main_category,
         register_no,
         model,
-        pollution_dt,
+        DATE_FORMAT(pollution_dt, '%d-%m-%Y'),
         Pollutions,
         PollutionDaysToGo
         from PUC
     """)
-
-    # return name
 
    # create a dictionary to store equipment information for each supplier
     supplier_dict = defaultdict(list)
@@ -138,16 +136,16 @@ def send_insurance_email():
         message = '''
             <div>
                 <div class="sec-2">
-                    <h4 style="color:#e6992a">Hello, {}</h4>
+                    <h3 style="">Hello, {}</h4>
                     <p>We hope this email finds you well. We are writing to remind you that your Equipment's documents are set to expire. The details are mentioned below.</p>
-                    <table border=1px cellspacing="0" cellpadding="0";>
-                        <tr>
+                    <table border=1px cellspacing="0" cellpadding="4";>
+                        <tr style="background-color: #e6992a;">
+                            <th>Compliance</th>
+                            <th>Valid Till</th>
+                            <th>Expiring in</th>
                             <th>Equipment</th>
                             <th>Equipment No</th>
                             <th>Model No</th>
-                            <th>Document Status</th>
-                            <th>Date</th>
-                            <th>Expiring in</th>
                         </tr>
             '''.format(supplier_dict[supplier][0]['supplier_name'])
 
@@ -155,47 +153,76 @@ def send_insurance_email():
         for equipment in equipment_list:
             message += '''
                         <tr>
-                            <td>{}</td>
-                            <td>{}</td>
-                            <td>{}</td>
-                            <td>Insurance</td>
-                            <td>{}</td>
-                            <td>{} Days to Go</td>
+                            <td style="text-align: center;">{}</td>
+                            <td style="text-align: center;">{}</td>
+                            <td style="text-align: center;">{} Days to Go</td>
+                            <td style="text-align: center;">{}</td>
+                            <td style="text-align: center;">{}</td>
+                            <td style="text-align: center;">{}</td>
                         </tr>
-            '''.format(equipment['equipment_main_category'], equipment['register_no'],
-                       equipment['model'], equipment['date'], equipment['daystogo'])
-
+            '''.format(equipment['status'], equipment['date'], equipment['daystogo'], equipment['equipment_main_category'], equipment['register_no'],
+                       equipment['model'])
         message += '''
                     </table>
                 </div>
             </div>
             <p>Get it renewed as soon as possible to avoid further inconvenience.</p>
             <p>Thank you for choosing Migoo. We value your trust and are committed to providing you with the best service possible.</p>
-            <div style="padding-top:10px;">
-                 <div>
-                <p>Thanks & Regards,</p>
-                <img src="https://www.migoo.in/files/download%20(1).png">
-                <div>Surya Prakash Pal </div>
-                <div>Assistant Manager</div>
-                <div>Mobile No.: +917969212202</div>
-                <div>Email: mailto:surya@migoo.in</div>
-                </div>
-                <br>
-                <a href="https://www.facebook.com/people/Migoo-Equipments/100087829991875/?mibextid=ZbWKwL">
-                    <img src="https://www.migoo.in/files/facebook.png" style="height: 25px;"></a>
-    
-                <a href="https://www.instagram.com/migoo_equipment/?igshid=YmMyMTA2M2Y%3D">
-                    <img src="https://www.migoo.in/files/instagram.png" style="height: 25px;"></a>
+           <div>
+           <p><b>Thanks & Regards,</b></p>
+          
+           <div><b>Surya Prakash Pal,</b></div>
+           <div><b>Assistant Manager</b></div>
+           <br>
 
-                <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQE3GrOu_soLXAAAAYTnfV7Ak5NhrLNM9IxIvNuvfFL51XjUZjWDRN_WROWhhGDHQfI05HuUk46hX4INHsRvXff6X08bFwXCpC3OG-A7nocY7Rtqb7kN1teuUQMukrXRVO5ai84=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmigoo-equipments-270563257">
-                    <img src="https://www.migoo.in/files/linkedin.png" style="height: 25px;"></a>
+                <table>
+                    <tr>
+                        <td style="border-right: 3px solid #e6992a; color: black;">
+                            <img
+                                src="https://ci3.googleusercontent.com/mail-sig/AIorK4zf_Mw4U0lrUBfnOuVQzvYfOGDhx1WSRbMtBaWBErGIoq8nQyLPAziA9SF9qRoUVfH4b4fWMfM">
+                        </td>
+                        <td style="padding-left:12px;">
+                            <img src="https://www.migoo.in/files/call (1).png">
+                            +91 79692 12202
+                            <br>
+                            <img src="https://www.migoo.in/files/email1ead26.png">
+                            <a style="color: black;" href="mailto:surya@migoo.in">surya@migoo.in</a>
+                            <br>
+                            <img src="https://www.migoo.in/files/link.png">
+                            <a style="color: black;" href="https://www.migoo.in">www.migoo.in</a>
+                            <br>
+                            <img src="https://www.migoo.in/files/location.png">
+                            Migved Solutions Private Limited,
+                            <br>
+                            A-1204, Mondeal Heights,
+                            <br>
+                            Iskcon Cross Road,
+                            <br>
+                            S.G.Highway,
+                            <br>
+                            Ahmedabad-380058
+                            <br>
+                            <div style="margin-top: 10px;">
+                            <a target="_blank" href="https://www.facebook.com/people/Migoo-Equipments/100087829991875/?mibextid=ZbWKwL">
+                                <img src="https://www.migoo.in/files/facebook.png" style="height: 20px;"></a>
 
-                <a href="https://api.whatsapp.com/send/?phone=917969212200&text&type=phone_number&app_absent=0">
-                    <img src="https://www.migoo.in/files/123whatsapp.png" style="height: 25px;"></a>
+                            <a target="_blank" href="https://www.instagram.com/migoo_equipment/?igshid=YmMyMTA2M2Y%3D">
+                                <img src="https://www.migoo.in/files/instagram.png" style="height: 20px;"></a>
 
-                <a href="https://twitter.com/MigooEquipments">
-                    <img src="https://www.migoo.in/files/twitter-sign.png" style="height: 25px;"></a>
-        </div>
+                            <a target="_blank"
+                                href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQE3GrOu_soLXAAAAYTnfV7Ak5NhrLNM9IxIvNuvfFL51XjUZjWDRN_WROWhhGDHQfI05HuUk46hX4INHsRvXff6X08bFwXCpC3OG-A7nocY7Rtqb7kN1teuUQMukrXRVO5ai84=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmigoo-equipments-270563257">
+                                <img src="https://www.migoo.in/files/linkedin.png" style="height: 20px;"></a>
+
+                            <a target="_blank" href="https://api.whatsapp.com/send/?phone=917969212200&text&type=phone_number&app_absent=0">
+                                <img src="https://www.migoo.in/files/123whatsapp.png" style="height: 20px;"></a>
+
+                            <a target="_blank" href="https://twitter.com/MigooEquipments">
+                                <img src="https://www.migoo.in/files/twitter-sign.png" style="height: 20px;"></a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             '''
 
         frappe.sendmail(
