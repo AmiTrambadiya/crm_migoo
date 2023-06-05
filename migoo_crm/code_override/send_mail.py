@@ -168,60 +168,77 @@ def send_insurance_email():
             </div>
             <p>Get it renewed as soon as possible to avoid further inconvenience.</p>
             <p>Thank you for choosing Migoo. We value your trust and are committed to providing you with the best service possible.</p>
-           <div>
-           <p><b>Thanks & Regards,</b></p>
-          
-           <div><b>Surya Prakash Pal,</b></div>
-           <div><b>Assistant Manager</b></div>
-           <br>
-
+            <div>
                 <table>
                     <tr>
-                        <td style="border-right: 3px solid #e6992a; color: black;">
+                        <td style="border-right: 2.5px solid #e6992a; ">
                             <img
                                 src="https://ci3.googleusercontent.com/mail-sig/AIorK4zf_Mw4U0lrUBfnOuVQzvYfOGDhx1WSRbMtBaWBErGIoq8nQyLPAziA9SF9qRoUVfH4b4fWMfM">
                         </td>
-                        <td style="padding-left:12px;">
-                            <img src="https://www.migoo.in/files/call (1).png">
-                            +91 79692 12202
-                            <br>
-                            <img src="https://www.migoo.in/files/email1ead26.png">
-                            <a style="color: black;" href="mailto:surya@migoo.in">surya@migoo.in</a>
-                            <br>
-                            <img src="https://www.migoo.in/files/link.png">
-                            <a style="color: black;" href="https://www.migoo.in">www.migoo.in</a>
-                            <br>
-                            <img src="https://www.migoo.in/files/location.png">
-                            Migved Solutions Private Limited,
-                            <br>
-                            A-1204, Mondeal Heights,
-                            <br>
-                            Iskcon Cross Road,
-                            <br>
-                            S.G.Highway,
-                            <br>
-                            Ahmedabad-380058
-                            <br>
+                        <td style="padding-left:12px; color: black;">
+                            <div style="display: flex; margin-bottom: 2px;">
+                                <img src="https://www.migoo.in/files/call (1).png" height="16px" width="16px"
+                                    style="margin-top: auto; margin-bottom: auto;">
+                                <div style="margin-left: 5px;">
+                                    +91 79692 12202
+                                </div>
+                            </div>
+
+                            <div style="display: flex; margin-bottom: 2px;">
+                                <img src="https://www.migoo.in/files/email1ead26.png" height="16px" width="16px"
+                                    style="margin-top: auto; margin-bottom: auto;">
+                                <a style="color: black;" href="mailto:surya@migoo.in" style="text-decoration: none;">
+                                    <div style="margin-left: 5px;">surya@migoo.in</div>
+                                </a>
+                            </div>
+
+                            <div style="display: flex; margin-bottom: 2px;">
+                                <img src="https://www.migoo.in/files/link.png" height="16px" width="16px"
+                                    style="margin-top: auto; margin-bottom: auto;">
+                                <a style="color: black;" href="https://www.migoo.in">
+                                    <div style="margin-left: 5px;">www.migoo.in</div>
+                                </a>
+                            </div>
+
+                            <div style="display: flex; margin-bottom: 2px;">
+                                <img src="https://www.migoo.in/files/location.png" height="16px" width="16px"
+                                    style="margin-top: auto; margin-bottom: auto;">
+                                <div style="margin-left: 5px;">Migved Solutions Private Limited,</div>
+                            </div>
+                            <div style="margin-left: 20px;">
+                                A-1204, Mondeal Heights,
+                                <br> Iskcon Cross Road, S.G.Highway, <br>
+                                Ahmedabad-380058
+                            </div>
+
                             <div style="margin-top: 10px;">
-                            <a target="_blank" href="https://www.facebook.com/people/Migoo-Equipments/100087829991875/?mibextid=ZbWKwL">
-                                <img src="https://www.migoo.in/files/facebook.png" style="height: 20px;"></a>
+                                <a href="https://www.facebook.com/people/Migoo-Equipments/100087829991875/?mibextid=ZbWKwL"
+                                    target="_blank">
+                                    <img src="https://www.migoo.in/files/facebook.png" style="height: 20px;"></a>
 
-                            <a target="_blank" href="https://www.instagram.com/migoo_equipment/?igshid=YmMyMTA2M2Y%3D">
-                                <img src="https://www.migoo.in/files/instagram.png" style="height: 20px;"></a>
+                                <a href="https://www.instagram.com/migoo_equipment/?igshid=YmMyMTA2M2Y%3D">
+                                    <img src="https://www.migoo.in/files/instagram.png" style="height: 20px;"></a>
 
-                            <a target="_blank"
-                                href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQE3GrOu_soLXAAAAYTnfV7Ak5NhrLNM9IxIvNuvfFL51XjUZjWDRN_WROWhhGDHQfI05HuUk46hX4INHsRvXff6X08bFwXCpC3OG-A7nocY7Rtqb7kN1teuUQMukrXRVO5ai84=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmigoo-equipments-270563257">
-                                <img src="https://www.migoo.in/files/linkedin.png" style="height: 20px;"></a>
+                                <a
+                                    href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQE3GrOu_soLXAAAAYTnfV7Ak5NhrLNM9IxIvNuvfFL51XjUZjWDRN_WROWhhGDHQfI05HuUk46hX4INHsRvXff6X08bFwXCpC3OG-A7nocY7Rtqb7kN1teuUQMukrXRVO5ai84=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmigoo-equipments-270563257">
+                                    <img src="https://www.migoo.in/files/linkedin.png" style="height: 20px;"></a>
 
-                            <a target="_blank" href="https://api.whatsapp.com/send/?phone=917969212200&text&type=phone_number&app_absent=0">
-                                <img src="https://www.migoo.in/files/123whatsapp.png" style="height: 20px;"></a>
-
-                            <a target="_blank" href="https://twitter.com/MigooEquipments">
-                                <img src="https://www.migoo.in/files/twitter-sign.png" style="height: 20px;"></a>
+                                <a href="https://twitter.com/MigooEquipments">
+                                    <img src="https://www.migoo.in/files/twitter-sign.png" style="height: 20px;"></a>
                             </div>
                         </td>
                     </tr>
                 </table>
+            </div>
+
+            <br>
+            <div>
+
+                <div style="display: flex; margin-bottom: 2px;">
+                    <img
+                        src="https://lh4.googleusercontent.com/Tg-ugYQdUjAPJTtdSu3Rc8pYT0hONyb7dbg-Z0LN2iYvKbhazcdWIu_Vyn7-m7IIPdU0fd9VwxdDKm90nE6tVaAeQ4_b13OV79O7w9sPJiJP4YOqt2juD4XWgjK4v4E5TmIVuOsY3dDyuQ7p3-B4ndw">
+                    <div style="color: green; margin-left: 5px;">Consider The Environment. Think Before You Print.</div>
+                </div>
             </div>
             '''
 
