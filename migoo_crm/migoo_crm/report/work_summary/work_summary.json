@@ -1,7 +1,7 @@
 {
  "add_total_row": 0,
  "columns": [],
- "creation": "2023-05-24 13:06:49.260894",
+ "creation": "2023-05-30 14:50:34.004257",
  "disable_prepared_report": 0,
  "disabled": 1,
  "docstatus": 0,
@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Migoo",
- "modified": "2023-05-24 18:57:34.956873",
+ "modified": "2023-06-05 13:43:36.197350",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Work Summary",

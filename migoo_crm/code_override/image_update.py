@@ -5,17 +5,10 @@ from frappe import _
 import frappe.defaults
 
 @frappe.whitelist()
-def status_change(name,status,price,equipment_current_reading,test,img1,img2,img3,img4,img5,img6,sold_out,insurance_date):
-    c = int(status)
+def status_change(name,sub,model,test,img1,img2,img3,img4,img5,img6,insurance_date):
+    
     test1=test.split(",")
     list1=[img1,img2,img3,img4,img5,img6]
-    if c==0:
-        # frappe.msgprint(b)
-        frappe.db.set_value("Web item",name,"publish",0)
-    if c==1:
-        # frappe.msgprint(b)
-        frappe.db.set_value("Web item",name,"publish",1)
-        
     # # record =  frappe.get_list('web Item Slide Show',filters={'parent':a},ignore_permissions=True)
     frappe.db.delete('web Item Slide Show',filters={'parent':name})
     doc = frappe.get_doc('Web item', name)
@@ -36,11 +29,11 @@ def status_change(name,status,price,equipment_current_reading,test,img1,img2,img
             doc.save()
             frappe.db.commit()
 
-    frappe.db.set_value("Web item",name,"price",price)
-    frappe.db.set_value("Web item",name,"sold_out",sold_out)
+    frappe.db.set_value("Web item",name,"web_item_name",sub)
+    frappe.db.set_value("Web item",name,"model",model)
     frappe.db.set_value("Web item",name,"website_image",img1)
     frappe.db.set_value("Web item",name,"insurance_date",insurance_date)
-    frappe.db.set_value("Web item",name,"equipment_current_reading",equipment_current_reading)
+    # frappe.db.set_value("Web item",name,"equipment_current_reading",equipment_current_reading)
     
 @frappe.whitelist()
 def address_update(name,address_line1,city,state,postal_code):

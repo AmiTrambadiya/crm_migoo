@@ -4,7 +4,7 @@ from frappe import _
 # Number Cards
 
 
-@frappe.whitelist(allow_guest=1)
+@frappe.whitelist()
 def equipment():
 
     current_user = frappe.session.user
@@ -69,7 +69,7 @@ def equipment():
 # Dashboard Chart
 
 
-@frappe.whitelist(allow_guest=1)
+@frappe.whitelist()
 def get_equipment_by_category():
 
     user = frappe.session.user
@@ -107,7 +107,7 @@ def get_equipment_by_category():
 # Grid Report
 
 
-@frappe.whitelist(allow_guest=1)
+@frappe.whitelist()
 def get_compliance_report():
 
     user = frappe.session.user

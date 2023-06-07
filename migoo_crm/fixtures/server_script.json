@@ -1,6 +1,36 @@
 [
  {
   "allow_guest": 1,
+  "api_method": "check_user_role_profile",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2023-05-29 11:18:19.581075",
+  "module": null,
+  "name": "check_user_role_profile",
+  "reference_doctype": null,
+  "script": "data1 = frappe.form_dict[\"email\"]\nd=frappe.db.sql(\"\"\"select role_profile_name from `tabUser` where email =%s \"\"\",data1)\nlist1 = \"\"            \nfor i in d:\n    for j in i:\n        if list1==\"\":\n            list1=j\n\nfrappe.response[\"role\"]=list1",
+  "script_type": "API"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "user_creation",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2023-06-06 12:22:19.667548",
+  "module": "Migoo CRM",
+  "name": "User Creation",
+  "reference_doctype": null,
+  "script": "username=frappe.form_dict[\"username\"]\nfirst_name=frappe.form_dict[\"first_name\"]\nrole_profile_name=frappe.form_dict[\"role_profile_name\"]\nmodule_profile=frappe.form_dict[\"module_profile\"]\nname=frappe.form_dict[\"middle_name\"]\nmobile_no=frappe.form_dict[\"mobile_no\"]\ndoctype1=frappe.form_dict[\"doctype\"]\n# frappe.msgprint(doctype1)\n\ndoc1=frappe.get_doc({\"doctype\":\"User\",\"email\":username,\"username\":username,\"first_name\":first_name,\"role_profile_name\":role_profile_name,\n\"module_profile\":module_profile,\"mobile_no\":mobile_no,\"phone\":mobile_no,\"send_welcome_email\":0,\"middle_name\":name})\ndoc1.save()\nfrappe.db.commit()\n\n\ndoc2=frappe.get_doc({\"doctype\":\"User Permission\",\"user\":doc1.name,\"allow\":doctype1,\"for_value\":name})\ndoc2.save()\nfrappe.db.commit()\nfrappe.response[\"msg\"]=\"User Created\"",
+  "script_type": "API"
+ },
+ {
+  "allow_guest": 1,
   "api_method": "otpverify",
   "disabled": 0,
   "docstatus": 0,
@@ -457,11 +487,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-03-14 18:25:53.178183",
+  "modified": "2023-06-07 11:36:51.864844",
   "module": "Migoo CRM",
   "name": "Sales Order Wise Item Filter on Resource Planning",
   "reference_doctype": null,
-  "script": "order=frappe.form_dict[\"name\"]\n\nquery=frappe.db.sql(\"Select item_code from `tabSales Order Item` where parent=%s\",order)\n# a=str(query)\nnm=\"\"\nfor i in query:\n    for j in i:\n        # a=j\n        if nm==\"\":\n            nm=j\n        else:\n            nm=nm + \",\" +j\n        # nm.append(j)\nfrappe.response[\"data\"]=nm",
+  "script": "order=frappe.form_dict[\"name\"]\n\nquery=frappe.db.sql(\"Select equipment_main_category from `tabSales Order Item` where parent=%s\",order)\n# a=str(query)\nnm=\"\"\nfor i in query:\n    for j in i:\n        # a=j\n        if nm==\"\":\n            nm=j\n        else:\n            nm=nm + \",\" +j\n        # nm.append(j)\nfrappe.response[\"data\"]=nm",
   "script_type": "API"
  },
  {
@@ -567,6 +597,51 @@
   "name": "Role Check",
   "reference_doctype": null,
   "script": "data1 = frappe.form_dict[\"email\"]\n# frappe.msgprint(\"serverscript\")\nd=frappe.db.sql(\"\"\"select role_profile_name from `tabUser` where email =%s \"\"\",data1)\nlist1 = \"\"            \nfor i in d:\n    for j in i:\n        if list1==\"\":\n            list1=j\n\n# frappe.msgprint(\"serverscript\")\nfrappe.response[\"role\"]=list1",
+  "script_type": "API"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "brand",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2023-06-07 12:00:41.361528",
+  "module": "Migoo CRM",
+  "name": "Brand Wise Equipment Category Filters in Model",
+  "reference_doctype": null,
+  "script": "brand=frappe.form_dict[\"name\"]\n# print(brand)\n\nquery=frappe.db.sql(\"Select equipment_main_category from `tabEquipment Category` where parent=%s\",brand)\n# a=str(query)\nnm=\"\"\nfor i in query:\n    for j in i:\n        # a=j\n        if nm==\"\":\n            nm=j\n        else:\n            nm=nm + \",\" +j\n        # nm.append(j)\nfrappe.response[\"data\"]=nm",
+  "script_type": "API"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "brand_sub_category",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2023-06-07 12:34:54.890371",
+  "module": "Migoo CRM",
+  "name": "Brand Wise Equipment Sub Category Filters in Model",
+  "reference_doctype": null,
+  "script": "brand=frappe.form_dict[\"name\"]\n# frappe.msgprint(\"brands\")\nquery=frappe.db.sql(\"Select equipment_sub_category from `tabEquipment Category` where parent=%s\",brand)\n# a=str(query)\nnm=\"\"\nfor i in query:\n    for j in i:\n        # a=j\n        if nm==\"\":\n            nm=j\n        else:\n            nm=nm + \",\" +j\n        # nm.append(j)\nfrappe.response[\"data\"]=nm",
+  "script_type": "API"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "brand_sub_of_sub_category",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "event_frequency": "All",
+  "modified": "2023-06-07 17:05:08.251104",
+  "module": "Migoo CRM",
+  "name": "Brand Wise Equipment Sub of Sub Category Filters in Model",
+  "reference_doctype": null,
+  "script": "brand = frappe.form_dict[\"name\"]\nquery = frappe.db.sql(\"SELECT equipment_category FROM `tabEquipment Category` WHERE parent=%s\", brand)\nnm = \"\"\n\nfor i in query:\n    for j in i:\n        if j:\n            if nm == \"\":\n                nm = j\n            else:\n                nm = nm + \",\" + j\n\nfrappe.response[\"data\"] = nm",
   "script_type": "API"
  }
 ]

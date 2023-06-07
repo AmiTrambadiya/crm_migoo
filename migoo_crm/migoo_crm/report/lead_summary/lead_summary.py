@@ -6,7 +6,7 @@ from frappe import _
 import datetime
 
 
-@frappe.whitelist(allow_guest=1)
+@frappe.whitelist()
 def execute(filters=None):
     columns = [{
         "label": _("Name"),

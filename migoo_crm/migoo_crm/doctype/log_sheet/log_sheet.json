@@ -24,6 +24,7 @@
   "working_details",
   "section_break_h5ehd",
   "total_working_time",
+  "overtime_calculation",
   "column_break_kqvrc",
   "total_ideal_time",
   "column_break_iuqj9",
@@ -51,8 +52,9 @@
   {
    "fetch_from": "resource_planning.equipment",
    "fieldname": "equipment",
-   "fieldtype": "Data",
-   "label": "Equipment"
+   "fieldtype": "Link",
+   "label": "Equipment",
+   "options": "Item"
   },
   {
    "fieldname": "column_break_3",
@@ -83,7 +85,7 @@
    "options": "Today"
   },
   {
-   "fetch_from": "resource_planning.equipment_no",
+   "fetch_from": "equipment.register_no",
    "fieldname": "equipment_no",
    "fieldtype": "Data",
    "label": "Equipment No"
@@ -125,7 +127,7 @@
   },
   {
    "fieldname": "total_working_time",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Total Working Time"
   },
   {
@@ -172,11 +174,16 @@
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "overtime_calculation",
+   "fieldtype": "Float",
+   "label": "Overtime calculation"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-23 13:48:34.487663",
+ "modified": "2023-06-05 10:44:32.337558",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",

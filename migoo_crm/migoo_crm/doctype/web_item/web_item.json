@@ -11,11 +11,12 @@
   "route",
   "item_status",
   "publish",
-  "column_break_3",
   "item_code",
+  "column_break_3",
   "item_name",
   "item_group",
   "sold_out",
+  "rto_registration_number",
   "column_break_11",
   "description",
   "brand",
@@ -34,19 +35,27 @@
   "vehicle_class",
   "registration_date",
   "model",
-  "test_column",
   "manufacturing_date",
   "fitness_dt",
   "owner_count",
   "company_name",
   "location",
   "price",
+  "test_column",
   "equipment_condition",
-  "equipment_current_reading"
+  "equipment_current_reading",
+  "fuel_type",
+  "supplier",
+  "supplier_name",
+  "engine",
+  "under_finance",
+  "weight",
+  "vehicle_color",
+  "supplier_number"
  ],
  "fields": [
   {
-   "fetch_from": "item_code.item_name",
+   "fetch_from": "item_name.equipment_main_category",
    "fieldname": "web_item_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -77,12 +86,13 @@
    "reqd": 1
   },
   {
-   "fetch_from": "item_code.item_name",
    "fieldname": "item_name",
-   "fieldtype": "Data",
-   "label": "Item Name"
+   "fieldtype": "Link",
+   "label": "Item Name",
+   "options": "Item"
   },
   {
+   "fetch_from": "item_name.item_group",
    "fieldname": "item_group",
    "fieldtype": "Link",
    "label": "Item Group",
@@ -93,13 +103,13 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "item_code.description",
+   "fetch_from": "item_name.short_description",
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Item Description"
   },
   {
-   "fetch_from": "item_code.brand",
+   "fetch_from": "item_name.equipment_brand",
    "fieldname": "brand",
    "fieldtype": "Link",
    "label": "Brand",
@@ -111,6 +121,7 @@
    "label": "Display Images"
   },
   {
+   "fetch_from": "item_name.front_picture",
    "fieldname": "website_image",
    "fieldtype": "Attach Image",
    "label": "Website Image"
@@ -126,6 +137,7 @@
    "label": "Display Information"
   },
   {
+   "fetch_if_empty": 1,
    "fieldname": "short_description",
    "fieldtype": "Small Text",
    "label": "Short Website Description"
@@ -149,6 +161,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": "item_name.maker_model",
    "fieldname": "maker_model",
    "fieldtype": "Data",
    "label": "Maker Model"
@@ -159,11 +172,13 @@
    "label": "Insurance Date"
   },
   {
+   "fetch_from": "item_name.vehicle_class",
    "fieldname": "vehicle_class",
    "fieldtype": "Data",
    "label": "Vehicle Class"
   },
   {
+   "fetch_from": "item_name.registration_date",
    "fieldname": "registration_date",
    "fieldtype": "Date",
    "label": "Registration Date"
@@ -183,36 +198,43 @@
    "label": "Manufacturing date"
   },
   {
+   "fetch_from": "item_name.fitness_dt",
    "fieldname": "fitness_dt",
    "fieldtype": "Data",
    "label": "Fitness dt"
   },
   {
+   "fetch_from": "item_name.owner_count",
    "fieldname": "owner_count",
    "fieldtype": "Data",
    "label": "Owner Count"
   },
   {
+   "fetch_from": "supplier.company_name",
    "fieldname": "company_name",
    "fieldtype": "Data",
    "label": "Company Name"
   },
   {
+   "fetch_from": "item_name.equipment_location",
    "fieldname": "location",
    "fieldtype": "Data",
    "label": "Location"
   },
   {
+   "fetch_from": "item_name.standard_rate",
    "fieldname": "price",
    "fieldtype": "Data",
    "label": "Price"
   },
   {
+   "fetch_from": "item_name.equipment_condition",
    "fieldname": "equipment_condition",
    "fieldtype": "Data",
    "label": "Equipment Condition"
   },
   {
+   "fetch_from": "item_code.equipment_current_reading",
    "fieldname": "equipment_current_reading",
    "fieldtype": "Data",
    "label": "Equipment Current Reading"
@@ -225,20 +247,77 @@
   },
   {
    "default": "1",
+   "fetch_from": "item_name.publish",
    "fieldname": "publish",
    "fieldtype": "Check",
    "label": "Publish"
   },
   {
    "default": "0",
+   "fetch_from": "item_name.sold_out",
    "fieldname": "sold_out",
    "fieldtype": "Check",
    "label": "Sold Out"
+  },
+  {
+   "fetch_from": "item_name.fuel_type",
+   "fieldname": "fuel_type",
+   "fieldtype": "Data",
+   "label": "Fuel Type"
+  },
+  {
+   "fetch_from": "item_name.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fetch_from": "item_name.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fetch_from": "item_name.engine",
+   "fieldname": "engine",
+   "fieldtype": "Data",
+   "label": "Engine"
+  },
+  {
+   "fetch_from": "item_code.financier_name",
+   "fieldname": "under_finance",
+   "fieldtype": "Data",
+   "label": "Under Finance"
+  },
+  {
+   "fetch_from": "item_name.vehicle_weight",
+   "fieldname": "weight",
+   "fieldtype": "Data",
+   "label": "Weight"
+  },
+  {
+   "fetch_from": "item_name.vehicle_color",
+   "fieldname": "vehicle_color",
+   "fieldtype": "Data",
+   "label": "Vehicle Color "
+  },
+  {
+   "fetch_from": "item_name.register_no",
+   "fieldname": "rto_registration_number",
+   "fieldtype": "Data",
+   "label": "RTO Registration Number"
+  },
+  {
+   "fetch_from": "supplier.mobile_number",
+   "fieldname": "supplier_number",
+   "fieldtype": "Data",
+   "label": "Supplier Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-17 11:46:39.234034",
+ "modified": "2023-06-02 16:18:31.578979",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Web item",
