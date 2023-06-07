@@ -1,0 +1,57 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-05-30 14:50:33.718126",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "",
+ "modified": "2023-06-05 13:25:20.433768",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Compliance Report",
+ "prepared_report": 0,
+ "query": "with a as(\n    select\n        name as 'nm',\n        insurance_date as 'id',\n        TIMESTAMPDIFF(DAY, now(), insurance_date) as 'insurance'\n    from\n        `tabItem`\n    order by\n        creation desc\n),\naa as(\n    select\n        nm,\n        id,\n        concat(\n            'Insurance',\n            ' - ',\n            `insurance`,\n            ' ',\n            'Days to go'\n        ) as 'InsuranceCompleteDaysAfter'\n    from\n        a\n    where\n        id >= now() - interval 1 day\n        and id <= now() + interval 30 day\n),\nb as(\n    select\n        name as 'nm1',\n        fitness_dt as 'ft',\n        TIMESTAMPDIFF(DAY, now(), fitness_dt) as 'fitness'\n    from\n        `tabItem`\n),\nbb as(\n    select\n        nm1,\n        ft,\n        concat('Fitness', ' - ', `fitness`, ' ', 'Days to go') as 'FitnessCompleteDaysAfter'\n    from\n        b\n    where\n        ft >= now() - interval 1 day\n        and ft <= now() + interval 30 day\n),\nc as(\n    select\n        name as 'nm2',\n        pollution as 'pl',\n        TIMESTAMPDIFF(DAY, now(), pollution) as 'pollution'\n    from\n        `tabItem`\n),\ncc as(\n    select\n        nm2,\n        pl,\n        concat('PUC', ' - ', `pollution`, ' ', 'Days to go') as 'PUCCompleteDaysAfter'\n    from\n        c\n    where\n        pl >= now() - interval 1 day\n        and pl <= now() + interval 30 day\n)\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand::160',\n    i.model as 'Model::160',\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter as 'PUC Completion',\n    InsuranceCompleteDaysAfter as 'Completion Date::200',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n    i.supplier as 'Supplier:Link/Supplier:-1'\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter as 'PUC Completion',\n    FitnessCompleteDaysAfter as 'Completion Date',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.maker_model as 'Brand',\n    i.model as 'Model::120',\n     DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n   -- PUCCompleteDaysAfter as 'PUC Completion',\n    PUCCompleteDaysAfter as 'Completion Date::120',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Registered'\nunion\nselect\n    i.name as 'Equipment:Link/Item',\n    i.equipment_brand,\n    i.equipment_model_no,\n    DATE_FORMAT(i.insurance_date,'%%d-%%m-%%Y')as 'Insurance Last Date',\n    -- InsuranceCompleteDaysAfter as 'Insurance Completion',\n    DATE_FORMAT(i.fitness_dt,'%%d-%%m-%%Y') as 'Fitness Last Date',\n    -- FitnessCompleteDaysAfter as 'Fitness Completion',\n    DATE_FORMAT(i.pollution,'%%d-%%m-%%Y') as 'PUC Last Date',\n    -- PUCCompleteDaysAfter,\n    InsuranceCompleteDaysAfter as 'Completion Date',\n    concat(\n        '<a href=\"',\n        '/app/compliance-update/new-compliance-update-1',\n        '\"><button class=\"btn btn-primary pt-0 pb-0\">Update</button></a>'\n    ) as '',\n        i.supplier as 'Supplier:Link/Supplier'\n\nfrom\n    `tabItem` i\n    left join aa on i.name = nm\n    left join bb on i.name = nm1\n    left join cc on i.name = nm2\nwhere\n    i.rto_register = 'Not Registered'",
+ "ref_doctype": "Item",
+ "report_name": "Compliance Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "All"
+  },
+  {
+   "role": "Maintenance User"
+  },
+  {
+   "role": "Manufacturing User"
+  },
+  {
+   "role": "Item Manager"
+  },
+  {
+   "role": "Purchase User"
+  },
+  {
+   "role": "Vendor"
+  },
+  {
+   "role": "Migoo Approver"
+  }
+ ]
+}
