@@ -637,11 +637,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-06-07 12:48:56.163757",
+  "modified": "2023-06-07 17:05:08.251104",
   "module": "Migoo CRM",
   "name": "Brand Wise Equipment Sub of Sub Category Filters in Model",
   "reference_doctype": null,
-  "script": "brand = frappe.form_dict[\"name\"]\nquery = frappe.db.sql(\"SELECT equipment_category FROM `tabEquipment Category` WHERE parent=%s\", brand)\nnm = \"\"\n\nfor i in query:\n    for j in i:\n        if j:\n            if nm == \"\":\n                nm = j\n            else:\n                nm = nm + \",\" + j\n\nfrappe.response[\"data\"] = nm\n",
+  "script": "brand = frappe.form_dict[\"name\"]\nquery = frappe.db.sql(\"SELECT equipment_category FROM `tabEquipment Category` WHERE parent=%s\", brand)\nnm = \"\"\n\nfor i in query:\n    for j in i:\n        if j:\n            if nm == \"\":\n                nm = j\n            else:\n                nm = nm + \",\" + j\n\nfrappe.response[\"data\"] = nm",
   "script_type": "API"
  }
 ]

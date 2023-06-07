@@ -642,8 +642,8 @@
   "doctype": "Client Script",
   "dt": "Brand",
   "enabled": 1,
-  "modified": "2023-06-07 11:01:39.492785",
-  "module": null,
+  "modified": "2023-06-07 17:03:16.492517",
+  "module": "Migoo CRM",
   "name": "Brand Form Settings",
   "script": "frappe.ui.form.on('Brand', {\n\trefresh: function(frm) {\n\t\tcur_frm.fields_dict['equipment_category'].grid.get_field('equipment_main_category').get_query = function() {\n\t\t\treturn {\n\t\t\t\tfilters: {\n\t\t\t\t\tparent_item_group: \"All Equipment Groups\",\n\t\t\t\t}\n\t\t\t};\n\t\t};\n\t\t\n\t\tcur_frm.fields_dict['equipment_category'].grid.get_field('equipment_sub_category').get_query = function(doc, cdt, cdn) {\n\t\t\tvar child = locals[cdt][cdn];\n\t\t\treturn {\n\t\t\t\tfilters: {\n\t\t\t\t\tparent_item_group: child.equipment_main_category,\n\t\t\t\t}\n\t\t\t};\n\t\t};\n\t\t\n\t\tcur_frm.fields_dict['equipment_category'].grid.get_field('equipment_category').get_query = function(doc, cdt, cdn) {\n\t\t\tvar child = locals[cdt][cdn];\n\t\t\treturn {\n\t\t\t\tfilters: {\n\t\t\t\t\tparent_item_group: child.equipment_sub_category,\n\t\t\t\t}\n\t\t\t};\n\t\t};\n\t\t\n\t}\n});",
   "view": "Form"
@@ -653,10 +653,10 @@
   "doctype": "Client Script",
   "dt": "Model",
   "enabled": 1,
-  "modified": "2023-06-07 13:05:32.561347",
-  "module": null,
+  "modified": "2023-06-07 17:03:23.230477",
+  "module": "Migoo CRM",
   "name": "Model Filter",
-  "script": "frappe.ui.form.on(\"Model\", {\n  brand: function (frm) {\n    var brand = cur_frm.doc.brand;\n    frappe\n      .call({\n        method: \"brand\",\n        args: {\n          name: brand,\n        },\n      })\n      .then((records) => {\n        var a = records[\"data\"];\n        frm.set_query(\"equipment_category\", function (doc, cdt, cdn) {\n          let d = locals[cdt][cdn];\n          return {\n            filters: {\n              item_group_name: [\"in\", a],\n            },\n          };\n        });\n      });\n\n    frappe\n      .call({\n        method: \"brand_sub_category\",\n        args: {\n          name: brand,\n        },\n      })\n      .then((records) => {\n        var a = records[\"data\"];\n        // alert(a)\n        frm.set_query(\"equipment_main_category\", function (doc, cdt, cdn) {\n          let d = locals[cdt][cdn];\n          return {\n            filters: {\n              item_group_name: [\"in\", a],\n              parent_item_group: d.equipment_category,\n              //     // \"is_group\": \"1\",\n            },\n          };\n        });\n      });\n    frappe\n      .call({\n        method: \"brand_sub_of_sub_category\",\n        args: {\n          name: brand,\n        },\n      })\n      .then((records) => {\n        var a = records[\"data\"];\n        // alert(a)\n        frm.set_query(\"equipment_sub_category\", function (doc, cdt, cdn) {\n          let d = locals[cdt][cdn];\n          return {\n            filters: {\n              item_group_name: [\"in\", a],\n              parent_item_group: d.equipment_main_category,\n              //     // \"is_group\": \"1\",\n            },\n          };\n        });\n      });\n  },\n});\n",
+  "script": "frappe.ui.form.on(\"Model\", {\n  brand: function (frm) {\n    var brand = cur_frm.doc.brand;\n    frappe\n      .call({\n        method: \"brand\",\n        args: {\n          name: brand,\n        },\n      })\n      .then((records) => {\n        var a = records[\"data\"];\n        frm.set_query(\"equipment_category\", function (doc, cdt, cdn) {\n          let d = locals[cdt][cdn];\n          return {\n            filters: {\n              item_group_name: [\"in\", a],\n            },\n          };\n        });\n      });\n\n    frappe\n      .call({\n        method: \"brand_sub_category\",\n        args: {\n          name: brand,\n        },\n      })\n      .then((records) => {\n        var a = records[\"data\"];\n        // alert(a)\n        frm.set_query(\"equipment_main_category\", function (doc, cdt, cdn) {\n          let d = locals[cdt][cdn];\n          return {\n            filters: {\n              item_group_name: [\"in\", a],\n              parent_item_group: d.equipment_category,\n            },\n          };\n        });\n      });\n    frappe\n      .call({\n        method: \"brand_sub_of_sub_category\",\n        args: {\n          name: brand,\n        },\n      })\n      .then((records) => {\n        var a = records[\"data\"];\n        // alert(a)\n        frm.set_query(\"equipment_sub_category\", function (doc, cdt, cdn) {\n          let d = locals[cdt][cdn];\n          return {\n            filters: {\n              item_group_name: [\"in\", a],\n              parent_item_group: d.equipment_main_category,\n              //     // \"is_group\": \"1\",\n            },\n          };\n        });\n      });\n  },\n});\n",
   "view": "Form"
  }
 ]
