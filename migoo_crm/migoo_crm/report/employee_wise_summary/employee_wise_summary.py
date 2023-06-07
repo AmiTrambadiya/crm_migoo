@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 
-@frappe.whitelist(allow_guest=1)
+@frappe.whitelist()
 def execute(filters=None):
     columns = [
         {

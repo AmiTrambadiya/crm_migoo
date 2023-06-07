@@ -17,10 +17,17 @@
  {
   "docstatus": 0,
   "doctype": "Role Profile",
-  "modified": "2022-10-18 11:21:11.092028",
+  "modified": "2023-05-30 15:41:43.166641",
   "name": "Sales Manager",
   "role_profile": "Sales Manager",
-  "roles": []
+  "roles": [
+   {
+    "parent": "Sales Manager",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales Manager"
+   }
+  ]
  },
  {
   "docstatus": 0,
@@ -589,6 +596,21 @@
     "parentfield": "roles",
     "parenttype": "Role Profile",
     "role": "Vendor"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2023-05-30 15:41:00.901323",
+  "name": "Sales User",
+  "role_profile": "Sales User",
+  "roles": [
+   {
+    "parent": "Sales User",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Sales User"
    }
   ]
  }

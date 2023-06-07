@@ -2,13 +2,13 @@ import frappe
 from frappe import _
 
 
-@frappe.whitelist(allow_guest=1)
+@frappe.whitelist()
 def execute(filters=None):
     columns, data = get_columns(), get_data(filters)
     return columns, data
 
 
-@frappe.whitelist(allow_guest=1)
+@frappe.whitelist()
 def get_columns():
     columns = [
         {
