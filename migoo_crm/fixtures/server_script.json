@@ -487,11 +487,11 @@
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-06-07 11:36:51.864844",
+  "modified": "2023-06-08 13:13:33.569414",
   "module": "Migoo CRM",
   "name": "Sales Order Wise Item Filter on Resource Planning",
   "reference_doctype": null,
-  "script": "order=frappe.form_dict[\"name\"]\n\nquery=frappe.db.sql(\"Select equipment_main_category from `tabSales Order Item` where parent=%s\",order)\n# a=str(query)\nnm=\"\"\nfor i in query:\n    for j in i:\n        # a=j\n        if nm==\"\":\n            nm=j\n        else:\n            nm=nm + \",\" +j\n        # nm.append(j)\nfrappe.response[\"data\"]=nm",
+  "script": "order=frappe.form_dict[\"name\"]\n\nquery=frappe.db.sql(\"Select item_code from `tabSales Order Item` where parent=%s\",order)\n# a=str(query)\nnm=\"\"\nfor i in query:\n    for j in i:\n        # a=j\n        if nm==\"\":\n            nm=j\n        else:\n            nm=nm + \",\" +j\n        # nm.append(j)\nfrappe.response[\"data\"]=nm",
   "script_type": "API"
  },
  {

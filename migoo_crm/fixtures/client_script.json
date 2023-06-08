@@ -508,12 +508,12 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
-  "dt": "Resource Planning",
+  "dt": "Equipment Planning",
   "enabled": 1,
-  "modified": "2023-03-14 18:25:31.052945",
+  "modified": "2023-06-08 13:10:42.081816",
   "module": "Migoo CRM",
   "name": "resource planning",
-  "script": "frappe.ui.form.on('Resource Planning', {\n// \trefresh(frm) {\n// \t\t// your code here\n// \t},\n\tend_date:function(frm){\n\t  \n\t    \n\t    if(frm.doc.end_date < frm.doc.start_date)\n\t    {\n\t        alert(\"please enter valid date\");\n\t        return false;\n\t    }\n\t    else if(frm.doc.end_date == frm.doc.start_date)\n\t    {\n\t        frm.set_value('total_days',frappe.datetime.get_day_diff(frm.doc.end_date ,frm.doc.start_date ))\n\t       //alert(\"please enter valid date\");\n\t    }\n\t    else\n\t    {\n\t   //  var totaldays = frappe.datetime.get_day_diff(frm.doc.end_date ,frm.doc.start_date )\n\t    frm.set_value('total_days',frappe.datetime.get_day_diff(frm.doc.end_date ,frm.doc.start_date ))\n\t   // alert(frm.doc.total_days)\n\t    }\n\t},\n\tsales_order:function(frm){\n\t  \n\t    var order=cur_frm.doc.sales_order;\n\t    frappe.call({\n            method:\"order\",\n            args:{\n                \"name\":order,\n            }\n\t    }).then(records => {\n\t       // alert(r.data)\n\t        var a=records[\"data\"]\n\t       // alert(typeof(a))\n\t        frm.set_query('equipment', function(doc, cdt, cdn) {\n            let d = locals[cdt][cdn];\n            return{\n\t\t\t\tfilters: {\n\t\t\t\t    'item_code': [ 'in',a]\n\t\t\t\t    \n\t\t\t\t}\n            };\n\t    });\n\t    });\n\n\t}\n})",
+  "script": "frappe.ui.form.on('Equipment Planning', {\n// \trefresh(frm) {\n// \t\t// your code here\n// \t},\n\tend_date:function(frm){\n\t  \n\t    \n\t    if(frm.doc.end_date < frm.doc.start_date)\n\t    {\n\t        alert(\"please enter valid date\");\n\t        return false;\n\t    }\n\t    else if(frm.doc.end_date == frm.doc.start_date)\n\t    {\n\t        frm.set_value('total_days',frappe.datetime.get_day_diff(frm.doc.end_date ,frm.doc.start_date ))\n\t       //alert(\"please enter valid date\");\n\t    }\n\t    else\n\t    {\n\t   //  var totaldays = frappe.datetime.get_day_diff(frm.doc.end_date ,frm.doc.start_date )\n\t    frm.set_value('total_days',frappe.datetime.get_day_diff(frm.doc.end_date ,frm.doc.start_date ))\n\t   // alert(frm.doc.total_days)\n\t    }\n\t},\n\tsales_order:function(frm){\n\t  \n\t    var order=cur_frm.doc.sales_order;\n\t    frappe.call({\n            method:\"order\",\n            args:{\n                \"name\":order,\n            }\n\t    }).then(records => {\n\t       // alert(r.data)\n\t        var a=records[\"data\"]\n\t       // alert(typeof(a))\n\t        frm.set_query('equipment', function(doc, cdt, cdn) {\n            let d = locals[cdt][cdn];\n            return{\n\t\t\t\tfilters: {\n\t\t\t\t    'item_code': [ 'in',a]\n\t\t\t\t    \n\t\t\t\t}\n            };\n\t    });\n\t    });\n\n\t}\n})",
   "view": "Form"
  },
  {
