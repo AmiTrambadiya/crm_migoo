@@ -23,7 +23,6 @@
   "working_details_section",
   "working_details",
   "section_break_h5ehd",
-  "total_working_time",
   "overtime_calculation",
   "column_break_kqvrc",
   "total_ideal_time",
@@ -126,11 +125,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "total_working_time",
-   "fieldtype": "Float",
-   "label": "Total Working Time"
-  },
-  {
    "fieldname": "total_ideal_time",
    "fieldtype": "Float",
    "label": "Total Ideal Time"
@@ -183,7 +177,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-05 10:44:32.337558",
+ "modified": "2023-06-08 12:05:33.345546",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",
