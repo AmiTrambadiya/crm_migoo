@@ -11,14 +11,15 @@
   "naming_series",
   "sales_order",
   "customer",
+  "customer_mobile_no",
   "column_break_mudrk",
   "equipment",
   "equipment_sub_category",
   "equipment_no",
   "column_break_3",
-  "equipment_location",
-  "customer_mobile_no",
   "status",
+  "project_name",
+  "project_address",
   "section_break_6",
   "supplier",
   "supplier_name",
@@ -31,7 +32,9 @@
   "start_date",
   "end_date",
   "column_break_17",
-  "total_days"
+  "total_days",
+  "section_break_hwxye",
+  "resource_details"
  ],
  "fields": [
   {
@@ -39,7 +42,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Naming Series",
-   "options": ".DD.-.{sales_order}.-"
+   "options": ".DD.-.{customer}.-"
   },
   {
    "fieldname": "sales_order",
@@ -74,10 +77,10 @@
    "permlevel": 2
   },
   {
+   "depends_on": "customer",
    "fetch_from": "customer.mobile",
    "fieldname": "customer_mobile_no",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "Customer Mobile No",
    "permlevel": 2
   },
@@ -100,14 +103,16 @@
    "permlevel": 1
   },
   {
-   "fetch_from": "equipment.supplier_name",
+   "depends_on": "supplier",
+   "fetch_from": "supplier.name_of_suppier",
    "fieldname": "supplier_name",
    "fieldtype": "Data",
    "label": "Supplier Name",
    "permlevel": 1
   },
   {
-   "fetch_from": "equipment.supplier_number",
+   "depends_on": "supplier",
+   "fetch_from": "supplier.mobile_number",
    "fieldname": "supplier_mobile_no",
    "fieldtype": "Data",
    "label": "Supplier Mobile No",
@@ -124,12 +129,14 @@
    "options": "Driver"
   },
   {
+   "depends_on": "driver",
    "fetch_from": "driver.full_name",
    "fieldname": "driver_name",
    "fieldtype": "Data",
    "label": "Driver Name"
   },
   {
+   "depends_on": "driver",
    "fetch_from": "driver.cell_number",
    "fieldname": "driver_mobile_no",
    "fieldtype": "Data",
@@ -159,13 +166,6 @@
    "label": "Total Days"
   },
   {
-   "fetch_from": "sales_order.base_rounding_adjustment",
-   "fieldname": "equipment_location",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Equipment Location"
-  },
-  {
    "fieldname": "column_break_mudrk",
    "fieldtype": "Column Break"
   },
@@ -174,14 +174,36 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Open\nClose"
+  },
+  {
+   "fieldname": "section_break_hwxye",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "resource_details",
+   "fieldtype": "Table",
+   "label": "Resource Details",
+   "options": "Resource Details"
+  },
+  {
+   "fetch_from": "sales_order.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name"
+  },
+  {
+   "fetch_from": "sales_order.project_address",
+   "fieldname": "project_address",
+   "fieldtype": "Small Text",
+   "label": "Project Address"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-23 13:44:45.559774",
+ "modified": "2023-06-08 13:08:38.329968",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
- "name": "Resource Planning",
+ "name": "Equipment Planning",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

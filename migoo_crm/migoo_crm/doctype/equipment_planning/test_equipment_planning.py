@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestResourcePlanning(FrappeTestCase):
+class TestEquipmentPlanning(FrappeTestCase):
 	pass

@@ -46,7 +46,7 @@
    "fieldname": "resource_planning",
    "fieldtype": "Link",
    "label": "Resource Planning",
-   "options": "Resource Planning"
+   "options": "Equipment Planning"
   },
   {
    "fetch_from": "resource_planning.equipment",
@@ -177,7 +177,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 12:05:33.345546",
+ "modified": "2023-06-08 12:27:16.403528",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",
