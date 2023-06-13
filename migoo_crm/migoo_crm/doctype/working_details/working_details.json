@@ -12,6 +12,9 @@
   "total_time",
   "start_km",
   "end_km",
+  "start_hours",
+  "end_hours",
+  "total_hours",
   "total_km",
   "remarks",
   "attach_proof"
@@ -22,15 +25,19 @@
    "fieldname": "start_time",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Start Time"
+   "label": "Start Time",
+   "reqd": 1
   },
   {
+   "default": "0:00",
    "fieldname": "end_time",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "End Time"
+   "label": "End Time",
+   "reqd": 1
   },
   {
+   "default": "0:00",
    "fieldname": "total_time",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -62,7 +69,8 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "\nWorking\nIdeal\nBreakdown"
+   "options": "\nWorking\nIdeal\nBreakdown",
+   "reqd": 1
   },
   {
    "fieldname": "remarks",
@@ -81,12 +89,27 @@
    "in_list_view": 1,
    "label": "Shift",
    "options": "Day\nNight"
+  },
+  {
+   "fieldname": "start_hours",
+   "fieldtype": "Float",
+   "label": "Start Hours"
+  },
+  {
+   "fieldname": "end_hours",
+   "fieldtype": "Float",
+   "label": "End Hours"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-31 12:18:13.613788",
+ "modified": "2023-06-12 10:51:08.325703",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Working Details",

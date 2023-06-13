@@ -1,0 +1,285 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-06-09 11:22:49.801630",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "resource_planning",
+  "customer",
+  "supplier",
+  "start_date",
+  "column_break_3",
+  "equipment_category",
+  "equipment",
+  "equipment_no",
+  "end_date",
+  "column_break_7",
+  "resource_planning_start_date",
+  "resource_planning_end_date",
+  "driver",
+  "agreement",
+  "section_break_h5ehd",
+  "rate_per_hours",
+  "total_fuel",
+  "column_break_sgtzs",
+  "total_rate",
+  "total_hours",
+  "column_break_b0v6m",
+  "total_time",
+  "total_km",
+  "section_break_yc6xw",
+  "total_working_time",
+  "total_ideal_time",
+  "supplier_approve",
+  "approve",
+  "column_break_kqvrc",
+  "total_breckdown_time",
+  "overtime_calculation",
+  "total_working_price",
+  "total_ideal_price",
+  "total_breck_down_price",
+  "total_over_time_price",
+  "customer_approve",
+  "reject"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "resource_planning",
+   "fieldtype": "Link",
+   "label": "Resource Planning",
+   "options": "Equipment Planning"
+  },
+  {
+   "fetch_from": "resource_planning.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fetch_from": "resource_planning.driver",
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Driver"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "resource_planning.equipment_sub_category",
+   "fieldname": "equipment_category",
+   "fieldtype": "Data",
+   "label": "Equipment Category"
+  },
+  {
+   "fetch_from": "resource_planning.equipment",
+   "fieldname": "equipment",
+   "fieldtype": "Link",
+   "label": "Equipment",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "equipment.register_no",
+   "fieldname": "equipment_no",
+   "fieldtype": "Data",
+   "label": "RTO Register No"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "resource_planning.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "section_break_h5ehd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_working_time",
+   "fieldtype": "Float",
+   "label": "Total Working Time"
+  },
+  {
+   "fieldname": "overtime_calculation",
+   "fieldtype": "Float",
+   "label": "Overtime calculation"
+  },
+  {
+   "fieldname": "column_break_kqvrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_ideal_time",
+   "fieldtype": "Float",
+   "label": "Total Ideal Time"
+  },
+  {
+   "fieldname": "total_breckdown_time",
+   "fieldtype": "Float",
+   "label": "Total Breakdown Time"
+  },
+  {
+   "description": "Working + Ideal Time",
+   "fieldname": "total_time",
+   "fieldtype": "Float",
+   "label": "Total Time"
+  },
+  {
+   "fieldname": "total_km",
+   "fieldtype": "Int",
+   "label": "Total KM"
+  },
+  {
+   "fetch_from": "resource_planning.start_date",
+   "fieldname": "resource_planning_start_date",
+   "fieldtype": "Date",
+   "label": "Equipment Planning Start Date"
+  },
+  {
+   "fetch_from": "resource_planning.end_date",
+   "fieldname": "resource_planning_end_date",
+   "fieldtype": "Date",
+   "label": "Equipment Planning End Date"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours"
+  },
+  {
+   "fieldname": "total_fuel",
+   "fieldtype": "Float",
+   "label": "Total Fuel"
+  },
+  {
+   "fetch_from": "resource_planning.sales_order",
+   "fieldname": "agreement",
+   "fieldtype": "Link",
+   "label": "Agreement",
+   "options": "Sales Order"
+  },
+  {
+   "description": "Per hour Rate",
+   "fieldname": "rate_per_hours",
+   "fieldtype": "Currency",
+   "label": "Rate Per Hours"
+  },
+  {
+   "description": "As Per Agreement",
+   "fieldname": "total_rate",
+   "fieldtype": "Currency",
+   "label": "Total Rate"
+  },
+  {
+   "fieldname": "section_break_yc6xw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_sgtzs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_b0v6m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_working_price",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Total Working Price"
+  },
+  {
+   "fieldname": "total_ideal_price",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Total Ideal Price"
+  },
+  {
+   "fieldname": "total_breck_down_price",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Total Breck Down Price"
+  },
+  {
+   "fieldname": "total_over_time_price",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Total Over Time price"
+  },
+  {
+   "fieldname": "approve",
+   "fieldtype": "Button",
+   "label": "Approve"
+  },
+  {
+   "fieldname": "reject",
+   "fieldtype": "Button",
+   "label": "Reject"
+  },
+  {
+   "fieldname": "supplier_approve",
+   "fieldtype": "Select",
+   "label": "Supplier Approve",
+   "options": "\nApprove\nReject"
+  },
+  {
+   "fieldname": "customer_approve",
+   "fieldtype": "Select",
+   "label": "Customer Approve",
+   "options": "\nApprove\nReject"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-13 14:56:02.324296",
+ "modified_by": "Administrator",
+ "module": "Migoo CRM",
+ "name": "Summary Sheet",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

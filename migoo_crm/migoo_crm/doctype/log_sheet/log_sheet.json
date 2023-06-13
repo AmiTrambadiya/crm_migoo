@@ -22,19 +22,24 @@
   "activity",
   "working_details_section",
   "working_details",
+  "fuel_details",
   "section_break_h5ehd",
   "total_working_time",
   "overtime_calculation",
   "column_break_kqvrc",
   "total_ideal_time",
+  "total_fuel",
   "column_break_iuqj9",
   "total_breckdown_time",
+  "total_hours",
   "column_break_mktdr",
   "total_time",
   "column_break_olb78",
   "total_km",
   "section_break_xghbx",
-  "rejection_reason"
+  "rejection_reason",
+  "agrement",
+  "working_hours_per_day"
  ],
  "fields": [
   {
@@ -179,11 +184,40 @@
    "fieldname": "total_working_time",
    "fieldtype": "Float",
    "label": "Total Working Time"
+  },
+  {
+   "fieldname": "fuel_details",
+   "fieldtype": "Table",
+   "label": "Fuel Details",
+   "options": "Fuel Details Sheet"
+  },
+  {
+   "fieldname": "total_fuel",
+   "fieldtype": "Float",
+   "label": "Total Fuel"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours"
+  },
+  {
+   "fetch_from": "resource_planning.sales_order",
+   "fieldname": "agrement",
+   "fieldtype": "Link",
+   "label": "Agrement",
+   "options": "Sales Order"
+  },
+  {
+   "fetch_from": "agrement.working_hours_per_day",
+   "fieldname": "working_hours_per_day",
+   "fieldtype": "Int",
+   "label": "Working Hours Per Day"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 17:04:06.854386",
+ "modified": "2023-06-09 17:32:09.354848",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Log Sheet",
