@@ -20,6 +20,7 @@ def get_logsheet_data(name,from_time,to_time,equipment,customer):
 	total_km=0.0
 	total_hours=0.0
 	total_fuel=0.0
+	dict1={}
 	for i in name1:
 		for j in i:
 			nm.append(j)

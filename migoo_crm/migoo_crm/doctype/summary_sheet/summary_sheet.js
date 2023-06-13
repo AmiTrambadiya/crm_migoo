@@ -7,16 +7,25 @@ frappe.ui.form.on("Summary Sheet", {
     element.classList.add("section-no");
     set_css_1(frm);
     if (frappe.user.has_role("Vendor") === true) {
-      if (frm.doc.supplier_approve != null) {
+      if (frm.doc.supplier_approve == "") {
+        
+        frm.set_df_property("approve", "hidden", 0);
+        frm.set_df_property("reject", "hidden", 0);
+      }
+      else {
         frm.set_df_property("approve", "hidden", 1);
         frm.set_df_property("reject", "hidden", 1);
       }
     }
     if (frappe.user.has_role("Customer") === true) {
-      if (frm.doc.customer_approve != "") {
-        frm.set_df_property("approve", "hidden", 1);
-        frm.set_df_property("reject", "hidden", 1);
+      if (frm.doc.customer_approve == "") {
+        frm.set_df_property("approve", "hidden", 0);
+        frm.set_df_property("reject", "hidden", 0);
       }
+      else {
+        frm.set_df_property("approve", "hidden", 1);x
+        frm.set_df_property("reject", "hidden", 1);
+      }1
     }
 
     frm.add_custom_button(__("Get Log Sheet"), function () {
@@ -158,7 +167,7 @@ frappe.ui.form.on("Summary Sheet", {
           callback: function (r) {
             console.log(r.message);
             var perday = r.message / working_hours_per_month;
-            console.log(r.message);
+            console.log(perday);
             frm.set_value("rate_per_hours", perday);
             frm.set_value("total_rate", r.message);
             // frm.set_value("total_over_time_price",perday * frm.doc.overtime_calculation)
