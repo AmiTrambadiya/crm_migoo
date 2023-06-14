@@ -31,8 +31,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Equipment Category",
-   "options": "Item Group",
-   "reqd": 1
+   "options": "Item Group"
   },
   {
    "depends_on": "eval:doc.equipment_category",
@@ -120,7 +119,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-07 18:59:45.509042",
+ "modified": "2023-06-08 17:42:51.086100",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Model",

@@ -5,7 +5,7 @@ from frappe import _
 import frappe.defaults
 
 @frappe.whitelist()
-def status_change(name,sub,model,test,img1,img2,img3,img4,img5,img6,insurance_date):
+def status_change(name,sub,test,img1,img2,img3,img4,img5,img6,insurance_date):
     
     test1=test.split(",")
     list1=[img1,img2,img3,img4,img5,img6]
@@ -30,9 +30,10 @@ def status_change(name,sub,model,test,img1,img2,img3,img4,img5,img6,insurance_da
             frappe.db.commit()
 
     frappe.db.set_value("Web item",name,"web_item_name",sub)
-    frappe.db.set_value("Web item",name,"model",model)
+    # frappe.db.set_value("Web item",name,"model",model)
     frappe.db.set_value("Web item",name,"website_image",img1)
     frappe.db.set_value("Web item",name,"insurance_date",insurance_date)
+    # frappe.db.set_value("Web item",name,"sold_out",sold_out)
     # frappe.db.set_value("Web item",name,"equipment_current_reading",equipment_current_reading)
     
 @frappe.whitelist()

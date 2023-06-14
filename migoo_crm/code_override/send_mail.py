@@ -5,9 +5,6 @@ from collections import defaultdict
 
 @frappe.whitelist()
 def send_insurance_email():
-
-    expiry_date = add_days(now_datetime().date(), 7)
-
     name = frappe.db.sql("""
 
     with insurance as(select 
@@ -168,6 +165,11 @@ def send_insurance_email():
             </div>
             <p>Get it renewed as soon as possible to avoid further inconvenience.</p>
             <p>Thank you for choosing Migoo. We value your trust and are committed to providing you with the best service possible.</p>
+            <div><b>Thanks & Regards,</b></div>
+            <br>
+            <div><b>Surya Prakash Pal</b></div>
+            <div><b>Assistant Manager</b></div>
+            <br>
             <div>
                 <table>
                     <tr>

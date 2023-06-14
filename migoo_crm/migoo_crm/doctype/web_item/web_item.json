@@ -161,7 +161,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fetch_from": "item_name.maker_model",
    "fieldname": "maker_model",
    "fieldtype": "Data",
    "label": "Maker Model"
@@ -317,7 +316,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-02 16:18:31.578979",
+ "modified": "2023-06-13 11:48:25.336501",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Web item",
