@@ -2,7 +2,6 @@
  {
   "allow_guest": 1,
   "api_method": "check_user_role_profile",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -18,7 +17,6 @@
  {
   "allow_guest": 0,
   "api_method": "user_creation",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -34,7 +32,6 @@
  {
   "allow_guest": 1,
   "api_method": "otpverify",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -50,7 +47,6 @@
  {
   "allow_guest": 1,
   "api_method": "getotpdata",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -66,7 +62,6 @@
  {
   "allow_guest": 1,
   "api_method": "supplier-info",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -82,7 +77,6 @@
  {
   "allow_guest": 0,
   "api_method": "check_register_no",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -98,7 +92,6 @@
  {
   "allow_guest": 0,
   "api_method": "Select_option",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -114,7 +107,6 @@
  {
   "allow_guest": 1,
   "api_method": "expo",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -130,7 +122,6 @@
  {
   "allow_guest": 1,
   "api_method": "fetchdata",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -146,7 +137,6 @@
  {
   "allow_guest": 1,
   "api_method": "buy_inquiry",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -162,7 +152,6 @@
  {
   "allow_guest": 0,
   "api_method": "website_item2",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -178,7 +167,6 @@
  {
   "allow_guest": 1,
   "api_method": "fetchdata",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -194,7 +182,6 @@
  {
   "allow_guest": 1,
   "api_method": "buycontact",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -210,7 +197,6 @@
  {
   "allow_guest": 0,
   "api_method": "web_img",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -226,7 +212,6 @@
  {
   "allow_guest": 0,
   "api_method": "address",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -242,7 +227,6 @@
  {
   "allow_guest": 0,
   "api_method": "model_no",
-  "cron_format": null,
   "disabled": 1,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -258,7 +242,6 @@
  {
   "allow_guest": 0,
   "api_method": "supplier",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -274,7 +257,6 @@
  {
   "allow_guest": 1,
   "api_method": "contact-us123",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -290,7 +272,6 @@
  {
   "allow_guest": 1,
   "api_method": "supplier_registration",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -306,7 +287,6 @@
  {
   "allow_guest": 0,
   "api_method": "name",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -322,7 +302,6 @@
  {
   "allow_guest": 1,
   "api_method": "login1",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -338,7 +317,6 @@
  {
   "allow_guest": 1,
   "api_method": "contact-us1",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -354,7 +332,6 @@
  {
   "allow_guest": 1,
   "api_method": "validation",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -370,7 +347,6 @@
  {
   "allow_guest": 0,
   "api_method": "user_number",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -386,7 +362,6 @@
  {
   "allow_guest": 0,
   "api_method": "inquiry",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -402,7 +377,6 @@
  {
   "allow_guest": 0,
   "api_method": "website_item",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -418,7 +392,6 @@
  {
   "allow_guest": 0,
   "api_method": "suppler_mo_no",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -434,7 +407,6 @@
  {
   "allow_guest": 0,
   "api_method": "opp_reference",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -450,7 +422,6 @@
  {
   "allow_guest": 0,
   "api_method": "check_address_lead",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -466,7 +437,6 @@
  {
   "allow_guest": 0,
   "api_method": "check_address",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -482,7 +452,6 @@
  {
   "allow_guest": 0,
   "api_method": "supplier_address",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -498,7 +467,6 @@
  {
   "allow_guest": 0,
   "api_method": "get_customer_wise_sheet",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -514,7 +482,6 @@
  {
   "allow_guest": 0,
   "api_method": "order",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -530,7 +497,6 @@
  {
   "allow_guest": 0,
   "api_method": "status_change",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -546,7 +512,6 @@
  {
   "allow_guest": 0,
   "api_method": "check_web_item",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -562,7 +527,6 @@
  {
   "allow_guest": 0,
   "api_method": "check_whatsapp_no",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -578,7 +542,6 @@
  {
   "allow_guest": 0,
   "api_method": "check_user",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -594,7 +557,6 @@
  {
   "allow_guest": 0,
   "api_method": "fetch_child_table",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -610,7 +572,6 @@
  {
   "allow_guest": 0,
   "api_method": "model_no",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -626,7 +587,6 @@
  {
   "allow_guest": 1,
   "api_method": "check",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -642,7 +602,6 @@
  {
   "allow_guest": 0,
   "api_method": "brand",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -658,7 +617,6 @@
  {
   "allow_guest": 0,
   "api_method": "brand_sub_category",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -674,7 +632,6 @@
  {
   "allow_guest": 0,
   "api_method": "brand_sub_of_sub_category",
-  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
