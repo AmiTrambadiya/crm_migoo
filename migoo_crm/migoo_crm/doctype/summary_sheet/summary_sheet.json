@@ -46,6 +46,9 @@
   "total_breckdown_time",
   "overtime_calculation",
   "reject",
+  "section_break_awbib",
+  "supplier_remark",
+  "customer_remark",
   "total_working_price",
   "total_ideal_price",
   "total_breck_down_price",
@@ -306,11 +309,29 @@
    "fieldname": "status_section",
    "fieldtype": "Section Break",
    "label": "Status"
+  },
+  {
+   "fieldname": "section_break_awbib",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.supplier_approve==\"Reject\"",
+   "fieldname": "supplier_remark",
+   "fieldtype": "Small Text",
+   "label": "Remark",
+   "mandatory_depends_on": "eval:doc.supplier_approve==\"Reject\""
+  },
+  {
+   "depends_on": "eval:doc.customer_approve==\"Reject\"",
+   "fieldname": "customer_remark",
+   "fieldtype": "Small Text",
+   "label": "Remark",
+   "mandatory_depends_on": "eval:doc.customer_approve==\"Reject\""
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-14 12:59:03.622426",
+ "modified": "2023-06-14 16:32:23.208703",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Summary Sheet",
