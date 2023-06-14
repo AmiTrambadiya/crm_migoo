@@ -21,7 +21,7 @@ frappe.ui.form.on("Summary Sheet", {
     if (frappe.user.has_role("Vendor") === true) {
       frm.set_df_property("supplier_approve", "read_only", 1);
       frm.set_df_property("customer_approve", "read_only", 1);
-      frm.set_readonly();
+      // frm.set_readonly();
       if (frm.doc.supplier_approve == "") {
         frm.set_df_property("approve", "hidden", 0);
         frm.set_df_property("reject", "hidden", 0);
@@ -31,7 +31,7 @@ frappe.ui.form.on("Summary Sheet", {
       }
     }
     if (frappe.user.has_role("Customer") === true) {
-      frm.set_readonly();
+      // frm.set_readonly();
 
       frm.set_df_property("supplier_approve", "read_only", 1);
       frm.set_df_property("customer_approve", "read_only", 1);
@@ -40,7 +40,7 @@ frappe.ui.form.on("Summary Sheet", {
         frm.set_df_property("reject", "hidden", 0);
       } else {
         frm.set_df_property("approve", "hidden", 1);
-        x;
+        // x;
         frm.set_df_property("reject", "hidden", 1);
       }
     }
