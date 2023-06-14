@@ -2,6 +2,7 @@
  {
   "allow_guest": 1,
   "api_method": "check_user_role_profile",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -17,6 +18,7 @@
  {
   "allow_guest": 0,
   "api_method": "user_creation",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -32,6 +34,7 @@
  {
   "allow_guest": 1,
   "api_method": "otpverify",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -47,6 +50,7 @@
  {
   "allow_guest": 1,
   "api_method": "getotpdata",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -62,6 +66,7 @@
  {
   "allow_guest": 1,
   "api_method": "supplier-info",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -77,6 +82,7 @@
  {
   "allow_guest": 0,
   "api_method": "check_register_no",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -92,6 +98,7 @@
  {
   "allow_guest": 0,
   "api_method": "Select_option",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -107,6 +114,7 @@
  {
   "allow_guest": 1,
   "api_method": "expo",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -122,6 +130,7 @@
  {
   "allow_guest": 1,
   "api_method": "fetchdata",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -137,6 +146,7 @@
  {
   "allow_guest": 1,
   "api_method": "buy_inquiry",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -152,21 +162,23 @@
  {
   "allow_guest": 0,
   "api_method": "website_item2",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
   "doctype_event": "Before Insert",
   "event_frequency": "All",
-  "modified": "2023-06-13 16:49:56.576052",
+  "modified": "2023-06-13 18:15:43.554054",
   "module": "Migoo CRM",
   "name": "Website Item 2",
   "reference_doctype": null,
-  "script": "name=frappe.form_dict[\"name\"] \nitem_group=frappe.form_dict[\"item_group\"] \nmanufacturing_date = frappe.form_dict[\"equipment_manufacturing_year\"] \nmodel = frappe.form_dict[\"brand\"] \nsub = frappe.form_dict[\"sub\"]\nequipment_model_no=frappe.form_dict[\"equipment_model_no\"]\nequipment_insurance = frappe.form_dict[\"equipment_insurance\"] \nimg1 = frappe.form_dict[\"img1\"] \nimg2 = frappe.form_dict[\"img2\"] \nimg3 = frappe.form_dict[\"img3\"] \nimg4 = frappe.form_dict[\"img4\"] \nimg5 = frappe.form_dict[\"img5\"] \nimg6 = frappe.form_dict[\"img6\"] \ntest = frappe.form_dict[\"test\"] \ntest1=test.split(\",\") \nfrappe.msgprint(model) \nlist1=[img1,img2,img3,img4,img5,img6] \na = frappe.get_doc({\"doctype\":\"Web item\",\"web_item_name\":sub,\"item_code\":name,\n\"item_name\":name,\"website_image\":img1,\"insurance_date\":equipment_insurance,\n\"website_image\":img1,\"manufacturing_date\":manufacturing_date,\"maker_model\":model,\"model\":equipment_model_no}) \na.insert() \nfrappe.db.commit() \ndoc = frappe.get_doc('Web item', a.name) \nfor x in range(6):\n    doc.append('web_item_slide_show', {\n    'image': list1[x],\n        #  'request_type':request\n    })\n\n\n    doc.save()\n    frappe.db.commit()\nif len11 > 0 :\n    for i in test1: \n        if i!=\"\": \n            doc.append('web_item_slide_show', \n            { \n            'image': i, \n            }) \n            doc.save() \n        frappe.db.commit() \nfrappe.db.commit() \nfrappe.msgprint(\"Web Item Create\") ",
+  "script": "name=frappe.form_dict[\"name\"] \nitem_group=frappe.form_dict[\"item_group\"] \nmanufacturing_date = frappe.form_dict[\"equipment_manufacturing_year\"] \nmodel = frappe.form_dict[\"brand\"] \nsub = frappe.form_dict[\"sub\"]\nequipment_model_no=frappe.form_dict[\"equipment_model_no\"]\nequipment_insurance = frappe.form_dict[\"equipment_insurance\"] \nimg1 = frappe.form_dict[\"img1\"] \nimg2 = frappe.form_dict[\"img2\"] \nimg3 = frappe.form_dict[\"img3\"] \nimg4 = frappe.form_dict[\"img4\"] \nimg5 = frappe.form_dict[\"img5\"] \nimg6 = frappe.form_dict[\"img6\"] \ntest = frappe.form_dict[\"test\"] \ntest1=test.split(\",\") \nlen11=len(test1)\n# frappe.msgprint(model) \nlist1=[img1,img2,img3,img4,img5,img6] \na = frappe.get_doc({\"doctype\":\"Web item\",\"web_item_name\":sub,\"item_code\":name,\n\"item_name\":name,\"website_image\":img1,\"insurance_date\":equipment_insurance,\n\"website_image\":img1,\"manufacturing_date\":manufacturing_date,\"maker_model\":model,\"model\":equipment_model_no}) \na.insert() \nfrappe.db.commit() \ndoc = frappe.get_doc('Web item', a.name) \nfor x in range(6):\n    doc.append('web_item_slide_show', {\n    'image': list1[x],\n        #  'request_type':request\n    })\n\n\n    doc.save()\n    frappe.db.commit()\nif len11 > 0 :\n    for i in test1: \n        if i!=\"\": \n            doc.append('web_item_slide_show', \n            { \n            'image': i, \n            }) \n            doc.save() \n        frappe.db.commit() \nfrappe.db.commit() \nfrappe.msgprint(\"Web Item Create\") ",
   "script_type": "API"
  },
  {
   "allow_guest": 1,
   "api_method": "fetchdata",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -182,6 +194,7 @@
  {
   "allow_guest": 1,
   "api_method": "buycontact",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -197,6 +210,7 @@
  {
   "allow_guest": 0,
   "api_method": "web_img",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -212,6 +226,7 @@
  {
   "allow_guest": 0,
   "api_method": "address",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -227,6 +242,7 @@
  {
   "allow_guest": 0,
   "api_method": "model_no",
+  "cron_format": null,
   "disabled": 1,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -242,6 +258,7 @@
  {
   "allow_guest": 0,
   "api_method": "supplier",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -257,6 +274,7 @@
  {
   "allow_guest": 1,
   "api_method": "contact-us123",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -272,6 +290,7 @@
  {
   "allow_guest": 1,
   "api_method": "supplier_registration",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -287,6 +306,7 @@
  {
   "allow_guest": 0,
   "api_method": "name",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -302,6 +322,7 @@
  {
   "allow_guest": 1,
   "api_method": "login1",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -317,6 +338,7 @@
  {
   "allow_guest": 1,
   "api_method": "contact-us1",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -332,6 +354,7 @@
  {
   "allow_guest": 1,
   "api_method": "validation",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -347,6 +370,7 @@
  {
   "allow_guest": 0,
   "api_method": "user_number",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -362,6 +386,7 @@
  {
   "allow_guest": 0,
   "api_method": "inquiry",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -377,6 +402,7 @@
  {
   "allow_guest": 0,
   "api_method": "website_item",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -392,6 +418,7 @@
  {
   "allow_guest": 0,
   "api_method": "suppler_mo_no",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -407,6 +434,7 @@
  {
   "allow_guest": 0,
   "api_method": "opp_reference",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -422,6 +450,7 @@
  {
   "allow_guest": 0,
   "api_method": "check_address_lead",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -437,6 +466,7 @@
  {
   "allow_guest": 0,
   "api_method": "check_address",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -452,6 +482,7 @@
  {
   "allow_guest": 0,
   "api_method": "supplier_address",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -467,6 +498,7 @@
  {
   "allow_guest": 0,
   "api_method": "get_customer_wise_sheet",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -482,6 +514,7 @@
  {
   "allow_guest": 0,
   "api_method": "order",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -497,6 +530,7 @@
  {
   "allow_guest": 0,
   "api_method": "status_change",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -512,6 +546,7 @@
  {
   "allow_guest": 0,
   "api_method": "check_web_item",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -527,6 +562,7 @@
  {
   "allow_guest": 0,
   "api_method": "check_whatsapp_no",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -542,6 +578,7 @@
  {
   "allow_guest": 0,
   "api_method": "check_user",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -557,6 +594,7 @@
  {
   "allow_guest": 0,
   "api_method": "fetch_child_table",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -572,6 +610,7 @@
  {
   "allow_guest": 0,
   "api_method": "model_no",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -587,6 +626,7 @@
  {
   "allow_guest": 1,
   "api_method": "check",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -602,6 +642,7 @@
  {
   "allow_guest": 0,
   "api_method": "brand",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -617,6 +658,7 @@
  {
   "allow_guest": 0,
   "api_method": "brand_sub_category",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",
@@ -632,6 +674,7 @@
  {
   "allow_guest": 0,
   "api_method": "brand_sub_of_sub_category",
+  "cron_format": null,
   "disabled": 0,
   "docstatus": 0,
   "doctype": "Server Script",

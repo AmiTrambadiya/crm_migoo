@@ -1,3 +1,15 @@
+/**
+ * @description      :
+ * @author           : foram
+ * @group            :
+ * @created          : 14/06/2023 - 11:13:45
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 14/06/2023
+ * - Author          : foram
+ * - Modification    :
+ **/
 // Copyright (c) 2023, Palak Padalia and contributors
 // For license information, please see license.txt
 
@@ -7,25 +19,30 @@ frappe.ui.form.on("Summary Sheet", {
     element.classList.add("section-no");
     set_css_1(frm);
     if (frappe.user.has_role("Vendor") === true) {
+      frm.set_df_property("supplier_approve", "read_only", 1);
+      frm.set_df_property("customer_approve", "read_only", 1);
+      frm.set_readonly();
       if (frm.doc.supplier_approve == "") {
-        
         frm.set_df_property("approve", "hidden", 0);
         frm.set_df_property("reject", "hidden", 0);
-      }
-      else {
+      } else {
         frm.set_df_property("approve", "hidden", 1);
         frm.set_df_property("reject", "hidden", 1);
       }
     }
     if (frappe.user.has_role("Customer") === true) {
+      frm.set_readonly();
+
+      frm.set_df_property("supplier_approve", "read_only", 1);
+      frm.set_df_property("customer_approve", "read_only", 1);
       if (frm.doc.customer_approve == "") {
         frm.set_df_property("approve", "hidden", 0);
         frm.set_df_property("reject", "hidden", 0);
-      }
-      else {
-        frm.set_df_property("approve", "hidden", 1);x
+      } else {
+        frm.set_df_property("approve", "hidden", 1);
+        x;
         frm.set_df_property("reject", "hidden", 1);
-      }1
+      }
     }
 
     frm.add_custom_button(__("Get Log Sheet"), function () {
@@ -91,23 +108,38 @@ frappe.ui.form.on("Summary Sheet", {
     if (frappe.user.has_role("Vendor") === true) {
       frm.set_value("supplier_approve", "Approve");
       frm.set_df_property("reject", "hidden", 1);
+      frm.set_df_property("approve", "hidden", 1);
       frm.save();
+      frm.set_readonly();
     }
     if (frappe.user.has_role("Customer") === true) {
       frm.set_value("customer_approve", "Approve");
       frm.set_df_property("reject", "hidden", 1);
+      frm.set_df_property("approve", "hidden", 1);
+      frm.save();
+      frm.set_readonly();
+    }
+    if (frappe.user.has_role("Migoo Approver") === true) {
+      frm.set_value("migoo_approve", "Approve");
       frm.save();
     }
   },
   reject: function (frm) {
     if (frappe.user.has_role("Vendor") === true) {
       frm.set_value("supplier_approve", "Reject");
+      frm.set_df_property("reject", "hidden", 1);
       frm.set_df_property("approve", "hidden", 1);
       frm.save();
+      frm.set_readonly();
     }
     if (frappe.user.has_role("Customer") === true) {
       frm.set_value("customer_approve", "Reject");
       frm.set_df_property("approve", "hidden", 1);
+      frm.set_df_property("reject", "hidden", 1);
+      frm.save();
+    }
+    if (frappe.user.has_role("Migoo Approver") === true) {
+      frm.set_value("migoo_approve", "Reject");
       frm.save();
     }
   },

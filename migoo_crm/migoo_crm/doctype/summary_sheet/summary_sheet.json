@@ -7,6 +7,13 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "status_section",
+  "supplier_approve",
+  "column_break_ygtsa",
+  "customer_approve",
+  "column_break_fqrcs",
+  "migoo_approve",
+  "section_break_5nw3w",
   "naming_series",
   "resource_planning",
   "customer",
@@ -34,17 +41,15 @@
   "section_break_yc6xw",
   "total_working_time",
   "total_ideal_time",
-  "supplier_approve",
   "approve",
   "column_break_kqvrc",
   "total_breckdown_time",
   "overtime_calculation",
+  "reject",
   "total_working_price",
   "total_ideal_price",
   "total_breck_down_price",
-  "total_over_time_price",
-  "customer_approve",
-  "reject"
+  "total_over_time_price"
  ],
  "fields": [
   {
@@ -57,21 +62,24 @@
    "fieldname": "resource_planning",
    "fieldtype": "Link",
    "label": "Resource Planning",
-   "options": "Equipment Planning"
+   "options": "Equipment Planning",
+   "permlevel": 1
   },
   {
    "fetch_from": "resource_planning.supplier",
    "fieldname": "supplier",
    "fieldtype": "Link",
    "label": "Supplier",
-   "options": "Supplier"
+   "options": "Supplier",
+   "permlevel": 1
   },
   {
    "fetch_from": "resource_planning.driver",
    "fieldname": "driver",
    "fieldtype": "Link",
    "label": "Driver",
-   "options": "Driver"
+   "options": "Driver",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_3",
@@ -81,20 +89,23 @@
    "fetch_from": "resource_planning.equipment_sub_category",
    "fieldname": "equipment_category",
    "fieldtype": "Data",
-   "label": "Equipment Category"
+   "label": "Equipment Category",
+   "permlevel": 1
   },
   {
    "fetch_from": "resource_planning.equipment",
    "fieldname": "equipment",
    "fieldtype": "Link",
    "label": "Equipment",
-   "options": "Item"
+   "options": "Item",
+   "permlevel": 1
   },
   {
    "fetch_from": "equipment.register_no",
    "fieldname": "equipment_no",
    "fieldtype": "Data",
-   "label": "RTO Register No"
+   "label": "RTO Register No",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_7",
@@ -105,7 +116,8 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
-   "options": "Customer"
+   "options": "Customer",
+   "permlevel": 1
   },
   {
    "fieldname": "section_break_h5ehd",
@@ -114,12 +126,14 @@
   {
    "fieldname": "total_working_time",
    "fieldtype": "Float",
-   "label": "Total Working Time"
+   "label": "Total Working Time",
+   "permlevel": 1
   },
   {
    "fieldname": "overtime_calculation",
    "fieldtype": "Float",
-   "label": "Overtime calculation"
+   "label": "Overtime calculation",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_kqvrc",
@@ -128,12 +142,14 @@
   {
    "fieldname": "total_ideal_time",
    "fieldtype": "Float",
-   "label": "Total Ideal Time"
+   "label": "Total Ideal Time",
+   "permlevel": 1
   },
   {
    "fieldname": "total_breckdown_time",
    "fieldtype": "Float",
-   "label": "Total Breakdown Time"
+   "label": "Total Breakdown Time",
+   "permlevel": 1
   },
   {
    "description": "Working + Ideal Time",
@@ -150,56 +166,66 @@
    "fetch_from": "resource_planning.start_date",
    "fieldname": "resource_planning_start_date",
    "fieldtype": "Date",
-   "label": "Equipment Planning Start Date"
+   "label": "Equipment Planning Start Date",
+   "permlevel": 1
   },
   {
    "fetch_from": "resource_planning.end_date",
    "fieldname": "resource_planning_end_date",
    "fieldtype": "Date",
-   "label": "Equipment Planning End Date"
+   "label": "Equipment Planning End Date",
+   "permlevel": 1
   },
   {
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "label": "Start Date"
+   "label": "Start Date",
+   "permlevel": 1
   },
   {
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "label": "End Date"
+   "label": "End Date",
+   "permlevel": 1
   },
   {
    "fieldname": "total_hours",
    "fieldtype": "Float",
-   "label": "Total Hours"
+   "label": "Total Hours",
+   "permlevel": 1
   },
   {
    "fieldname": "total_fuel",
    "fieldtype": "Float",
-   "label": "Total Fuel"
+   "label": "Total Fuel",
+   "permlevel": 1
   },
   {
    "fetch_from": "resource_planning.sales_order",
    "fieldname": "agreement",
    "fieldtype": "Link",
    "label": "Agreement",
-   "options": "Sales Order"
+   "options": "Sales Order",
+   "permlevel": 1
   },
   {
    "description": "Per hour Rate",
    "fieldname": "rate_per_hours",
    "fieldtype": "Currency",
-   "label": "Rate Per Hours"
+   "label": "Rate Per Hours",
+   "permlevel": 2
   },
   {
    "description": "As Per Agreement",
    "fieldname": "total_rate",
    "fieldtype": "Currency",
-   "label": "Total Rate"
+   "label": "Total Rate",
+   "permlevel": 2
   },
   {
    "fieldname": "section_break_yc6xw",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Time"
   },
   {
    "fieldname": "column_break_sgtzs",
@@ -207,7 +233,8 @@
   },
   {
    "fieldname": "column_break_b0v6m",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "permlevel": 1
   },
   {
    "fieldname": "total_working_price",
@@ -246,21 +273,44 @@
   {
    "fieldname": "supplier_approve",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "Supplier Approve",
    "options": "\nApprove\nReject"
   },
   {
    "fieldname": "customer_approve",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "Customer Approve",
    "options": "\nApprove\nReject"
+  },
+  {
+   "fieldname": "section_break_5nw3w",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "column_break_ygtsa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.customer_approve==\"Reject\"",
+   "fieldname": "migoo_approve",
+   "fieldtype": "Select",
+   "label": "Migoo Approve",
+   "options": "\nApprove\nReject"
+  },
+  {
+   "fieldname": "column_break_fqrcs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-13 17:30:12.314449",
+ "modified": "2023-06-14 12:59:03.622426",
  "modified_by": "Administrator",
  "module": "Migoo CRM",
  "name": "Summary Sheet",
